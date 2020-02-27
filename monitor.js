@@ -102,7 +102,7 @@ enum TaskStatus {
 function passToGlaciator(params) {
     console.log('Attempting to launch glaciator with ...');
     console.log(...params);
-    let child = execFile('python', ['GlaciatorLauncher.py', ...params ], (err, stdout, stderr) => {
+    let child = execFile('executable/GlaciatorLauncher.sh', [...params ], (err, stdout, stderr) => {
         if (err) {
             throw err;
         }
