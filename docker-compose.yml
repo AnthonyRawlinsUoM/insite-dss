@@ -1,18 +1,19 @@
 version: '3.7'
 
 services:
-    redis:
-        image: redis
-        ports:
-          - 6380:6379
-        volumes:
-          - /nfs/pyromancer/Personal/Tony/CLOUD/redis/data:/data
-        networks:
-            - insite-network
+    # redis:
+    #     image: redis
+    #     ports:
+    #       - 6380:6379
+    #     volumes:
+    #       - /nfs/pyromancer/Personal/Tony/CLOUD/redis/data:/data
+    #     networks:
+    #         - insite-network
 
     insite:
         image: anthonyrawlinsuom/insite-dss
-        ports: "8181:8181"
+        ports:
+          - 8181:8181
         volumes:
           - /nfs/pyromancer/Projects/DSS/data/insite/queue:/usr/src/app/queue
           - /nfs/pyromancer/Projects/DSS/data/insite/executable:/usr/src/app/executable
@@ -25,6 +26,7 @@ services:
             placement:
                 constraints:
                   - node.role == manager
+                  - node.labels.NFS == attached
             labels:
               - traefik.frontend.rule=Host:insite.dss.cloud.bushfirebehaviour.net.au
               - traefik.backend.loadbalancer.swarm=true
