@@ -15,7 +15,7 @@ const js2xmlparser = require("js2xmlparser");
 
 const directoryPath = path.join(__dirname, '/queue');
 
-app.use(express.static(path.join(__dirname, '/dist/INSITE')));
+app.use(express.static(path.join(__dirname, '/INSITE')));
 
 app.use(function(req, res, next) {
   app.use(function(req, res, next) {
