@@ -15,6 +15,7 @@ services:
         ports: "8181:8181"
         volumes:
           - /nfs/pyromancer/Projects/DSS/data/insite/queue:/usr/src/app/queue
+          - /nfs/pyromancer/Projects/DSS/data/insite/executable:/usr/src/app/executable
         networks:
             - traefik-network
             - insite-network
