@@ -2,9 +2,8 @@ FROM node:lts-alpine3.11
 
 WORKDIR /usr/src/app
 
-#COPY package*.json ./
-#RUN npm install
-#COPY . .
+COPY deployment_packages.json ./packages.json
+RUN npm install
 
 COPY monitor.js .
 COPY ./dist .

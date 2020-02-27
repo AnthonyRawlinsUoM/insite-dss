@@ -1,0 +1,22 @@
+{
+  "name": "insite",
+  "version": "0.0.3",
+  "dependencies": {
+    "child_process": "^1.0.2",
+    "jquery": "^3.4.1",
+    "js2xmlparser": "^4.0.0",
+    "moment": "^2.24.0",
+    "ng2-semantic-ui": "^0.9.7",
+    "rxjs": "^6.4.0",
+    "rxjs-compat": "^6.5.4",
+    "socket.io": "^2.3.0",
+    "socket.io-client": "^2.3.0",
+    "socket.io-redis": "^5.2.0",
+    "tslib": "^1.10.0",
+    "uuid": "^3.4.0",
+    "uuidv4": "^6.0.2",
+    "xml2json": "^0.12.0",
+    "xmlbuilder": "^13.0.2",
+    "zone.js": "~0.9.1"
+  }
+}
