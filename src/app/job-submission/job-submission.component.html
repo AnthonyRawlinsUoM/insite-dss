@@ -1,0 +1,251 @@
+<div class="ui container">
+  <div
+      class="ui raised segment"
+      style="margin-top: 70px;"
+  >
+    <h2>GLACIATOR/FROST Job Submission Form</h2>
+    <sui-message class="warning icon">
+      <i class="exclamation triangle icon"></i>
+      <div class="header">Costs warning!</div>
+      <p>Submitting a job here comes with significant operational costs and computational overheads.</p>
+      <p>Be sure you know what you are doing.</p>
+    </sui-message>
+
+    <div class="ui divider"></div>
+
+    <form class="ui form">
+      <div class="ui two column stackable grid">
+        <div class="column">
+          <h3 class="ui header">Job metadata</h3>
+
+          <div class="grouped fields">
+            <div class="field">
+              <label>Name</label>
+              <input
+                  placeholder="Username"
+                  [(ngModel)]="name"
+                  name="name"
+                  type="text"
+              >
+            </div>
+            <div class="field">
+              <label>Email</label>
+              <input
+                  placeholder="Username"
+                  [(ngModel)]="email"
+                  name="email"
+                  type="email"
+              >
+            </div>
+          </div>
+
+          <div class="field">
+            <label for="">Description</label>
+            <textarea
+                name="description"
+                [(ngModel)]="description"
+            ></textarea>
+          </div>
+
+
+        </div>
+        <div class="column">
+
+          <h3 class="ui header">Glaciator Parameters</h3>
+
+          <div class="grouped fields">
+            <div class="field">
+              <sui-checkbox
+                  name="harvesting_on"
+                  class="toggle"
+                  [(ngModel)]="harvesting_on"
+                  (checkChange)="with_harvesting_change($event)"
+              >with Harvesting</sui-checkbox>
+            </div>
+            <div class="field">
+              <sui-checkbox
+                  name="harvesting_off"
+                  class="toggle"
+                  [(ngModel)]="harvesting_off"
+                  (checkChange)="without_harvesting_change($event)"
+              >without Harvesting</sui-checkbox>
+            </div>
+          </div>
+
+          <div class="grouped required fields">
+            <label for="">Simulation time (Years):</label>
+
+            <div class="field">
+              <sui-radio-button
+                  class="toggle"
+                  name="timeframe"
+                  value="TWENTY"
+                  [(ngModel)]="timeframe"
+              >25</sui-radio-button>
+            </div>
+            <div class="field">
+              <sui-radio-button
+                  class="toggle"
+                  name="timeframe"
+                  value="FIFTY"
+                  [(ngModel)]="timeframe"
+              >50</sui-radio-button>
+            </div>
+          </div>
+
+          <div class="grouped required fields">
+            <label for="">Replicates:</label>
+
+            <div class="field">
+              <sui-radio-button
+                  class="toggle"
+                  name="replicates"
+                  value="TEN"
+                  [(ngModel)]="replicates"
+              >10</sui-radio-button>
+            </div>
+            <div class="field">
+              <sui-radio-button
+                  class="toggle"
+                  name="replicates"
+                  value="TWENTY_FIVE"
+                  [(ngModel)]="replicates"
+              >25</sui-radio-button>
+            </div>
+            <div class="field">
+              <sui-radio-button
+                  class="toggle"
+                  name="replicates"
+                  value="FIFTY"
+                  [(ngModel)]="replicates"
+              >50</sui-radio-button>
+            </div>
+          </div>
+
+          <div class="required field">
+            <label for="">Zones: </label>
+            <sui-select
+                name="burn_zones"
+                class="selection"
+                [(ngModel)]="burn_zones"
+                [options]="zone_options"
+                labelField="label"
+                [isSearchable]="searchable"
+                [isDisabled]="disabled"
+                #zone_select
+            >
+              <sui-select-option
+                  *ngFor="let option of zone_select.filteredOptions"
+                  [value]="option"
+              >
+              </sui-select-option>
+            </sui-select>
+          </div>
+
+          <div class="required field">
+            <label for="">Fuel: </label>
+            <sui-select
+                name="fuel_select"
+                class="selection"
+                [(ngModel)]="fuel"
+                [options]="fuel_options"
+                labelField="label"
+                [isSearchable]="searchable"
+                [isDisabled]="disabled"
+                #fuel_select
+            >
+              <sui-select-option
+                  *ngFor="let option of fuel_select.filteredOptions"
+                  [value]="option"
+              >
+              </sui-select-option>
+            </sui-select>
+          </div>
+
+          <div class="required grouped fields">
+            <label for="">Weather: </label>
+            <!-- <sui-select
+              name="weather_select"
+              class="selection"
+              [(ngModel)]="weather"
+              [options]="weather_options"
+              labelField="label"
+              [isSearchable]="searchable"
+              [isDisabled]="disabled"
+              #weather_select
+          >
+            <sui-select-option
+                *ngFor="let option of weather_select.filteredOptions"
+                [value]="option"
+            >
+            </sui-select-option>
+          </sui-select> -->
+
+            <div class="field">
+              <sui-checkbox
+                  name="observed_weather"
+                  class="toggle"
+                  [(ngModel)]="observed_weather"
+                  (checkChange)="observed_change($event)"
+              >Observations</sui-checkbox>
+            </div>
+
+            <div class="field">
+              <sui-checkbox
+                  name="NARCLIM_current_weather"
+                  class="toggle"
+                  [(ngModel)]="NARCLIM_current_weather"
+                  (checkChange)="NARCLIM_current_weather_change($event)"
+              >NARCLIM Current</sui-checkbox>
+            </div>
+
+            <div class="field">
+              <sui-checkbox
+                  name="NARCLIM_future_weather"
+                  class="toggle"
+                  [(ngModel)]="NARCLIM_future_weather"
+                  (checkChange)="NARCLIM_future_weather_change($event)"
+              >NARCLIM Future</sui-checkbox>
+            </div>
+
+
+          </div>
+
+          <div class="required field">
+            <label>Burn Target (Percentage per Year)</label>
+            <input
+                name="burn_target_per_year"
+                type="text"
+                [(ngModel)]="burn_target_per_year"
+                placeholder="%"
+            >
+          </div>
+        </div>
+      </div>
+
+
+
+
+
+      <div class="inline required field error">
+        <div class="ui checkbox">
+          <input
+              name="tcs"
+              type="checkbox"
+              tabindex="0"
+              class="hidden"
+          >
+          <label>I agree to the Terms and Conditions</label>
+        </div>
+      </div>
+
+      <div
+          class="ui primary submit button"
+          (click)="createJob($event)"
+      >Submit</div>
+      <div class="ui reset button">Reset</div>
+      <div class="ui clear button">Clear</div>
+    </form>
+
+  </div>
+</div>

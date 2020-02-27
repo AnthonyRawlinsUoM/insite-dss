@@ -1,0 +1,27 @@
+<?xml version='1.0'?>
+<glaciator_parameters>
+    <submitted_at>Friday January 31 2020</submitted_at>
+    <submitted_by>No-one</submitted_by>
+    <email>me@anthonyrawlins.com</email>
+    <description>tes2</description>
+    <name>Anthony Rawlins</name>
+    <uuid>9774a866-27a3-464f-bd2d-4ca4bdd6f221</uuid>
+    <parameters>
+        <harvesting_on>true</harvesting_on>
+        <harvesting_off>true</harvesting_off>
+        <burn_target_per_year>3.5</burn_target_per_year>
+        <burn_zones>BPZ</burn_zones>
+        <replicates>TEN</replicates>
+        <weather>NARCLIM Current</weather>
+        <fuel>McColl-Gausden Fuel Model</fuel>
+    </parameters>
+    <task>
+        <uuid/>
+        <progress>70.145</progress>
+        <status>STARTED</status>
+        <priority>1</priority>
+        <results>
+            <url/>
+        </results>
+    </task>
+</glaciator_parameters>

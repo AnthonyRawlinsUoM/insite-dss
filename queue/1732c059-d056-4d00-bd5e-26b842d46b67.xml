@@ -1,0 +1,30 @@
+<?xml version='1.0'?>
+<glaciator_parameters>
+    <submitted_at>Friday January 31 2020</submitted_at>
+    <submitted_by>No-one</submitted_by>
+    <email>me@anthonyrawlins.com</email>
+    <description>test</description>
+    <name>Anthony Rawlins</name>
+    <uuid>1732c059-d056-4d00-bd5e-26b842d46b67</uuid>
+    <parameters>
+        <harvesting_on>true</harvesting_on>
+        <harvesting_off>false</harvesting_off>
+        <burn_target_per_year>5</burn_target_per_year>
+        <burn_zones>BPZ</burn_zones>
+        <simulation_timeframe>TWENTY</simulation_timeframe>
+        <replicates>TEN</replicates>
+        <weather>
+            <observed>true</observed>
+        </weather>
+        <fuel>Inverse Exponential</fuel>
+    </parameters>
+    <task>
+        <uuid/>
+        <progress>0</progress>
+        <status>PENDING</status>
+        <priority>1</priority>
+        <results>
+            <url/>
+        </results>
+    </task>
+</glaciator_parameters>

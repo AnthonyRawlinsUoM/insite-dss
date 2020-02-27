@@ -1,0 +1,28 @@
+<?xml version='1.0'?>
+<glaciator_parameters>
+    <submitted_at>Friday January 31 2020</submitted_at>
+    <submitted_by>No-one</submitted_by>
+    <email>anthony.rawlins@unimelb.edu.au</email>
+    <description>testing only</description>
+    <name>EXAMPLE GLACIATOR SETTINGS</name>
+    <uuid>4ed293a9-ba83-43fb-b2f6-de2251844873</uuid>
+    <parameters>
+        <harvesting_on>true</harvesting_on>
+        <harvesting_off>true</harvesting_off>
+        <burn_target_per_year>3.75</burn_target_per_year>
+        <burn_zones>LMZ</burn_zones>
+        <simulation_timeframe>TWENTY</simulation_timeframe>
+        <replicates>TWENTY_FIVE</replicates>
+        <weather>Observed</weather>
+        <fuel>Inverse Exponential</fuel>
+    </parameters>
+    <task>
+        <uuid/>
+        <progress>100</progress>
+        <status>COMPLETE</status>
+        <priority>1</priority>
+        <results>
+            <url/>
+        </results>
+    </task>
+</glaciator_parameters>

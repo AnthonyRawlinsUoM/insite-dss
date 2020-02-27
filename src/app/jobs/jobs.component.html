@@ -1,0 +1,60 @@
+<div class="ui top_spaced container">
+
+  <div
+      class="ui top attached segment"
+      style="margin-top: 70px;"
+  >
+    <table class="ui very basic table">
+      <thead>
+        <tr>
+          <th class="collapsing"></th>
+          <th>Queue ID</th>
+          <th>Job</th>
+          <th>Contact</th>
+          <th>Status</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr
+            *ngFor="let job of jobs"
+            (click)="selectJob(job)"
+            class="selectable_row"
+        >
+
+          <td class="collapsing"><i class="ui blue info circle icon"></i> </td>
+          <td>{{ job.uuid }}</td>
+          <td>{{ job.name }}</td>
+          <td> {{ job.email }}</td>
+          <td>
+            {{ job.task.status }} -
+            {{ job.task.progress | number: '1.0-2' }} %
+          </td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div
+        class="ui raised bottom attached segment"
+        *ngIf="selectedJob"
+    >
+      <div class="ui header">
+        {{selectedJob.uuid}}
+      </div>
+      <div class="ui segment">
+        <h4 class="ui header">User: {{selectedJob.name}}</h4>
+        <sui-progress
+            class="indicating"
+            [value]="selectedJob.task.progress"
+        >Completion</sui-progress>
+        <p class="card-text">
+          {{selectedJob.description}}
+        </p>
+        <p>Submitted at: {{ selectedJob.submitted_at }}</p>
+        <p>Submitted by: {{ selectedJob.submitted_by }}</p>
+        <p class="card-text">
+          {{selectedJob.parameters | json}}
+        </p>
+      </div>
+    </div>
+  </div>
+</div>

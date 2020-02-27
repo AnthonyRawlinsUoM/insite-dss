@@ -1,0 +1,7 @@
+.selectable_row {
+    cursor: pointer;
+    background-color: rgba(255,255,255, 1.0);
+}
+.selectable_row:hover {
+    background-color: rgba(0,24,1250,0.02);
+}
