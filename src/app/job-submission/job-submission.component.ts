@@ -3,7 +3,7 @@ import { FormsModule } from "@angular/forms";
 import { Router } from '@angular/router';
 
 import { DataService } from '../data.service';
-import { uuid } from 'uuidv4';
+import { v4 as uuid } from 'uuid';
 
 import * as gp from '../GlaciatorParameters';
 
