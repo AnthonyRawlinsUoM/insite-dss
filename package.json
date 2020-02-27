@@ -31,7 +31,6 @@
     "socket.io-redis": "^5.2.0",
     "tslib": "^1.10.0",
     "uuid": "^3.4.0",
-    "uuidv4": "^6.0.2",
     "xml2json": "^0.12.0",
     "xmlbuilder": "^13.0.2",
     "zone.js": "~0.9.1"

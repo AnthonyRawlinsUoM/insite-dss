@@ -3,4 +3,4 @@ npm version patch
 # ng build --watch
 ng build
 docker build -t anthonyrawlinsuom/insite-dss:latest .
-# docker push anthonyrawlinsuom/insite-dss
+docker push anthonyrawlinsuom/insite-dss

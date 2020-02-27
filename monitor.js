@@ -9,7 +9,7 @@ const socketIO = require('socket.io');
 const redisAdapter = require('socket.io-redis');
 const parser = require('xml2json');
 const app = express();
-const uuidv4 = require('uuid/v4');
+const { v4: uuidv4 } = require('uuid');
 const moment = require('moment');
 const js2xmlparser = require("js2xmlparser");
 
