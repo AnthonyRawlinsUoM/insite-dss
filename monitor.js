@@ -130,7 +130,6 @@ io.on('connection', (socket) => {
   socket.on('submission', (job) => {
     console.log('Job submission received!');
     console.log(job);
-    passToGlaciator(['--xml', 'uuid.xml']);
     socket.emit('submission-acknowledged', "ACK");
     // Write the XML
     let out_xml = js2xmlparser.parse("glaciator_parameters", job);
@@ -143,6 +142,9 @@ io.on('connection', (socket) => {
       if (err) throw err;
       console.log('Saved!');
     });
+
+    passToGlaciator(['--xml', out_name]);
+
   });
 
   socket.on('list-jobs', () => {
