@@ -452,10 +452,10 @@ __webpack_require__.r(__webpack_exports__);
 
 
 const routes = [
-    { path: "", pathMatch: "full", redirectTo: "home" },
     { path: "home", component: _home_home_component__WEBPACK_IMPORTED_MODULE_5__["HomeComponent"] },
     { path: "job-submission", component: _job_submission_job_submission_component__WEBPACK_IMPORTED_MODULE_4__["JobSubmissionComponent"] },
-    { path: "jobs", component: _jobs_jobs_component__WEBPACK_IMPORTED_MODULE_3__["JobsComponent"] }
+    { path: "jobs", component: _jobs_jobs_component__WEBPACK_IMPORTED_MODULE_3__["JobsComponent"] },
+    { path: "", pathMatch: "full", redirectTo: "home" }
 ];
 let AppRoutingModule = class AppRoutingModule {
 };

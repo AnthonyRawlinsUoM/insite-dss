@@ -937,10 +937,6 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     "./src/app/home/home.component.ts");
 
     var routes = [{
-      path: "",
-      pathMatch: "full",
-      redirectTo: "home"
-    }, {
       path: "home",
       component: _home_home_component__WEBPACK_IMPORTED_MODULE_5__["HomeComponent"]
     }, {
@@ -949,6 +945,10 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     }, {
       path: "jobs",
       component: _jobs_jobs_component__WEBPACK_IMPORTED_MODULE_3__["JobsComponent"]
+    }, {
+      path: "",
+      pathMatch: "full",
+      redirectTo: "home"
     }];
 
     var AppRoutingModule = function AppRoutingModule() {

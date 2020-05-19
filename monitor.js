@@ -87,7 +87,7 @@ function passToGlaciator(params) {
 function validate(job) {
   let validators = [];
   throw new Error('Validation Failed');
-  
+
 }
 
 let jobqueue = [];
@@ -123,7 +123,7 @@ io.on('connection', (socket) => {
     try {
       valid = isValid(job);
     } catch(e) {
-      console.err(e);
+      console.error(e);
       socket.emit('validation-error', JSON.stringify({
           error: e
       }));
@@ -138,7 +138,7 @@ io.on('connection', (socket) => {
         stmt.run(job);
         stmt.finalize();
       } catch(e) {
-        console.err(e);
+        console.error(e);
         console.log(stmt);
         socket.emit('insertion-error', {
           error: e,
