@@ -10,38 +10,35 @@ services:
     #     networks:
     #         - insite-network
 
-    insite:
+    app:
         image: anthonyrawlinsuom/insite-dss
         ports:
           - 8181:8181
         volumes:
-          - /nfs/pyromancer/Projects/DSS/data/insite/queue:/usr/src/app/queue
-          - /nfs/pyromancer/Projects/DSS/data/insite/executable:/usr/src/app/executable
+          # - /nfs/pyromancer/Projects/DSS/data/insite/queue:/usr/src/app/queue
+          # - /nfs/pyromancer/Projects/DSS/data/insite/executable:/usr/src/app/executable
+          - ./data/insite/queue:/usr/src/app/queue
+          - ./data/insite/executable:/usr/src/app/executable
         networks:
-            - traefik-network
+            - staging-network
             - insite-network
         deploy:
-            mode: replicated
-            replicas: 1
             placement:
                 constraints:
                   - node.role == manager
-                  - node.labels.NFS == attached
+                  # - node.labels.NFS == attached
             labels:
-              - traefik.frontend.rule=Host:insite.dss.cloud.bushfirebehaviour.net.au
-              - traefik.backend.loadbalancer.swarm=true
-              - traefik.docker.network=traefik-network
-              - traefik.enable=true
-              - traefik.frontend.passHostHeader=true
-              - traefik.port=8181
-              - traefik.redirectorservice.frontend.entryPoints=http
-              - traefik.redirectorservice.frontend.redirect.entryPoint=https
-              - traefik.tags=traefik-network
-              - traefik.webservice.frontend.entryPoints=https
+              - "traefik.enable=true"
+              - "traefik.http.routers.insite.rule=Host(`insite.lightning.deepblack.cloud`)"
+              - "traefik.http.routers.insite.entrypoints=web-secured"
+              - "traefik.http.routers.insite.tls.certresolver=letsencryptresolver"
+              - "traefik.http.services.insite.loadbalancer.server.port=8181"
+              - "traefik.http.services.insite.loadbalancer.passhostheader=true"
+              - "traefik.docker.network=staging-network"
 
 networks:
     insite-network:
         driver: overlay
         attachable: true
-    traefik-network:
+    staging-network:
         external: true
