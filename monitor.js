@@ -183,7 +183,6 @@ ORDER BY submission_time, submitter_name`;
         socket.emit('jobs-list', JSON.stringify(rows));
       });
     });
-    db.close();
 
     //passsing directoryPath and callback function
     // fs.readdir(directoryPath, function(err, files) {
