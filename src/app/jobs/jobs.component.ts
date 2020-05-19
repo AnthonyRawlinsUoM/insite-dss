@@ -21,7 +21,7 @@ export class JobsComponent implements OnInit {
 
           console.log(data);
 
-          this.jobs.push(data);
+          this.jobs.push(JSON.parse(data));
           // this.jobs.sort((a, b) => (a.task.progress > b.task.progress) ? -1 : 1);
       });
   }
