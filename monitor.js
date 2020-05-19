@@ -19,9 +19,9 @@ const sqlite3 = require('sqlite3').verbose();
 
 let db = new sqlite3.Database('database.sqlite');
 
-db.run('CREATE TABLE IF NOT EXISTS "job"("id" integer PRIMARY KEY NOT NULL, "name" text NOT NULL, "descr" text NOT NULL, "uuid" text NOT NULL, "submitter_name" text NOT NULL, "submission_time" datetime NOT NULL, "submitter_email" text NOT NULL, "weather_machine_kind" integer NOT NULL, "fuel_machine_kind" integer NOT NULL, "planburn_target_perc" integer NOT NULL, "regsim_duration" integer NOT NULL, "num_replicates" integer NOT NULL, "harvesting_on" boolean NOT NULL)');
+db.run('CREATE TABLE IF NOT EXISTS "job"("id" integer PRIMARY KEY, "name" text NOT NULL, "descr" text NOT NULL, "uuid" text NOT NULL, "submitter_name" text NOT NULL, "submission_time" datetime NOT NULL, "submitter_email" text NOT NULL, "weather_machine_kind" integer NOT NULL, "fuel_machine_kind" integer NOT NULL, "planburn_target_perc" integer NOT NULL, "regsim_duration" integer NOT NULL, "num_replicates" integer NOT NULL, "harvesting_on" boolean NOT NULL)');
 
-db.run('CREATE TABLE IF NOT EXISTS "job_state"("id" integer PRIMARY KEY NOT NULL, "status" text NOT NULL, "simulation_start_time" datetime, "post_proc_start_time" datetime, "simulation_results_dir_path" text,  "post_proc_results_dir_path" text,  "job_failure_time" datetime, "job_completion_time" datetime, "job_failure_error_message" varchar)');
+db.run('CREATE TABLE IF NOT EXISTS "job_state"("id" integer PRIMARY KEY, "status" text NOT NULL, "simulation_start_time" datetime, "post_proc_start_time" datetime, "simulation_results_dir_path" text,  "post_proc_results_dir_path" text,  "job_failure_time" datetime, "job_completion_time" datetime, "job_failure_error_message" varchar)');
 
 db.run('CREATE TABLE IF NOT EXISTS "job_to_jobstate"("id" integer NOT NULL, "jobid" integer NOT NULL)');
 
@@ -112,7 +112,7 @@ io.on('connection', (socket) => {
 
     let now = "";
 
-    let stmt = db.prepare(`INSERT into job VALUES('', '${job.name}','${job.descr}','${job.uuid}','${job.submitter_name}','${now}','${job.submitter_email}',${job.weather_machine_kind},${job.fuel_machine_kind},${job.planburn_target_perc},${job.regsim_duration},${job.num_replicates},${job.harvesting_on})`);
+    let stmt = db.prepare(`INSERT into job VALUES(NULL, '${job.name}','${job.descr}','${job.uuid}','${job.submitter_name}','${now}','${job.submitter_email}',${job.weather_machine_kind},${job.fuel_machine_kind},${job.planburn_target_perc},${job.regsim_duration},${job.num_replicates},${job.harvesting_on})`);
 
     try {
       stmt.run(job);
