@@ -113,9 +113,13 @@ io.on('connection', (socket) => {
     let now = "";
 
     let stmt = db.prepare(`INSERT into job VALUES('', '${job.name}','${job.descr}','${job.uuid}','${job.submitter_name}','${now}','${job.submitter_email}',${job.weather_machine_kind},${job.fuel_machine_kind},${job.planburn_target_perc},${job.regsim_duration},${job.num_replicates},${job.harvesting_on})`);
-    stmt.run(job);
-    stmt.finalize();
 
+    try {
+      stmt.run(job);
+      stmt.finalize();
+    } catch(e) {
+      console.err(e);
+    }
 
     // Write the XML
     // let out_xml = js2xmlparser.parse("glaciator_parameters", job);

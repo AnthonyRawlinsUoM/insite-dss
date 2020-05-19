@@ -6,11 +6,11 @@ export class GlaciatorParameters {
   submitter_name: string;
   submission_time: string;
   submitter_email: string;
-  weather_machine_kind: WeatherMachineKind;
-  fuel_machine_kind: FuelMachineKind;
+  weather_machine_kind: number;
+  fuel_machine_kind: number;
   planburn_target_perc: number;
-  regsim_duration: TimeframeOptions;
-  num_replicates: ReplicateOptions;
+  regsim_duration: number;
+  num_replicates: number;
   harvesting_on: boolean;
 
   constructor(fd) {
@@ -63,7 +63,7 @@ export const glaciator_parameters_example = {
   weather_machine_kind: WeatherMachineKind.Interpol,
   fuel_machine_kind: FuelMachineKind.InvexpWithLandis,
   planburn_target_perc: 0,
-  regsim_duration: TimeframeOptions.FIFTY,
-  num_replicates: ReplicateOptions.TEN,
+  regsim_duration: TimeframeOptions.FIFTY.valueOf(),
+  num_replicates: ReplicateOptions.TEN.valueOf(),
   harvesting_on: false
 }
