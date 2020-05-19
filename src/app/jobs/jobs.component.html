@@ -9,7 +9,7 @@
         <tr>
           <th class="collapsing"></th>
           <th>Queue ID</th>
-          <th>Job</th>
+          <th>Job Name</th>
           <th>Contact</th>
           <th>Status</th>
         </tr>
@@ -24,9 +24,9 @@
           <td class="collapsing"><i class="ui blue info circle icon"></i> </td>
           <td>{{ job.uuid }}</td>
           <td>{{ job.name }}</td>
-          <td> {{ job.email }}</td>
+          <td> {{ job.submitter_email }}</td>
           <td>
-            {{ job.status }} 
+            {{ job.status }}
           </td>
         </tr>
       </tbody>
@@ -40,16 +40,13 @@
         {{selectedJob.uuid}}
       </div>
       <div class="ui segment">
-        <h4 class="ui header">User: {{selectedJob.name}}</h4>
-        <sui-progress
-            class="indicating"
-            [value]="selectedJob.task.progress"
-        >Completion</sui-progress>
+        <h4 class="ui header">User: {{selectedJob.submitter_name}}</h4>
+
         <p class="card-text">
-          {{selectedJob.description}}
+          {{selectedJob.descr}}
         </p>
-        <p>Submitted at: {{ selectedJob.submitted_at }}</p>
-        <p>Submitted by: {{ selectedJob.submitted_by }}</p>
+        <p>Submitted at: {{ selectedJob.submission_time | date}}</p>
+        <p>Submitted by: {{ selectedJob.submitter_name }}</p>
         <p class="card-text">
           {{selectedJob.parameters | json}}
         </p>

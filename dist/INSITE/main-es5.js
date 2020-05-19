@@ -131,7 +131,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     /* harmony default export */
 
 
-    __webpack_exports__["default"] = "<div class=\"ui container\">\n  <div\n      class=\"ui raised segment\"\n      style=\"margin-top: 70px;\"\n  >\n    <h2>GLACIATOR/FROST Job Submission Form</h2>\n    <sui-message class=\"warning icon\">\n      <i class=\"exclamation triangle icon\"></i>\n      <div class=\"header\">Costs warning!</div>\n      <p>Submitting a job here comes with significant operational costs and computational overheads.</p>\n      <p>Be sure you know what you are doing.</p>\n    </sui-message>\n\n    <div class=\"ui divider\"></div>\n\n    <form class=\"ui form\">\n      <div class=\"ui two column stackable grid\">\n\n        <div class=\"column\">\n          <h3 class=\"ui header\">Job metadata</h3>\n\n          <div class=\"grouped fields\">\n            <div class=\"field\">\n              <label>Name</label>\n              <input\n                  placeholder=\"Username\"\n                  [(ngModel)]=\"submitter_name\"\n                  name=\"submitter_name\"\n                  type=\"text\"\n              >\n            </div>\n            <div class=\"field\">\n              <label>Email</label>\n              <input\n                  placeholder=\"Username\"\n                  [(ngModel)]=\"submitter_email\"\n                  name=\"submitter_email\"\n                  type=\"email\"\n              >\n            </div>\n          </div>\n\n          <div class=\"field\">\n            <label for=\"descr\">Description</label>\n            <textarea\n                name=\"descr\"\n                [(ngModel)]=\"descr\"\n            ></textarea>\n          </div>\n\n\n        </div>\n        <div class=\"column\">\n\n            <div class=\"field\">\n              <sui-checkbox\n                  name=\"harvesting_on\"\n                  class=\"toggle\"\n                  [(ngModel)]=\"harvesting_on\"\n              >Harvesting</sui-checkbox>\n            </div>\n\n          <div class=\"grouped required fields\">\n            <label for=\"regsim_duration\">Simulation time (Years):</label>\n\n            <div class=\"field\">\n              <sui-radio-button\n                  class=\"toggle\"\n                  name=\"regsim_duration\"\n                  value=\"TWENTY\"\n                  [(ngModel)]=\"regsim_duration\"\n              >25</sui-radio-button>\n            </div>\n            <div class=\"field\">\n              <sui-radio-button\n                  class=\"toggle\"\n                  name=\"regsim_duration\"\n                  value=\"FIFTY\"\n                  [(ngModel)]=\"regsim_duration\"\n              >50</sui-radio-button>\n            </div>\n          </div>\n\n          <div class=\"grouped required fields\">\n            <label for=\"num_replicates\">Replicates:</label>\n\n            <div class=\"field\">\n              <sui-radio-button\n                  class=\"toggle\"\n                  name=\"num_replicates\"\n                  value=\"TEN\"\n                  [(ngModel)]=\"num_replicates\"\n              >10</sui-radio-button>\n            </div>\n            <div class=\"field\">\n              <sui-radio-button\n                  class=\"toggle\"\n                  name=\"num_replicates\"\n                  value=\"TWENTY_FIVE\"\n                  [(ngModel)]=\"num_replicates\"\n              >25</sui-radio-button>\n            </div>\n            <div class=\"field\">\n              <sui-radio-button\n                  class=\"toggle\"\n                  name=\"num_replicates\"\n                  value=\"FIFTY\"\n                  [(ngModel)]=\"num_replicates\"\n              >50</sui-radio-button>\n            </div>\n          </div>\n\n          <div class=\"required field\">\n            <label for=\"fuel_machine_kind_select\">Fuel Machine: </label>\n            <sui-select\n                name=\"fuel_machine_kind_select\"\n                class=\"selection\"\n                [(ngModel)]=\"fuel_machine_kind\"\n                [options]=\"fuel_options\"\n                labelField=\"label\"\n                [isSearchable]=\"searchable\"\n                [isDisabled]=\"disabled\"\n                #fuel_select\n            >\n              <sui-select-option\n                  *ngFor=\"let option of fuel_select.filteredOptions\"\n                  [value]=\"option\"\n              >\n              </sui-select-option>\n            </sui-select>\n          </div>\n\n          <div class=\"required field\">\n            <label for=\"weather_machine_kind_select\">Weather Machine: </label>\n            <sui-select\n              name=\"weather_machine_kind_select\"\n              class=\"selection\"\n              [(ngModel)]=\"weather_machine_kind\"\n              [options]=\"weather_options\"\n              labelField=\"label\"\n              [isSearchable]=\"searchable\"\n              [isDisabled]=\"disabled\"\n              #weather_select\n          >\n            <sui-select-option\n                *ngFor=\"let option of weather_select.filteredOptions\"\n                [value]=\"option\"\n            >\n            </sui-select-option>\n          </sui-select>\n          </div>\n\n          <div class=\"required field\">\n            <label>Burn Target (Percentage per Year)</label>\n            <input\n                name=\"planburn_target_perc\"\n                type=\"text\"\n                [(ngModel)]=\"planburn_target_perc\"\n                placeholder=\"%\"\n            >\n          </div>\n        </div>\n      </div>\n\n      <div class=\"required field error\">\n        <div class=\"ui checkbox\">\n          <input\n              name=\"tcs\"\n              type=\"checkbox\"\n              tabindex=\"0\"\n          >\n          <label>I agree to the Terms and Conditions</label>\n        </div>\n      </div>\n\n      <div\n          class=\"ui primary submit button\"\n          (click)=\"createJob($event)\"\n      >Submit</div>\n      <div class=\"ui reset button\">Reset</div>\n      <div class=\"ui clear button\">Clear</div>\n    </form>\n\n  </div>\n</div>\n";
+    __webpack_exports__["default"] = "<div class=\"ui container\">\n  <div\n      class=\"ui raised segment\"\n      style=\"margin-top: 70px;\"\n  >\n    <h2>GLACIATOR/FROST Job Submission Form</h2>\n    <sui-message class=\"warning icon\">\n      <i class=\"exclamation triangle icon\"></i>\n      <div class=\"header\">Costs warning!</div>\n      <p>Submitting a job here comes with significant operational costs and computational overheads.</p>\n      <p>Be sure you know what you are doing.</p>\n    </sui-message>\n\n    <div class=\"ui divider\"></div>\n\n    <form class=\"ui form\" [formGroup]=\"submissionForm\" (ngSubmit)=\"onSubmit()\">\n      <div class=\"ui two column stackable grid\">\n\n        <div class=\"column\">\n          <h3 class=\"ui header\">Job metadata</h3>\n\n          <div class=\"grouped fields\">\n            <div class=\"field\" [ngClass]=\"{ 'error': submitted && f.submitter_name.errors }\">\n              <label>Your Name</label>\n              <input\n                  formControlName=\"submitter_name\"\n                  type=\"text\"\n\n              >\n            </div>\n\n            <div class=\"field\" [ngClass]=\"{ 'error': submitted && f.submitter_email.errors }\">\n              <label>Email</label>\n              <input formControlName=\"submitter_email\"\n                  type=\"email\"\n              >\n            </div>\n          </div>\n\n          <div class=\"field\" [ngClass]=\"{ 'error': submitted && f.descr.errors }\">\n            <label for=\"descr\">Description</label>\n            <textarea\n                formControlName=\"descr\"\n            ></textarea>\n          </div>\n\n\n        </div>\n        <div class=\"column\">\n<h3 class=\"ui header\">Parameters</h3>\n\n<div class=\"field\" [ngClass]=\"{ 'error': submitted && f.name.errors }\">\n  <label>Job Name</label>\n  <input\n      formControlName=\"name\"\n      type=\"text\"\n\n  >\n</div>\n\n            <div class=\"required field\">\n              <label><input type=\"checkbox\"\n                  class=\"toggle\"\n                  formControlName=\"harvesting_on\"\n              /> Harvesting</label>\n            </div>\n\n          <div class=\"grouped required fields\" [ngClass]=\"{ 'errors': submitted && f.regsim_duration.errors }\">\n            <label for=\"regsim_duration\">Simulation time (Years):</label>\n\n            <div class=\"field\">\n              <input type=\"radio\"\n                  class=\"toggle\"\n                  value=\"20\"\n                  formControlName=\"regsim_duration\"\n              /> 25\n            </div>\n            <div class=\"field\">\n              <input type=\"radio\"\n                  class=\"toggle\"\n                  value=\"50\"\n                  formControlName=\"regsim_duration\"\n              /> 50\n            </div>\n          </div>\n\n          <div class=\"grouped required fields\" [ngClass]=\"{ 'errors': submitted && f.num_replicates.errors }\">\n            <label for=\"num_replicates\">Replicates:</label>\n\n            <div class=\"field\">\n              <input type=\"radio\"\n                  class=\"toggle\"\n                  value=\"10\"\n                  formControlName=\"num_replicates\"\n              /> 10\n            </div>\n            <div class=\"field\">\n              <input type=\"radio\"\n                  class=\"toggle\"\n                  value=\"25\"\n                  formControlName=\"num_replicates\"\n              /> 25\n            </div>\n            <div class=\"field\">\n              <input type=\"radio\"\n                  class=\"toggle\"\n                  value=\"50\"\n                  formControlName=\"num_replicates\"\n              /> 50\n            </div>\n          </div>\n\n          <div class=\"required field\" [ngClass]=\"{ 'error': submitted && f.fuel_machine_kind.errors }\">\n            <label for=\"fuel_machine_kind_select\">Fuel Machine: </label>\n            <sui-select\n                class=\"selection\"\n                formControlName=\"fuel_machine_kind\"\n                [options]=\"fuel_options\"\n                labelField=\"label\"\n                [isSearchable]=\"searchable\"\n                [isDisabled]=\"disabled\"\n                #fuel_select\n            >\n              <sui-select-option\n                  *ngFor=\"let option of fuel_select.filteredOptions\"\n                  [value]=\"option\"\n              >\n              </sui-select-option>\n            </sui-select>\n          </div>\n\n          <div class=\"required field\" [ngClass]=\"{ 'error': submitted && f.weather_machine_kind.errors }\">\n            <label for=\"weather_machine_kind_select\">Weather Machine: </label>\n            <sui-select\n              class=\"selection\"\n              formControlName=\"weather_machine_kind\"\n              [options]=\"weather_options\"\n              labelField=\"label\"\n              [isSearchable]=\"searchable\"\n              [isDisabled]=\"disabled\"\n              #weather_select\n          >\n            <sui-select-option\n                *ngFor=\"let option of weather_select.filteredOptions\"\n                [value]=\"option\"\n            >\n            </sui-select-option>\n          </sui-select>\n          </div>\n\n          <div class=\"required field\" [ngClass]=\"{ 'error': submitted && f.planburn_target_perc.errors }\">\n            <label>Burn Target (Percentage per Year)</label>\n            <input\n                type=\"text\"\n                formControlName=\"planburn_target_perc\"\n                placeholder=\"%\"\n            >\n          </div>\n        </div>\n      </div>\n\n      <div class=\"required field\" [ngClass]=\"{ 'error': submitted && f.acceptTerms.errors }\">\n        <div class=\"ui checkbox\">\n          <input\n              formControlName=\"acceptTerms\"\n              type=\"checkbox\"\n              tabindex=\"0\"\n              #acceptTerms\n          >\n          <label>I agree to the Terms and Conditions</label>\n        </div>\n      </div>\n\n      <div\n          class=\"ui primary submit button\"\n          (click)=\"onSubmit($event)\"\n      >Submit</div>\n      <div class=\"ui reset button\" (click)=\"onReset()\">Reset</div>\n      <div class=\"ui clear button\">Clear</div>\n    </form>\n\n  </div>\n</div>\n";
     /***/
   },
 
@@ -864,18 +864,18 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
     var glaciator_parameters_example = {
       // Schema by Dan
-      id: "",
+      id: 1,
       descr: "Example only; a place holder",
       name: "DUMMY FROST RUN",
       uuid: "3c92af22-0b19-44ce-9c43-ca22cda9723b",
       submitter_name: "No-one",
       submission_time: "Friday January 31 2020",
       submitter_email: "anthony.rawlins@unimelb.edu.au",
-      weather_machine_kind: WeatherMachineKind.Interpol,
-      fuel_machine_kind: FuelMachineKind.InvexpWithLandis,
+      weather_machine_kind: WeatherMachineKind.Interpol.valueOf(),
+      fuel_machine_kind: FuelMachineKind.InvexpWithLandis.valueOf(),
       planburn_target_perc: 0,
       regsim_duration: TimeframeOptions.FIFTY.valueOf(),
-      num_replicates: ReplicateOptions.TEN.valueOf(),
+      num_replicates: ReplicateOptions.FIFTY.valueOf(),
       harvesting_on: false
     };
     /***/
@@ -1143,7 +1143,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
     AppModule = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([Object(_angular_core__WEBPACK_IMPORTED_MODULE_2__["NgModule"])({
       declarations: [_app_component__WEBPACK_IMPORTED_MODULE_6__["AppComponent"], _jobs_jobs_component__WEBPACK_IMPORTED_MODULE_7__["JobsComponent"], _job_job_component__WEBPACK_IMPORTED_MODULE_8__["JobComponent"], _header_header_component__WEBPACK_IMPORTED_MODULE_9__["HeaderComponent"], _footer_footer_component__WEBPACK_IMPORTED_MODULE_10__["FooterComponent"], _job_submission_job_submission_component__WEBPACK_IMPORTED_MODULE_11__["JobSubmissionComponent"], _home_home_component__WEBPACK_IMPORTED_MODULE_12__["HomeComponent"], _jobstate_jobstate_component__WEBPACK_IMPORTED_MODULE_13__["JobstateComponent"]],
-      imports: [_angular_platform_browser__WEBPACK_IMPORTED_MODULE_1__["BrowserModule"], _app_routing_module__WEBPACK_IMPORTED_MODULE_3__["AppRoutingModule"], _angular_forms__WEBPACK_IMPORTED_MODULE_4__["FormsModule"], ng2_semantic_ui__WEBPACK_IMPORTED_MODULE_5__["SuiModule"]],
+      imports: [_angular_platform_browser__WEBPACK_IMPORTED_MODULE_1__["BrowserModule"], _app_routing_module__WEBPACK_IMPORTED_MODULE_3__["AppRoutingModule"], _angular_forms__WEBPACK_IMPORTED_MODULE_4__["FormsModule"], _angular_forms__WEBPACK_IMPORTED_MODULE_4__["ReactiveFormsModule"], ng2_semantic_ui__WEBPACK_IMPORTED_MODULE_5__["SuiModule"]],
       providers: [],
       bootstrap: [_app_component__WEBPACK_IMPORTED_MODULE_6__["AppComponent"]]
     })], AppModule);
@@ -1550,94 +1550,147 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     /* harmony import */
 
 
-    var _angular_router__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(
+    var _angular_forms__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(
+    /*! @angular/forms */
+    "./node_modules/@angular/forms/fesm2015/forms.js");
+    /* harmony import */
+
+
+    var _angular_router__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(
     /*! @angular/router */
     "./node_modules/@angular/router/fesm2015/router.js");
     /* harmony import */
 
 
-    var _data_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(
+    var _data_service__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(
     /*! ../data.service */
     "./src/app/data.service.ts");
     /* harmony import */
 
 
-    var uuid__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(
+    var uuid__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(
     /*! uuid */
     "./node_modules/uuid/index.js");
     /* harmony import */
 
 
-    var uuid__WEBPACK_IMPORTED_MODULE_4___default =
+    var uuid__WEBPACK_IMPORTED_MODULE_5___default =
     /*#__PURE__*/
-    __webpack_require__.n(uuid__WEBPACK_IMPORTED_MODULE_4__);
+    __webpack_require__.n(uuid__WEBPACK_IMPORTED_MODULE_5__);
     /* harmony import */
 
 
-    var _GlaciatorParameters__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(
+    var _GlaciatorParameters__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(
     /*! ../GlaciatorParameters */
-    "./src/app/GlaciatorParameters.ts");
+    "./src/app/GlaciatorParameters.ts"); // import { MustMatch } from '../helpers/must-match.validator';
+
 
     var JobSubmissionComponent =
     /*#__PURE__*/
     function () {
-      function JobSubmissionComponent(router, dataService) {
+      function JobSubmissionComponent(router, dataService, formBuilder) {
         _classCallCheck(this, JobSubmissionComponent);
 
         this.router = router;
         this.dataService = dataService;
+        this.formBuilder = formBuilder;
         this.weather_options = [{
-          option: _GlaciatorParameters__WEBPACK_IMPORTED_MODULE_5__["WeatherMachineKind"].Interpol,
+          option: _GlaciatorParameters__WEBPACK_IMPORTED_MODULE_6__["WeatherMachineKind"].Interpol,
           label: "Interpolated"
         }, {
-          option: _GlaciatorParameters__WEBPACK_IMPORTED_MODULE_5__["WeatherMachineKind"].NarclimFuture,
+          option: _GlaciatorParameters__WEBPACK_IMPORTED_MODULE_6__["WeatherMachineKind"].NarclimFuture,
           label: "NARCLIM Future"
         }, {
-          option: _GlaciatorParameters__WEBPACK_IMPORTED_MODULE_5__["WeatherMachineKind"].NarclimObserved,
+          option: _GlaciatorParameters__WEBPACK_IMPORTED_MODULE_6__["WeatherMachineKind"].NarclimObserved,
           label: "NARCLIM Observed"
         }];
         this.fuel_options = [{
-          option: _GlaciatorParameters__WEBPACK_IMPORTED_MODULE_5__["FuelMachineKind"].InvexpWithLandis,
+          option: _GlaciatorParameters__WEBPACK_IMPORTED_MODULE_6__["FuelMachineKind"].InvexpWithLandis.valueOf(),
           label: "Inverse Exponential with LANDIS"
         }, {
-          option: _GlaciatorParameters__WEBPACK_IMPORTED_MODULE_5__["FuelMachineKind"].NarclimFutureWithLandis,
+          option: _GlaciatorParameters__WEBPACK_IMPORTED_MODULE_6__["FuelMachineKind"].NarclimFutureWithLandis.valueOf(),
           label: "NARCLIM Future with LANDIS"
         }, {
-          option: _GlaciatorParameters__WEBPACK_IMPORTED_MODULE_5__["FuelMachineKind"].NarclimObservedWithLandis,
+          option: _GlaciatorParameters__WEBPACK_IMPORTED_MODULE_6__["FuelMachineKind"].NarclimObservedWithLandis.valueOf(),
           label: "NARCLIM Observed with LANDIS"
         }];
         this.timeframe_options = [{
-          option: _GlaciatorParameters__WEBPACK_IMPORTED_MODULE_5__["TimeframeOptions"].TWENTY,
-          value: _GlaciatorParameters__WEBPACK_IMPORTED_MODULE_5__["TimeframeOptions"].TWENTY.valueOf()
+          option: _GlaciatorParameters__WEBPACK_IMPORTED_MODULE_6__["TimeframeOptions"].TWENTY,
+          value: _GlaciatorParameters__WEBPACK_IMPORTED_MODULE_6__["TimeframeOptions"].TWENTY.valueOf()
         }, {
-          option: _GlaciatorParameters__WEBPACK_IMPORTED_MODULE_5__["TimeframeOptions"].FIFTY,
-          value: _GlaciatorParameters__WEBPACK_IMPORTED_MODULE_5__["TimeframeOptions"].FIFTY.valueOf()
+          option: _GlaciatorParameters__WEBPACK_IMPORTED_MODULE_6__["TimeframeOptions"].FIFTY,
+          value: _GlaciatorParameters__WEBPACK_IMPORTED_MODULE_6__["TimeframeOptions"].FIFTY.valueOf()
         }];
+        this.submitted = false;
+        this.acceptTerms = false;
       }
 
       _createClass(JobSubmissionComponent, [{
         key: "ngOnInit",
         value: function ngOnInit() {
-          this.job = _GlaciatorParameters__WEBPACK_IMPORTED_MODULE_5__["glaciator_parameters_example"]; // Default Form values
+          this.submissionForm = this.formBuilder.group({
+            submitter_name: ['', _angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].required],
+            name: ['', _angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].required],
+            submitter_email: ['', [_angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].required, _angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].email]],
+            descr: ['', [_angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].required]],
+            planburn_target_perc: ['', [_angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].required, _angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].min(0), _angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].max(100)]],
+            weather_machine_kind: ['', [_angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].required, _angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].min(1), _angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].max(3)]],
+            fuel_machine_kind: ['', [_angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].required, _angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].min(1), _angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].max(3)]],
+            num_replicates: ['', [_angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].required, _angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].min(10), _angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].max(100)]],
+            regsim_duration: ['', [_angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].required]],
+            harvesting_on: [false, [_angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].required]],
+            acceptTerms: [false, _angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].requiredTrue]
+          });
+          this.job = _GlaciatorParameters__WEBPACK_IMPORTED_MODULE_6__["glaciator_parameters_example"]; // Default Form values
+
+          this.job.uuid = Object(uuid__WEBPACK_IMPORTED_MODULE_5__["v4"])();
+        }
+      }, {
+        key: "onSubmit",
+        value: function onSubmit(event) {
+          this.submitted = true; // stop here if form is invalid
+
+          if (this.submissionForm.invalid) {
+            return;
+          }
+
+          console.log(this.submissionForm.value);
+          var validated_data = this.submissionForm.value; // display form values on success
+
+          alert('SUCCESS!! :-)\n\n' + JSON.stringify(validated_data, null, 4));
+          this.createJob(validated_data);
+          this.dataService.createJob(this.job);
+          this.router.navigate(['/jobs']);
         }
       }, {
         key: "createJob",
         value: function createJob(data) {
-          this.job.uuid = Object(uuid__WEBPACK_IMPORTED_MODULE_4__["v4"])();
-          this.job.num_replicates = this.num_replicates.valueOf();
-          this.job.regsim_duration = this.regsim_duration.valueOf();
-          this.job.fuel_machine_kind = this.fuel_machine_kind.valueOf();
-          this.job.weather_machine_kind = this.weather_machine_kind.valueOf(); // this.job.parameters.weather = this.weather.option;
+          this.job.uuid = Object(uuid__WEBPACK_IMPORTED_MODULE_5__["v4"])();
+          this.job.name = data.name;
+          this.job.submission_time = new Date().toISOString();
+          this.job.num_replicates = data.num_replicates;
+          this.job.regsim_duration = data.regsim_duration;
+          this.job.fuel_machine_kind = data.fuel_machine_kind.option;
+          this.job.weather_machine_kind = data.weather_machine_kind.option; // this.job.parameters.weather = this.weather.option;
 
-          this.job.planburn_target_perc = this.planburn_target_perc.valueOf();
-          this.job.harvesting_on = this.harvesting_on;
-          this.job.submitter_name = this.submitter_name;
-          this.job.submitter_email = this.submitter_email;
-          this.job.descr = this.descr;
-          console.log(this.job);
-          this.dataService.createJob(this.job);
-          this.router.navigate(['/jobs']); // Resets the databindings
+          this.job.planburn_target_perc = data.planburn_target_perc;
+          this.job.harvesting_on = data.harvesting_on;
+          this.job.submitter_name = data.submitter_name;
+          this.job.submitter_email = data.submitter_email;
+          this.job.descr = data.descr;
+          console.log(this.job); // Resets the databindings
           // this.job = {id: null, name: "", description: "", email: ""}; // Better way?
+        }
+      }, {
+        key: "onReset",
+        value: function onReset() {
+          this.submitted = false;
+          this.submissionForm.reset();
+        }
+      }, {
+        key: "f",
+        get: function get() {
+          return this.submissionForm.controls;
         }
       }]);
 
@@ -1646,9 +1699,11 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
     JobSubmissionComponent.ctorParameters = function () {
       return [{
-        type: _angular_router__WEBPACK_IMPORTED_MODULE_2__["Router"]
+        type: _angular_router__WEBPACK_IMPORTED_MODULE_3__["Router"]
       }, {
-        type: _data_service__WEBPACK_IMPORTED_MODULE_3__["DataService"]
+        type: _data_service__WEBPACK_IMPORTED_MODULE_4__["DataService"]
+      }, {
+        type: _angular_forms__WEBPACK_IMPORTED_MODULE_2__["FormBuilder"]
       }];
     };
 

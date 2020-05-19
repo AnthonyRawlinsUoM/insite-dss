@@ -64,6 +64,6 @@ export const glaciator_parameters_example = {
   fuel_machine_kind: FuelMachineKind.InvexpWithLandis.valueOf(),
   planburn_target_perc: 0,
   regsim_duration: TimeframeOptions.FIFTY.valueOf(),
-  num_replicates: ReplicateOptions.TEN.valueOf(),
+  num_replicates: ReplicateOptions.FIFTY.valueOf(),
   harvesting_on: false
 }
