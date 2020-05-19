@@ -16,7 +16,9 @@ const js2xmlparser = require("js2xmlparser");
 const directoryPath = path.join(__dirname, '/queue');
 
 const sqlite3 = require('sqlite3').verbose();
+
 let db = new sqlite3.Database('data/insite/database.sqlite');
+
 db.run('CREATE TABLE "job"("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "name" text NOT NULL, "descr" text NOT NULL, "uuid" text NOT NULL, "submitter_name" text NOT NULL, "submission_time" datetime NOT NULL, "submitter_email" text NOT NULL, "weather_machine_kind" integer NOT NULL, "fuel_machine_kind" integer NOT NULL, "planburn_target_perc" integer NOT NULL, "regsim_duration" integer NOT NULL, "num_replicates" integer NOT NULL, "harvesting_on" boolean NOT NULL)');
 db.close();
 
