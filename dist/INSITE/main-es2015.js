@@ -620,6 +620,22 @@ let DataService = class DataService {
                 });
             });
         };
+        this.createJob = (formdata) => {
+            return rxjs_Observable__WEBPACK_IMPORTED_MODULE_3__["Observable"].create((observer) => {
+                this.socket.emit('submission', formdata, (ack) => {
+                    console.log(ack);
+                    this.temp = null;
+                });
+                this.socket.on('validation-error', (ve) => {
+                    console.log(ve);
+                    observer.next(ve);
+                });
+                this.socket.on('insertion-error', (ie) => {
+                    console.log(ie);
+                    observer.next(ie);
+                });
+            });
+        };
         this.getData = () => {
             return rxjs_Observable__WEBPACK_IMPORTED_MODULE_3__["Observable"].create((observer) => {
                 this.socket.on('job', (job) => {
@@ -628,12 +644,6 @@ let DataService = class DataService {
             });
         };
         this.socket = socket_io_client__WEBPACK_IMPORTED_MODULE_2___default.a.connect(`${protocol}://${host}${port}`);
-    }
-    createJob(formdata) {
-        this.socket.emit('submission', formdata, (ack) => {
-            console.log(ack);
-            this.temp = null;
-        });
     }
 };
 DataService = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
@@ -883,7 +893,13 @@ let JobSubmissionComponent = class JobSubmissionComponent {
         // display form values on success
         alert('SUCCESS!! :-)\n\n' + JSON.stringify(validated_data, null, 4));
         this.createJob(validated_data);
-        this.dataService.createJob(this.job);
+        this.dataService.createJob(this.job).subscribe((data) => {
+            console.log('Complete:' + data);
+        }, (err) => {
+            console.error('Error' + err);
+        }, () => {
+            console.log('Nothing?');
+        });
         this.router.navigate(['/jobs']);
     }
     createJob(data) {

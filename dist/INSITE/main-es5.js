@@ -1205,52 +1205,53 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     var port = '';
     var protocol = 'https';
 
-    var DataService =
-    /*#__PURE__*/
-    function () {
-      function DataService() {
-        var _this = this;
+    var DataService = function DataService() {
+      var _this = this;
 
-        _classCallCheck(this, DataService);
+      _classCallCheck(this, DataService);
 
-        this.getJobs = function () {
-          return rxjs_Observable__WEBPACK_IMPORTED_MODULE_3__["Observable"].create(function (observer) {
-            _this.socket.emit('list-jobs', function (ack) {
-              console.log(ack);
-            });
-
-            _this.socket.on('jobs-list', function (jobdata) {
-              console.log(jobdata);
-              observer.next(jobdata);
-            });
-          });
-        };
-
-        this.getData = function () {
-          return rxjs_Observable__WEBPACK_IMPORTED_MODULE_3__["Observable"].create(function (observer) {
-            _this.socket.on('job', function (job) {
-              observer.next(job);
-            });
-          });
-        };
-
-        this.socket = socket_io_client__WEBPACK_IMPORTED_MODULE_2___default.a.connect("".concat(protocol, "://").concat(host).concat(port));
-      }
-
-      _createClass(DataService, [{
-        key: "createJob",
-        value: function createJob(formdata) {
-          var _this2 = this;
-
-          this.socket.emit('submission', formdata, function (ack) {
+      this.getJobs = function () {
+        return rxjs_Observable__WEBPACK_IMPORTED_MODULE_3__["Observable"].create(function (observer) {
+          _this.socket.emit('list-jobs', function (ack) {
             console.log(ack);
-            _this2.temp = null;
           });
-        }
-      }]);
 
-      return DataService;
-    }();
+          _this.socket.on('jobs-list', function (jobdata) {
+            console.log(jobdata);
+            observer.next(jobdata);
+          });
+        });
+      };
+
+      this.createJob = function (formdata) {
+        return rxjs_Observable__WEBPACK_IMPORTED_MODULE_3__["Observable"].create(function (observer) {
+          _this.socket.emit('submission', formdata, function (ack) {
+            console.log(ack);
+            _this.temp = null;
+          });
+
+          _this.socket.on('validation-error', function (ve) {
+            console.log(ve);
+            observer.next(ve);
+          });
+
+          _this.socket.on('insertion-error', function (ie) {
+            console.log(ie);
+            observer.next(ie);
+          });
+        });
+      };
+
+      this.getData = function () {
+        return rxjs_Observable__WEBPACK_IMPORTED_MODULE_3__["Observable"].create(function (observer) {
+          _this.socket.on('job', function (job) {
+            observer.next(job);
+          });
+        });
+      };
+
+      this.socket = socket_io_client__WEBPACK_IMPORTED_MODULE_2___default.a.connect("".concat(protocol, "://").concat(host).concat(port));
+    };
 
     DataService = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Injectable"])({
       providedIn: 'root'
@@ -1658,7 +1659,13 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
           alert('SUCCESS!! :-)\n\n' + JSON.stringify(validated_data, null, 4));
           this.createJob(validated_data);
-          this.dataService.createJob(this.job);
+          this.dataService.createJob(this.job).subscribe(function (data) {
+            console.log('Complete:' + data);
+          }, function (err) {
+            console.error('Error' + err);
+          }, function () {
+            console.log('Nothing?');
+          });
           this.router.navigate(['/jobs']);
         }
       }, {
@@ -1867,13 +1874,13 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       _createClass(JobsComponent, [{
         key: "ngOnInit",
         value: function ngOnInit() {
-          var _this3 = this;
+          var _this2 = this;
 
           this.jobs = [];
           this.dataService.getJobs().subscribe(function (data) {
             console.log(data);
 
-            _this3.jobs.push(JSON.parse(data)); // this.jobs.sort((a, b) => (a.task.progress > b.task.progress) ? -1 : 1);
+            _this2.jobs.push(JSON.parse(data)); // this.jobs.sort((a, b) => (a.task.progress > b.task.progress) ? -1 : 1);
 
           });
         }
