@@ -119,6 +119,7 @@ io.on('connection', (socket) => {
       stmt.finalize();
     } catch(e) {
       console.err(e);
+      console.log(stmt);
     }
 
     // Write the XML

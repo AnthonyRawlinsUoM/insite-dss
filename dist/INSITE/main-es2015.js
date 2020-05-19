@@ -412,7 +412,6 @@ var WebJobStatus;
 })(WebJobStatus || (WebJobStatus = {}));
 const glaciator_parameters_example = {
     // Schema by Dan
-    id: 1,
     descr: "Example only; a place holder",
     name: "DUMMY FROST RUN",
     uuid: "3c92af22-0b19-44ce-9c43-ca22cda9723b",
