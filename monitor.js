@@ -20,6 +20,11 @@ const sqlite3 = require('sqlite3').verbose();
 let db = new sqlite3.Database('database.sqlite');
 
 db.run('CREATE TABLE "job"("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "name" text NOT NULL, "descr" text NOT NULL, "uuid" text NOT NULL, "submitter_name" text NOT NULL, "submission_time" datetime NOT NULL, "submitter_email" text NOT NULL, "weather_machine_kind" integer NOT NULL, "fuel_machine_kind" integer NOT NULL, "planburn_target_perc" integer NOT NULL, "regsim_duration" integer NOT NULL, "num_replicates" integer NOT NULL, "harvesting_on" boolean NOT NULL)');
+
+db.run('CREATE TABLE "job_state"("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "status" text NOT NULL, "simulation_start_time" datetime, "simulation_start_time" datetime, "post_proc_start_time" datetime, "simulation_results_dir_path" text,  "post_proc_results_dir_path" text,  "job_failure_time" datetime, "job_completion_time" datetime, "job_failure_error_message" varchar)');
+
+db.run('CREATE TABLE "job_to+jobstate"("id" integer NOT NULL, "jobid" integer NOT NULL)');
+
 db.close();
 
 app.use(express.static(path.join(__dirname, '/INSITE')));
