@@ -96,6 +96,8 @@ let jobqueue = [];
 
 io.on('connection', (socket) => {
 
+  let db = new sqlite3.Database('database.sqlite');
+
   /* CONNECTION CODE */
   console.log('Client has connected!');
   console.info(`Client connected [id=${socket.id}]`);
@@ -107,11 +109,13 @@ io.on('connection', (socket) => {
     sequenceNumberByClient.delete(socket);
     console.info(`Client gone [id=${socket.id}]`);
     io.emit('log', 'User (' + socket.id + ') has disconnected');
+    db.close();
   });
 
   socket.on('submission', (job) => {
     console.log('Job submission received!');
     console.log(job);
+    
     socket.emit('submission-acknowledged', "ACK");
 
     let stmt = db.prepare("INSERT into jobs VALUES(?)");

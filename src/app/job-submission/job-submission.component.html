@@ -15,6 +15,7 @@
 
     <form class="ui form">
       <div class="ui two column stackable grid">
+
         <div class="column">
           <h3 class="ui header">Job metadata</h3>
 
@@ -23,8 +24,8 @@
               <label>Name</label>
               <input
                   placeholder="Username"
-                  [(ngModel)]="name"
-                  name="name"
+                  [(ngModel)]="submitter_name"
+                  name="submitter_name"
                   type="text"
               >
             </div>
@@ -32,18 +33,18 @@
               <label>Email</label>
               <input
                   placeholder="Username"
-                  [(ngModel)]="email"
-                  name="email"
+                  [(ngModel)]="submitter_email"
+                  name="submitter_email"
                   type="email"
               >
             </div>
           </div>
 
           <div class="field">
-            <label for="">Description</label>
+            <label for="descr">Description</label>
             <textarea
-                name="description"
-                [(ngModel)]="description"
+                name="descr"
+                [(ngModel)]="descr"
             ></textarea>
           </div>
 
@@ -51,103 +52,70 @@
         </div>
         <div class="column">
 
-          <h3 class="ui header">Glaciator Parameters</h3>
-
-          <div class="grouped fields">
             <div class="field">
               <sui-checkbox
                   name="harvesting_on"
                   class="toggle"
                   [(ngModel)]="harvesting_on"
-                  (checkChange)="with_harvesting_change($event)"
-              >with Harvesting</sui-checkbox>
+              >Harvesting</sui-checkbox>
             </div>
-            <div class="field">
-              <sui-checkbox
-                  name="harvesting_off"
-                  class="toggle"
-                  [(ngModel)]="harvesting_off"
-                  (checkChange)="without_harvesting_change($event)"
-              >without Harvesting</sui-checkbox>
-            </div>
-          </div>
 
           <div class="grouped required fields">
-            <label for="">Simulation time (Years):</label>
+            <label for="regsim_duration">Simulation time (Years):</label>
 
             <div class="field">
               <sui-radio-button
                   class="toggle"
-                  name="timeframe"
+                  name="regsim_duration"
                   value="TWENTY"
-                  [(ngModel)]="timeframe"
+                  [(ngModel)]="regsim_duration"
               >25</sui-radio-button>
             </div>
             <div class="field">
               <sui-radio-button
                   class="toggle"
-                  name="timeframe"
+                  name="regsim_duration"
                   value="FIFTY"
-                  [(ngModel)]="timeframe"
+                  [(ngModel)]="regsim_duration"
               >50</sui-radio-button>
             </div>
           </div>
 
           <div class="grouped required fields">
-            <label for="">Replicates:</label>
+            <label for="num_replicates">Replicates:</label>
 
             <div class="field">
               <sui-radio-button
                   class="toggle"
-                  name="replicates"
+                  name="num_replicates"
                   value="TEN"
-                  [(ngModel)]="replicates"
+                  [(ngModel)]="num_replicates"
               >10</sui-radio-button>
             </div>
             <div class="field">
               <sui-radio-button
                   class="toggle"
-                  name="replicates"
+                  name="num_replicates"
                   value="TWENTY_FIVE"
-                  [(ngModel)]="replicates"
+                  [(ngModel)]="num_replicates"
               >25</sui-radio-button>
             </div>
             <div class="field">
               <sui-radio-button
                   class="toggle"
-                  name="replicates"
+                  name="num_replicates"
                   value="FIFTY"
-                  [(ngModel)]="replicates"
+                  [(ngModel)]="num_replicates"
               >50</sui-radio-button>
             </div>
           </div>
 
           <div class="required field">
-            <label for="">Zones: </label>
+            <label for="fuel_machine_kind_select">Fuel Machine: </label>
             <sui-select
-                name="burn_zones"
+                name="fuel_machine_kind_select"
                 class="selection"
-                [(ngModel)]="burn_zones"
-                [options]="zone_options"
-                labelField="label"
-                [isSearchable]="searchable"
-                [isDisabled]="disabled"
-                #zone_select
-            >
-              <sui-select-option
-                  *ngFor="let option of zone_select.filteredOptions"
-                  [value]="option"
-              >
-              </sui-select-option>
-            </sui-select>
-          </div>
-
-          <div class="required field">
-            <label for="">Fuel: </label>
-            <sui-select
-                name="fuel_select"
-                class="selection"
-                [(ngModel)]="fuel"
+                [(ngModel)]="fuel_machine_kind"
                 [options]="fuel_options"
                 labelField="label"
                 [isSearchable]="searchable"
@@ -162,12 +130,12 @@
             </sui-select>
           </div>
 
-          <div class="required grouped fields">
-            <label for="">Weather: </label>
-            <!-- <sui-select
-              name="weather_select"
+          <div class="required field">
+            <label for="weather_machine_kind_select">Weather Machine: </label>
+            <sui-select
+              name="weather_machine_kind_select"
               class="selection"
-              [(ngModel)]="weather"
+              [(ngModel)]="weather_machine_kind"
               [options]="weather_options"
               labelField="label"
               [isSearchable]="searchable"
@@ -179,51 +147,22 @@
                 [value]="option"
             >
             </sui-select-option>
-          </sui-select> -->
-
-            <div class="field">
-              <sui-checkbox
-                  name="observed_weather"
-                  class="toggle"
-                  [(ngModel)]="observed_weather"
-                  (checkChange)="observed_change($event)"
-              >Observations</sui-checkbox>
-            </div>
-
-            <div class="field">
-              <sui-checkbox
-                  name="NARCLIM_current_weather"
-                  class="toggle"
-                  [(ngModel)]="NARCLIM_current_weather"
-                  (checkChange)="NARCLIM_current_weather_change($event)"
-              >NARCLIM Current</sui-checkbox>
-            </div>
-
-            <div class="field">
-              <sui-checkbox
-                  name="NARCLIM_future_weather"
-                  class="toggle"
-                  [(ngModel)]="NARCLIM_future_weather"
-                  (checkChange)="NARCLIM_future_weather_change($event)"
-              >NARCLIM Future</sui-checkbox>
-            </div>
-
-
+          </sui-select>
           </div>
 
           <div class="required field">
             <label>Burn Target (Percentage per Year)</label>
             <input
-                name="burn_target_per_year"
+                name="planburn_target_perc"
                 type="text"
-                [(ngModel)]="burn_target_per_year"
+                [(ngModel)]="planburn_target_perc"
                 placeholder="%"
             >
           </div>
         </div>
       </div>
 
-      <div class="inline required field error">
+      <div class="required field error">
         <div class="ui checkbox">
           <input
               name="tcs"

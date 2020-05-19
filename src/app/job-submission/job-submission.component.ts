@@ -14,40 +14,20 @@ import * as gp from '../GlaciatorParameters';
 })
 export class JobSubmissionComponent implements OnInit {
 
-    name;
-    email;
-    description;
-
-  harvesting_on = true;
-  harvesting_off = false;
-  zone;
-  fuel;
-  replicates;
-  burn_zones;
-  burn_target_per_year;
-  timeframe;
-  observed_weather;
-  NARCLIM_current_weather;
-  NARCLIM_future_weather;
-
   job: gp.GlaciatorParameters;
 
   searchable: false;
-  zone_options = [
-    { option: gp.Zones.APZ, label: "APZ" },
-    { option: gp.Zones.BPZ, label: "BPZ" },
-    { option: gp.Zones.LMZ, label: "LMZ" }
-  ];
 
   weather_options = [
-    { option: gp.WeatherOptions.OBSERVED, label: "Observed" },
-    { option: gp.WeatherOptions.NARCLIM_CURRENT, label: "NARCLIM Current" },
-    { option: gp.WeatherOptions.NARCLIM_FUTURE, label: "NARCLIM Future" }
+    { option: gp.WeatherMachineKind.Interpol, label: "Interpolated" },
+    { option: gp.WeatherMachineKind.NarclimFuture, label: "NARCLIM Future" },
+    { option: gp.WeatherMachineKind.NarclimObserved, label: "NARCLIM Observed" }
   ];
 
   fuel_options = [
-    { option: gp.FuelOptions.MCFUEL, label: "McColl-Gausden Fuel Model" },
-    { option: gp.FuelOptions.INV_EXP, label: "Inverse Exponential" },
+    { option: gp.FuelMachineKind.InvexpWithLandis, label: "Inverse Exponential with LANDIS" },
+    { option: gp.FuelMachineKind.NarclimFutureWithLandis, label: "NARCLIM Future with LANDIS" },
+    { option: gp.FuelMachineKind.NarclimObservedWithLandis, label: "NARCLIM Observed with LANDIS" },
   ];
 
   timeframe_options = [
@@ -55,7 +35,17 @@ export class JobSubmissionComponent implements OnInit {
     { option: gp.TimeframeOptions.FIFTY, value: "FIFTY" },
   ];
 
-  constructor( private router: Router, public dataService: DataService) { }
+  num_replicates: gp.ReplicateOptions;
+  regsim_duration: gp.TimeframeOptions;
+  fuel_machine_kind: any;
+  weather_machine_kind: any;
+  planburn_target_perc: number;
+  harvesting_on: boolean;
+  submitter_name: string;
+  submitter_email: string;
+  descr: string;
+
+  constructor(private router: Router, public dataService: DataService) { }
 
   ngOnInit() {
     this.job = gp.glaciator_parameters_example; // Default Form values
@@ -63,24 +53,19 @@ export class JobSubmissionComponent implements OnInit {
 
   createJob(data) {
 
-    this.job.uuid = uuid();
-    this.job.parameters.replicates = this.replicates;
-    this.job.parameters.simulation_timeframe = this.timeframe;
-    this.job.parameters.fuel = this.fuel.option;
-    this.job.parameters.burn_zones = this.burn_zones.option;
-    this.job.parameters.weather = {
-        observed: this.observed_weather,
-        NARCLIM_FUTURE: this.NARCLIM_future_weather,
-        NARCLIM_CURRENT: this.NARCLIM_current_weather
-    };
-    // this.job.parameters.weather = this.weather.option;
-    this.job.parameters.burn_target_per_year = this.burn_target_per_year;
-    this.job.parameters.harvesting_on = this.harvesting_on;
-    this.job.parameters.harvesting_off = this.harvesting_off;
 
-    this.job.name = this.name;
-    this.job.email = this.email;
-    this.job.description = this.description;
+
+    this.job.uuid = uuid();
+    this.job.num_replicates = this.num_replicates;
+    this.job.regsim_duration = this.regsim_duration;
+    this.job.fuel_machine_kind = this.fuel_machine_kind.option;
+    this.job.weather_machine_kind = this.weather_machine_kind.option;
+    // this.job.parameters.weather = this.weather.option;
+    this.job.planburn_target_perc = this.planburn_target_perc;
+    this.job.harvesting_on = this.harvesting_on;
+    this.job.submitter_name = this.submitter_name;
+    this.job.submitter_email = this.submitter_email;
+    this.job.descr = this.descr;
 
     console.log(this.job);
 
@@ -90,27 +75,18 @@ export class JobSubmissionComponent implements OnInit {
     // this.job = {id: null, name: "", description: "", email: ""}; // Better way?
   }
 
-  with_harvesting_change(ev) {
-      // console.log('With', ev, this.harvesting_on, this.harvesting_off);
-      if (!ev && !this.harvesting_on && !this.harvesting_off) this.harvesting_off = true;
-  }
-
-  without_harvesting_change(ev) {
-      // console.log('Without', ev, this.harvesting_on, this.harvesting_off);
-       if (!ev && !this.harvesting_on && !this.harvesting_off) this.harvesting_on = true;
-  }
-
-  observed_change(ev) {
-      console.log('Observed', ev, this.observed_weather, this.NARCLIM_current_weather, this.NARCLIM_future_weather);
-      if( ev && this.NARCLIM_current_weather && this.NARCLIM_future_weather) this.NARCLIM_future_weather = false;
-  }
-  NARCLIM_current_weather_change(ev) {
-      console.log('Current', ev, this.observed_weather, this.NARCLIM_current_weather, this.NARCLIM_future_weather);
-
-  }
-  NARCLIM_future_weather_change(ev) {
-      console.log('Future', ev, this.observed_weather, this.NARCLIM_current_weather, this.NARCLIM_future_weather);
-      if (ev && this.observed_weather && this.NARCLIM_future_weather ) this.NARCLIM_future_weather = false;
-  }
+  // observed_change(ev) {
+  //   console.log('Observed', ev, this.observed_weather, this.NARCLIM_current_weather, this.NARCLIM_future_weather);
+  //   if (ev && this.NARCLIM_current_weather && this.NARCLIM_future_weather) this.NARCLIM_future_weather = false;
+  // }
+  //
+  // NARCLIM_current_weather_change(ev) {
+  //   console.log('Current', ev, this.observed_weather, this.NARCLIM_current_weather, this.NARCLIM_future_weather);
+  //
+  // }
+  // NARCLIM_future_weather_change(ev) {
+  //   console.log('Future', ev, this.observed_weather, this.NARCLIM_current_weather, this.NARCLIM_future_weather);
+  //   if (ev && this.observed_weather && this.NARCLIM_future_weather) this.NARCLIM_future_weather = false;
+  // }
 
 }

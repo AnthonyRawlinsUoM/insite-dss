@@ -30,22 +30,3 @@ export class JobsComponent implements OnInit {
   }
 
 }
-export enum WeatherMachineKind {
-  Interpol = 1,
-  NarclimObserved = 2,
-  NarclimFuture = 3
-}
-
-export enum FuelMachineKind {
-  InvexpWithLandis = 1,
-  NarclimObservedWithLandis = 2,
-  NarclimFutureWithLandis = 3
-}
-
-export enum WebJobStatus {
-  New = 1,
-  RunningSimulations = 2,
-  RunningPostProcessing = 3,
-  Failed = 4,
-  Completed = 5
-}
