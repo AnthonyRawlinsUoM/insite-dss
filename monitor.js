@@ -84,6 +84,12 @@ function passToGlaciator(params) {
     });
 }
 
+function validate(job) {
+  let validators = [];
+
+  return false;
+}
+
 let jobqueue = [];
 
 io.on('connection', (socket) => {
@@ -104,22 +110,41 @@ io.on('connection', (socket) => {
     db.close();
   });
 
+
+
   socket.on('submission', (job) => {
     console.log('Job submission received!');
     console.log(job);
 
     socket.emit('submission-acknowledged', "ACK");
 
-    let stmt = db.prepare(`INSERT into job VALUES(NULL, '${job.name}','${job.descr}','${job.uuid}','${job.submitter_name}','${job.submission_time}','${job.submitter_email}',${job.weather_machine_kind},${job.fuel_machine_kind},${job.planburn_target_perc.valueOf()},${job.regsim_duration.valueOf()},${job.num_replicates.valueOf()},${job.harvesting_on})`);
-
+    // Quick hacky server-side validation
+    let valid = false;
     try {
-      stmt.run(job);
-      stmt.finalize();
+      valid = isValid(job);
     } catch(e) {
       console.err(e);
-      console.log(stmt);
+      socket.emit('validation-error', JSON.stringify({
+          error: e
+      }));
     }
 
+    if(valid) {
+      let stmt = db.prepare(`INSERT into job VALUES(NULL, '${job.name}','${job.descr}','${job.uuid}','${job.submitter_name}','${job.submission_time}','${job.submitter_email}',${job.weather_machine_kind},${job.fuel_machine_kind},${job.planburn_target_perc.valueOf()},${job.regsim_duration.valueOf()},${job.num_replicates.valueOf()},${job.harvesting_on})`);
+
+      try {
+        stmt.run(job);
+        stmt.finalize();
+      } catch(e) {
+        console.err(e);
+        console.log(stmt);
+        socket.emit('insertion-failure', {
+          error: e,
+          sql: stmt
+        })
+      }
+      socket.emit('insert-success', "OK");
+    }
     // Write the XML
     // let out_xml = js2xmlparser.parse("glaciator_parameters", job);
     // console.log(out_xml);
@@ -133,8 +158,6 @@ io.on('connection', (socket) => {
     // });
     //
     // passToGlaciator(['--xml', out_name]);
-
-
   });
 
 

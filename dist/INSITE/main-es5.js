@@ -1873,7 +1873,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
           this.dataService.getJobs().subscribe(function (data) {
             console.log(data);
 
-            _this3.jobs.push(data); // this.jobs.sort((a, b) => (a.task.progress > b.task.progress) ? -1 : 1);
+            _this3.jobs.push(JSON.parse(data)); // this.jobs.sort((a, b) => (a.task.progress > b.task.progress) ? -1 : 1);
 
           });
         }
