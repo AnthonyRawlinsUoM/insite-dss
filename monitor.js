@@ -72,15 +72,7 @@ const io = socketIO(server);
 
 let sequenceNumberByClient = new Map();
 
-/*
-enum TaskStatus {
-  PENDING = "PENDING",
-  STARTED = "STARTED",
-  SUCCESS = "SUCCESS",
-  FAILURE = "FAILURE",
-  RETRY = "RETRY",
-  REVOKED = "REVOKED"
-}*/
+
 function passToGlaciator(params) {
     console.log('Attempting to launch glaciator with ...');
     console.log(...params);
@@ -115,7 +107,7 @@ io.on('connection', (socket) => {
   socket.on('submission', (job) => {
     console.log('Job submission received!');
     console.log(job);
-    
+
     socket.emit('submission-acknowledged', "ACK");
 
     let stmt = db.prepare("INSERT into jobs VALUES(?)");

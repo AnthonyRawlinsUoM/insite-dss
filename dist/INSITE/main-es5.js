@@ -131,7 +131,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     /* harmony default export */
 
 
-    __webpack_exports__["default"] = "<div class=\"ui container\">\n  <div\n      class=\"ui raised segment\"\n      style=\"margin-top: 70px;\"\n  >\n    <h2>GLACIATOR/FROST Job Submission Form</h2>\n    <sui-message class=\"warning icon\">\n      <i class=\"exclamation triangle icon\"></i>\n      <div class=\"header\">Costs warning!</div>\n      <p>Submitting a job here comes with significant operational costs and computational overheads.</p>\n      <p>Be sure you know what you are doing.</p>\n    </sui-message>\n\n    <div class=\"ui divider\"></div>\n\n    <form class=\"ui form\">\n      <div class=\"ui two column stackable grid\">\n        <div class=\"column\">\n          <h3 class=\"ui header\">Job metadata</h3>\n\n          <div class=\"grouped fields\">\n            <div class=\"field\">\n              <label>Name</label>\n              <input\n                  placeholder=\"Username\"\n                  [(ngModel)]=\"name\"\n                  name=\"name\"\n                  type=\"text\"\n              >\n            </div>\n            <div class=\"field\">\n              <label>Email</label>\n              <input\n                  placeholder=\"Username\"\n                  [(ngModel)]=\"email\"\n                  name=\"email\"\n                  type=\"email\"\n              >\n            </div>\n          </div>\n\n          <div class=\"field\">\n            <label for=\"\">Description</label>\n            <textarea\n                name=\"description\"\n                [(ngModel)]=\"description\"\n            ></textarea>\n          </div>\n\n\n        </div>\n        <div class=\"column\">\n\n          <h3 class=\"ui header\">Glaciator Parameters</h3>\n\n          <div class=\"grouped fields\">\n            <div class=\"field\">\n              <sui-checkbox\n                  name=\"harvesting_on\"\n                  class=\"toggle\"\n                  [(ngModel)]=\"harvesting_on\"\n                  (checkChange)=\"with_harvesting_change($event)\"\n              >with Harvesting</sui-checkbox>\n            </div>\n            <div class=\"field\">\n              <sui-checkbox\n                  name=\"harvesting_off\"\n                  class=\"toggle\"\n                  [(ngModel)]=\"harvesting_off\"\n                  (checkChange)=\"without_harvesting_change($event)\"\n              >without Harvesting</sui-checkbox>\n            </div>\n          </div>\n\n          <div class=\"grouped required fields\">\n            <label for=\"\">Simulation time (Years):</label>\n\n            <div class=\"field\">\n              <sui-radio-button\n                  class=\"toggle\"\n                  name=\"timeframe\"\n                  value=\"TWENTY\"\n                  [(ngModel)]=\"timeframe\"\n              >25</sui-radio-button>\n            </div>\n            <div class=\"field\">\n              <sui-radio-button\n                  class=\"toggle\"\n                  name=\"timeframe\"\n                  value=\"FIFTY\"\n                  [(ngModel)]=\"timeframe\"\n              >50</sui-radio-button>\n            </div>\n          </div>\n\n          <div class=\"grouped required fields\">\n            <label for=\"\">Replicates:</label>\n\n            <div class=\"field\">\n              <sui-radio-button\n                  class=\"toggle\"\n                  name=\"replicates\"\n                  value=\"TEN\"\n                  [(ngModel)]=\"replicates\"\n              >10</sui-radio-button>\n            </div>\n            <div class=\"field\">\n              <sui-radio-button\n                  class=\"toggle\"\n                  name=\"replicates\"\n                  value=\"TWENTY_FIVE\"\n                  [(ngModel)]=\"replicates\"\n              >25</sui-radio-button>\n            </div>\n            <div class=\"field\">\n              <sui-radio-button\n                  class=\"toggle\"\n                  name=\"replicates\"\n                  value=\"FIFTY\"\n                  [(ngModel)]=\"replicates\"\n              >50</sui-radio-button>\n            </div>\n          </div>\n\n          <div class=\"required field\">\n            <label for=\"\">Zones: </label>\n            <sui-select\n                name=\"burn_zones\"\n                class=\"selection\"\n                [(ngModel)]=\"burn_zones\"\n                [options]=\"zone_options\"\n                labelField=\"label\"\n                [isSearchable]=\"searchable\"\n                [isDisabled]=\"disabled\"\n                #zone_select\n            >\n              <sui-select-option\n                  *ngFor=\"let option of zone_select.filteredOptions\"\n                  [value]=\"option\"\n              >\n              </sui-select-option>\n            </sui-select>\n          </div>\n\n          <div class=\"required field\">\n            <label for=\"\">Fuel: </label>\n            <sui-select\n                name=\"fuel_select\"\n                class=\"selection\"\n                [(ngModel)]=\"fuel\"\n                [options]=\"fuel_options\"\n                labelField=\"label\"\n                [isSearchable]=\"searchable\"\n                [isDisabled]=\"disabled\"\n                #fuel_select\n            >\n              <sui-select-option\n                  *ngFor=\"let option of fuel_select.filteredOptions\"\n                  [value]=\"option\"\n              >\n              </sui-select-option>\n            </sui-select>\n          </div>\n\n          <div class=\"required grouped fields\">\n            <label for=\"\">Weather: </label>\n            <!-- <sui-select\n              name=\"weather_select\"\n              class=\"selection\"\n              [(ngModel)]=\"weather\"\n              [options]=\"weather_options\"\n              labelField=\"label\"\n              [isSearchable]=\"searchable\"\n              [isDisabled]=\"disabled\"\n              #weather_select\n          >\n            <sui-select-option\n                *ngFor=\"let option of weather_select.filteredOptions\"\n                [value]=\"option\"\n            >\n            </sui-select-option>\n          </sui-select> -->\n\n            <div class=\"field\">\n              <sui-checkbox\n                  name=\"observed_weather\"\n                  class=\"toggle\"\n                  [(ngModel)]=\"observed_weather\"\n                  (checkChange)=\"observed_change($event)\"\n              >Observations</sui-checkbox>\n            </div>\n\n            <div class=\"field\">\n              <sui-checkbox\n                  name=\"NARCLIM_current_weather\"\n                  class=\"toggle\"\n                  [(ngModel)]=\"NARCLIM_current_weather\"\n                  (checkChange)=\"NARCLIM_current_weather_change($event)\"\n              >NARCLIM Current</sui-checkbox>\n            </div>\n\n            <div class=\"field\">\n              <sui-checkbox\n                  name=\"NARCLIM_future_weather\"\n                  class=\"toggle\"\n                  [(ngModel)]=\"NARCLIM_future_weather\"\n                  (checkChange)=\"NARCLIM_future_weather_change($event)\"\n              >NARCLIM Future</sui-checkbox>\n            </div>\n\n\n          </div>\n\n          <div class=\"required field\">\n            <label>Burn Target (Percentage per Year)</label>\n            <input\n                name=\"burn_target_per_year\"\n                type=\"text\"\n                [(ngModel)]=\"burn_target_per_year\"\n                placeholder=\"%\"\n            >\n          </div>\n        </div>\n      </div>\n\n      <div class=\"inline required field error\">\n        <div class=\"ui checkbox\">\n          <input\n              name=\"tcs\"\n              type=\"checkbox\"\n              tabindex=\"0\"\n          >\n          <label>I agree to the Terms and Conditions</label>\n        </div>\n      </div>\n\n      <div\n          class=\"ui primary submit button\"\n          (click)=\"createJob($event)\"\n      >Submit</div>\n      <div class=\"ui reset button\">Reset</div>\n      <div class=\"ui clear button\">Clear</div>\n    </form>\n\n  </div>\n</div>\n";
+    __webpack_exports__["default"] = "<div class=\"ui container\">\n  <div\n      class=\"ui raised segment\"\n      style=\"margin-top: 70px;\"\n  >\n    <h2>GLACIATOR/FROST Job Submission Form</h2>\n    <sui-message class=\"warning icon\">\n      <i class=\"exclamation triangle icon\"></i>\n      <div class=\"header\">Costs warning!</div>\n      <p>Submitting a job here comes with significant operational costs and computational overheads.</p>\n      <p>Be sure you know what you are doing.</p>\n    </sui-message>\n\n    <div class=\"ui divider\"></div>\n\n    <form class=\"ui form\">\n      <div class=\"ui two column stackable grid\">\n\n        <div class=\"column\">\n          <h3 class=\"ui header\">Job metadata</h3>\n\n          <div class=\"grouped fields\">\n            <div class=\"field\">\n              <label>Name</label>\n              <input\n                  placeholder=\"Username\"\n                  [(ngModel)]=\"submitter_name\"\n                  name=\"submitter_name\"\n                  type=\"text\"\n              >\n            </div>\n            <div class=\"field\">\n              <label>Email</label>\n              <input\n                  placeholder=\"Username\"\n                  [(ngModel)]=\"submitter_email\"\n                  name=\"submitter_email\"\n                  type=\"email\"\n              >\n            </div>\n          </div>\n\n          <div class=\"field\">\n            <label for=\"descr\">Description</label>\n            <textarea\n                name=\"descr\"\n                [(ngModel)]=\"descr\"\n            ></textarea>\n          </div>\n\n\n        </div>\n        <div class=\"column\">\n\n            <div class=\"field\">\n              <sui-checkbox\n                  name=\"harvesting_on\"\n                  class=\"toggle\"\n                  [(ngModel)]=\"harvesting_on\"\n              >Harvesting</sui-checkbox>\n            </div>\n\n          <div class=\"grouped required fields\">\n            <label for=\"regsim_duration\">Simulation time (Years):</label>\n\n            <div class=\"field\">\n              <sui-radio-button\n                  class=\"toggle\"\n                  name=\"regsim_duration\"\n                  value=\"TWENTY\"\n                  [(ngModel)]=\"regsim_duration\"\n              >25</sui-radio-button>\n            </div>\n            <div class=\"field\">\n              <sui-radio-button\n                  class=\"toggle\"\n                  name=\"regsim_duration\"\n                  value=\"FIFTY\"\n                  [(ngModel)]=\"regsim_duration\"\n              >50</sui-radio-button>\n            </div>\n          </div>\n\n          <div class=\"grouped required fields\">\n            <label for=\"num_replicates\">Replicates:</label>\n\n            <div class=\"field\">\n              <sui-radio-button\n                  class=\"toggle\"\n                  name=\"num_replicates\"\n                  value=\"TEN\"\n                  [(ngModel)]=\"num_replicates\"\n              >10</sui-radio-button>\n            </div>\n            <div class=\"field\">\n              <sui-radio-button\n                  class=\"toggle\"\n                  name=\"num_replicates\"\n                  value=\"TWENTY_FIVE\"\n                  [(ngModel)]=\"num_replicates\"\n              >25</sui-radio-button>\n            </div>\n            <div class=\"field\">\n              <sui-radio-button\n                  class=\"toggle\"\n                  name=\"num_replicates\"\n                  value=\"FIFTY\"\n                  [(ngModel)]=\"num_replicates\"\n              >50</sui-radio-button>\n            </div>\n          </div>\n\n          <div class=\"required field\">\n            <label for=\"fuel_machine_kind_select\">Fuel Machine: </label>\n            <sui-select\n                name=\"fuel_machine_kind_select\"\n                class=\"selection\"\n                [(ngModel)]=\"fuel_machine_kind\"\n                [options]=\"fuel_options\"\n                labelField=\"label\"\n                [isSearchable]=\"searchable\"\n                [isDisabled]=\"disabled\"\n                #fuel_select\n            >\n              <sui-select-option\n                  *ngFor=\"let option of fuel_select.filteredOptions\"\n                  [value]=\"option\"\n              >\n              </sui-select-option>\n            </sui-select>\n          </div>\n\n          <div class=\"required field\">\n            <label for=\"weather_machine_kind_select\">Weather Machine: </label>\n            <sui-select\n              name=\"weather_machine_kind_select\"\n              class=\"selection\"\n              [(ngModel)]=\"weather_machine_kind\"\n              [options]=\"weather_options\"\n              labelField=\"label\"\n              [isSearchable]=\"searchable\"\n              [isDisabled]=\"disabled\"\n              #weather_select\n          >\n            <sui-select-option\n                *ngFor=\"let option of weather_select.filteredOptions\"\n                [value]=\"option\"\n            >\n            </sui-select-option>\n          </sui-select>\n          </div>\n\n          <div class=\"required field\">\n            <label>Burn Target (Percentage per Year)</label>\n            <input\n                name=\"planburn_target_perc\"\n                type=\"text\"\n                [(ngModel)]=\"planburn_target_perc\"\n                placeholder=\"%\"\n            >\n          </div>\n        </div>\n      </div>\n\n      <div class=\"required field error\">\n        <div class=\"ui checkbox\">\n          <input\n              name=\"tcs\"\n              type=\"checkbox\"\n              tabindex=\"0\"\n          >\n          <label>I agree to the Terms and Conditions</label>\n        </div>\n      </div>\n\n      <div\n          class=\"ui primary submit button\"\n          (click)=\"createJob($event)\"\n      >Submit</div>\n      <div class=\"ui reset button\">Reset</div>\n      <div class=\"ui clear button\">Clear</div>\n    </form>\n\n  </div>\n</div>\n";
     /***/
   },
 
@@ -759,7 +759,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     !*** ./src/app/GlaciatorParameters.ts ***!
     \****************************************/
 
-  /*! exports provided: Parameters, GlaciatorParameters, Task, Zones, TaskStatus, TimeframeOptions, ReplicateOptions, WeatherOptions, FuelOptions, glaciator_parameters_example */
+  /*! exports provided: GlaciatorParameters, TimeframeOptions, ReplicateOptions, WeatherMachineKind, FuelMachineKind, WebJobStatus, glaciator_parameters_example */
 
   /***/
   function srcAppGlaciatorParametersTs(module, __webpack_exports__, __webpack_require__) {
@@ -769,32 +769,8 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     /* harmony export (binding) */
 
 
-    __webpack_require__.d(__webpack_exports__, "Parameters", function () {
-      return Parameters;
-    });
-    /* harmony export (binding) */
-
-
     __webpack_require__.d(__webpack_exports__, "GlaciatorParameters", function () {
       return GlaciatorParameters;
-    });
-    /* harmony export (binding) */
-
-
-    __webpack_require__.d(__webpack_exports__, "Task", function () {
-      return Task;
-    });
-    /* harmony export (binding) */
-
-
-    __webpack_require__.d(__webpack_exports__, "Zones", function () {
-      return Zones;
-    });
-    /* harmony export (binding) */
-
-
-    __webpack_require__.d(__webpack_exports__, "TaskStatus", function () {
-      return TaskStatus;
     });
     /* harmony export (binding) */
 
@@ -811,14 +787,20 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     /* harmony export (binding) */
 
 
-    __webpack_require__.d(__webpack_exports__, "WeatherOptions", function () {
-      return WeatherOptions;
+    __webpack_require__.d(__webpack_exports__, "WeatherMachineKind", function () {
+      return WeatherMachineKind;
     });
     /* harmony export (binding) */
 
 
-    __webpack_require__.d(__webpack_exports__, "FuelOptions", function () {
-      return FuelOptions;
+    __webpack_require__.d(__webpack_exports__, "FuelMachineKind", function () {
+      return FuelMachineKind;
+    });
+    /* harmony export (binding) */
+
+
+    __webpack_require__.d(__webpack_exports__, "WebJobStatus", function () {
+      return WebJobStatus;
     });
     /* harmony export (binding) */
 
@@ -833,38 +815,11 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     /*! tslib */
     "./node_modules/tslib/tslib.es6.js");
 
-    var Parameters = function Parameters() {
-      _classCallCheck(this, Parameters);
-    };
-
     var GlaciatorParameters = function GlaciatorParameters(fd) {
       _classCallCheck(this, GlaciatorParameters);
 
       console.log(fd);
     };
-
-    var Task = function Task() {
-      _classCallCheck(this, Task);
-    };
-
-    var Zones;
-
-    (function (Zones) {
-      Zones["APZ"] = "APZ";
-      Zones["BPZ"] = "BPZ";
-      Zones["LMZ"] = "LMZ";
-    })(Zones || (Zones = {}));
-
-    var TaskStatus;
-
-    (function (TaskStatus) {
-      TaskStatus["PENDING"] = "PENDING";
-      TaskStatus["STARTED"] = "STARTED";
-      TaskStatus["SUCCESS"] = "SUCCESS";
-      TaskStatus["FAILURE"] = "FAILURE";
-      TaskStatus["RETRY"] = "RETRY";
-      TaskStatus["REVOKED"] = "REVOKED";
-    })(TaskStatus || (TaskStatus = {}));
 
     var TimeframeOptions;
 
@@ -881,47 +836,47 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       ReplicateOptions[ReplicateOptions["FIFTY"] = 50] = "FIFTY";
     })(ReplicateOptions || (ReplicateOptions = {}));
 
-    var WeatherOptions;
+    var WeatherMachineKind;
 
-    (function (WeatherOptions) {
-      WeatherOptions["OBSERVED"] = "Observed";
-      WeatherOptions["NARCLIM_CURRENT"] = "NARCLIM Current";
-      WeatherOptions["NARCLIM_FUTURE"] = "NARCLIM Future";
-    })(WeatherOptions || (WeatherOptions = {}));
+    (function (WeatherMachineKind) {
+      WeatherMachineKind[WeatherMachineKind["Interpol"] = 1] = "Interpol";
+      WeatherMachineKind[WeatherMachineKind["NarclimObserved"] = 2] = "NarclimObserved";
+      WeatherMachineKind[WeatherMachineKind["NarclimFuture"] = 3] = "NarclimFuture";
+    })(WeatherMachineKind || (WeatherMachineKind = {}));
 
-    var FuelOptions;
+    var FuelMachineKind;
 
-    (function (FuelOptions) {
-      FuelOptions["INV_EXP"] = "Inverse Exponential";
-      FuelOptions["MCFUEL"] = "McColl-Gausden Fuel Model";
-    })(FuelOptions || (FuelOptions = {}));
+    (function (FuelMachineKind) {
+      FuelMachineKind[FuelMachineKind["InvexpWithLandis"] = 1] = "InvexpWithLandis";
+      FuelMachineKind[FuelMachineKind["NarclimObservedWithLandis"] = 2] = "NarclimObservedWithLandis";
+      FuelMachineKind[FuelMachineKind["NarclimFutureWithLandis"] = 3] = "NarclimFutureWithLandis";
+    })(FuelMachineKind || (FuelMachineKind = {}));
+
+    var WebJobStatus;
+
+    (function (WebJobStatus) {
+      WebJobStatus[WebJobStatus["New"] = 1] = "New";
+      WebJobStatus[WebJobStatus["RunningSimulations"] = 2] = "RunningSimulations";
+      WebJobStatus[WebJobStatus["RunningPostProcessing"] = 3] = "RunningPostProcessing";
+      WebJobStatus[WebJobStatus["Failed"] = 4] = "Failed";
+      WebJobStatus[WebJobStatus["Completed"] = 5] = "Completed";
+    })(WebJobStatus || (WebJobStatus = {}));
 
     var glaciator_parameters_example = {
-      submitted_at: "Friday January 31 2020",
-      submitted_by: "No-one",
-      email: "anthony.rawlins@unimelb.edu.au",
-      description: "Example only; a place holder",
+      // Schema by Dan
+      id: "",
+      descr: "Example only; a place holder",
       name: "DUMMY FROST RUN",
       uuid: "3c92af22-0b19-44ce-9c43-ca22cda9723b",
-      parameters: {
-        harvesting_on: true,
-        harvesting_off: true,
-        burn_target_per_year: 5,
-        burn_zones: Zones.APZ,
-        simulation_timeframe: TimeframeOptions.FIFTY,
-        replicates: ReplicateOptions.TEN,
-        weather: WeatherOptions.OBSERVED,
-        fuel: FuelOptions.MCFUEL
-      },
-      task: {
-        uuid: "",
-        progress: 0,
-        status: TaskStatus.PENDING,
-        priority: 1,
-        results: {
-          url: ""
-        }
-      }
+      submitter_name: "No-one",
+      submission_time: "Friday January 31 2020",
+      submitter_email: "anthony.rawlins@unimelb.edu.au",
+      weather_machine_kind: WeatherMachineKind.Interpol,
+      fuel_machine_kind: FuelMachineKind.InvexpWithLandis,
+      planburn_target_perc: 0,
+      regsim_duration: TimeframeOptions.FIFTY,
+      num_replicates: ReplicateOptions.TEN,
+      harvesting_on: false
     };
     /***/
   },
@@ -1631,34 +1586,25 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
         this.router = router;
         this.dataService = dataService;
-        this.harvesting_on = true;
-        this.harvesting_off = false;
-        this.zone_options = [{
-          option: _GlaciatorParameters__WEBPACK_IMPORTED_MODULE_5__["Zones"].APZ,
-          label: "APZ"
-        }, {
-          option: _GlaciatorParameters__WEBPACK_IMPORTED_MODULE_5__["Zones"].BPZ,
-          label: "BPZ"
-        }, {
-          option: _GlaciatorParameters__WEBPACK_IMPORTED_MODULE_5__["Zones"].LMZ,
-          label: "LMZ"
-        }];
         this.weather_options = [{
-          option: _GlaciatorParameters__WEBPACK_IMPORTED_MODULE_5__["WeatherOptions"].OBSERVED,
-          label: "Observed"
+          option: _GlaciatorParameters__WEBPACK_IMPORTED_MODULE_5__["WeatherMachineKind"].Interpol,
+          label: "Interpolated"
         }, {
-          option: _GlaciatorParameters__WEBPACK_IMPORTED_MODULE_5__["WeatherOptions"].NARCLIM_CURRENT,
-          label: "NARCLIM Current"
-        }, {
-          option: _GlaciatorParameters__WEBPACK_IMPORTED_MODULE_5__["WeatherOptions"].NARCLIM_FUTURE,
+          option: _GlaciatorParameters__WEBPACK_IMPORTED_MODULE_5__["WeatherMachineKind"].NarclimFuture,
           label: "NARCLIM Future"
+        }, {
+          option: _GlaciatorParameters__WEBPACK_IMPORTED_MODULE_5__["WeatherMachineKind"].NarclimObserved,
+          label: "NARCLIM Observed"
         }];
         this.fuel_options = [{
-          option: _GlaciatorParameters__WEBPACK_IMPORTED_MODULE_5__["FuelOptions"].MCFUEL,
-          label: "McColl-Gausden Fuel Model"
+          option: _GlaciatorParameters__WEBPACK_IMPORTED_MODULE_5__["FuelMachineKind"].InvexpWithLandis,
+          label: "Inverse Exponential with LANDIS"
         }, {
-          option: _GlaciatorParameters__WEBPACK_IMPORTED_MODULE_5__["FuelOptions"].INV_EXP,
-          label: "Inverse Exponential"
+          option: _GlaciatorParameters__WEBPACK_IMPORTED_MODULE_5__["FuelMachineKind"].NarclimFutureWithLandis,
+          label: "NARCLIM Future with LANDIS"
+        }, {
+          option: _GlaciatorParameters__WEBPACK_IMPORTED_MODULE_5__["FuelMachineKind"].NarclimObservedWithLandis,
+          label: "NARCLIM Observed with LANDIS"
         }];
         this.timeframe_options = [{
           option: _GlaciatorParameters__WEBPACK_IMPORTED_MODULE_5__["TimeframeOptions"].TWENTY,
@@ -1678,55 +1624,20 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         key: "createJob",
         value: function createJob(data) {
           this.job.uuid = Object(uuid__WEBPACK_IMPORTED_MODULE_4__["v4"])();
-          this.job.parameters.replicates = this.replicates;
-          this.job.parameters.simulation_timeframe = this.timeframe;
-          this.job.parameters.fuel = this.fuel.option;
-          this.job.parameters.burn_zones = this.burn_zones.option;
-          this.job.parameters.weather = {
-            observed: this.observed_weather,
-            NARCLIM_FUTURE: this.NARCLIM_future_weather,
-            NARCLIM_CURRENT: this.NARCLIM_current_weather
-          }; // this.job.parameters.weather = this.weather.option;
+          this.job.num_replicates = this.num_replicates;
+          this.job.regsim_duration = this.regsim_duration;
+          this.job.fuel_machine_kind = this.fuel_machine_kind.option;
+          this.job.weather_machine_kind = this.weather_machine_kind.option; // this.job.parameters.weather = this.weather.option;
 
-          this.job.parameters.burn_target_per_year = this.burn_target_per_year;
-          this.job.parameters.harvesting_on = this.harvesting_on;
-          this.job.parameters.harvesting_off = this.harvesting_off;
-          this.job.name = this.name;
-          this.job.email = this.email;
-          this.job.description = this.description;
+          this.job.planburn_target_perc = this.planburn_target_perc;
+          this.job.harvesting_on = this.harvesting_on;
+          this.job.submitter_name = this.submitter_name;
+          this.job.submitter_email = this.submitter_email;
+          this.job.descr = this.descr;
           console.log(this.job);
           this.dataService.createJob(this.job);
           this.router.navigate(['/jobs']); // Resets the databindings
           // this.job = {id: null, name: "", description: "", email: ""}; // Better way?
-        }
-      }, {
-        key: "with_harvesting_change",
-        value: function with_harvesting_change(ev) {
-          // console.log('With', ev, this.harvesting_on, this.harvesting_off);
-          if (!ev && !this.harvesting_on && !this.harvesting_off) this.harvesting_off = true;
-        }
-      }, {
-        key: "without_harvesting_change",
-        value: function without_harvesting_change(ev) {
-          // console.log('Without', ev, this.harvesting_on, this.harvesting_off);
-          if (!ev && !this.harvesting_on && !this.harvesting_off) this.harvesting_on = true;
-        }
-      }, {
-        key: "observed_change",
-        value: function observed_change(ev) {
-          console.log('Observed', ev, this.observed_weather, this.NARCLIM_current_weather, this.NARCLIM_future_weather);
-          if (ev && this.NARCLIM_current_weather && this.NARCLIM_future_weather) this.NARCLIM_future_weather = false;
-        }
-      }, {
-        key: "NARCLIM_current_weather_change",
-        value: function NARCLIM_current_weather_change(ev) {
-          console.log('Current', ev, this.observed_weather, this.NARCLIM_current_weather, this.NARCLIM_future_weather);
-        }
-      }, {
-        key: "NARCLIM_future_weather_change",
-        value: function NARCLIM_future_weather_change(ev) {
-          console.log('Future', ev, this.observed_weather, this.NARCLIM_current_weather, this.NARCLIM_future_weather);
-          if (ev && this.observed_weather && this.NARCLIM_future_weather) this.NARCLIM_future_weather = false;
         }
       }]);
 
@@ -1858,7 +1769,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     !*** ./src/app/jobs/jobs.component.ts ***!
     \****************************************/
 
-  /*! exports provided: JobsComponent, WeatherMachineKind, FuelMachineKind, WebJobStatus */
+  /*! exports provided: JobsComponent */
 
   /***/
   function srcAppJobsJobsComponentTs(module, __webpack_exports__, __webpack_require__) {
@@ -1870,24 +1781,6 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
     __webpack_require__.d(__webpack_exports__, "JobsComponent", function () {
       return JobsComponent;
-    });
-    /* harmony export (binding) */
-
-
-    __webpack_require__.d(__webpack_exports__, "WeatherMachineKind", function () {
-      return WeatherMachineKind;
-    });
-    /* harmony export (binding) */
-
-
-    __webpack_require__.d(__webpack_exports__, "FuelMachineKind", function () {
-      return FuelMachineKind;
-    });
-    /* harmony export (binding) */
-
-
-    __webpack_require__.d(__webpack_exports__, "WebJobStatus", function () {
-      return WebJobStatus;
     });
     /* harmony import */
 
@@ -1955,33 +1848,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       /*! ./jobs.component.css */
       "./src/app/jobs/jobs.component.css")).default]
     })], JobsComponent);
-    var WeatherMachineKind;
-
-    (function (WeatherMachineKind) {
-      WeatherMachineKind[WeatherMachineKind["Interpol"] = 1] = "Interpol";
-      WeatherMachineKind[WeatherMachineKind["NarclimObserved"] = 2] = "NarclimObserved";
-      WeatherMachineKind[WeatherMachineKind["NarclimFuture"] = 3] = "NarclimFuture";
-    })(WeatherMachineKind || (WeatherMachineKind = {}));
-
-    var FuelMachineKind;
-
-    (function (FuelMachineKind) {
-      FuelMachineKind[FuelMachineKind["InvexpWithLandis"] = 1] = "InvexpWithLandis";
-      FuelMachineKind[FuelMachineKind["NarclimObservedWithLandis"] = 2] = "NarclimObservedWithLandis";
-      FuelMachineKind[FuelMachineKind["NarclimFutureWithLandis"] = 3] = "NarclimFutureWithLandis";
-    })(FuelMachineKind || (FuelMachineKind = {}));
-
-    var WebJobStatus;
-
-    (function (WebJobStatus) {
-      WebJobStatus[WebJobStatus["New"] = 1] = "New";
-      WebJobStatus[WebJobStatus["RunningSimulations"] = 2] = "RunningSimulations";
-      WebJobStatus[WebJobStatus["RunningPostProcessing"] = 3] = "RunningPostProcessing";
-      WebJobStatus[WebJobStatus["Failed"] = 4] = "Failed";
-      WebJobStatus[WebJobStatus["Completed"] = 5] = "Completed";
-    })(WebJobStatus || (WebJobStatus = {}));
     /***/
-
   },
 
   /***/
