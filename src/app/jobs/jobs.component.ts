@@ -20,7 +20,7 @@ export class JobsComponent implements OnInit {
       this.dataService.getJobs().subscribe((data) => {
 
           console.log(data);
-
+            
           this.jobs.push(data);
           // this.jobs.sort((a, b) => (a.task.progress > b.task.progress) ? -1 : 1);
       });

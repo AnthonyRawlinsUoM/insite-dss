@@ -177,10 +177,12 @@ ORDER BY submission_time, submitter_name`;
         if (err) {
           throw err;
         }
-        // rows.forEach((row) => {
-        //   console.log(row.name);
-        // });
-        socket.emit('jobs-list', JSON.stringify(rows));
+
+        rows.forEach((row) => {
+          console.log(row.name);
+          socket.emit('jobs-list', JSON.stringify(row));
+        });
+
       });
     // });
 
