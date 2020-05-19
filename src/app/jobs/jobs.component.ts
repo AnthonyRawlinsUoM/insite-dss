@@ -20,7 +20,7 @@ export class JobsComponent implements OnInit {
       this.dataService.getJobs().subscribe((data) => {
           console.log(data);
           this.jobs.push(data);
-          this.jobs.sort((a, b) => (a.task.progress > b.task.progress) ? -1 : 1);
+          // this.jobs.sort((a, b) => (a.task.progress > b.task.progress) ? -1 : 1);
       });
   }
 
@@ -29,4 +29,23 @@ export class JobsComponent implements OnInit {
     this.selectedJob = job;
   }
 
+}
+export enum WeatherMachineKind {
+  Interpol = 1,
+  NarclimObserved = 2,
+  NarclimFuture = 3
+}
+
+export enum FuelMachineKind {
+  InvexpWithLandis = 1,
+  NarclimObservedWithLandis = 2,
+  NarclimFutureWithLandis = 3
+}
+
+export enum WebJobStatus {
+  New = 1,
+  RunningSimulations = 2,
+  RunningPostProcessing = 3,
+  Failed = 4,
+  Completed = 5
 }

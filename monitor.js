@@ -70,36 +70,6 @@ const io = socketIO(server);
 //   port: 6379
 // }));
 
-const example = {
-     "submitted_at": "Friday January 31 2020",
-     "submitted_by": "No-one",
-     "email": "anthony.rawlins@unimelb.edu.au",
-     "description": "Example only; a place holder",
-     "name": "DUMMY FROST RUN",
-     "uuid": uuidv4(),
-
-     "parameters": {
-         "harvesting_on": "TRUE",
-         "harvesting_off": "TRUE",
-         "burn_target_per_year": "5",
-         "burn_zones": "APZ",
-         "simulation_timeframe": "FIFTY",
-         "replicates": "TEN",
-         "weather": "Observed",
-         "fuel": "McFuel"
-     },
-
-     "task": {
-         "uuid": uuidv4(),
-         "progress": "0",
-         "status": "PENDING",
-         "priority": "1",
-         "results": {
-             "url": null
-          }
-      }
-  }
-
 let sequenceNumberByClient = new Map();
 
 /*
@@ -172,7 +142,7 @@ io.on('connection', (socket) => {
     let q = [];
 
     // Read the Jobs table from the SQLite DB
-    let sql = `SELECT DISTINCT name FROM jobs ORDER BY submission_time`;
+    let sql = `SELECT DISTINCT * FROM jobs ORDER BY submission_time`;
 
     db.serialize( function() {
       db.all(sql, [], (err, rows) => {

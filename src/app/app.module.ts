@@ -11,6 +11,7 @@ import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { JobSubmissionComponent } from './job-submission/job-submission.component';
 import { HomeComponent } from './home/home.component';
+import { JobstateComponent } from './jobstate/jobstate.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { HomeComponent } from './home/home.component';
     HeaderComponent,
     FooterComponent,
     JobSubmissionComponent,
-    HomeComponent
+    HomeComponent,
+    JobstateComponent
   ],
   imports: [
     BrowserModule,
