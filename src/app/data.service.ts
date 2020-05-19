@@ -37,12 +37,23 @@ export class DataService {
       });
   }
 
-  public createJob(formdata) {
+  public createJob = (formdata) => {
+    return Observable.create((observer) => {
+      this.socket.emit('submission', formdata, (ack)=> {
+          console.log(ack);
+          this.temp = null;
+      });
 
-    this.socket.emit('submission', formdata, (ack)=> {
-            console.log(ack);
-            this.temp = null;
-        });
+      this.socket.on('validation-error', (ve) => {
+        console.log(ve)
+        observer.next(ve);
+      });
+
+      this.socket.on('insertion-error', (ie) => {
+        console.log(ie)
+        observer.next(ie);
+      });
+    });
   }
 
 
@@ -53,5 +64,21 @@ export class DataService {
       });
     });
   }
+
+  // public getInsertionErrors = () => {
+  //   return Observable.create((observer) => {
+  //     this.socket.on('insertion-error', (err) => {
+  //       observer.next(err);
+  //     });
+  //   });
+  // }
+  //
+  // public getValidationErrors = () => {
+  //   return Observable.create((observer) => {
+  //     this.socket.on('validation-error', (err) => {
+  //       observer.next(err);
+  //     });
+  //   });
+  // }
 
 }

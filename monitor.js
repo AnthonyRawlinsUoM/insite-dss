@@ -138,7 +138,7 @@ io.on('connection', (socket) => {
       } catch(e) {
         console.err(e);
         console.log(stmt);
-        socket.emit('insertion-failure', {
+        socket.emit('insertion-error', {
           error: e,
           sql: stmt
         })

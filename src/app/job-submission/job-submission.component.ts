@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormsModule } from "@angular/forms";
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { Observable } from 'rxjs/Observable';
 
 import { DataService } from '../data.service';
 import { v4 as uuid } from 'uuid';
@@ -16,7 +17,7 @@ import * as gp from '../GlaciatorParameters';
   styleUrls: ['./job-submission.component.css']
 })
 export class JobSubmissionComponent implements OnInit {
-submissionForm: FormGroup;
+  submissionForm: FormGroup;
   job: gp.GlaciatorParameters;
 
   searchable: false;
@@ -52,45 +53,45 @@ submissionForm: FormGroup;
   submitted = false;
   acceptTerms = false;
 
-  constructor(private router: Router, public dataService: DataService,private formBuilder: FormBuilder) { }
+  constructor(private router: Router, public dataService: DataService, private formBuilder: FormBuilder) { }
 
   ngOnInit() {
 
     this.submissionForm = this.formBuilder.group({
 
-            submitter_name: ['', Validators.required],
-            name: ['', Validators.required],
+      submitter_name: ['', Validators.required],
+      name: ['', Validators.required],
 
-            submitter_email: ['', [Validators.required, Validators.email]],
+      submitter_email: ['', [Validators.required, Validators.email]],
 
-            descr: ['', [Validators.required]],
+      descr: ['', [Validators.required]],
 
-            planburn_target_perc: ['', [
-              Validators.required,
-              Validators.min(0),
-              Validators.max(100)]],
+      planburn_target_perc: ['', [
+        Validators.required,
+        Validators.min(0),
+        Validators.max(100)]],
 
-            weather_machine_kind: ['', [
-              Validators.required,
-              Validators.min(1),
-              Validators.max(3)]],
+      weather_machine_kind: ['', [
+        Validators.required,
+        Validators.min(1),
+        Validators.max(3)]],
 
-            fuel_machine_kind: ['', [Validators.required,
-              Validators.min(1),
-              Validators.max(3)]],
+      fuel_machine_kind: ['', [Validators.required,
+      Validators.min(1),
+      Validators.max(3)]],
 
-            num_replicates: ['', [
-                    Validators.required,
-                    Validators.min(10),
-                    Validators.max(100)]
-                  ],
+      num_replicates: ['', [
+        Validators.required,
+        Validators.min(10),
+        Validators.max(100)]
+      ],
 
-            regsim_duration: ['', [Validators.required]],
+      regsim_duration: ['', [Validators.required]],
 
-            harvesting_on: [false, [Validators.required]],
+      harvesting_on: [false, [Validators.required]],
 
-            acceptTerms: [false, Validators.requiredTrue]
-        });
+      acceptTerms: [false, Validators.requiredTrue]
+    });
 
 
     this.job = gp.glaciator_parameters_example; // Default Form values
@@ -100,24 +101,33 @@ submissionForm: FormGroup;
   get f() { return this.submissionForm.controls; }
 
   onSubmit(event) {
-        this.submitted = true;
+    this.submitted = true;
 
-        // stop here if form is invalid
-        if (this.submissionForm.invalid) {
-            return;
-        }
-
-        console.log(this.submissionForm.value);
-        let validated_data = this.submissionForm.value;
-
-        // display form values on success
-        alert('SUCCESS!! :-)\n\n' + JSON.stringify(validated_data, null, 4));
-
-        this.createJob(validated_data);
-
-        this.dataService.createJob(this.job);
-        this.router.navigate(['/jobs']);
+    // stop here if form is invalid
+    if (this.submissionForm.invalid) {
+      return;
     }
+
+    console.log(this.submissionForm.value);
+    let validated_data = this.submissionForm.value;
+
+    // display form values on success
+    alert('SUCCESS!! :-)\n\n' + JSON.stringify(validated_data, null, 4));
+
+    this.createJob(validated_data);
+
+    this.dataService.createJob(this.job).subscribe(
+      (data) => {
+        console.log('Complete:' + data);
+      },
+      (err) => {
+        console.error('Error' + err);
+      },
+      () => {
+        console.log('Nothing?');
+      });
+    this.router.navigate(['/jobs']);
+  }
 
   createJob(data) {
 
@@ -145,9 +155,9 @@ submissionForm: FormGroup;
   }
 
   onReset() {
-        this.submitted = false;
-        this.submissionForm.reset();
-    }
+    this.submitted = false;
+    this.submissionForm.reset();
+  }
 
   // observed_change(ev) {
   //   console.log('Observed', ev, this.observed_weather, this.NARCLIM_current_weather, this.NARCLIM_future_weather);
