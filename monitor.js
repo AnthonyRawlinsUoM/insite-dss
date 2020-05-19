@@ -121,7 +121,7 @@ io.on('connection', (socket) => {
     // Quick hacky server-side validation
     let valid = false;
     try {
-      valid = isValid(job);
+      valid = validate(job);
     } catch(e) {
       console.error(e);
       socket.emit('validation-error', JSON.stringify({
