@@ -144,11 +144,13 @@ io.on('connection', (socket) => {
     let q = [];
 
     // Read the Jobs table from the SQLite DB
-    let sql = `SELECT DISTINCT * FROM job ORDER BY submission_time`;
-    let advanced_sql = `SELECT DISTINCT * FROM job ORDER BY submission_time`;
+    let basic_sql = `SELECT DISTINCT * FROM job ORDER BY submission_time`;
+    let advanced_sql = `SELECT * FROM job, job_state
+INNER JOIN job_to_jobstate ON job.id=job_to_jobstate.id AND job_to_jobstate.jobid = job_state.id
+ORDER BY submission_time, submitter_name`;
 
     db.serialize( function() {
-      db.all(sql, [], (err, rows) => {
+      db.all(advanced_sql, [], (err, rows) => {
         if (err) {
           throw err;
         }
