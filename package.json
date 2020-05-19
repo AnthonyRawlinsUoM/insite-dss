@@ -29,7 +29,7 @@
     "socket.io": "^2.3.0",
     "socket.io-client": "^2.3.0",
     "socket.io-redis": "^5.2.0",
-    "sqlite": "^4.0.7",
+    "sqlite3": "^4.2.0",
     "tslib": "^1.10.0",
     "uuid": "^3.4.0",
     "xml2json": "^0.12.0",
