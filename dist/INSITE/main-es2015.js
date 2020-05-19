@@ -422,8 +422,8 @@ const glaciator_parameters_example = {
     weather_machine_kind: WeatherMachineKind.Interpol,
     fuel_machine_kind: FuelMachineKind.InvexpWithLandis,
     planburn_target_perc: 0,
-    regsim_duration: TimeframeOptions.FIFTY,
-    num_replicates: ReplicateOptions.TEN,
+    regsim_duration: TimeframeOptions.FIFTY.valueOf(),
+    num_replicates: ReplicateOptions.TEN.valueOf(),
     harvesting_on: false
 };
 

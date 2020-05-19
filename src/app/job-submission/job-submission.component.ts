@@ -56,12 +56,12 @@ export class JobSubmissionComponent implements OnInit {
 
 
     this.job.uuid = uuid();
-    this.job.num_replicates = this.num_replicates;
-    this.job.regsim_duration = this.regsim_duration;
-    this.job.fuel_machine_kind = this.fuel_machine_kind.option;
-    this.job.weather_machine_kind = this.weather_machine_kind.option;
+    this.job.num_replicates = this.num_replicates.valueOf();
+    this.job.regsim_duration = this.regsim_duration.valueOf();
+    this.job.fuel_machine_kind = this.fuel_machine_kind.option.valueOf();
+    this.job.weather_machine_kind = this.weather_machine_kind.option.valueOf();
     // this.job.parameters.weather = this.weather.option;
-    this.job.planburn_target_perc = this.planburn_target_perc;
+    this.job.planburn_target_perc = this.planburn_target_perc.valueOf();
     this.job.harvesting_on = this.harvesting_on;
     this.job.submitter_name = this.submitter_name;
     this.job.submitter_email = this.submitter_email;
