@@ -142,7 +142,7 @@ io.on('connection', (socket) => {
 
     // Status 4 = Errored
 
-    let advanced_sql = `SELECT * FROM job, job_state
+    let advanced_sql = `SELECT DISTINCT * FROM job, job_state
     WHERE status=4
 INNER JOIN job_to_jobstate ON job.id=job_to_jobstate.id AND job_to_jobstate.jobid = job_state.id
 ORDER BY job_failure_time, submission_time`;

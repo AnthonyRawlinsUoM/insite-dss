@@ -18,8 +18,10 @@ export class JobsComponent implements OnInit {
   ngOnInit() {
       this.jobs = [];
       this.dataService.getJobs().subscribe((data) => {
+
           console.log(data);
-          this.jobs = data;
+
+          this.jobs.push(data);
           // this.jobs.sort((a, b) => (a.task.progress > b.task.progress) ? -1 : 1);
       });
   }
