@@ -20,7 +20,7 @@
           <h3 class="ui header">Job metadata</h3>
 
           <div class="grouped fields">
-            <div class="field" [ngClass]="{ 'error': submitted && f.submitter_name.errors }">
+            <div class="required field" [ngClass]="{ 'error': submitted && f.submitter_name.errors }">
               <label>Your Name</label>
               <input
                   formControlName="submitter_name"
@@ -29,7 +29,7 @@
               >
             </div>
 
-            <div class="field" [ngClass]="{ 'error': submitted && f.submitter_email.errors }">
+            <div class="required field" [ngClass]="{ 'error': submitted && f.submitter_email.errors }">
               <label>Email</label>
               <input formControlName="submitter_email"
                   type="email"
@@ -37,7 +37,7 @@
             </div>
           </div>
 
-          <div class="field" [ngClass]="{ 'error': submitted && f.descr.errors }">
+          <div class="required field" [ngClass]="{ 'error': submitted && f.descr.errors }">
             <label for="descr">Description</label>
             <textarea
                 formControlName="descr"
@@ -49,7 +49,7 @@
         <div class="column">
 <h3 class="ui header">Parameters</h3>
 
-<div class="field" [ngClass]="{ 'error': submitted && f.name.errors }">
+<div class="required field" [ngClass]="{ 'error': submitted && f.name.errors }">
   <label>Job Name</label>
   <input
       formControlName="name"

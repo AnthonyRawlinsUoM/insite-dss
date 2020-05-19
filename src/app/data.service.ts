@@ -17,7 +17,7 @@ export class DataService {
   private socket;
 
   temp;
-  jobs: GlaciatorParameters[];
+  jobs: any[];
 
   constructor() {
       this.socket = io.connect(`${protocol}://${host}${port}`);
@@ -38,7 +38,7 @@ export class DataService {
   }
 
   public createJob(formdata) {
-    
+
     this.socket.emit('submission', formdata, (ack)=> {
             console.log(ack);
             this.temp = null;
