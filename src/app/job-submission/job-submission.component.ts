@@ -112,17 +112,17 @@ export class JobSubmissionComponent implements OnInit {
     let validated_data = this.submissionForm.value;
 
     // display form values on success
-    alert('SUCCESS!! :-)\n\n' + JSON.stringify(validated_data, null, 4));
+    // alert('SUCCESS!! :-)\n\n' + JSON.stringify(validated_data, null, 4));
 
     this.createJob(validated_data);
 
     this.dataService.createJob(this.job).subscribe(
-      (err) => {
-        console.error('Error' + err);
-      },
       (data) => {
         console.log('Complete:' + data);
         this.router.navigate(['/jobs']);
+      },
+      (err) => {
+        console.error('Error' + err);
       },
       () => {
         console.log('Nothing?');

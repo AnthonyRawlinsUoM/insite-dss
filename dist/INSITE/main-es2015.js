@@ -893,14 +893,14 @@ let JobSubmissionComponent = class JobSubmissionComponent {
         // display form values on success
         alert('SUCCESS!! :-)\n\n' + JSON.stringify(validated_data, null, 4));
         this.createJob(validated_data);
-        this.dataService.createJob(this.job).subscribe((data) => {
-            console.log('Complete:' + data);
-        }, (err) => {
+        this.dataService.createJob(this.job).subscribe((err) => {
             console.error('Error' + err);
+        }, (data) => {
+            console.log('Complete:' + data);
+            this.router.navigate(['/jobs']);
         }, () => {
             console.log('Nothing?');
         });
-        this.router.navigate(['/jobs']);
     }
     createJob(data) {
         this.job.uuid = Object(uuid__WEBPACK_IMPORTED_MODULE_5__["v4"])();

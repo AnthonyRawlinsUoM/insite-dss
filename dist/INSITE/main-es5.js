@@ -1648,6 +1648,8 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }, {
         key: "onSubmit",
         value: function onSubmit(event) {
+          var _this2 = this;
+
           this.submitted = true; // stop here if form is invalid
 
           if (this.submissionForm.invalid) {
@@ -1659,14 +1661,15 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
           alert('SUCCESS!! :-)\n\n' + JSON.stringify(validated_data, null, 4));
           this.createJob(validated_data);
-          this.dataService.createJob(this.job).subscribe(function (data) {
-            console.log('Complete:' + data);
-          }, function (err) {
+          this.dataService.createJob(this.job).subscribe(function (err) {
             console.error('Error' + err);
+          }, function (data) {
+            console.log('Complete:' + data);
+
+            _this2.router.navigate(['/jobs']);
           }, function () {
             console.log('Nothing?');
           });
-          this.router.navigate(['/jobs']);
         }
       }, {
         key: "createJob",
@@ -1874,13 +1877,13 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       _createClass(JobsComponent, [{
         key: "ngOnInit",
         value: function ngOnInit() {
-          var _this2 = this;
+          var _this3 = this;
 
           this.jobs = [];
           this.dataService.getJobs().subscribe(function (data) {
             console.log(data);
 
-            _this2.jobs.push(JSON.parse(data)); // this.jobs.sort((a, b) => (a.task.progress > b.task.progress) ? -1 : 1);
+            _this3.jobs.push(JSON.parse(data)); // this.jobs.sort((a, b) => (a.task.progress > b.task.progress) ? -1 : 1);
 
           });
         }
