@@ -117,16 +117,16 @@ export class JobSubmissionComponent implements OnInit {
     this.createJob(validated_data);
 
     this.dataService.createJob(this.job).subscribe(
-      (data) => {
-        console.log('Complete:' + data);
-      },
       (err) => {
         console.error('Error' + err);
+      },
+      (data) => {
+        console.log('Complete:' + data);
+        this.router.navigate(['/jobs']);
       },
       () => {
         console.log('Nothing?');
       });
-    this.router.navigate(['/jobs']);
   }
 
   createJob(data) {
