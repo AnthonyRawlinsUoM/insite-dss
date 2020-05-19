@@ -138,7 +138,7 @@ io.on('connection', (socket) => {
     let q = [];
 
     // Read the Jobs table from the SQLite DB
-    let sql = `SELECT DISTINCT * FROM jobs ORDER BY submission_time`;
+    let sql = `SELECT DISTINCT * FROM job ORDER BY submission_time`;
 
     db.serialize( function() {
       db.all(sql, [], (err, rows) => {
