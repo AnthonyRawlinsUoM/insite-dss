@@ -35,10 +35,10 @@ export class JobSubmissionComponent implements OnInit {
     { option: gp.TimeframeOptions.FIFTY, value: gp.TimeframeOptions.FIFTY.valueOf() },
   ];
 
-  num_replicates: gp.ReplicateOptions;
-  regsim_duration: gp.TimeframeOptions;
-  fuel_machine_kind: any;
-  weather_machine_kind: any;
+  num_replicates: number;
+  regsim_duration: number;
+  fuel_machine_kind: number;
+  weather_machine_kind: number;
   planburn_target_perc: number;
   harvesting_on: boolean;
   submitter_name: string;
@@ -53,13 +53,11 @@ export class JobSubmissionComponent implements OnInit {
 
   createJob(data) {
 
-
-
     this.job.uuid = uuid();
     this.job.num_replicates = this.num_replicates.valueOf();
     this.job.regsim_duration = this.regsim_duration.valueOf();
-    this.job.fuel_machine_kind = this.fuel_machine_kind.option.valueOf();
-    this.job.weather_machine_kind = this.weather_machine_kind.option.valueOf();
+    this.job.fuel_machine_kind = this.fuel_machine_kind.valueOf();
+    this.job.weather_machine_kind = this.weather_machine_kind.valueOf();
     // this.job.parameters.weather = this.weather.option;
     this.job.planburn_target_perc = this.planburn_target_perc.valueOf();
     this.job.harvesting_on = this.harvesting_on;
