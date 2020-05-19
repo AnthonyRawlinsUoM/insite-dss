@@ -172,17 +172,17 @@ ORDER BY job_failure_time, submission_time`;
 INNER JOIN job_to_jobstate ON job.id=job_to_jobstate.id AND job_to_jobstate.jobid = job_state.id
 ORDER BY submission_time, submitter_name`;
 
-    db.serialize( function() {
+    // db.serialize( function() {
       db.all(advanced_sql, [], (err, rows) => {
         if (err) {
           throw err;
         }
-        rows.forEach((row) => {
-          console.log(row.name);
-        });
+        // rows.forEach((row) => {
+        //   console.log(row.name);
+        // });
         socket.emit('jobs-list', JSON.stringify(rows));
       });
-    });
+    // });
 
     //passsing directoryPath and callback function
     // fs.readdir(directoryPath, function(err, files) {
