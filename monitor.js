@@ -15,6 +15,11 @@ const js2xmlparser = require("js2xmlparser");
 
 const directoryPath = path.join(__dirname, '/queue');
 
+const sqlite3 = require('sqlite3').verbose();
+let db = new sqlite3.Database('data/insite/database.sqlite');
+db.run('CREATE TABLE "job"("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "name" text NOT NULL, "descr" text NOT NULL, "uuid" text NOT NULL, "submitter_name" text NOT NULL, "submission_time" datetime NOT NULL, "submitter_email" text NOT NULL, "weather_machine_kind" integer NOT NULL, "fuel_machine_kind" integer NOT NULL, "planburn_target_perc" integer NOT NULL, "regsim_duration" integer NOT NULL, "num_replicates" integer NOT NULL, "harvesting_on" boolean NOT NULL)');
+db.close();
+
 app.use(express.static(path.join(__dirname, '/INSITE')));
 
 app.use(function(req, res, next) {
@@ -131,19 +136,26 @@ io.on('connection', (socket) => {
     console.log('Job submission received!');
     console.log(job);
     socket.emit('submission-acknowledged', "ACK");
-    // Write the XML
-    let out_xml = js2xmlparser.parse("glaciator_parameters", job);
-    console.log(out_xml);
-    let out_name = job.uuid + '.xml';
-    let out_path = path.join(directoryPath, out_name);
-    console.log(out_path);
-    //
-    fs.writeFile(out_path, out_xml, function(err) {
-      if (err) throw err;
-      console.log('Saved!');
-    });
 
-    passToGlaciator(['--xml', out_name]);
+    let stmt = db.prepare("INSERT into jobs VALUES(?)");
+    stmt.run(job);
+    stmt.finalize();
+
+
+    // Write the XML
+    // let out_xml = js2xmlparser.parse("glaciator_parameters", job);
+    // console.log(out_xml);
+    // let out_name = job.uuid + '.xml';
+    // let out_path = path.join(directoryPath, out_name);
+    // console.log(out_path);
+    // //
+    // fs.writeFile(out_path, out_xml, function(err) {
+    //   if (err) throw err;
+    //   console.log('Saved!');
+    // });
+    //
+    // passToGlaciator(['--xml', out_name]);
+
 
   });
 
@@ -152,33 +164,49 @@ io.on('connection', (socket) => {
 
     let q = [];
 
-    //passsing directoryPath and callback function
-    fs.readdir(directoryPath, function(err, files) {
-      //handling error
-      if (err) {
-        return console.log('Unable to scan directory: ' + err);
-      }
-      //listing all files using forEach
-      files.forEach(function(file) {
-        // Do whatever you want to do with the file
-        console.log(file);
+    // Read the Jobs table from the SQLite DB
+    let sql = `SELECT DISTINCT name FROM jobs ORDER BY submission_time`;
 
-        fs.readFile(path.join(directoryPath, file), function(err, data) {
-          if (err) {
-            return console.log('Reading file failed');
-          }
-          console.log('Parsing...');
-
-          let json = parser.toJson(data);
-          let gp = JSON.parse(json);
-          console.log(gp);
-          q.push(gp.glaciator_parameters);
-
-          // Read the contents of the xml documents in the queue folder
-          socket.emit('jobs-list', gp.glaciator_parameters);
+    db.serialize( function() {
+      db.all(sql, [], (err, rows) => {
+        if (err) {
+          throw err;
+        }
+        rows.forEach((row) => {
+          console.log(row.name);
         });
+        socket.emit('jobs-list', JSON.stringify(rows));
       });
     });
+    db.close();
+
+    //passsing directoryPath and callback function
+    // fs.readdir(directoryPath, function(err, files) {
+    //   //handling error
+    //   if (err) {
+    //     return console.log('Unable to scan directory: ' + err);
+    //   }
+    //   //listing all files using forEach
+    //   files.forEach(function(file) {
+    //     // Do whatever you want to do with the file
+    //     console.log(file);
+    //
+    //     fs.readFile(path.join(directoryPath, file), function(err, data) {
+    //       if (err) {
+    //         return console.log('Reading file failed');
+    //       }
+    //       console.log('Parsing...');
+    //
+    //       let json = parser.toJson(data);
+    //       let gp = JSON.parse(json);
+    //       console.log(gp);
+    //       q.push(gp.glaciator_parameters);
+    //
+    //       // Read the contents of the xml documents in the queue folder
+    //       socket.emit('jobs-list', gp.glaciator_parameters);
+    //     });
+    //   });
+    // });
   });
 
   io.emit('log', 'User with Session ID: ' + socket.id + ' has connected.');
