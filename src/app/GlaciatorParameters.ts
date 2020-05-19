@@ -53,15 +53,15 @@ export enum WebJobStatus {
 export const glaciator_parameters_example = {
 
   // Schema by Dan
-  id: "",
+  id: 1,
   descr: "Example only; a place holder",
   name: "DUMMY FROST RUN",
   uuid: "3c92af22-0b19-44ce-9c43-ca22cda9723b",
   submitter_name: "No-one",
   submission_time: "Friday January 31 2020",
   submitter_email: "anthony.rawlins@unimelb.edu.au",
-  weather_machine_kind: WeatherMachineKind.Interpol,
-  fuel_machine_kind: FuelMachineKind.InvexpWithLandis,
+  weather_machine_kind: WeatherMachineKind.Interpol.valueOf(),
+  fuel_machine_kind: FuelMachineKind.InvexpWithLandis.valueOf(),
   planburn_target_perc: 0,
   regsim_duration: TimeframeOptions.FIFTY.valueOf(),
   num_replicates: ReplicateOptions.TEN.valueOf(),

@@ -37,8 +37,8 @@ export class JobSubmissionComponent implements OnInit {
 
   num_replicates: number;
   regsim_duration: number;
-  fuel_machine_kind: number;
-  weather_machine_kind: number;
+  fuel_machine_kind: any;
+  weather_machine_kind: any;
   planburn_target_perc: number;
   harvesting_on: boolean;
   submitter_name: string;
@@ -49,15 +49,17 @@ export class JobSubmissionComponent implements OnInit {
 
   ngOnInit() {
     this.job = gp.glaciator_parameters_example; // Default Form values
+    this.job.uuid = uuid();
   }
 
   createJob(data) {
-
+    console.log(data);
+    
     this.job.uuid = uuid();
     this.job.num_replicates = this.num_replicates.valueOf();
     this.job.regsim_duration = this.regsim_duration.valueOf();
-    this.job.fuel_machine_kind = this.fuel_machine_kind.valueOf();
-    this.job.weather_machine_kind = this.weather_machine_kind.valueOf();
+    this.job.fuel_machine_kind = this.fuel_machine_kind.option;
+    this.job.weather_machine_kind = this.weather_machine_kind.option;
     // this.job.parameters.weather = this.weather.option;
     this.job.planburn_target_perc = this.planburn_target_perc.valueOf();
     this.job.harvesting_on = this.harvesting_on;
