@@ -19,8 +19,8 @@ export class GlaciatorParameters {
 }
 
 export enum TimeframeOptions {
-  TWENTY,
-  FIFTY
+  TWENTY = 20,
+  FIFTY = 50
 }
 
 export enum ReplicateOptions {

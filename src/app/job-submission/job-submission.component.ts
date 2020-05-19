@@ -31,8 +31,8 @@ export class JobSubmissionComponent implements OnInit {
   ];
 
   timeframe_options = [
-    { option: gp.TimeframeOptions.TWENTY, value: "TWENTY" },
-    { option: gp.TimeframeOptions.FIFTY, value: "FIFTY" },
+    { option: gp.TimeframeOptions.TWENTY, value: gp.TimeframeOptions.TWENTY.valueOf() },
+    { option: gp.TimeframeOptions.FIFTY, value: gp.TimeframeOptions.FIFTY.valueOf() },
   ];
 
   num_replicates: gp.ReplicateOptions;

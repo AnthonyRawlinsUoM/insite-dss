@@ -112,7 +112,7 @@ io.on('connection', (socket) => {
 
     let now = "";
 
-    let stmt = db.prepare(`INSERT into job VALUES(${job.name},${job.descr},${job.uuid},${job.submitter_name},${now},${job.submitter_email},${job.weather_machine_kind},${job.fuel_machine_kind},${job.planburn_target_perc},${job.regsim_duration},${job.num_replicates},${job.harvesting_on})`);
+    let stmt = db.prepare(`INSERT into job VALUES('', ${job.name},${job.descr},${job.uuid},${job.submitter_name},${now},${job.submitter_email},${job.weather_machine_kind},${job.fuel_machine_kind},${job.planburn_target_perc},${job.regsim_duration},${job.num_replicates},${job.harvesting_on})`);
     stmt.run(job);
     stmt.finalize();
 
@@ -141,6 +141,7 @@ io.on('connection', (socket) => {
 
     // Read the Jobs table from the SQLite DB
     let sql = `SELECT DISTINCT * FROM job ORDER BY submission_time`;
+    let advanced_sql = `SELECT DISTINCT * FROM job ORDER BY submission_time`;
 
     db.serialize( function() {
       db.all(sql, [], (err, rows) => {
