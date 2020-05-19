@@ -110,7 +110,9 @@ io.on('connection', (socket) => {
 
     socket.emit('submission-acknowledged', "ACK");
 
-    let stmt = db.prepare("INSERT into jobs VALUES(?)");
+    let now = "";
+
+    let stmt = db.prepare(`INSERT into job VALUES(${job.name},${job.descr},${job.uuid},${job.submitter_name},${now},${job.submitter_email},${job.weather_machine_kind},${job.fuel_machine_kind},${job.planburn_target_perc},${job.regsim_duration},${job.num_replicates},${job.harvesting_on})`);
     stmt.run(job);
     stmt.finalize();
 
