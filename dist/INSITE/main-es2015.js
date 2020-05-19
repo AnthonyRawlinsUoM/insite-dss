@@ -381,8 +381,8 @@ class GlaciatorParameters {
 }
 var TimeframeOptions;
 (function (TimeframeOptions) {
-    TimeframeOptions[TimeframeOptions["TWENTY"] = 0] = "TWENTY";
-    TimeframeOptions[TimeframeOptions["FIFTY"] = 1] = "FIFTY";
+    TimeframeOptions[TimeframeOptions["TWENTY"] = 20] = "TWENTY";
+    TimeframeOptions[TimeframeOptions["FIFTY"] = 50] = "FIFTY";
 })(TimeframeOptions || (TimeframeOptions = {}));
 var ReplicateOptions;
 (function (ReplicateOptions) {
@@ -828,8 +828,8 @@ let JobSubmissionComponent = class JobSubmissionComponent {
             { option: _GlaciatorParameters__WEBPACK_IMPORTED_MODULE_5__["FuelMachineKind"].NarclimObservedWithLandis, label: "NARCLIM Observed with LANDIS" },
         ];
         this.timeframe_options = [
-            { option: _GlaciatorParameters__WEBPACK_IMPORTED_MODULE_5__["TimeframeOptions"].TWENTY, value: "TWENTY" },
-            { option: _GlaciatorParameters__WEBPACK_IMPORTED_MODULE_5__["TimeframeOptions"].FIFTY, value: "FIFTY" },
+            { option: _GlaciatorParameters__WEBPACK_IMPORTED_MODULE_5__["TimeframeOptions"].TWENTY, value: _GlaciatorParameters__WEBPACK_IMPORTED_MODULE_5__["TimeframeOptions"].TWENTY.valueOf() },
+            { option: _GlaciatorParameters__WEBPACK_IMPORTED_MODULE_5__["TimeframeOptions"].FIFTY, value: _GlaciatorParameters__WEBPACK_IMPORTED_MODULE_5__["TimeframeOptions"].FIFTY.valueOf() },
         ];
     }
     ngOnInit() {

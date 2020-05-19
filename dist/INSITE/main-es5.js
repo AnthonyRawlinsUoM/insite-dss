@@ -824,8 +824,8 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     var TimeframeOptions;
 
     (function (TimeframeOptions) {
-      TimeframeOptions[TimeframeOptions["TWENTY"] = 0] = "TWENTY";
-      TimeframeOptions[TimeframeOptions["FIFTY"] = 1] = "FIFTY";
+      TimeframeOptions[TimeframeOptions["TWENTY"] = 20] = "TWENTY";
+      TimeframeOptions[TimeframeOptions["FIFTY"] = 50] = "FIFTY";
     })(TimeframeOptions || (TimeframeOptions = {}));
 
     var ReplicateOptions;
@@ -1608,10 +1608,10 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         }];
         this.timeframe_options = [{
           option: _GlaciatorParameters__WEBPACK_IMPORTED_MODULE_5__["TimeframeOptions"].TWENTY,
-          value: "TWENTY"
+          value: _GlaciatorParameters__WEBPACK_IMPORTED_MODULE_5__["TimeframeOptions"].TWENTY.valueOf()
         }, {
           option: _GlaciatorParameters__WEBPACK_IMPORTED_MODULE_5__["TimeframeOptions"].FIFTY,
-          value: "FIFTY"
+          value: _GlaciatorParameters__WEBPACK_IMPORTED_MODULE_5__["TimeframeOptions"].FIFTY.valueOf()
         }];
       }
 
