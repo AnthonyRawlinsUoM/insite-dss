@@ -12,8 +12,9 @@ const app = express();
 const { v4: uuidv4 } = require('uuid');
 const moment = require('moment');
 const js2xmlparser = require("js2xmlparser");
-
 const directoryPath = path.join(__dirname, '/queue');
+
+const { validate } = require('jsonschema');
 
 const sqlite3 = require('sqlite3').verbose();
 
@@ -84,13 +85,61 @@ function passToGlaciator(params) {
     });
 }
 
-function validate(job) {
-  let validators = [];
-  throw new Error('Validation Failed');
+function validateSchema(job) {
+  let validators = [
+    check(job.name)
+    .isAlphaNumeric(),
 
+    check(job.descr)
+    .isAlphaNumeric(),
+
+    check(job.uuid),
+    check(job.submitter_name)
+    .isAlpha(),
+
+    check(job.submission_time)
+    .isDate(),
+
+    check(job.sumitter_email)
+    .isEmail(),
+
+    check(job.weather_machine_kind)
+    .isNumeric()
+    .min(1)
+    .max(3),
+
+    check(job.fuel_machine_kind)
+    .isNumeric()
+    .min(1)
+    .max(3),
+
+    check(job.planburn_target_perc)
+    .isNumeric()
+    .min(0)
+    .max(100),
+
+    check(job.regsim_duration)
+    .isNumeric(),
+
+    check(job.num_replicates)
+    .isNumeric(),
+
+    check(job.harvesting_on).isBoolean()
+
+  ];
+
+  const errors = validationResult(req);
+
+  if (!errors.isEmpty()) {
+    throw new Error('Validation Failed');
+
+    // return res.status(422).json({ errors: errors.array() });
+  }
 }
 
 let jobqueue = [];
+
+const glaciatorParametersSchema = require('./glaciatorParametersSchema.json');
 
 io.on('connection', (socket) => {
 
@@ -114,39 +163,38 @@ io.on('connection', (socket) => {
 
   socket.on('submission', (job) => {
     console.log('Job submission received!');
-    console.log(job);
 
-    socket.emit('submission-acknowledged', "ACK");
+    const result = validate(job, glaciatorParametersSchema);
 
-    // Quick hacky server-side validation
-    let valid = false;
-    try {
-      valid = validate(job);
-    } catch(e) {
-      console.error(e);
-      socket.emit('validation-error', JSON.stringify({
-          error: e
-      }));
-    }
+    if (!result.valid) {
+      console.error("Input validation. Parameters don't match jsonschema.");
+        // pass the validation errors to the error handler
+        //  the "stack" key is generally the most useful
+        socket.emit('validation-error', JSON.stringify({
+            errors: result.errors.map(error => error.stack)
+        }));
 
-    if(valid) {
-      console.log('Valid data received.');
+      } else {
+        console.log('Valid data received.');
 
-      let stmt = db.prepare(`INSERT into job VALUES(NULL, '${job.name}','${job.descr}','${job.uuid}','${job.submitter_name}','${job.submission_time}','${job.submitter_email}',${job.weather_machine_kind},${job.fuel_machine_kind},${job.planburn_target_perc.valueOf()},${job.regsim_duration.valueOf()},${job.num_replicates.valueOf()},${job.harvesting_on})`);
+        socket.emit('submission-acknowledged', "ACK");
 
-      try {
-        stmt.run(job);
-        stmt.finalize();
-      } catch(e) {
-        console.error(e);
-        console.log(stmt);
-        socket.emit('insertion-error', {
-          error: e,
-          sql: stmt
-        })
+        let stmt = db.prepare(`INSERT into job VALUES(NULL, '${job.name}','${job.descr}','${job.uuid}','${job.submitter_name}','${job.submission_time}','${job.submitter_email}',${job.weather_machine_kind},${job.fuel_machine_kind},${job.planburn_target_perc.valueOf()},${job.regsim_duration.valueOf()},${job.num_replicates.valueOf()},${job.harvesting_on})`);
+
+        try {
+          stmt.run(job);
+          stmt.finalize();
+        } catch(e) {
+          console.error(e);
+          console.log(stmt);
+          socket.emit('insertion-error', {
+            error: e,
+            sql: stmt
+          })
+        }
+        socket.emit('insert-success', "OK");
       }
-      socket.emit('insert-success', "OK");
-    }
+
     // Write the XML
     // let out_xml = js2xmlparser.parse("glaciator_parameters", job);
     // console.log(out_xml);

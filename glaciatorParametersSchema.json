@@ -1,0 +1,161 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema",
+    "$id": "http://example.com/example.json",
+    "type": "object",
+    "title": "The root schema",
+    "description": "The root schema comprises the entire JSON document.",
+    "default": {},
+    "examples": [
+        {
+            "name": "Test",
+            "descr": "Just for testing purposes",
+            "uuid": "6b4a0643-a774-4f20-aa8e-a63f9018eb20",
+            "submitter_name": "Anthony Rawlins",
+            "submission_time": "2020-05-19T15:25:48.210Z",
+            "submitter_email": "me@anthonyrawlins.com",
+            "weather_machine_kind": 1,
+            "fuel_machine_kind": 1,
+            "planburn_target_perc": 5,
+            "regsim_duration": 25,
+            "num_replicates": 50,
+            "harvesting_on": false
+        }
+    ],
+    "required": [
+        "name",
+        "descr",
+        "uuid",
+        "submitter_name",
+        "submission_time",
+        "submitter_email",
+        "weather_machine_kind",
+        "fuel_machine_kind",
+        "planburn_target_perc",
+        "regsim_duration",
+        "num_replicates",
+        "harvesting_on"
+    ],
+    "additionalProperties": true,
+    "properties": {
+        "name": {
+            "$id": "#/properties/name",
+            "type": "string",
+            "title": "The name schema",
+            "description": "An explanation about the purpose of this instance.",
+            "default": "",
+            "examples": [
+                "Test"
+            ]
+        },
+        "descr": {
+            "$id": "#/properties/descr",
+            "type": "string",
+            "title": "The descr schema",
+            "description": "An explanation about the purpose of this instance.",
+            "default": "",
+            "examples": [
+                "Just for testing purposes"
+            ]
+        },
+        "uuid": {
+            "$id": "#/properties/uuid",
+            "type": "string",
+            "title": "The uuid schema",
+            "description": "An explanation about the purpose of this instance.",
+            "default": "",
+            "examples": [
+                "6b4a0643-a774-4f20-aa8e-a63f9018eb20"
+            ]
+        },
+        "submitter_name": {
+            "$id": "#/properties/submitter_name",
+            "type": "string",
+            "title": "The submitter_name schema",
+            "description": "An explanation about the purpose of this instance.",
+            "default": "",
+            "examples": [
+                "Anthony Rawlins"
+            ]
+        },
+        "submission_time": {
+            "$id": "#/properties/submission_time",
+            "type": "string",
+            "title": "The submission_time schema",
+            "description": "An explanation about the purpose of this instance.",
+            "default": "",
+            "examples": [
+                "2020-05-19T15:25:48.210Z"
+            ]
+        },
+        "submitter_email": {
+            "$id": "#/properties/submitter_email",
+            "type": "string",
+            "title": "The submitter_email schema",
+            "description": "An explanation about the purpose of this instance.",
+            "default": "",
+            "examples": [
+                "me@anthonyrawlins.com"
+            ]
+        },
+        "weather_machine_kind": {
+            "$id": "#/properties/weather_machine_kind",
+            "type": "integer",
+            "title": "The weather_machine_kind schema",
+            "description": "An explanation about the purpose of this instance.",
+            "default": 0,
+            "examples": [
+                1
+            ]
+        },
+        "fuel_machine_kind": {
+            "$id": "#/properties/fuel_machine_kind",
+            "type": "integer",
+            "title": "The fuel_machine_kind schema",
+            "description": "An explanation about the purpose of this instance.",
+            "default": 0,
+            "examples": [
+                1
+            ]
+        },
+        "planburn_target_perc": {
+            "$id": "#/properties/planburn_target_perc",
+            "type": "integer",
+            "title": "The planburn_target_perc schema",
+            "description": "An explanation about the purpose of this instance.",
+            "default": 0,
+            "examples": [
+                5
+            ]
+        },
+        "regsim_duration": {
+            "$id": "#/properties/regsim_duration",
+            "type": "integer",
+            "title": "The regsim_duration schema",
+            "description": "An explanation about the purpose of this instance.",
+            "default": 0,
+            "examples": [
+                25
+            ]
+        },
+        "num_replicates": {
+            "$id": "#/properties/num_replicates",
+            "type": "integer",
+            "title": "The num_replicates schema",
+            "description": "An explanation about the purpose of this instance.",
+            "default": 0,
+            "examples": [
+                50
+            ]
+        },
+        "harvesting_on": {
+            "$id": "#/properties/harvesting_on",
+            "type": "boolean",
+            "title": "The harvesting_on schema",
+            "description": "An explanation about the purpose of this instance.",
+            "default": false,
+            "examples": [
+                false
+            ]
+        }
+    }
+}

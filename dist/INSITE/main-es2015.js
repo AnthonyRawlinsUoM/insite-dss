@@ -110,7 +110,7 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("<div class=\"ui top_spaced container\">\n\n  <div\n      class=\"ui top attached segment\"\n      style=\"margin-top: 70px;\"\n  >\n    <table class=\"ui very basic table\">\n      <thead>\n        <tr>\n          <th class=\"collapsing\"></th>\n          <th>Queue ID</th>\n          <th>Job Name</th>\n          <th>Contact</th>\n          <th>Status</th>\n        </tr>\n      </thead>\n      <tbody>\n        <tr\n            *ngFor=\"let job of jobs\"\n            (click)=\"selectJob(job)\"\n            class=\"selectable_row\"\n        >\n\n          <td class=\"collapsing\"><i class=\"ui blue info circle icon\"></i> </td>\n          <td>{{ job.uuid }}</td>\n          <td>{{ job.name }}</td>\n          <td> {{ job.submitter_email }}</td>\n          <td>\n            {{ job.status }}\n          </td>\n        </tr>\n      </tbody>\n    </table>\n\n    <div class=\"ui raised attached segment\"><p>Found {{ jobs.length }} jobs.</p></div>\n\n    <div\n        class=\"ui raised bottom attached segment\"\n        *ngIf=\"selectedJob\"\n    >\n      <div class=\"ui header\">\n        {{selectedJob.uuid}}\n      </div>\n      <div class=\"ui segment\">\n        <h4 class=\"ui header\">User: {{selectedJob.submitter_name}}</h4>\n\n        <p class=\"card-text\">\n          {{selectedJob.descr}}\n        </p>\n        <p>Submitted at: {{ selectedJob.submission_time | date}}</p>\n        <p>Submitted by: {{ selectedJob.submitter_name }}</p>\n\n      </div>\n    </div>\n  </div>\n</div>\n\n\n{{ jobs | json }}\n");
+/* harmony default export */ __webpack_exports__["default"] = ("<div class=\"ui top_spaced container\">\n\n  <div\n      class=\"ui top attached segment\"\n      style=\"margin-top: 70px;\"\n  >\n    <table class=\"ui very basic table\">\n      <thead>\n        <tr>\n          <th class=\"collapsing\"></th>\n          <th>Queue ID</th>\n          <th>Job Name</th>\n          <th>Contact</th>\n          <th>Status</th>\n        </tr>\n      </thead>\n      <tbody>\n        <tr\n            *ngFor=\"let job of jobs\"\n            (click)=\"selectJob(job)\"\n            class=\"selectable_row\"\n        >\n\n          <td class=\"collapsing\"><i class=\"ui blue info circle icon\"></i> </td>\n          <td>{{ job.uuid }}</td>\n          <td>{{ job.name }}</td>\n          <td> {{ job.submitter_email }}</td>\n          <td>\n            {{ job.status }}\n          </td>\n        </tr>\n      </tbody>\n    </table>\n\n    <div class=\"ui raised attached segment\"><p>Found {{ jobs.length }} jobs.</p></div>\n\n    <div\n        class=\"ui raised bottom attached segment\"\n        *ngIf=\"selectedJob\"\n    >\n      <div class=\"ui header\">\n        {{selectedJob.uuid}}\n      </div>\n      <div class=\"ui segment\">\n        <h4 class=\"ui header\">User: {{selectedJob.submitter_name}}</h4>\n\n        <p class=\"card-text\">\n          {{selectedJob.descr}}\n        </p>\n        <p>Submitted at: {{ selectedJob.submission_time | date}}</p>\n        <p>Submitted by: {{ selectedJob.submitter_name }}</p>\n\n      </div>\n    </div>\n  </div>\n</div>\n\n\n<!-- {{ jobs | json }} -->\n");
 
 /***/ }),
 
@@ -891,13 +891,13 @@ let JobSubmissionComponent = class JobSubmissionComponent {
         console.log(this.submissionForm.value);
         let validated_data = this.submissionForm.value;
         // display form values on success
-        alert('SUCCESS!! :-)\n\n' + JSON.stringify(validated_data, null, 4));
+        // alert('SUCCESS!! :-)\n\n' + JSON.stringify(validated_data, null, 4));
         this.createJob(validated_data);
-        this.dataService.createJob(this.job).subscribe((err) => {
-            console.error('Error' + err);
-        }, (data) => {
+        this.dataService.createJob(this.job).subscribe((data) => {
             console.log('Complete:' + data);
             this.router.navigate(['/jobs']);
+        }, (err) => {
+            console.error('Error' + err);
         }, () => {
             console.log('Nothing?');
         });
