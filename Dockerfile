@@ -4,11 +4,12 @@ WORKDIR /usr/src/app
 
 RUN apk add git python openssh build-base
 RUN ssh-keygen -t rsa -f github_key
-RUN npm i express http https fs path socket.io socket.io-redis xml2json uuid moment js2xmlparser sqlite3
+RUN npm i express http https fs path socket.io socket.io-redis xml2json uuid moment js2xmlparser sqlite3 jsonschema
 
 COPY monitor.js .
 COPY ./dist .
 COPY config.js .
+COPY glaciatorParametersSchema.json .
 
 RUN mkdir -p /usr/src/app/queue
 RUN mkdir -p /usr/src/app/executable
