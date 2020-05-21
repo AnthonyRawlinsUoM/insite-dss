@@ -4,7 +4,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { FormsModule } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
 import {SuiModule} from 'ng2-semantic-ui';
-import { NgxDatatableModule } from '@swimlane/ngx-datatable';
+// import { NgxDatatableModule } from '@swimlane/ngx-datatable';
 
 import { AppComponent } from './app.component';
 import { JobsComponent } from './jobs/jobs.component';
@@ -31,7 +31,7 @@ import { JobstateComponent } from './jobstate/jobstate.component';
     AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,
-    NgxDatatableModule,
+    // NgxDatatableModule,
     SuiModule
   ],
   providers: [],
