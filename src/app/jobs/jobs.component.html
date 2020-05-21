@@ -8,7 +8,7 @@
       <thead>
         <tr>
           <th class="collapsing"></th>
-          <th>Queue ID</th>
+          <th>Date</th>
           <th>Job Name</th>
           <th>Contact</th>
           <th>Status</th>
@@ -22,11 +22,15 @@
         >
 
           <td class="collapsing"><i class="ui blue info circle icon"></i> </td>
-          <td>{{ job.uuid }}</td>
+          <td>{{ job.submission_time | date }}</td>
           <td>{{ job.name }}</td>
           <td> {{ job.submitter_email }}</td>
           <td>
-            {{ job.status }}
+            <div class="" *ngIf="job.status == 1">New</div>
+            <div class="" *ngIf="job.status == 2">Running Simulations</div>
+            <div class="" *ngIf="job.status == 3">Running Post-Processing</div>
+            <div class="" *ngIf="job.status == 4">Failed</div>
+            <div class="" *ngIf="job.status == 5">Complete</div>
           </td>
         </tr>
       </tbody>
