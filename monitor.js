@@ -163,16 +163,17 @@ io.on('connection', (socket) => {
 
   socket.on('submission', (job) => {
     console.log('Job submission received!');
-    
+
     const result = validate(job, glaciatorParametersSchema);
 
     if (!result.valid) {
-      console.error("Input validation. Parameters don't match jsonschema.");
+      console.error("InputValidationError. Parameters don't match jsonschema.");
         // pass the validation errors to the error handler
         //  the "stack" key is generally the most useful
         socket.emit('validation-error', JSON.stringify({
             errors: result.errors.map(error => error.stack)
         }));
+        console.log(job);
 
       } else {
         console.log('Valid data received.');
