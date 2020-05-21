@@ -163,7 +163,7 @@ io.on('connection', (socket) => {
 
   socket.on('submission', (job) => {
     console.log('Job submission received!');
-
+    
     const result = validate(job, glaciatorParametersSchema);
 
     if (!result.valid) {
