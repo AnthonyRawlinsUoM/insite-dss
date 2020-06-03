@@ -209,7 +209,13 @@ io.on('connection', (socket) => {
 
         socket.emit('submission-acknowledged', "ACK");
 
-        let db = new sqlite.Database('database/web_frost_job_queue.sqlite');
+        let db = new sqlite.Database('database/web_frost_job_queue.sqlite', (err)=> {
+          if(err) {
+            console.log('Could not connect to Database!', err);
+          } else {
+            console.log('Connected to Database!');
+          }
+        });
 
         let statement = `INSERT into job('name', 'descr', 'uuid', 'submitter_name', 'submission_time', 'submitter_email', 'weather_machine_kind', 'fuel_machine_kind', 'planburn_target_perc', 'regsim_duration', 'num_replicates', 'harvesting_on') VALUES("${job.name}", "${job.descr}", "${job.uuid}", "${job.submitter_name}", "${job.submission_time}", "${job.submitter_email}", ${job.weather_machine_kind}, ${job.fuel_machine_kind}, ${job.planburn_target_perc.valueOf()}, ${job.regsim_duration.valueOf()}, ${job.num_replicates.valueOf()}, "${job.harvesting_on}")`;
 
@@ -244,31 +250,44 @@ io.on('connection', (socket) => {
 
   socket.on('error-list', () => {
     // Status 4 = Errored
-    let db = new sqlite.Database('database/web_frost_job_queue.sqlite');
+
+    let db = new sqlite.Database('database/web_frost_job_queue.sqlite', (err)=> {
+      if(err) {
+        console.log('Could not connect to Database!', err);
+      } else {
+        console.log('Connected to Database!');
+      }
+    });
+
     let advanced_sql = `SELECT DISTINCT * FROM job, job_state
     WHERE status=4
 INNER JOIN job_to_jobstate ON job.id=job_to_jobstate.id AND job_to_jobstate.jobid = job_state.id
 ORDER BY job_failure_time, submission_time`;
 
-    db.serialize( function() {
-      db.all(advanced_sql, [], (err, rows) => {
-        if (err) {
-          console.error(err);
-          return;
-        }
-        rows.forEach((row) => {
-          console.log(row.name);
+    db.runAsync(advanced_sql).then(results => {
+        console.log("SUCCESS!")
+        console.log(results);
+        socket.emit('error-list', results);
+    }).catch(err => {
+        console.error("BATCH FAILED: " + err);
+        socket.emit('list-error', {
+          error: err,
+          sql: advanced_sql
         });
-      });
     });
-
-    // socket.emit('jobs-list', JSON.stringify(rows));
-    // db.close();
   });
 
   socket.on('list-jobs', () => {
     console.log('Listing all jobs!');
-    let db = new sqlite.Database('database/web_frost_job_queue.sqlite');
+
+    let db = new sqlite.Database('database/web_frost_job_queue.sqlite', (err)=> {
+      if(err) {
+        console.log('Could not connect to Database!', err);
+      } else {
+        console.log('Connected to Database!');
+      }
+    });
+
     let q = [];
 
     // Read the Jobs table from the SQLite DB
@@ -277,22 +296,18 @@ ORDER BY job_failure_time, submission_time`;
 INNER JOIN job_to_jobstate ON job.id=job_to_jobstate.id AND job_to_jobstate.jobid = job_state.id
 ORDER BY submission_time, submitter_name`;
 
-    // db.serialize( function() {
-    db.all(advanced_sql, [], (err, rows) => {
-      if (err) {
-        console.error(err);
-        return;
-      }
-
-      rows.forEach((row) => {
-        console.log(row.name);
-        socket.emit('jobs-list', JSON.stringify(row));
+    db.runAsync(advanced_sql).then(results => {
+          console.log("SUCCESS!")
+          console.log(results);
+          socket.emit('jobs-list', results);
+      }).catch(err => {
+          console.error("BATCH FAILED: " + err);
+          socket.emit('jobs-error', {
+            error: err,
+            sql: advanced_sql
+          });
       });
-
     });
-
-    // db.close();
-    // });
 
     //passsing directoryPath and callback function
     // fs.readdir(directoryPath, function(err, files) {
@@ -321,7 +336,7 @@ ORDER BY submission_time, submitter_name`;
     //     });
     //   });
     // });
-  });
+  // });
 
   io.emit('log', 'User with Session ID: ' + socket.id + ' has connected.');
 
