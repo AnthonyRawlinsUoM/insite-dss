@@ -51,13 +51,14 @@ let statements = [
 'CREATE TABLE IF NOT EXISTS "job"("id" integer PRIMARY KEY, "name" text NOT NULL, "descr" text NOT NULL, "uuid" text NOT NULL, "submitter_name" text NOT NULL, "submission_time" datetime NOT NULL, "submitter_email" text NOT NULL, "weather_machine_kind" integer NOT NULL, "fuel_machine_kind" integer NOT NULL, "planburn_target_perc" integer NOT NULL, "regsim_duration" integer NOT NULL, "num_replicates" integer NOT NULL, "harvesting_on" boolean NOT NULL)',
 'CREATE TABLE IF NOT EXISTS "job_state"("id" integer, "status" text NOT NULL, "simulation_start_time" datetime, "post_proc_start_time" datetime, "simulation_results_dir_path" text,  "post_proc_results_dir_path" text,  "job_failure_time" datetime, "job_completion_time" datetime, "job_failure_error_message" varchar)',
 'CREATE TABLE IF NOT EXISTS "job_to_jobstate"("id" integer NOT NULL, "jobid" integer NOT NULL)'];
-
-db.runBatchAsync(statements).then(results => {
-    console.log("SUCCESS!")
-    console.log(results);
-}).catch(err => {
-    console.error("BATCH FAILED: " + err);
-});
+for(sql of statements) {
+  db.runAsync(sql).then(results => {
+      console.log("SUCCESS!")
+      console.log(results);
+  }).catch(err => {
+      console.error("SQL FAILED: " + err);
+  });
+}
 
 
 app.use(express.static(path.join(__dirname, '/INSITE')));
