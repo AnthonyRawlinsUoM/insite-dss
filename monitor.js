@@ -183,6 +183,7 @@ io.on('connection', (socket) => {
         console.log('Valid data received.');
 
         socket.emit('submission-acknowledged', "ACK");
+
         let db = new sqlite3.Database('database/web_frost_job_queue.sqlite');
 
         let stmt = db.prepare(`INSERT into job VALUES(NULL, "${job.name}", "${job.descr}", "${job.uuid}", "${job.submitter_name}", "${job.submission_time}", "${job.submitter_email}", ${job.weather_machine_kind}, ${job.fuel_machine_kind}, ${job.planburn_target_perc.valueOf()}, ${job.regsim_duration.valueOf()}, ${job.num_replicates.valueOf()}, "${job.harvesting_on}")`);
@@ -190,6 +191,7 @@ io.on('connection', (socket) => {
         try {
           stmt.run(job);
           stmt.finalize();
+          socket.emit('insert-success', "OK");
         } catch(e) {
           console.error(e);
           console.log(stmt);
@@ -197,9 +199,9 @@ io.on('connection', (socket) => {
             error: e,
             sql: stmt
           })
+        } finally {
+          db.close();
         }
-        socket.emit('insert-success', "OK");
-        db.close();
       }
 
     // Write the XML
@@ -219,7 +221,6 @@ io.on('connection', (socket) => {
 
 
   socket.on('error-list', () => {
-
     // Status 4 = Errored
     let db = new sqlite3.Database('database/web_frost_job_queue.sqlite');
     let advanced_sql = `SELECT DISTINCT * FROM job, job_state
@@ -230,7 +231,8 @@ ORDER BY job_failure_time, submission_time`;
     db.serialize( function() {
       db.all(advanced_sql, [], (err, rows) => {
         if (err) {
-          throw err;
+          console.error(err);
+          return;
         }
         rows.forEach((row) => {
           console.log(row.name);
@@ -255,7 +257,8 @@ ORDER BY submission_time, submitter_name`;
     // db.serialize( function() {
     db.all(advanced_sql, [], (err, rows) => {
       if (err) {
-        throw err;
+        console.error(err);
+        return;
       }
 
       rows.forEach((row) => {
