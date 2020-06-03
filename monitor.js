@@ -17,8 +17,6 @@ const directoryPath = path.join(__dirname, '/queue');
 const { validate } = require('jsonschema');
 const sqlite3 = require('sqlite3').verbose();
 
-const epipebomb = require('epipebomb')();
-
 console.log('Attempting to establish schema!');
 
 let db = new sqlite3.Database('database/web_frost_job_queue.sqlite');
@@ -159,9 +157,6 @@ io.on('connection', (socket) => {
     sequenceNumberByClient.delete(socket);
     console.info(`Client gone [id=${socket.id}]`);
     io.emit('log', 'User (' + socket.id + ') has disconnected');
-    if(db) {
-      db.close();
-    }
   });
 
 
@@ -238,9 +233,10 @@ ORDER BY job_failure_time, submission_time`;
         rows.forEach((row) => {
           console.log(row.name);
         });
-        socket.emit('jobs-list', JSON.stringify(rows));
       });
     });
+    
+    // socket.emit('jobs-list', JSON.stringify(rows));
     db.close();
   });
 

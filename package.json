@@ -21,7 +21,6 @@
     "@angular/router": "~8.2.5",
     "@swimlane/ngx-datatable": "^17.0.0",
     "child_process": "^1.0.2",
-    "epipebomb": "^1.0.0",
     "express-validator": "^6.5.0",
     "jquery": "^3.4.1",
     "js2xmlparser": "^4.0.0",
