@@ -20,7 +20,7 @@ const sqlite = require('sqlite3').verbose();
 
 let db = new sqlite.Database('database/web_frost_job_queue.sqlite', (err)=> {
   if(err) {
-    console.log('Could not connect to Databas!', err);
+    console.log('Could not connect to Database!', err);
   } else {
     console.log('Connected to Database!');
   }
@@ -50,7 +50,7 @@ db.run('CREATE TABLE IF NOT EXISTS "job_to_jobstate"("id" integer NOT NULL, "job
   }
 });
 
-// db.close();
+db.close();
 
 
 app.use(express.static(path.join(__dirname, '/INSITE')));
@@ -218,7 +218,7 @@ io.on('connection', (socket) => {
             sql: stmt
           })
         } finally {
-          // db.close();
+          db.close();
         }
       }
 
