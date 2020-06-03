@@ -15,8 +15,9 @@ const js2xmlparser = require("js2xmlparser");
 const directoryPath = path.join(__dirname, '/queue');
 
 const { validate } = require('jsonschema');
-
 const sqlite3 = require('sqlite3').verbose();
+
+require('epipebomb')();
 
 console.log('Attempting to establish schema!');
 
