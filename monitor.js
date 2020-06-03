@@ -20,7 +20,7 @@ const sqlite3 = require('sqlite3').verbose();
 
 console.log('Attempting to establish schema!');
 
-let db = new sqlite3.Database('database/web_frost_job_queue.sqlite').verbose();
+let db = new sqlite3.Database('database/web_frost_job_queue.sqlite');
 
 db.run('CREATE TABLE IF NOT EXISTS "job"("id" integer PRIMARY KEY, "name" text NOT NULL, "descr" text NOT NULL, "uuid" text NOT NULL, "submitter_name" text NOT NULL, "submission_time" datetime NOT NULL, "submitter_email" text NOT NULL, "weather_machine_kind" integer NOT NULL, "fuel_machine_kind" integer NOT NULL, "planburn_target_perc" integer NOT NULL, "regsim_duration" integer NOT NULL, "num_replicates" integer NOT NULL, "harvesting_on" boolean NOT NULL)');
 
