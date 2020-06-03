@@ -147,8 +147,6 @@ const glaciatorParametersSchema = require('./glaciatorParametersSchema.json');
 
 io.on('connection', (socket) => {
 
-  let db = new sqlite3.Database('database/web_frost_job_queue.sqlite');
-
   /* CONNECTION CODE */
   console.log('Client has connected!');
   console.info(`Client connected [id=${socket.id}]`);
@@ -160,7 +158,9 @@ io.on('connection', (socket) => {
     sequenceNumberByClient.delete(socket);
     console.info(`Client gone [id=${socket.id}]`);
     io.emit('log', 'User (' + socket.id + ') has disconnected');
-    db.close();
+    if(db) {
+      db.close();
+    }
   });
 
 
@@ -183,6 +183,7 @@ io.on('connection', (socket) => {
         console.log('Valid data received.');
 
         socket.emit('submission-acknowledged', "ACK");
+        let db = new sqlite3.Database('database/web_frost_job_queue.sqlite');
 
         let stmt = db.prepare(`INSERT into job VALUES(NULL, "${job.name}", "${job.descr}", "${job.uuid}", "${job.submitter_name}", "${job.submission_time}", "${job.submitter_email}", ${job.weather_machine_kind}, ${job.fuel_machine_kind}, ${job.planburn_target_perc.valueOf()}, ${job.regsim_duration.valueOf()}, ${job.num_replicates.valueOf()}, "${job.harvesting_on}")`);
 
@@ -198,6 +199,7 @@ io.on('connection', (socket) => {
           })
         }
         socket.emit('insert-success', "OK");
+        db.close();
       }
 
     // Write the XML
@@ -219,7 +221,7 @@ io.on('connection', (socket) => {
   socket.on('error-list', () => {
 
     // Status 4 = Errored
-
+    let db = new sqlite3.Database('database/web_frost_job_queue.sqlite');
     let advanced_sql = `SELECT DISTINCT * FROM job, job_state
     WHERE status=4
 INNER JOIN job_to_jobstate ON job.id=job_to_jobstate.id AND job_to_jobstate.jobid = job_state.id
@@ -241,7 +243,7 @@ ORDER BY job_failure_time, submission_time`;
 
   socket.on('list-jobs', () => {
     console.log('Listing all jobs!');
-
+    let db = new sqlite3.Database('database/web_frost_job_queue.sqlite');
     let q = [];
 
     // Read the Jobs table from the SQLite DB
@@ -251,17 +253,19 @@ INNER JOIN job_to_jobstate ON job.id=job_to_jobstate.id AND job_to_jobstate.jobi
 ORDER BY submission_time, submitter_name`;
 
     // db.serialize( function() {
-      db.all(advanced_sql, [], (err, rows) => {
-        if (err) {
-          throw err;
-        }
+    db.all(advanced_sql, [], (err, rows) => {
+      if (err) {
+        throw err;
+      }
 
-        rows.forEach((row) => {
-          console.log(row.name);
-          socket.emit('jobs-list', JSON.stringify(row));
-        });
-
+      rows.forEach((row) => {
+        console.log(row.name);
+        socket.emit('jobs-list', JSON.stringify(row));
       });
+
+    });
+
+    db.close();
     // });
 
     //passsing directoryPath and callback function
@@ -301,6 +305,7 @@ ORDER BY submission_time, submitter_name`;
     console.log(entry);
     socket.emit('log', entry);
   });
+
 });
 
 server.listen(port, () => {
