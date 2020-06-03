@@ -143,7 +143,7 @@ const glaciatorParametersSchema = require('./glaciatorParametersSchema.json');
 
 io.on('connection', (socket) => {
 
-  let db = new sqlite3.Database('database.sqlite');
+  let db = new sqlite3.Database('web_frost_job_queue.sqlite');
 
   /* CONNECTION CODE */
   console.log('Client has connected!');

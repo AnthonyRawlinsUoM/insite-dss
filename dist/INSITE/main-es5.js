@@ -1200,9 +1200,10 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     var rxjs_Observable__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(
     /*! rxjs/Observable */
     "./node_modules/rxjs-compat/_esm2015/Observable.js"); // const host = 'localhost';
+    // const host = 'insite.lightning.deepblack.cloud';
 
 
-    var host = 'insite.lightning.deepblack.cloud'; // const port = ':8181';
+    var host = 'insite.dss.cloud.bushfirebehaviour.net.au'; // const port = ':8181';
 
     var port = '';
     var protocol = 'https';

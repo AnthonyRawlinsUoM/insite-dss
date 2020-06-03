@@ -605,7 +605,8 @@ __webpack_require__.r(__webpack_exports__);
 
 
 // const host = 'localhost';
-const host = 'insite.lightning.deepblack.cloud';
+// const host = 'insite.lightning.deepblack.cloud';
+const host = 'insite.dss.cloud.bushfirebehaviour.net.au';
 // const port = ':8181';
 const port = '';
 const protocol = 'https';
