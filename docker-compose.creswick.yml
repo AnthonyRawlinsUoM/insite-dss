@@ -1,0 +1,47 @@
+version: '3.7'
+
+services:
+    # redis:
+    #     image: redis
+    #     ports:
+    #       - 6380:6379
+    #     volumes:
+    #       - /nfs/pyromancer/Personal/Tony/CLOUD/redis/data:/data
+    #     networks:
+    #         - insite-network
+
+    insite:
+        image: anthonyrawlinsuom/insite-dss
+        ports:
+          - 8181:8181
+        volumes:
+          - /nfs/pyromancer/Projects/DSS/data/insite/queue:/usr/src/app/queue
+          - /nfs/pyromancer/Projects/DSS/data/insite/executable:/usr/src/app/executable
+        networks:
+            - traefik-network
+            - insite-network
+        deploy:
+            mode: replicated
+            replicas: 1
+            placement:
+                constraints:
+                  - node.role == manager
+                  - node.labels.NFS == attached
+            labels:
+              - traefik.frontend.rule=Host:insite.dss.cloud.bushfirebehaviour.net.au
+              - traefik.backend.loadbalancer.swarm=true
+              - traefik.docker.network=traefik-network
+              - traefik.enable=true
+              - traefik.frontend.passHostHeader=true
+              - traefik.port=8181
+              - traefik.redirectorservice.frontend.entryPoints=http
+              - traefik.redirectorservice.frontend.redirect.entryPoint=https
+              - traefik.tags=traefik-network
+              - traefik.webservice.frontend.entryPoints=https
+
+networks:
+    insite-network:
+        driver: overlay
+        attachable: true
+    traefik-network:
+        external: true
