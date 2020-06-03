@@ -17,7 +17,7 @@ const directoryPath = path.join(__dirname, '/queue');
 const { validate } = require('jsonschema');
 const sqlite3 = require('sqlite3').verbose();
 
-require('epipebomb')();
+const epipebomb = require('epipebomb')();
 
 console.log('Attempting to establish schema!');
 
