@@ -17,34 +17,41 @@ const directoryPath = path.join(__dirname, '/queue');
 const { validate } = require('jsonschema');
 const sqlite = require('sqlite3').verbose();
 
-console.log('Attempting to establish schema!');
 
-let db = new sqlite.Database('database/web_frost_job_queue.sqlite');
-
-db.run('CREATE TABLE IF NOT EXISTS "job"("id" integer PRIMARY KEY, "name" text NOT NULL, "descr" text NOT NULL, "uuid" text NOT NULL, "submitter_name" text NOT NULL, "submission_time" datetime NOT NULL, "submitter_email" text NOT NULL, "weather_machine_kind" integer NOT NULL, "fuel_machine_kind" integer NOT NULL, "planburn_target_perc" integer NOT NULL, "regsim_duration" integer NOT NULL, "num_replicates" integer NOT NULL, "harvesting_on" boolean NOT NULL)', function(err,row) {
-  if (err) {
-    console.log(err.message);
+let db = new sqlite.Database('database/web_frost_job_queue.sqlite', (err)=> {
+  if(err) {
+    console.log('Could not connect to Databas!', err);
+  } else {
+    console.log('Connected to Database!');
   }
-
 });
 
-db.run('CREATE TABLE IF NOT EXISTS "job_state"("id" integer, "status" text NOT NULL, "simulation_start_time" datetime, "post_proc_start_time" datetime, "simulation_results_dir_path" text,  "post_proc_results_dir_path" text,  "job_failure_time" datetime, "job_completion_time" datetime, "job_failure_error_message" varchar)', function(err,row) {
+db.run('CREATE TABLE IF NOT EXISTS "job"("id" integer PRIMARY KEY, "name" text NOT NULL, "descr" text NOT NULL, "uuid" text NOT NULL, "submitter_name" text NOT NULL, "submission_time" datetime NOT NULL, "submitter_email" text NOT NULL, "weather_machine_kind" integer NOT NULL, "fuel_machine_kind" integer NOT NULL, "planburn_target_perc" integer NOT NULL, "regsim_duration" integer NOT NULL, "num_replicates" integer NOT NULL, "harvesting_on" boolean NOT NULL)', (err,row) => {
   if (err) {
     console.log(err.message);
+  } else {
+    console.log('Created Table: job');
   }
-
 });
 
-db.run('CREATE TABLE IF NOT EXISTS "job_to_jobstate"("id" integer NOT NULL, "jobid" integer NOT NULL)', function(err,row) {
+db.run('CREATE TABLE IF NOT EXISTS "job_state"("id" integer, "status" text NOT NULL, "simulation_start_time" datetime, "post_proc_start_time" datetime, "simulation_results_dir_path" text,  "post_proc_results_dir_path" text,  "job_failure_time" datetime, "job_completion_time" datetime, "job_failure_error_message" varchar)', (err,row) => {
   if (err) {
     console.log(err.message);
+  } else {
+    console.log('Created Table: job_state');
   }
+});
 
+db.run('CREATE TABLE IF NOT EXISTS "job_to_jobstate"("id" integer NOT NULL, "jobid" integer NOT NULL)', (err,row) => {
+  if (err) {
+    console.log(err.message);
+  } else {
+    console.log('Created Table: job_to_job_state');
+  }
 });
 
 // db.close();
 
-console.log('Schema established!');
 
 app.use(express.static(path.join(__dirname, '/INSITE')));
 
