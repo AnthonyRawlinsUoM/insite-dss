@@ -59,8 +59,6 @@ db.runBatchAsync(statements).then(results => {
     console.error("BATCH FAILED: " + err);
 });
 
-db.close();
-
 
 app.use(express.static(path.join(__dirname, '/INSITE')));
 
@@ -213,22 +211,19 @@ io.on('connection', (socket) => {
 
         let db = new sqlite.Database('database/web_frost_job_queue.sqlite');
 
-        let stmt = db.prepare(`INSERT into job('name', 'descr', 'uuid', 'submitter_name', 'submission_time', 'submitter_email', 'weather_machine_kind', 'fuel_machine_kind', 'planburn_target_perc', 'regsim_duration', 'num_replicates', 'harvesting_on') VALUES("${job.name}", "${job.descr}", "${job.uuid}", "${job.submitter_name}", "${job.submission_time}", "${job.submitter_email}", ${job.weather_machine_kind}, ${job.fuel_machine_kind}, ${job.planburn_target_perc.valueOf()}, ${job.regsim_duration.valueOf()}, ${job.num_replicates.valueOf()}, "${job.harvesting_on}")`);
+        let statement = `INSERT into job('name', 'descr', 'uuid', 'submitter_name', 'submission_time', 'submitter_email', 'weather_machine_kind', 'fuel_machine_kind', 'planburn_target_perc', 'regsim_duration', 'num_replicates', 'harvesting_on') VALUES("${job.name}", "${job.descr}", "${job.uuid}", "${job.submitter_name}", "${job.submission_time}", "${job.submitter_email}", ${job.weather_machine_kind}, ${job.fuel_machine_kind}, ${job.planburn_target_perc.valueOf()}, ${job.regsim_duration.valueOf()}, ${job.num_replicates.valueOf()}, "${job.harvesting_on}")`;
 
-        try {
-          stmt.run(job);
-          stmt.finalize();
-          socket.emit('insert-success', "OK");
-        } catch(e) {
-          console.error(e);
-          console.log(stmt);
-          socket.emit('insertion-error', {
-            error: e,
-            sql: stmt
-          })
-        } finally {
-          db.close();
-        }
+        db.runAsync(statement).then(results => {
+            console.log("SUCCESS!")
+            console.log(results);
+            socket.emit('insert-success', "OK");
+        }).catch(err => {
+            console.error("BATCH FAILED: " + err);
+            socket.emit('insertion-error', {
+              error: err,
+              sql: statement
+            });
+        });
       }
 
     // Write the XML
