@@ -19,7 +19,7 @@ services:
           # - /nfs/pyromancer/Projects/DSS/data/insite/executable:/usr/src/app/executable
           - ./data/insite/queue:/usr/src/app/queue
           - ./data/insite/executable:/usr/src/app/executable
-          - ./data/insite/database.sqlite:/usr/src/app/database.sqlite
+          - ./data/insite/database:/usr/src/app/database
         networks:
             - staging-network
             - insite-network
