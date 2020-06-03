@@ -18,7 +18,7 @@ services:
           - /nfs/pyromancer/Projects/DSS/data/insite/queue:/usr/src/app/queue
           - /nfs/pyromancer/Projects/DSS/data/insite/executable:/usr/src/app/executable
           # THIS IS THE MAGIC...
-          - /nfs/pyromancer/Projects/WEB_FROST_TEST1/job_queue/web_frost_job_queue.sqlite:/usr/src/app/web_frost_job_queue.sqlite
+          - /nfs/pyromancer/Projects/WEB_FROST_TEST1/job_queue/:/usr/src/app/database
 
         networks:
             - traefik-network

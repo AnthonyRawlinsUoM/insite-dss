@@ -13,6 +13,7 @@ COPY glaciatorParametersSchema.json .
 
 RUN mkdir -p /usr/src/app/queue
 RUN mkdir -p /usr/src/app/executable
+RUN mkdir -p /usr/src/app/database
 
 
 # Clean slate
