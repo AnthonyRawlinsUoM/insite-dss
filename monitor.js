@@ -27,7 +27,7 @@ db.run('CREATE TABLE IF NOT EXISTS "job_state"("id" integer, "status" text NOT N
 
 db.run('CREATE TABLE IF NOT EXISTS "job_to_jobstate"("id" integer NOT NULL, "jobid" integer NOT NULL)');
 
-db.close();
+// db.close();
 
 console.log('Schema established!');
 
@@ -196,7 +196,7 @@ io.on('connection', (socket) => {
             sql: stmt
           })
         } finally {
-          db.close();
+          // db.close();
         }
       }
 
@@ -235,9 +235,9 @@ ORDER BY job_failure_time, submission_time`;
         });
       });
     });
-    
+
     // socket.emit('jobs-list', JSON.stringify(rows));
-    db.close();
+    // db.close();
   });
 
   socket.on('list-jobs', () => {
@@ -265,7 +265,7 @@ ORDER BY submission_time, submitter_name`;
 
     });
 
-    db.close();
+    // db.close();
     // });
 
     //passsing directoryPath and callback function
