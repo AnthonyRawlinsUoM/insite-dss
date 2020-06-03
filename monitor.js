@@ -21,15 +21,15 @@ require('epipebomb')();
 
 console.log('Attempting to establish schema!');
 
-// let db = new sqlite3.Database('database/web_frost_job_queue.sqlite');
-//
-// db.run('CREATE TABLE IF NOT EXISTS "job"("id" integer PRIMARY KEY, "name" text NOT NULL, "descr" text NOT NULL, "uuid" text NOT NULL, "submitter_name" text NOT NULL, "submission_time" datetime NOT NULL, "submitter_email" text NOT NULL, "weather_machine_kind" integer NOT NULL, "fuel_machine_kind" integer NOT NULL, "planburn_target_perc" integer NOT NULL, "regsim_duration" integer NOT NULL, "num_replicates" integer NOT NULL, "harvesting_on" boolean NOT NULL)');
-//
-// db.run('CREATE TABLE IF NOT EXISTS "job_state"("id" integer, "status" text NOT NULL, "simulation_start_time" datetime, "post_proc_start_time" datetime, "simulation_results_dir_path" text,  "post_proc_results_dir_path" text,  "job_failure_time" datetime, "job_completion_time" datetime, "job_failure_error_message" varchar)');
-//
-// db.run('CREATE TABLE IF NOT EXISTS "job_to_jobstate"("id" integer NOT NULL, "jobid" integer NOT NULL)');
-//
-// db.close();
+let db = new sqlite3.Database('database/web_frost_job_queue.sqlite');
+
+db.run('CREATE TABLE IF NOT EXISTS "job"("id" integer PRIMARY KEY, "name" text NOT NULL, "descr" text NOT NULL, "uuid" text NOT NULL, "submitter_name" text NOT NULL, "submission_time" datetime NOT NULL, "submitter_email" text NOT NULL, "weather_machine_kind" integer NOT NULL, "fuel_machine_kind" integer NOT NULL, "planburn_target_perc" integer NOT NULL, "regsim_duration" integer NOT NULL, "num_replicates" integer NOT NULL, "harvesting_on" boolean NOT NULL)');
+
+db.run('CREATE TABLE IF NOT EXISTS "job_state"("id" integer, "status" text NOT NULL, "simulation_start_time" datetime, "post_proc_start_time" datetime, "simulation_results_dir_path" text,  "post_proc_results_dir_path" text,  "job_failure_time" datetime, "job_completion_time" datetime, "job_failure_error_message" varchar)');
+
+db.run('CREATE TABLE IF NOT EXISTS "job_to_jobstate"("id" integer NOT NULL, "jobid" integer NOT NULL)');
+
+db.close();
 
 console.log('Schema established!');
 
@@ -187,7 +187,7 @@ io.on('connection', (socket) => {
 
         let db = new sqlite3.Database('database/web_frost_job_queue.sqlite');
 
-        let stmt = db.prepare(`INSERT into job VALUES(NULL, "${job.name}", "${job.descr}", "${job.uuid}", "${job.submitter_name}", "${job.submission_time}", "${job.submitter_email}", ${job.weather_machine_kind}, ${job.fuel_machine_kind}, ${job.planburn_target_perc.valueOf()}, ${job.regsim_duration.valueOf()}, ${job.num_replicates.valueOf()}, "${job.harvesting_on}")`);
+        let stmt = db.prepare(`INSERT into job VALUES(, "${job.name}", "${job.descr}", "${job.uuid}", "${job.submitter_name}", "${job.submission_time}", "${job.submitter_email}", ${job.weather_machine_kind}, ${job.fuel_machine_kind}, ${job.planburn_target_perc.valueOf()}, ${job.regsim_duration.valueOf()}, ${job.num_replicates.valueOf()}, "${job.harvesting_on}")`);
 
         try {
           stmt.run(job);
@@ -223,25 +223,25 @@ io.on('connection', (socket) => {
 
   socket.on('error-list', () => {
     // Status 4 = Errored
-//     let db = new sqlite3.Database('database/web_frost_job_queue.sqlite');
-//     let advanced_sql = `SELECT DISTINCT * FROM job, job_state
-//     WHERE status=4
-// INNER JOIN job_to_jobstate ON job.id=job_to_jobstate.id AND job_to_jobstate.jobid = job_state.id
-// ORDER BY job_failure_time, submission_time`;
-//
-//     db.serialize( function() {
-//       db.all(advanced_sql, [], (err, rows) => {
-//         if (err) {
-//           console.error(err);
-//           return;
-//         }
-//         rows.forEach((row) => {
-//           console.log(row.name);
-//         });
-//         socket.emit('jobs-list', JSON.stringify(rows));
-//       });
-//     });
-//     db.close();
+    let db = new sqlite3.Database('database/web_frost_job_queue.sqlite');
+    let advanced_sql = `SELECT DISTINCT * FROM job, job_state
+    WHERE status=4
+INNER JOIN job_to_jobstate ON job.id=job_to_jobstate.id AND job_to_jobstate.jobid = job_state.id
+ORDER BY job_failure_time, submission_time`;
+
+    db.serialize( function() {
+      db.all(advanced_sql, [], (err, rows) => {
+        if (err) {
+          console.error(err);
+          return;
+        }
+        rows.forEach((row) => {
+          console.log(row.name);
+        });
+        socket.emit('jobs-list', JSON.stringify(rows));
+      });
+    });
+    db.close();
   });
 
   socket.on('list-jobs', () => {
