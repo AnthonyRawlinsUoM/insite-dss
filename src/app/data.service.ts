@@ -4,7 +4,10 @@ import { Observable } from 'rxjs/Observable';
 import { GlaciatorParameters } from './GlaciatorParameters';
 
 // const host = 'localhost';
-const host = 'insite.lightning.deepblack.cloud';
+// const host = 'insite.lightning.deepblack.cloud';
+
+const host = 'insite.dss.cloud.bushfirebehaviour.net.au';
+
 // const port = ':8181';
 const port = '';
 const protocol = 'https';
