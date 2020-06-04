@@ -1199,12 +1199,12 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
     var rxjs_Observable__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(
     /*! rxjs/Observable */
-    "./node_modules/rxjs-compat/_esm2015/Observable.js"); // const host = 'localhost';
+    "./node_modules/rxjs-compat/_esm2015/Observable.js"); // const host = '127.0.0.1';
+    // const port = ':8181';
     // const host = 'insite.lightning.deepblack.cloud';
 
 
-    var host = 'insite.dss.cloud.bushfirebehaviour.net.au'; // const port = ':8181';
-
+    var host = 'insite.dss.cloud.bushfirebehaviour.net.au';
     var port = '';
     var protocol = 'https';
 

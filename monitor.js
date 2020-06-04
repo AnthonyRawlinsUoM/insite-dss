@@ -297,7 +297,7 @@ ORDER BY job_failure_time, submission_time`;
 INNER JOIN job_to_jobstate ON job.id=job_to_jobstate.id AND job_to_jobstate.jobid = job_state.id
 ORDER BY submission_time, submitter_name`;
 
-    db.runAsync(advanced_sql).then(results => {
+    db.runAsync(basic_sql).then(results => {
           console.log("SUCCESS!")
           console.log(results);
           socket.emit('jobs-list', results);
@@ -305,7 +305,7 @@ ORDER BY submission_time, submitter_name`;
           console.error("BATCH FAILED: " + err);
           socket.emit('jobs-error', {
             error: err,
-            sql: advanced_sql
+            sql: basic_sql
           });
       });
     });

@@ -604,10 +604,10 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-// const host = 'localhost';
+// const host = '127.0.0.1';
+// const port = ':8181';
 // const host = 'insite.lightning.deepblack.cloud';
 const host = 'insite.dss.cloud.bushfirebehaviour.net.au';
-// const port = ':8181';
 const port = '';
 const protocol = 'https';
 let DataService = class DataService {
