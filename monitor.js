@@ -26,6 +26,28 @@ sqlite.Database.prototype.runAsync = function (sql, ...params) {
     });
 };
 
+sqlite.Database.prototype.allAsync = function (sql, ...params) {
+    return new Promise((resolve, reject) => {
+        this.all(sql, params, function (err, rows) {
+            if (err) return reject(err);
+            resolve(rows);
+        });
+    });
+};
+
+/*
+function getName(uid, callback){
+  var query = "SELECT name FROM table WHERE uid = " + uid;
+  db.all(query, function (err, rows) {
+    if(err){
+        console.log(err);
+    }else{
+        callback(rows[0].name);
+    }
+  });
+}
+*/
+
 sqlite.Database.prototype.runBatchAsync = function (statements) {
     var results = [];
     var batch = ['BEGIN', ...statements, 'COMMIT'];
@@ -223,7 +245,7 @@ io.on('connection', (socket) => {
         db.runAsync(statement).then(results => {
             console.log("SUCCESS!")
             console.log(results);
-            socket.emit('insert-success', "OK");
+            socket.emit('insert-success', results);
         }).catch(err => {
             console.error("BATCH FAILED: " + err);
             socket.emit('insertion-error', {
@@ -278,6 +300,10 @@ ORDER BY job_failure_time, submission_time`;
     });
   });
 
+
+
+
+
   socket.on('list-jobs', () => {
     console.log('Listing all jobs!');
 
@@ -293,11 +319,12 @@ ORDER BY job_failure_time, submission_time`;
 
     // Read the Jobs table from the SQLite DB
     let basic_sql = `SELECT DISTINCT * FROM job ORDER BY submission_time`;
+
     let advanced_sql = `SELECT * FROM job, job_state
 INNER JOIN job_to_jobstate ON job.id=job_to_jobstate.id AND job_to_jobstate.jobid = job_state.id
 ORDER BY submission_time, submitter_name`;
 
-    db.runAsync(basic_sql).then(results => {
+    db.allAsync(basic_sql).then(results => {
           console.log("SUCCESS!")
           console.log(results);
           socket.emit('jobs-list', results);

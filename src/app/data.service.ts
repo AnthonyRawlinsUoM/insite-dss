@@ -3,14 +3,15 @@ import io from 'socket.io-client';
 import { Observable } from 'rxjs/Observable';
 import { GlaciatorParameters } from './GlaciatorParameters';
 
-// const host = '127.0.0.1';
-// const port = ':8181';
+const host = '127.0.0.1';
+const port = ':8181';
 
 // const host = 'insite.lightning.deepblack.cloud';
-const host = 'insite.dss.cloud.bushfirebehaviour.net.au';
+// const host = 'insite.dss.cloud.bushfirebehaviour.net.au';
 
-const port = '';
-const protocol = 'https';
+// const port = '';
+// const protocol = 'https';
+const protocol = 'http';
 
 @Injectable({
   providedIn: 'root'
@@ -45,6 +46,7 @@ export class DataService {
       this.socket.emit('submission', formdata, (ack)=> {
           console.log(ack);
           this.temp = null;
+          observer.next(ack);
       });
 
       this.socket.on('validation-error', (ve) => {
@@ -55,6 +57,11 @@ export class DataService {
       this.socket.on('insertion-error', (ie) => {
         console.log(ie)
         observer.next(ie);
+      });
+
+      this.socket.on('insert-success', (ise) => {
+        console.log(ise)
+        observer.next(ise);
       });
     });
   }

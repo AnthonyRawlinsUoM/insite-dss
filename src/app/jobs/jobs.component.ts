@@ -13,17 +13,17 @@ export class JobsComponent implements OnInit {
       jobs: any[];
       selectedJob: any;
 
-  constructor(public dataService: DataService) { }
+  constructor(public dataService: DataService) {
+    this.jobs = [];
+  }
 
   ngOnInit() {
-      this.jobs = [];
-      this.dataService.getJobs().subscribe((data) => {
+    this.dataService.getJobs().subscribe((data) => {
 
-          console.log(data);
+        console.log(data);
 
-          this.jobs.push(JSON.parse(data));
-          // this.jobs.sort((a, b) => (a.task.progress > b.task.progress) ? -1 : 1);
-      });
+        this.jobs = data;
+    });
   }
 
 
