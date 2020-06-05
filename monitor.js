@@ -35,19 +35,6 @@ sqlite.Database.prototype.allAsync = function (sql, ...params) {
     });
 };
 
-/*
-function getName(uid, callback){
-  var query = "SELECT name FROM table WHERE uid = " + uid;
-  db.all(query, function (err, rows) {
-    if(err){
-        console.log(err);
-    }else{
-        callback(rows[0].name);
-    }
-  });
-}
-*/
-
 sqlite.Database.prototype.runBatchAsync = function (statements) {
     var results = [];
     var batch = ['BEGIN', ...statements, 'COMMIT'];
@@ -324,7 +311,7 @@ ORDER BY job_failure_time, submission_time`;
 INNER JOIN job_to_jobstate ON job.id=job_to_jobstate.id AND job_to_jobstate.jobid = job_state.id
 ORDER BY submission_time, submitter_name`;
 
-    db.allAsync(basic_sql).then(results => {
+    db.allAsync(advanced_sql).then(results => {
           console.log("SUCCESS!")
           console.log(results);
           socket.emit('jobs-list', results);
@@ -332,7 +319,7 @@ ORDER BY submission_time, submitter_name`;
           console.error("BATCH FAILED: " + err);
           socket.emit('jobs-error', {
             error: err,
-            sql: basic_sql
+            sql: advanced_sql
           });
       });
     });

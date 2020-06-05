@@ -14,6 +14,7 @@ import { FooterComponent } from './footer/footer.component';
 import { JobSubmissionComponent } from './job-submission/job-submission.component';
 import { HomeComponent } from './home/home.component';
 import { JobstateComponent } from './jobstate/jobstate.component';
+import { ENumAsStringPipe } from './e-num-as-string.pipe';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { JobstateComponent } from './jobstate/jobstate.component';
     FooterComponent,
     JobSubmissionComponent,
     HomeComponent,
-    JobstateComponent
+    JobstateComponent,
+    ENumAsStringPipe
   ],
   imports: [
     BrowserModule,

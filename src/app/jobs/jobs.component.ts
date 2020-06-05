@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Pipe, PipeTransform } from '@angular/core';
 import { DataService } from '../data.service';
-import { GlaciatorParameters } from '../GlaciatorParameters';
+import * as gp from '../GlaciatorParameters';
+import { ENumAsStringPipe } from '../e-num-as-string.pipe';
 
 @Component({
   selector: 'app-jobs',
@@ -22,7 +23,7 @@ export class JobsComponent implements OnInit {
 
         console.log(data);
 
-        this.jobs = data;
+        this.jobs = data; // TODO sort ordering (by status?)
     });
   }
 
@@ -31,4 +32,10 @@ export class JobsComponent implements OnInit {
     this.selectedJob = job;
   }
 
+
+  public trueValue(v, k) {
+    console.log(k);
+    
+    return "string";
+  }
 }

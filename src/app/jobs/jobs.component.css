@@ -3,5 +3,15 @@
     background-color: rgba(255,255,255, 1.0);
 }
 .selectable_row:hover {
-    background-color: rgba(0,24,1250,0.02);
+    background-color: rgba(0,24,1250,0.2) !important;
+}
+.ui.steps .step.disabled {
+  background-color: rgba(234,234,234,1.0) !important;
+}
+.ui.steps .step,
+.ui.steps .step.active {
+  background-color: rgba(255,255,255,1.0) !important;
+}
+.ui.steps .step.active .icon {
+  color: rgba(73, 128, 182, 1) !important;
 }
