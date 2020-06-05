@@ -17,6 +17,15 @@ const directoryPath = path.join(__dirname, '/queue');
 const { validate } = require('jsonschema');
 const sqlite = require('sqlite3').verbose();
 
+
+let db = new sqlite.Database('database/web_frost_job_queue.sqlite', (err)=> {
+  if(err) {
+    console.error('Could not connect to Database!', err);
+  } else {
+    console.log('Connected to Database!');
+  }
+});
+
 sqlite.Database.prototype.runAsync = function (sql, ...params) {
     return new Promise((resolve, reject) => {
         this.run(sql, params, function (err) {
@@ -47,27 +56,6 @@ sqlite.Database.prototype.runBatchAsync = function (statements) {
     .then(() => results.slice(2));
 };
 
-let db = new sqlite.Database('database/web_frost_job_queue.sqlite', (err)=> {
-  if(err) {
-    console.log('Could not connect to Database!', err);
-  } else {
-    console.log('Connected to Database!');
-  }
-});
-
-
-let statements = [
-'CREATE TABLE IF NOT EXISTS "job"("id" integer PRIMARY KEY, "name" text NOT NULL, "descr" text NOT NULL, "uuid" text NOT NULL, "submitter_name" text NOT NULL, "submission_time" datetime NOT NULL, "submitter_email" text NOT NULL, "weather_machine_kind" integer NOT NULL, "fuel_machine_kind" integer NOT NULL, "planburn_target_perc" integer NOT NULL, "regsim_duration" integer NOT NULL, "num_replicates" integer NOT NULL, "harvesting_on" boolean NOT NULL)',
-'CREATE TABLE IF NOT EXISTS "job_state"("id" integer, "status" text NOT NULL, "simulation_start_time" datetime, "post_proc_start_time" datetime, "simulation_results_dir_path" text,  "post_proc_results_dir_path" text,  "job_failure_time" datetime, "job_completion_time" datetime, "job_failure_error_message" varchar)',
-'CREATE TABLE IF NOT EXISTS "job_to_jobstate"("id" integer NOT NULL, "jobid" integer NOT NULL)'];
-for(sql of statements) {
-  db.runAsync(sql).then(results => {
-      console.log("SUCCESS!")
-      console.log(results);
-  }).catch(err => {
-      console.error("SQL FAILED: " + err);
-  });
-}
 
 
 app.use(express.static(path.join(__dirname, '/INSITE')));
@@ -364,6 +352,42 @@ ORDER BY submission_time, submitter_name`;
 
 });
 
-server.listen(port, () => {
-  console.log('INSITE Server running on', port);
-});
+
+
+
+
+let statements = [
+'CREATE TABLE IF NOT EXISTS "job"("id" integer PRIMARY KEY, "name" text NOT NULL, "descr" text NOT NULL, "uuid" text NOT NULL, "submitter_name" text NOT NULL, "submission_time" datetime NOT NULL, "submitter_email" text NOT NULL, "weather_machine_kind" integer NOT NULL, "fuel_machine_kind" integer NOT NULL, "planburn_target_perc" integer NOT NULL, "regsim_duration" integer NOT NULL, "num_replicates" integer NOT NULL, "harvesting_on" boolean NOT NULL)',
+'CREATE TABLE IF NOT EXISTS "job_state"("id" integer, "status" text NOT NULL, "simulation_start_time" datetime, "post_proc_start_time" datetime, "simulation_results_dir_path" text,  "post_proc_results_dir_path" text,  "job_failure_time" datetime, "job_completion_time" datetime, "job_failure_error_message" varchar)',
+'CREATE TABLE IF NOT EXISTS "job_to_jobstate"("id" integer NOT NULL, "jobid" integer NOT NULL)'];
+
+server.init = function() {
+  return new Promise((resolve, reject) => {
+    console.log('Doing SQL initialisation!');
+
+    console.log('INSITE is initialising...');
+
+    let db = new sqlite.Database('database/web_frost_job_queue.sqlite', (err)=> {
+      if(err) {
+        console.error('Could not connect to Database!', err);
+      } else {
+        console.log('Connected to Database!');
+      }
+    });
+
+    db.runBatchAsync(statements).then(results => {
+        console.log("SQL SUCCESS!")
+        console.log(results);
+        resolve();
+    }).catch(err => {
+        console.error("SQL FAILED: " + err);
+        reject(err);
+    });
+  });
+}
+
+server.init().then(
+  server.listen(port, () => {
+    console.log('INSITE Server running on', port);
+  })
+);

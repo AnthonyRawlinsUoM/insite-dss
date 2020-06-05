@@ -171,7 +171,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     /* harmony default export */
 
 
-    __webpack_exports__["default"] = "<div class=\"ui top_spaced container\">\n\n  <div\n      class=\"ui top attached segment\"\n      style=\"margin-top: 70px;\"\n  >\n    <table class=\"ui very basic table\">\n      <thead>\n        <tr>\n          <th class=\"collapsing\"></th>\n          <th>Date</th>\n          <th>Job Name</th>\n          <th>Contact</th>\n          <th>Status</th>\n        </tr>\n      </thead>\n      <tbody>\n        <tr\n            *ngFor=\"let job of jobs\"\n            (click)=\"selectJob(job)\"\n            class=\"selectable_row\"\n        >\n\n          <td class=\"collapsing\"><i class=\"ui blue info circle icon\"></i> </td>\n          <td>{{ job.submission_time | date }}</td>\n          <td>{{ job.name }}</td>\n          <td> {{ job.submitter_email }}</td>\n          <td>\n            <div class=\"\" *ngIf=\"job.status == 1\">New</div>\n            <div class=\"\" *ngIf=\"job.status == 2\">Running Simulations</div>\n            <div class=\"\" *ngIf=\"job.status == 3\">Running Post-Processing</div>\n            <div class=\"\" *ngIf=\"job.status == 4\">Failed</div>\n            <div class=\"\" *ngIf=\"job.status == 5\">Complete</div>\n          </td>\n        </tr>\n      </tbody>\n    </table>\n\n    <div class=\"ui raised attached segment\"><p>Found {{ jobs.length }} jobs.</p></div>\n\n    <div\n        class=\"ui raised bottom attached segment\"\n        *ngIf=\"selectedJob\"\n    >\n      <div class=\"ui header\">\n        {{selectedJob.uuid}}\n      </div>\n      <div class=\"ui segment\">\n        <h4 class=\"ui header\">User: {{selectedJob.submitter_name}}</h4>\n\n        <p class=\"card-text\">\n          {{selectedJob.descr}}\n        </p>\n        <p>Submitted at: {{ selectedJob.submission_time | date}}</p>\n        <p>Submitted by: {{ selectedJob.submitter_name }}</p>\n\n      </div>\n    </div>\n  </div>\n</div>\n\n\n<!-- {{ jobs | json }} -->\n";
+    __webpack_exports__["default"] = "<div class=\"ui top_spaced container\">\n\n  <div\n      class=\"ui top attached segment\"\n      style=\"margin-top: 70px;\"\n  >\n    <table class=\"ui very basic table\">\n      <thead>\n        <tr>\n          <th class=\"collapsing\"></th>\n          <th>Date</th>\n          <th>Job Name</th>\n          <th>Contact</th>\n          <th>Status</th>\n        </tr>\n      </thead>\n      <tbody>\n        <tr\n            *ngFor=\"let job of jobs\"\n            (click)=\"selectJob(job)\"\n            class=\"selectable_row\"\n        >\n\n          <td class=\"collapsing\"><i class=\"ui blue info circle icon\"></i> </td>\n          <td>{{ job.submission_time | date }}</td>\n          <td>{{ job.name }}</td>\n          <td><a href=\"mailto:{{job.submitter_email}}\">{{ job.submitter_name }}</a></td>\n          <td>\n            <div class=\"\" *ngIf=\"job.status == 1\">New</div>\n            <div class=\"\" *ngIf=\"job.status == 2\">Running Simulations</div>\n            <div class=\"\" *ngIf=\"job.status == 3\">Running Post-Processing</div>\n            <div class=\"\" *ngIf=\"job.status == 4\">Failed</div>\n            <div class=\"\" *ngIf=\"job.status == 5\">Complete</div>\n          </td>\n        </tr>\n      </tbody>\n    </table>\n\n    <div class=\"ui raised attached segment\"><p>Found {{ jobs.length }} jobs.</p></div>\n\n    <div\n        class=\"ui bottom attached segment\"\n        *ngIf=\"selectedJob\"\n    >\n    <div class=\"ui raised segment\">\n\n\n      <h3 class=\"ui header\">\n        {{selectedJob.name}}\n      </h3>\n      <h5 class=\"ui header\">{{selectedJob.uuid}}</h5>\n        <h4 class=\"ui header\">User: {{selectedJob.submitter_name}}</h4>\n\n        <p class=\"card-text\">\n          {{selectedJob.descr}}\n        </p>\n\n        <!--\n\n        export enum TimeframeOptions {\n          TWENTY = 20,\n          FIFTY = 50\n        }\n\n        export enum ReplicateOptions {\n          TEN = 10,\n          TWENTY_FIVE = 25,\n          FIFTY = 50\n        }\n\n        export enum WeatherMachineKind {\n          Interpol = 1,\n          NarclimObserved = 2,\n          NarclimFuture = 3\n        }\n\n        export enum FuelMachineKind {\n          InvexpWithLandis = 1,\n          NarclimObservedWithLandis = 2,\n          NarclimFutureWithLandis = 3\n        }\n\n        export enum WebJobStatus {\n          New = 1,\n          RunningSimulations = 2,\n          RunningPostProcessing = 3,\n          Failed = 4,\n          Completed = 5\n        }\n\n      -->\n\n        <div class=\"ui attached segment\">\n          <h3 class=\"header\">Job Parameters</h3>\n          <table>\n            <tbody>\n              <tr>\n                <td>Fuel Machine</td>\n                <td>\n                  <div class=\"\" *ngIf=\"selectedJob.fuel_machine_kind == 1\">InvexpWithLandis</div>\n                  <div class=\"\" *ngIf=\"selectedJob.fuel_machine_kind == 2\">NarclimObservedWithLandis</div>\n                  <div class=\"\" *ngIf=\"selectedJob.fuel_machine_kind == 3\">NarclimFutureWithLandis</div>\n                </td>\n              </tr>\n              <tr>\n                <td>Weather Machine</td>\n                <td>\n                  <div class=\"\" *ngIf=\"selectedJob.weather_machine_kind == 1\">Interpol</div>\n                  <div class=\"\" *ngIf=\"selectedJob.weather_machine_kind == 2\">NarclimObserved</div>\n                  <div class=\"\" *ngIf=\"selectedJob.weather_machine_kind == 3\">NarclimFuture</div>\n                </td>\n              </tr>\n              <tr>\n                <td>Harvesting</td>\n                <td>{{selectedJob.harvesting_on}}</td>\n              </tr>\n              <tr>\n                <td>Replicates</td>\n                <td>{{selectedJob.num_replicates}}</td>\n              </tr>\n              <tr>\n                <td>Simulation Duration</td>\n                <td>{{selectedJob.regsim_duration}}</td>\n              </tr>\n            </tbody>\n          </table>\n        </div>\n        <div class=\"ui attached stackable compact steps\">\n\n          <div class=\"step\"  [ngClass]=\"selectedJob.status == 1 ? 'active' : ''\">\n            <i class=\"cloud upload icon\"></i>\n            <div class=\"content\">\n              <div class=\"title\">Submission</div>\n              <div class=\"description\">\n                <p>Submitted at: {{ selectedJob.submission_time | date}}</p>\n                <p>Submitted by: {{ selectedJob.submitter_name }}</p>\n              </div>\n            </div>\n          </div>\n\n          <!-- /* Active if running simulations */ //-->\n          <div class=\"step\" *ngIf=\"selectedJob.simulation_start_time\" [ngClass]=\"selectedJob.status == 2 ? 'active' : ''\">\n            <i class=\"microchip icon\"></i>\n            <div class=\"content\">\n              <div class=\"title\">Simulation / Compute</div>\n              <div class=\"description\">\n                <p>Started: {{ selectedJob.simulation_start_time }}</p>\n                <p *ngIf=\"selectedJob.status > 2\"><a href=\"\\\\{{ selectedJob.simulation_results_dir_path }}\">Simulation results</a></p>\n              </div>\n            </div>\n          </div>\n\n          <div class=\"disabled step\" *ngIf=\"!selectedJob.simulation_start_time\">\n            <i class=\"microchip icon\"></i>\n            <div class=\"content\">\n              <div class=\"title\">Simulation / Compute</div>\n            </div>\n          </div>\n\n          <!-- /* Active if running post-processing */ //-->\n          <div class=\"step\" *ngIf=\"selectedJob.post_proc_start_time\"  [ngClass]=\"selectedJob.status == 3 ? 'active' : ''\">\n            <i class=\"chart bar icon\"></i>\n            <div class=\"content\">\n              <div class=\"title\">Post-Processing</div>\n            <div class=\"description\">\n              <p>Started: {{ selectedJob.post_proc_start_time }}</p>\n              <p *ngIf=\"selectedJob.status > 3\"><a href=\"\\\\{{ selectedJob.post_proc_results_dir_path }}\">PP results</a></p>\n            </div>\n          </div>\n          </div>\n\n          <div class=\"disabled step\" *ngIf=\"!selectedJob.post_proc_start_time\">\n            <i class=\"chart bar icon\"></i>\n            <div class=\"content\">\n              <div class=\"title\">Post-Processing</div>\n          </div>\n      </div>\n\n\n          <div class=\"step\" *ngIf=\"selectedJob.job_failure_time\" [ngClass]=\"selectedJob.status == 5 ? 'active' : ''\">\n            <i class=\"red bug icon\"></i>\n            <div class=\"content\">\n              <div class=\"title\">Error</div>\n            <div class=\"description\">\n              <p>Error occured: {{ selectedJob.job_failure_time }}</p>\n              <p *ngIf=\"selectedJob.status == 5\">{{ selectedJob.job_failure_error_message }}</p>\n            </div>\n          </div>\n          </div>\n\n          <div class=\"disabled step\" *ngIf=\"!selectedJob.job_failure_time\">\n            <i class=\"bug icon\"></i>\n            <div class=\"content\">\n              <div class=\"title\">No Errors</div>\n          </div>\n          </div>\n\n\n        </div>\n\n\n\n\n      </div>\n\n\n\n    </div>\n  </div>\n</div>\n\n\n<!-- {{ jobs | json }} -->\n";
     /***/
   },
 
@@ -1134,7 +1134,13 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
     var _jobstate_jobstate_component__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(
     /*! ./jobstate/jobstate.component */
-    "./src/app/jobstate/jobstate.component.ts"); // import { NgxDatatableModule } from '@swimlane/ngx-datatable';
+    "./src/app/jobstate/jobstate.component.ts");
+    /* harmony import */
+
+
+    var _e_num_as_string_pipe__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(
+    /*! ./e-num-as-string.pipe */
+    "./src/app/e-num-as-string.pipe.ts"); // import { NgxDatatableModule } from '@swimlane/ngx-datatable';
 
 
     var AppModule = function AppModule() {
@@ -1142,7 +1148,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     };
 
     AppModule = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([Object(_angular_core__WEBPACK_IMPORTED_MODULE_2__["NgModule"])({
-      declarations: [_app_component__WEBPACK_IMPORTED_MODULE_6__["AppComponent"], _jobs_jobs_component__WEBPACK_IMPORTED_MODULE_7__["JobsComponent"], _job_job_component__WEBPACK_IMPORTED_MODULE_8__["JobComponent"], _header_header_component__WEBPACK_IMPORTED_MODULE_9__["HeaderComponent"], _footer_footer_component__WEBPACK_IMPORTED_MODULE_10__["FooterComponent"], _job_submission_job_submission_component__WEBPACK_IMPORTED_MODULE_11__["JobSubmissionComponent"], _home_home_component__WEBPACK_IMPORTED_MODULE_12__["HomeComponent"], _jobstate_jobstate_component__WEBPACK_IMPORTED_MODULE_13__["JobstateComponent"]],
+      declarations: [_app_component__WEBPACK_IMPORTED_MODULE_6__["AppComponent"], _jobs_jobs_component__WEBPACK_IMPORTED_MODULE_7__["JobsComponent"], _job_job_component__WEBPACK_IMPORTED_MODULE_8__["JobComponent"], _header_header_component__WEBPACK_IMPORTED_MODULE_9__["HeaderComponent"], _footer_footer_component__WEBPACK_IMPORTED_MODULE_10__["FooterComponent"], _job_submission_job_submission_component__WEBPACK_IMPORTED_MODULE_11__["JobSubmissionComponent"], _home_home_component__WEBPACK_IMPORTED_MODULE_12__["HomeComponent"], _jobstate_jobstate_component__WEBPACK_IMPORTED_MODULE_13__["JobstateComponent"], _e_num_as_string_pipe__WEBPACK_IMPORTED_MODULE_14__["ENumAsStringPipe"]],
       imports: [_angular_platform_browser__WEBPACK_IMPORTED_MODULE_1__["BrowserModule"], _app_routing_module__WEBPACK_IMPORTED_MODULE_3__["AppRoutingModule"], _angular_forms__WEBPACK_IMPORTED_MODULE_4__["FormsModule"], _angular_forms__WEBPACK_IMPORTED_MODULE_4__["ReactiveFormsModule"], // NgxDatatableModule,
       ng2_semantic_ui__WEBPACK_IMPORTED_MODULE_5__["SuiModule"]],
       providers: [],
@@ -1206,7 +1212,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
     var host = 'insite.dss.cloud.bushfirebehaviour.net.au';
     var port = '';
-    var protocol = 'https';
+    var protocol = 'https'; // const protocol = 'http';
 
     var DataService = function DataService() {
       var _this = this;
@@ -1231,6 +1237,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
           _this.socket.emit('submission', formdata, function (ack) {
             console.log(ack);
             _this.temp = null;
+            observer.next(ack);
           });
 
           _this.socket.on('validation-error', function (ve) {
@@ -1241,6 +1248,11 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
           _this.socket.on('insertion-error', function (ie) {
             console.log(ie);
             observer.next(ie);
+          });
+
+          _this.socket.on('insert-success', function (ise) {
+            console.log(ise);
+            observer.next(ise);
           });
         });
       };
@@ -1259,6 +1271,62 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     DataService = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Injectable"])({
       providedIn: 'root'
     })], DataService);
+    /***/
+  },
+
+  /***/
+  "./src/app/e-num-as-string.pipe.ts":
+  /*!*****************************************!*\
+    !*** ./src/app/e-num-as-string.pipe.ts ***!
+    \*****************************************/
+
+  /*! exports provided: ENumAsStringPipe */
+
+  /***/
+  function srcAppENumAsStringPipeTs(module, __webpack_exports__, __webpack_require__) {
+    "use strict";
+
+    __webpack_require__.r(__webpack_exports__);
+    /* harmony export (binding) */
+
+
+    __webpack_require__.d(__webpack_exports__, "ENumAsStringPipe", function () {
+      return ENumAsStringPipe;
+    });
+    /* harmony import */
+
+
+    var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(
+    /*! tslib */
+    "./node_modules/tslib/tslib.es6.js");
+    /* harmony import */
+
+
+    var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(
+    /*! @angular/core */
+    "./node_modules/@angular/core/fesm2015/core.js");
+
+    var ENumAsStringPipe =
+    /*#__PURE__*/
+    function () {
+      function ENumAsStringPipe() {
+        _classCallCheck(this, ENumAsStringPipe);
+      }
+
+      _createClass(ENumAsStringPipe, [{
+        key: "transform",
+        value: function transform(value, enumType) {
+          return enumType[value].split(/(?=[A-Z])/).join().replace(",", " ");
+          ;
+        }
+      }]);
+
+      return ENumAsStringPipe;
+    }();
+
+    ENumAsStringPipe = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Pipe"])({
+      name: 'eNumAsString'
+    })], ENumAsStringPipe);
     /***/
   },
 
@@ -1826,7 +1894,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     /* harmony default export */
 
 
-    __webpack_exports__["default"] = ".selectable_row {\n    cursor: pointer;\n    background-color: rgba(255,255,255, 1.0);\n}\n.selectable_row:hover {\n    background-color: rgba(0,24,1250,0.02);\n}\n\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvam9icy9qb2JzLmNvbXBvbmVudC5jc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7SUFDSSxlQUFlO0lBQ2Ysd0NBQXdDO0FBQzVDO0FBQ0E7SUFDSSxzQ0FBc0M7QUFDMUMiLCJmaWxlIjoic3JjL2FwcC9qb2JzL2pvYnMuY29tcG9uZW50LmNzcyIsInNvdXJjZXNDb250ZW50IjpbIi5zZWxlY3RhYmxlX3JvdyB7XG4gICAgY3Vyc29yOiBwb2ludGVyO1xuICAgIGJhY2tncm91bmQtY29sb3I6IHJnYmEoMjU1LDI1NSwyNTUsIDEuMCk7XG59XG4uc2VsZWN0YWJsZV9yb3c6aG92ZXIge1xuICAgIGJhY2tncm91bmQtY29sb3I6IHJnYmEoMCwyNCwxMjUwLDAuMDIpO1xufVxuIl19 */";
+    __webpack_exports__["default"] = ".selectable_row {\n    cursor: pointer;\n    background-color: rgba(255,255,255, 1.0);\n}\n.selectable_row:hover {\n    background-color: rgba(0,24,1250,0.2) !important;\n}\n.ui.steps .step.disabled {\n  background-color: rgba(234,234,234,1.0) !important;\n}\n.ui.steps .step,\n.ui.steps .step.active {\n  background-color: rgba(255,255,255,1.0) !important;\n}\n.ui.steps .step.active .icon {\n  color: rgba(73, 128, 182, 1) !important;\n}\n\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvam9icy9qb2JzLmNvbXBvbmVudC5jc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7SUFDSSxlQUFlO0lBQ2Ysd0NBQXdDO0FBQzVDO0FBQ0E7SUFDSSxnREFBZ0Q7QUFDcEQ7QUFDQTtFQUNFLGtEQUFrRDtBQUNwRDtBQUNBOztFQUVFLGtEQUFrRDtBQUNwRDtBQUNBO0VBQ0UsdUNBQXVDO0FBQ3pDIiwiZmlsZSI6InNyYy9hcHAvam9icy9qb2JzLmNvbXBvbmVudC5jc3MiLCJzb3VyY2VzQ29udGVudCI6WyIuc2VsZWN0YWJsZV9yb3cge1xuICAgIGN1cnNvcjogcG9pbnRlcjtcbiAgICBiYWNrZ3JvdW5kLWNvbG9yOiByZ2JhKDI1NSwyNTUsMjU1LCAxLjApO1xufVxuLnNlbGVjdGFibGVfcm93OmhvdmVyIHtcbiAgICBiYWNrZ3JvdW5kLWNvbG9yOiByZ2JhKDAsMjQsMTI1MCwwLjIpICFpbXBvcnRhbnQ7XG59XG4udWkuc3RlcHMgLnN0ZXAuZGlzYWJsZWQge1xuICBiYWNrZ3JvdW5kLWNvbG9yOiByZ2JhKDIzNCwyMzQsMjM0LDEuMCkgIWltcG9ydGFudDtcbn1cbi51aS5zdGVwcyAuc3RlcCxcbi51aS5zdGVwcyAuc3RlcC5hY3RpdmUge1xuICBiYWNrZ3JvdW5kLWNvbG9yOiByZ2JhKDI1NSwyNTUsMjU1LDEuMCkgIWltcG9ydGFudDtcbn1cbi51aS5zdGVwcyAuc3RlcC5hY3RpdmUgLmljb24ge1xuICBjb2xvcjogcmdiYSg3MywgMTI4LCAxODIsIDEpICFpbXBvcnRhbnQ7XG59XG4iXX0= */";
     /***/
   },
 
@@ -1875,6 +1943,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         _classCallCheck(this, JobsComponent);
 
         this.dataService = dataService;
+        this.jobs = [];
       }
 
       _createClass(JobsComponent, [{
@@ -1882,18 +1951,21 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         value: function ngOnInit() {
           var _this3 = this;
 
-          this.jobs = [];
           this.dataService.getJobs().subscribe(function (data) {
             console.log(data);
-
-            _this3.jobs.push(JSON.parse(data)); // this.jobs.sort((a, b) => (a.task.progress > b.task.progress) ? -1 : 1);
-
+            _this3.jobs = data; // TODO sort ordering (by status?)
           });
         }
       }, {
         key: "selectJob",
         value: function selectJob(job) {
           this.selectedJob = job;
+        }
+      }, {
+        key: "trueValue",
+        value: function trueValue(v, k) {
+          console.log(k);
+          return "string";
         }
       }]);
 
