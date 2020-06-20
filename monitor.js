@@ -262,7 +262,7 @@ io.on('connection', (socket) => {
 INNER JOIN job_to_jobstate ON job.id=job_to_jobstate.id AND job_to_jobstate.jobid = job_state.id
 ORDER BY job_failure_time, submission_time`;
 
-    db.runAsync(advanced_sql).then(results => {
+    db.allAsync(advanced_sql).then(results => {
         console.log("SUCCESS!")
         console.log(results);
         socket.emit('error-list', results);
@@ -299,7 +299,7 @@ ORDER BY job_failure_time, submission_time`;
 INNER JOIN 'job_to_jobstate' ON job.id=job_to_jobstate.id AND job_to_jobstate.jobid = job_state.id
 ORDER BY submission_time, submitter_name`;
 
-    db.allAsync(advanced_sql).then(results => {
+    db.allAsync(basic_sql).then(results => {
           console.log("SUCCESS!")
           console.log(results);
           socket.emit('jobs-list', results);
@@ -307,7 +307,7 @@ ORDER BY submission_time, submitter_name`;
           console.error("Jobs Listing FAILED: " + err);
           socket.emit('jobs-error', {
             error: err,
-            sql: advanced_sql
+            sql: basic_sql
           });
       });
     });
