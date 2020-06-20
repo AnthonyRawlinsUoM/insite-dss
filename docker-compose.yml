@@ -22,7 +22,7 @@ services:
           - ./data/insite/database:/usr/src/app/database
         networks:
             - staging-network
-            - insite-network
+            # - insite-network
         deploy:
             placement:
                 constraints:
@@ -37,10 +37,38 @@ services:
               - "traefik.http.services.insite.loadbalancer.server.port=8181"
               - "traefik.http.services.insite.loadbalancer.passhostheader=true"
               - "traefik.docker.network=staging-network"
-
+    # db:
+    #     image: postgres
+    #     environment:
+    #       POSTGRES_PASSWORD: example
+    #       PGDATA: /var/lib/postgresql/data/pgdata
+    #     volumes:
+    #       - ./data/insite/postgres:/var/lib/postgresql/data
+    #     networks:
+    #       - insite-network
+    #     ports:
+    #       - "5432:5432"
+    #     deploy:
+    #         mode: replicated
+    #         replicas: 1
+    #         placement:
+    #             constraints:
+    #               - node.role == manager
+    #               - node.hostname == Charcoal
+    #         labels:
+    #           - traefik.frontend.rule=Host:db.lightning.deepblack.cloud
+    #           - traefik.backend.loadbalancer.swarm=true
+    #           - traefik.docker.network=traefik-network
+    #           - traefik.enable=true
+    #           - traefik.frontend.passHostHeader=true
+    #           - traefik.port=5432
+    #           - traefik.redirectorservice.frontend.entryPoints=http
+    #           - traefik.redirectorservice.frontend.redirect.entryPoint=https
+    #           - traefik.tags=traefik-network
+    #           - traefik.webservice.frontend.entryPoints=https
 networks:
-    insite-network:
-        driver: overlay
-        attachable: true
+    # insite-network:
+    #     driver: overlay
+    #     attachable: true
     staging-network:
         external: true
