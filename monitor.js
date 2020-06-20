@@ -304,8 +304,9 @@ ORDER BY job_failure_time, submission_time`;
       }
     });
 
-    let advanced_sql = `SELECT * FROM 'job', 'job_state'
-INNER JOIN 'job_to_jobstate' ON job.id=job_to_jobstate.id AND job_to_jobstate.jobid = job_state.id
+    let advanced_sql = `SELECT * FROM 'job'
+INNER JOIN 'job_to_jobstate' ON job.id=job_to_jobstate.id
+INNER JOIN 'job_state' ON job_to_jobstate.jobid = job_state.id
 ORDER BY submission_time, submitter_name`;
 
     db.allAsync(advanced_sql).then(results => {
