@@ -390,6 +390,8 @@ io.init = function() {
 
 io.init().then(
   io.listen(port, () => {
-    console.log('INSITE Server running on', port);
+    console.log('INSITE Server: running on', port);
   })
-);
+).catch(err => {
+  console.error('INSITE Server: Failed to initialise Database!');
+});
