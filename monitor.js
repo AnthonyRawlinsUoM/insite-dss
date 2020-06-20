@@ -309,7 +309,6 @@ ORDER BY job_failure_time, submission_time`;
       });
     });
 
-  });
 
 
   socket.on('list-jobs', () => {
