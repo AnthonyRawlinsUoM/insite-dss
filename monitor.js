@@ -218,8 +218,6 @@ io.on('connection', (socket) => {
         let statement = `INSERT INTO "job"('name', 'descr', 'uuid', 'submitter_name', 'submission_time', 'submitter_email', 'weather_machine_kind', 'fuel_machine_kind', 'planburn_target_perc', 'regsim_duration', 'num_replicates', 'harvesting_on') VALUES("${job.name}", "${job.descr}", "${job.uuid}", "${job.submitter_name}", "${job.submission_time}", "${job.submitter_email}", ${job.weather_machine_kind}, ${job.fuel_machine_kind}, ${job.planburn_target_perc.valueOf()}, ${job.regsim_duration.valueOf()}, ${job.num_replicates.valueOf()}, "${job.harvesting_on}");`;
 
 
-        // let add_state_sql = `BEGIN TRANSACTION; INSERT INTO "job_state"('status') VALUES (1); INSERT INTO "job_to_job_state"() VALUES ();`;
-
         db.runAsync(statement).then(results => {
             console.log("SUCCESS!")
 
@@ -233,20 +231,6 @@ io.on('connection', (socket) => {
             });
         });
       }
-
-    // Write the XML
-    // let out_xml = js2xmlparser.parse("glaciator_parameters", job);
-    // console.log(out_xml);
-    // let out_name = job.uuid + '.xml';
-    // let out_path = path.join(directoryPath, out_name);
-    // console.log(out_path);
-    // //
-    // fs.writeFile(out_path, out_xml, function(err) {
-    //   if (err) throw err;
-    //   console.log('Saved!');
-    // });
-    //
-    // passToGlaciator(['--xml', out_name]);
   });
 
 
@@ -291,8 +275,6 @@ ORDER BY job_failure_time, submission_time`;
       }
     });
 
-    let q = [];
-
     // Read the Jobs table from the SQLite DB
     let basic_sql = `SELECT DISTINCT * FROM 'job' WHERE id NOT IN (SELECT DISTINCT jobid FROM 'job_to_jobstate') ORDER BY submission_time;`;
 
@@ -322,8 +304,6 @@ ORDER BY job_failure_time, submission_time`;
       }
     });
 
-    let q = [];
-
     let advanced_sql = `SELECT * FROM 'job', 'job_state'
 INNER JOIN 'job_to_jobstate' ON job.id=job_to_jobstate.id AND job_to_jobstate.jobid = job_state.id
 ORDER BY submission_time, submitter_name`;
@@ -340,35 +320,6 @@ ORDER BY submission_time, submitter_name`;
           });
       });
     });
-
-    //passsing directoryPath and callback function
-    // fs.readdir(directoryPath, function(err, files) {
-    //   //handling error
-    //   if (err) {
-    //     return console.log('Unable to scan directory: ' + err);
-    //   }
-    //   //listing all files using forEach
-    //   files.forEach(function(file) {
-    //     // Do whatever you want to do with the file
-    //     console.log(file);
-    //
-    //     fs.readFile(path.join(directoryPath, file), function(err, data) {
-    //       if (err) {
-    //         return console.log('Reading file failed');
-    //       }
-    //       console.log('Parsing...');
-    //
-    //       let json = parser.toJson(data);
-    //       let gp = JSON.parse(json);
-    //       console.log(gp);
-    //       q.push(gp.glaciator_parameters);
-    //
-    //       // Read the contents of the xml documents in the queue folder
-    //       socket.emit('jobs-list', gp.glaciator_parameters);
-    //     });
-    //   });
-    // });
-  // });
 
   io.emit('log', 'User with Session ID: ' + socket.id + ' has connected.');
 
@@ -422,5 +373,5 @@ server.init().then(
     console.log('INSITE Server: running on', port);
   })
 ).catch(err => {
-  console.error('INSITE Server: Failed to initialise Database!');
+  console.error('INSITE Server: Failed to initialise Database!', err);
 });
