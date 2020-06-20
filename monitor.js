@@ -375,13 +375,15 @@ io.init = function() {
       }
     });
 
-    db.runBatchAsync(statements).then(results => {
-        console.log("SQL SUCCESS!")
-        console.log(results);
-        resolve();
-    }).catch(err => {
-        console.error("SQL FAILED: " + err);
-        reject(err);
+    statements.forEach(statement => {
+        db.runAsync(statement).then(results => {
+          console.log("SQL SUCCESS!")
+          console.log(results);
+          resolve();
+      }).catch(err => {
+          console.error("SQL FAILED: " + err);
+          reject(err);
+      });
     });
   });
 }
