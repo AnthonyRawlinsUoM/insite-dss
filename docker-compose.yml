@@ -22,7 +22,7 @@ services:
           - ./data/insite/database:/usr/src/app/database
         networks:
             - staging-network
-            # - insite-network
+            - insite-network
         deploy:
             placement:
                 constraints:
@@ -67,8 +67,8 @@ services:
     #           - traefik.tags=traefik-network
     #           - traefik.webservice.frontend.entryPoints=https
 networks:
-    # insite-network:
-    #     driver: overlay
-    #     attachable: true
+    insite-network:
+        driver: overlay
+        attachable: true
     staging-network:
         external: true

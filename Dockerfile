@@ -11,7 +11,7 @@ COPY package.json .
 RUN npm install
 
 COPY monitor.js .
-COPY ./dist .
+COPY ./dist ./dist
 COPY config.js .
 COPY glaciatorParametersSchema.json .
 

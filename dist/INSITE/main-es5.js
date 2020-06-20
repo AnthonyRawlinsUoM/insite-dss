@@ -1207,10 +1207,10 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     /*! rxjs/Observable */
     "./node_modules/rxjs-compat/_esm2015/Observable.js"); // const host = '127.0.0.1';
     // const port = ':8181';
-    // const host = 'insite.lightning.deepblack.cloud';
 
 
-    var host = 'insite.dss.cloud.bushfirebehaviour.net.au';
+    var host = 'insite.lightning.deepblack.cloud'; // const host = 'insite.dss.cloud.bushfirebehaviour.net.au';
+
     var port = '';
     var protocol = 'https'; // const protocol = 'http';
 
