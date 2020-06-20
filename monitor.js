@@ -267,7 +267,7 @@ ORDER BY job_failure_time, submission_time`;
         console.log(results);
         socket.emit('error-list', results);
     }).catch(err => {
-        console.error("BATCH FAILED: " + err);
+        console.error("Reading Errors FAILED: " + err);
         socket.emit('list-error', {
           error: err,
           sql: advanced_sql
@@ -293,10 +293,10 @@ ORDER BY job_failure_time, submission_time`;
     let q = [];
 
     // Read the Jobs table from the SQLite DB
-    let basic_sql = `SELECT DISTINCT * FROM job ORDER BY submission_time`;
+    let basic_sql = `SELECT DISTINCT * FROM 'job' ORDER BY submission_time`;
 
-    let advanced_sql = `SELECT * FROM job, job_state
-INNER JOIN job_to_jobstate ON job.id=job_to_jobstate.id AND job_to_jobstate.jobid = job_state.id
+    let advanced_sql = `SELECT * FROM 'job', 'job_state'
+INNER JOIN 'job_to_jobstate' ON job.id=job_to_jobstate.id AND job_to_jobstate.jobid = job_state.id
 ORDER BY submission_time, submitter_name`;
 
     db.allAsync(advanced_sql).then(results => {
@@ -304,7 +304,7 @@ ORDER BY submission_time, submitter_name`;
           console.log(results);
           socket.emit('jobs-list', results);
       }).catch(err => {
-          console.error("BATCH FAILED: " + err);
+          console.error("Jobs Listing FAILED: " + err);
           socket.emit('jobs-error', {
             error: err,
             sql: advanced_sql
