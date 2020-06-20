@@ -77,7 +77,6 @@ export class DataService {
   }
 
   public getQueue: any = () => {
-      throw new Error("Method not implemented.");
       return Observable.create((observer) => {
 
         this.socket.emit('queued-jobs', (ack) => {

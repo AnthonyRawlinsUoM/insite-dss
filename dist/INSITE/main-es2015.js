@@ -1073,7 +1073,6 @@ let JobsComponent = class JobsComponent {
         this.dataService = dataService;
         this.jobs = [];
         this.queue = [];
-        this.jobs = [];
     }
     ngOnInit() {
         this.dataService.getJobs().subscribe((data) => {

@@ -1958,7 +1958,6 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         this.dataService = dataService;
         this.jobs = [];
         this.queue = [];
-        this.jobs = [];
       }
 
       _createClass(JobsComponent, [{

@@ -1,7 +1,6 @@
 import { Component, OnInit, Pipe, PipeTransform } from '@angular/core';
 import { DataService } from '../data.service';
 import * as gp from '../GlaciatorParameters';
-import { ENumAsStringPipe } from '../e-num-as-string.pipe';
 
 @Component({
   selector: 'app-jobs',
@@ -36,12 +35,5 @@ export class JobsComponent implements OnInit {
 
   public selectJob(job){
     this.selectedJob = job;
-  }
-
-
-  public trueValue(v, k) {
-    console.log(k);
-
-    return "string";
   }
 }
