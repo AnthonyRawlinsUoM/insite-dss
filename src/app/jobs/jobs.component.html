@@ -27,7 +27,7 @@
           <td>{{ qjob.name }}</td>
           <td><a href="mailto:{{qjob.submitter_email}}">{{ qjob.submitter_name }}</a></td>
           <td>
-            <div class="" *ngIf="qjob.status == 1">New</div>
+            <div class="">Queued</div>
           </td>
         </tr>
 
@@ -43,10 +43,11 @@
           <td>{{ job.name }}</td>
           <td><a href="mailto:{{job.submitter_email}}">{{ job.submitter_name }}</a></td>
           <td>
-            <div class="" *ngIf="job.status == 2">Running Simulations</div>
-            <div class="" *ngIf="job.status == 3">Running Post-Processing</div>
-            <div class="" *ngIf="job.status == 4">Failed</div>
-            <div class="" *ngIf="job.status == 5">Complete</div>
+            <div class="" *ngIf="job.status == 20">Running Simulations</div>
+            <div class="" *ngIf="job.status == 30">Running Post-Processing</div>
+            <div class="" *ngIf="job.status == 40">Simulations Failed</div>
+            <div class="" *ngIf="job.status == 50">Post-processing Failed</div>
+            <div class="" *ngIf="job.status == 100">Complete</div>
           </td>
         </tr>
       </tbody>
@@ -70,41 +71,6 @@
         <p class="card-text">
           {{selectedJob.descr}}
         </p>
-
-        <!--
-
-        export enum TimeframeOptions {
-          TWENTY = 20,
-          FIFTY = 50
-        }
-
-        export enum ReplicateOptions {
-          TEN = 10,
-          TWENTY_FIVE = 25,
-          FIFTY = 50
-        }
-
-        export enum WeatherMachineKind {
-          Interpol = 1,
-          NarclimObserved = 2,
-          NarclimFuture = 3
-        }
-
-        export enum FuelMachineKind {
-          InvexpWithLandis = 1,
-          NarclimObservedWithLandis = 2,
-          NarclimFutureWithLandis = 3
-        }
-
-        export enum WebJobStatus {
-          New = 1,
-          RunningSimulations = 2,
-          RunningPostProcessing = 3,
-          Failed = 4,
-          Completed = 5
-        }
-
-      -->
 
         <div class="ui attached segment">
           <h3 class="header">Job Parameters</h3>

@@ -42,11 +42,12 @@ export enum FuelMachineKind {
 }
 
 export enum WebJobStatus {
-  New = 1,
-  RunningSimulations = 2,
-  RunningPostProcessing = 3,
-  Failed = 4,
-  Completed = 5
+  New = 10,
+  RunningSimulations = 20,
+  RunningPostProcessing = 30,
+  SimulationFailed = 40,
+  PostProcessingFailed = 50,
+  Completed = 100
 }
 
 

@@ -1266,7 +1266,6 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       };
 
       this.getQueue = function () {
-        throw new Error("Method not implemented.");
         return rxjs_Observable__WEBPACK_IMPORTED_MODULE_3__["Observable"].create(function (observer) {
           _this.socket.emit('queued-jobs', function (ack) {
             console.log(ack);
@@ -1978,12 +1977,6 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         key: "selectJob",
         value: function selectJob(job) {
           this.selectedJob = job;
-        }
-      }, {
-        key: "trueValue",
-        value: function trueValue(v, k) {
-          console.log(k);
-          return "string";
         }
       }]);
 

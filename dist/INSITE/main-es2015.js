@@ -656,7 +656,6 @@ let DataService = class DataService {
             });
         };
         this.getQueue = () => {
-            throw new Error("Method not implemented.");
             return rxjs_Observable__WEBPACK_IMPORTED_MODULE_3__["Observable"].create((observer) => {
                 this.socket.emit('queued-jobs', (ack) => {
                     console.log(ack);
@@ -1086,10 +1085,6 @@ let JobsComponent = class JobsComponent {
     }
     selectJob(job) {
         this.selectedJob = job;
-    }
-    trueValue(v, k) {
-        console.log(k);
-        return "string";
     }
 };
 JobsComponent.ctorParameters = () => [
