@@ -18,6 +18,7 @@ const protocol = 'https';
 })
 export class DataService {
 
+
   private socket;
 
   temp;
@@ -73,6 +74,20 @@ export class DataService {
         observer.next(job);
       });
     });
+  }
+
+  public getQueue: any = () => {
+      throw new Error("Method not implemented.");
+      return Observable.create((observer) => {
+
+        this.socket.emit('queued-jobs', (ack) => {
+            console.log(ack);
+        });
+
+        this.socket.on('jobs-queue', (jobs) => {
+          observer.next(jobs);
+        });
+      });
   }
 
   // public getInsertionErrors = () => {

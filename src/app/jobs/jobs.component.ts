@@ -12,6 +12,7 @@ export class JobsComponent implements OnInit {
 
 
       jobs: any[];
+      queue: any[];
       selectedJob: any;
 
   constructor(public dataService: DataService) {
@@ -25,6 +26,10 @@ export class JobsComponent implements OnInit {
 
         this.jobs = data; // TODO sort ordering (by status?)
     });
+    this.dataService.getQueue().subscribe((data) => {
+      console.log(data);
+      this.queue = data;
+    });
   }
 
 
@@ -35,7 +40,7 @@ export class JobsComponent implements OnInit {
 
   public trueValue(v, k) {
     console.log(k);
-    
+
     return "string";
   }
 }

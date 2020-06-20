@@ -215,10 +215,14 @@ io.on('connection', (socket) => {
           }
         });
 
-        let statement = `INSERT INTO "job"('name', 'descr', 'uuid', 'submitter_name', 'submission_time', 'submitter_email', 'weather_machine_kind', 'fuel_machine_kind', 'planburn_target_perc', 'regsim_duration', 'num_replicates', 'harvesting_on') VALUES("${job.name}", "${job.descr}", "${job.uuid}", "${job.submitter_name}", "${job.submission_time}", "${job.submitter_email}", ${job.weather_machine_kind}, ${job.fuel_machine_kind}, ${job.planburn_target_perc.valueOf()}, ${job.regsim_duration.valueOf()}, ${job.num_replicates.valueOf()}, "${job.harvesting_on}")`;
+        let statement = `INSERT INTO "job"('name', 'descr', 'uuid', 'submitter_name', 'submission_time', 'submitter_email', 'weather_machine_kind', 'fuel_machine_kind', 'planburn_target_perc', 'regsim_duration', 'num_replicates', 'harvesting_on') VALUES("${job.name}", "${job.descr}", "${job.uuid}", "${job.submitter_name}", "${job.submission_time}", "${job.submitter_email}", ${job.weather_machine_kind}, ${job.fuel_machine_kind}, ${job.planburn_target_perc.valueOf()}, ${job.regsim_duration.valueOf()}, ${job.num_replicates.valueOf()}, "${job.harvesting_on}");`;
+
+
+        // let add_state_sql = `BEGIN TRANSACTION; INSERT INTO "job_state"('status') VALUES (1); INSERT INTO "job_to_job_state"() VALUES ();`;
 
         db.runAsync(statement).then(results => {
             console.log("SUCCESS!")
+
             console.log(results);
             socket.emit('insert-success', results);
         }).catch(err => {
@@ -276,7 +280,36 @@ ORDER BY job_failure_time, submission_time`;
   });
 
 
+  socket.on('queued-jobs', ()=> {
+    console.log('Listing all jobs!');
 
+    let db = new sqlite.Database('database/web_frost_job_queue.sqlite', (err)=> {
+      if(err) {
+        console.log('Could not connect to Database!', err);
+      } else {
+        console.log('Connected to Database!');
+      }
+    });
+
+    let q = [];
+
+    // Read the Jobs table from the SQLite DB
+    let basic_sql = `SELECT DISTINCT * FROM 'job' WHERE id NOT IN (SELECT DISTINCT jobid FROM 'job_to_jobstate') ORDER BY submission_time;`;
+
+    db.allAsync(basic_sql).then(results => {
+          console.log("SUCCESS!")
+          console.log(results);
+          socket.emit('jobs-queue', results);
+      }).catch(err => {
+          console.error("Jobs Queue FAILED: " + err);
+          socket.emit('jobs-error', {
+            error: err,
+            sql: basic_sql
+          });
+      });
+    });
+
+  });
 
 
   socket.on('list-jobs', () => {
@@ -292,14 +325,11 @@ ORDER BY job_failure_time, submission_time`;
 
     let q = [];
 
-    // Read the Jobs table from the SQLite DB
-    let basic_sql = `SELECT DISTINCT * FROM 'job' ORDER BY submission_time`;
-
     let advanced_sql = `SELECT * FROM 'job', 'job_state'
 INNER JOIN 'job_to_jobstate' ON job.id=job_to_jobstate.id AND job_to_jobstate.jobid = job_state.id
 ORDER BY submission_time, submitter_name`;
 
-    db.allAsync(basic_sql).then(results => {
+    db.allAsync(advanced_sql).then(results => {
           console.log("SUCCESS!")
           console.log(results);
           socket.emit('jobs-list', results);
@@ -307,7 +337,7 @@ ORDER BY submission_time, submitter_name`;
           console.error("Jobs Listing FAILED: " + err);
           socket.emit('jobs-error', {
             error: err,
-            sql: basic_sql
+            sql: advanced_sql
           });
       });
     });

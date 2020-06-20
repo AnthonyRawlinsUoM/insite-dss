@@ -15,6 +15,23 @@
         </tr>
       </thead>
       <tbody>
+
+        <tr
+            *ngFor="let qjob of queue"
+            (click)="selectJob(qjob)"
+            class="selectable_row"
+        >
+
+          <td class="collapsing"><i class="ui blue info circle icon"></i> </td>
+          <td>{{ qjob.submission_time | date }}</td>
+          <td>{{ qjob.name }}</td>
+          <td><a href="mailto:{{qjob.submitter_email}}">{{ qjob.submitter_name }}</a></td>
+          <td>
+            <div class="" *ngIf="qjob.status == 1">New</div>
+          </td>
+        </tr>
+
+
         <tr
             *ngFor="let job of jobs"
             (click)="selectJob(job)"
@@ -26,7 +43,6 @@
           <td>{{ job.name }}</td>
           <td><a href="mailto:{{job.submitter_email}}">{{ job.submitter_name }}</a></td>
           <td>
-            <div class="" *ngIf="job.status == 1">New</div>
             <div class="" *ngIf="job.status == 2">Running Simulations</div>
             <div class="" *ngIf="job.status == 3">Running Post-Processing</div>
             <div class="" *ngIf="job.status == 4">Failed</div>
