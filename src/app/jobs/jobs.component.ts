@@ -11,12 +11,13 @@ import { ENumAsStringPipe } from '../e-num-as-string.pipe';
 export class JobsComponent implements OnInit {
 
 
-      jobs: any[] = [];
-      queue: any[] = [];
+      jobs: any[];
+      queue: any[];
       selectedJob: any;
 
   constructor(public dataService: DataService) {
     this.jobs = [];
+    this.queue = [];
   }
 
   ngOnInit() {
