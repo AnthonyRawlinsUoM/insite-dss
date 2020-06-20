@@ -222,7 +222,7 @@ io.on('connection', (socket) => {
             console.log(results);
             socket.emit('insert-success', results);
         }).catch(err => {
-            console.error("BATCH FAILED: " + err);
+            console.error("INSERT FAILED: " + err);
             socket.emit('insertion-error', {
               error: err,
               sql: statement
@@ -361,7 +361,7 @@ let statements = [
 'CREATE TABLE IF NOT EXISTS "job_state"("id" integer, "status" text NOT NULL, "simulation_start_time" datetime, "post_proc_start_time" datetime, "simulation_results_dir_path" text,  "post_proc_results_dir_path" text,  "job_failure_time" datetime, "job_completion_time" datetime, "job_failure_error_message" varchar)',
 'CREATE TABLE IF NOT EXISTS "job_to_jobstate"("id" integer NOT NULL, "jobid" integer NOT NULL)'];
 
-server.init = function() {
+io.init = function() {
   return new Promise((resolve, reject) => {
     console.log('Doing SQL initialisation!');
 
@@ -386,8 +386,8 @@ server.init = function() {
   });
 }
 
-server.init().then(
-  server.listen(port, () => {
+io.init().then(
+  io.listen(port, () => {
     console.log('INSITE Server running on', port);
   })
 );
