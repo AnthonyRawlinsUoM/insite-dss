@@ -21,7 +21,7 @@ services:
           # - PGDATABASE=WebFrostJobQueue_test1
           # - PGPORT=3211
 
-          - PGUSER=postgres
+          - PGUSER=WebFrostJobQueue_test1
           - PGHOST=db
           - PGPASSWORD=sultanofflame
           - PGDATABASE=WebFrostJobQueue_test1
@@ -54,8 +54,10 @@ services:
     db:
         image: postgres
         environment:
-          - PGUSER=postgres
+          - POSTGRES_USER=WebFrostJobQueue_test1
           - POSTGRES_PASSWORD=sultanofflame
+          - PGPASSWORD=sultanofflame
+          - POSTGRES_DB=WebFrostJobQueue_test1
           - PGDATA=/var/lib/postgresql/data/pgdata
         volumes:
           - ./data/insite/postgres:/var/lib/postgresql/data
@@ -68,7 +70,6 @@ services:
             replicas: 1
             placement:
                 constraints:
-                  - node.role == manager
                   - node.hostname == Charcoal
             labels:
               - traefik.frontend.rule=Host:db.lightning.deepblack.cloud

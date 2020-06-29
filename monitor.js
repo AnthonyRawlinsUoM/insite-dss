@@ -18,7 +18,7 @@ const { validate } = require('jsonschema');
 
 const { Pool, Client } = require('pg');
 const pool = new Pool({
-  user: 'postgres',
+  user: 'WebFrostJobQueue_test1',
   host: 'db',
   database: 'WebFrostJobQueue_test1',
   password: 'sultanofflame',
