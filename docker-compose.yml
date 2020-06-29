@@ -23,7 +23,7 @@ services:
           # - PGPORT=3211
 
           - PGUSER=postgres
-          - PGHOST=postgreserver
+          - PGHOST=192.168.1.181
           - PGPASSWORD=secret
           - PGDATABASE=postgres
           - PGPORT=5432
