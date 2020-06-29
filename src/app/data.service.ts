@@ -3,15 +3,15 @@ import io from 'socket.io-client';
 import { Observable } from 'rxjs/Observable';
 import { GlaciatorParameters } from './GlaciatorParameters';
 
-const host = '127.0.0.1';
-const port = ':8181';
-
-// const host = 'insite.lightning.deepblack.cloud';
+// const protocol = 'http';
+// const host = '127.0.0.1';
 // const host = 'insite.dss.cloud.bushfirebehaviour.net.au';
+// const port = ':8181';
 
-// const port = '';
-// const protocol = 'https';
-const protocol = 'http';
+const protocol = process.env.PROTOCOL || 'https';
+const host = process.env.WEB || 'insite.lightning.deepblack.cloud';
+const port = process.env.PORT || '';
+
 
 @Injectable({
   providedIn: 'root'

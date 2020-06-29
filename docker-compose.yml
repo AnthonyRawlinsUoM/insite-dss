@@ -28,6 +28,9 @@ services:
           - PGPASSWORD=secret
           - PGDATABASE=postgres
           - PGPORT=5432
+
+          - PROTOCOL=https
+          - WEB=insite.lightning.deepblack.cloud
         volumes:
           # - /nfs/pyromancer/Projects/DSS/data/insite/queue:/usr/src/app/queue
           # - /nfs/pyromancer/Projects/DSS/data/insite/executable:/usr/src/app/executable

@@ -33,7 +33,7 @@ const pool = new Pool({
   port: `${PG_PORT}`,
 });
 
-app.use(express.static(path.join(__dirname, '/dist/INSITE')));
+app.use(express.static(path.join(__dirname, '/INSITE')));
 
 app.use(function(req, res, next) {
   app.use(function(req, res, next) {
@@ -58,8 +58,8 @@ app.use(function(req, res, next) {
 });
 
 app.get('*', (req, res) => {
-  // res.sendFile(path.join(__dirname, '/INSITE/index.html'))
-  res.sendFile(path.join(__dirname, 'dist/INSITE/index.html'))
+  res.sendFile(path.join(__dirname, '/INSITE/index.html'))
+  // res.sendFile(path.join(__dirname, 'dist/INSITE/index.html'))
 });
 
 const port = process.env.PORT || '8181';
