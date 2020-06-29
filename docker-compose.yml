@@ -24,6 +24,18 @@ services:
             - staging-network
             - insite-network
         deploy:
+            environment:
+              # - PGUSER=postgres
+              # - PGHOST=10.101.95.197
+              # - PGPASSWORD=sultanofflame
+              # - PGDATABASE=WebFrostJobQueue_test1
+              # - PGPORT=3211
+
+              - PGUSER=postgres
+              - PGHOST=db
+              - PGPASSWORD=sultanofflame
+              - PGDATABASE=WebFrostJobQueue_test1
+              - PGPORT=5432
             placement:
                 constraints:
                   - node.role == manager
@@ -37,35 +49,36 @@ services:
               - "traefik.http.services.insite.loadbalancer.server.port=8181"
               - "traefik.http.services.insite.loadbalancer.passhostheader=true"
               - "traefik.docker.network=staging-network"
-    # db:
-    #     image: postgres
-    #     environment:
-    #       POSTGRES_PASSWORD: example
-    #       PGDATA: /var/lib/postgresql/data/pgdata
-    #     volumes:
-    #       - ./data/insite/postgres:/var/lib/postgresql/data
-    #     networks:
-    #       - insite-network
-    #     ports:
-    #       - "5432:5432"
-    #     deploy:
-    #         mode: replicated
-    #         replicas: 1
-    #         placement:
-    #             constraints:
-    #               - node.role == manager
-    #               - node.hostname == Charcoal
-    #         labels:
-    #           - traefik.frontend.rule=Host:db.lightning.deepblack.cloud
-    #           - traefik.backend.loadbalancer.swarm=true
-    #           - traefik.docker.network=traefik-network
-    #           - traefik.enable=true
-    #           - traefik.frontend.passHostHeader=true
-    #           - traefik.port=5432
-    #           - traefik.redirectorservice.frontend.entryPoints=http
-    #           - traefik.redirectorservice.frontend.redirect.entryPoint=https
-    #           - traefik.tags=traefik-network
-    #           - traefik.webservice.frontend.entryPoints=https
+    db:
+        image: postgres
+        environment:
+          - PGUSER=postgres
+          - POSTGRES_PASSWORD=sultanofflame
+          - PGDATA=/var/lib/postgresql/data/pgdata
+        volumes:
+          - ./data/insite/postgres:/var/lib/postgresql/data
+        networks:
+          - insite-network
+        ports:
+          - "5432:5432"
+        deploy:
+            mode: replicated
+            replicas: 1
+            placement:
+                constraints:
+                  - node.role == manager
+                  - node.hostname == Charcoal
+            labels:
+              - traefik.frontend.rule=Host:db.lightning.deepblack.cloud
+              - traefik.backend.loadbalancer.swarm=true
+              - traefik.docker.network=traefik-network
+              - traefik.enable=true
+              - traefik.frontend.passHostHeader=true
+              - traefik.port=5432
+              - traefik.redirectorservice.frontend.entryPoints=http
+              - traefik.redirectorservice.frontend.redirect.entryPoint=https
+              - traefik.tags=traefik-network
+              - traefik.webservice.frontend.entryPoints=https
 networks:
     insite-network:
         driver: overlay
