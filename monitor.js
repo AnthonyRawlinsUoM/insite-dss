@@ -18,11 +18,11 @@ const { validate } = require('jsonschema');
 
 const { Pool, Client } = require('pg');
 const pool = new Pool({
-  user: 'dbuser',
-  host: '127.0.0.1',
-  database: 'mydb',
-  password: 'secretpassword',
-  port: 3211,
+  user: 'postgres',
+  host: 'db',
+  database: 'WebFrostJobQueue_test1',
+  password: 'sultanofflame',
+  port: 5432,
 });
 
 

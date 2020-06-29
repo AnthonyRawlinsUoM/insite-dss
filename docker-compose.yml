@@ -14,6 +14,18 @@ services:
         image: anthonyrawlinsuom/insite-dss
         ports:
           - 8181:8181
+        environment:
+          # - PGUSER=postgres
+          # - PGHOST=10.101.95.197
+          # - PGPASSWORD=sultanofflame
+          # - PGDATABASE=WebFrostJobQueue_test1
+          # - PGPORT=3211
+
+          - PGUSER=postgres
+          - PGHOST=db
+          - PGPASSWORD=sultanofflame
+          - PGDATABASE=WebFrostJobQueue_test1
+          - PGPORT=5432
         volumes:
           # - /nfs/pyromancer/Projects/DSS/data/insite/queue:/usr/src/app/queue
           # - /nfs/pyromancer/Projects/DSS/data/insite/executable:/usr/src/app/executable
@@ -24,18 +36,6 @@ services:
             - staging-network
             - insite-network
         deploy:
-            environment:
-              # - PGUSER=postgres
-              # - PGHOST=10.101.95.197
-              # - PGPASSWORD=sultanofflame
-              # - PGDATABASE=WebFrostJobQueue_test1
-              # - PGPORT=3211
-
-              - PGUSER=postgres
-              - PGHOST=db
-              - PGPASSWORD=sultanofflame
-              - PGDATABASE=WebFrostJobQueue_test1
-              - PGPORT=5432
             placement:
                 constraints:
                   - node.role == manager
@@ -49,6 +49,8 @@ services:
               - "traefik.http.services.insite.loadbalancer.server.port=8181"
               - "traefik.http.services.insite.loadbalancer.passhostheader=true"
               - "traefik.docker.network=staging-network"
+
+
     db:
         image: postgres
         environment:
