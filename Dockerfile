@@ -9,7 +9,7 @@ RUN ssh-keygen -t rsa -f github_key
 
 COPY package.json .
 RUN npm install
-
+COPY wait-for-postgres.sh .
 COPY monitor.js .
 COPY ./dist .
 COPY config.js .
