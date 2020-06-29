@@ -12,7 +12,8 @@ services:
 
     app:
         image: anthonyrawlinsuom/insite-dss
-        command: ['./wait-for-postgres.sh', 'postgreserver', 'node', 'monitor.js']
+        # command: ['./wait-for-postgres.sh', 'postgreserver', 'node', 'monitor.js']
+        command: ['node', 'monitor.js']
         ports:
           - 8181:8181
         environment:

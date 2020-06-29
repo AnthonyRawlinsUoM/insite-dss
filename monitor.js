@@ -17,12 +17,20 @@ const directoryPath = path.join(__dirname, '/queue');
 const { validate } = require('jsonschema');
 
 const { Pool, Client } = require('pg');
+
+const PG_USER = process.env.PG_USER || 'postgres';
+const PG_HOST = process.env.PG_HOST || '192.168.1.181';
+const PG_DATABASE = process.env.PG_DATABASE || 'postgres';
+const PG_PASSWORD = process.env.PG_PASSWORD || 'secret';
+const PG_PORT = process.env.PG_PORT || '5432';
+
+
 const pool = new Pool({
-  user: 'postgres',
-  host: '127.0.0.1',
-  database: 'postgres',
-  password: 'secret',
-  port: 5432,
+  user: `${PG_USER}`,
+  host: `${PG_HOST}`,
+  database: `${PG_DATABASE}`,
+  password: `${PG_PASSWORD}`,
+  port: `${PG_PORT}`,
 });
 
 app.use(express.static(path.join(__dirname, '/dist/INSITE')));
