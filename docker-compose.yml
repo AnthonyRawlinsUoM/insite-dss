@@ -12,7 +12,7 @@ services:
 
     app:
         image: anthonyrawlinsuom/insite-dss
-        command: ['./wait-for-postgres.sh', 'db', 'node monitor.js']
+        command: ['./wait-for-postgres.sh', 'postgreserver', 'node', 'monitor.js']
         ports:
           - 8181:8181
         environment:
@@ -23,7 +23,7 @@ services:
           # - PGPORT=3211
 
           - PGUSER=postgres
-          - PGHOST=db
+          - PGHOST=postgreserver
           - PGPASSWORD=secret
           - PGDATABASE=postgres
           - PGPORT=5432
@@ -52,7 +52,7 @@ services:
               - "traefik.docker.network=staging-network"
 
 
-    db:
+    postgreserver:
         image: postgres
         environment:
           - POSTGRES_USER=postgres
@@ -73,7 +73,7 @@ services:
                 constraints:
                   - node.hostname == Charcoal
             labels:
-              - traefik.frontend.rule=Host:db.lightning.deepblack.cloud
+              - traefik.frontend.rule=Host:postgreserver.lightning.deepblack.cloud
               - traefik.backend.loadbalancer.swarm=true
               - traefik.docker.network=traefik-network
               - traefik.enable=true
