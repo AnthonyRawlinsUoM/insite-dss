@@ -25,4 +25,4 @@ FROM node:lts-alpine3.11
 WORKDIR /usr/src/app
 COPY --from=build /usr/src/app .
 EXPOSE 8181
-CMD [ "node", "monitor.js" ]
+# CMD [ "node", "monitor.js" ]

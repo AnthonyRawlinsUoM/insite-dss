@@ -12,6 +12,7 @@ services:
 
     app:
         image: anthonyrawlinsuom/insite-dss
+        command: ['./wait-for-postgres.sh', 'db', 'node monitor.js']
         ports:
           - 8181:8181
         environment:
@@ -21,10 +22,10 @@ services:
           # - PGDATABASE=WebFrostJobQueue_test1
           # - PGPORT=3211
 
-          - PGUSER=WebFrostJobQueue_test1
+          - PGUSER=postgres
           - PGHOST=db
-          - PGPASSWORD=sultanofflame
-          - PGDATABASE=WebFrostJobQueue_test1
+          - PGPASSWORD=secret
+          - PGDATABASE=postgres
           - PGPORT=5432
         volumes:
           # - /nfs/pyromancer/Projects/DSS/data/insite/queue:/usr/src/app/queue
@@ -54,10 +55,10 @@ services:
     db:
         image: postgres
         environment:
-          - POSTGRES_USER=WebFrostJobQueue_test1
-          - POSTGRES_PASSWORD=sultanofflame
-          - PGPASSWORD=sultanofflame
-          - POSTGRES_DB=WebFrostJobQueue_test1
+          - POSTGRES_USER=postgres
+          - POSTGRES_PASSWORD=secret
+          - PGPASSWORD=secret
+          - POSTGRES_DB=postgres
           - PGDATA=/var/lib/postgresql/data/pgdata
         volumes:
           - ./data/insite/postgres:/var/lib/postgresql/data
