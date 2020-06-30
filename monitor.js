@@ -55,6 +55,7 @@ app.get('*', (req, res) => {
   // res.sendFile(path.join(__dirname, 'dist/INSITE/index.html'))
 });
 
+const port = 8181;
 app.set('port', 8181);
 
 const server = http.createServer(app);
