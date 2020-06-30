@@ -303,38 +303,38 @@ ORDER BY submission_time, submitter_name`;
 
 
 
-let statements = [
-'CREATE TABLE IF NOT EXISTS "Job"("id" SERIAL PRIMARY KEY, "name" text NOT NULL, "descr" text NOT NULL, "uuid" text NOT NULL, "submitter_name" text NOT NULL, "submission_time" TIMESTAMP NOT NULL, "submitter_email" text NOT NULL, "weather_machine_kind" integer NOT NULL, "fuel_machine_kind" integer NOT NULL, "planburn_target_perc" integer NOT NULL, "regsim_duration" integer NOT NULL, "num_replicates" integer NOT NULL, "harvesting_on" boolean NOT NULL)',
-'CREATE TABLE IF NOT EXISTS "JobState"("id" SERIAL PRIMARY KEY, "status" text NOT NULL, "simulation_start_time" TIMESTAMP, "post_proc_start_time" TIMESTAMP, "simulation_results_dir_path" text,  "post_proc_results_dir_path" text,  "job_failure_time" TIMESTAMP, "job_completion_time" TIMESTAMP, "job_failure_error_message" varchar)',
-'CREATE TABLE IF NOT EXISTS "JobToJobState"("id" integer NOT NULL, "jobid" integer NOT NULL)'];
+// let statements = [
+// 'CREATE TABLE IF NOT EXISTS "Job"("id" SERIAL PRIMARY KEY, "name" text NOT NULL, "descr" text NOT NULL, "uuid" text NOT NULL, "submitter_name" text NOT NULL, "submission_time" TIMESTAMP NOT NULL, "submitter_email" text NOT NULL, "weather_machine_kind" integer NOT NULL, "fuel_machine_kind" integer NOT NULL, "planburn_target_perc" integer NOT NULL, "regsim_duration" integer NOT NULL, "num_replicates" integer NOT NULL, "harvesting_on" boolean NOT NULL)',
+// 'CREATE TABLE IF NOT EXISTS "JobState"("id" SERIAL PRIMARY KEY, "status" text NOT NULL, "simulation_start_time" TIMESTAMP, "post_proc_start_time" TIMESTAMP, "simulation_results_dir_path" text,  "post_proc_results_dir_path" text,  "job_failure_time" TIMESTAMP, "job_completion_time" TIMESTAMP, "job_failure_error_message" varchar)',
+// 'CREATE TABLE IF NOT EXISTS "JobToJobState"("id" integer NOT NULL, "jobid" integer NOT NULL)'];
 
-server.init = function() {
-  return new Promise((resolve, reject) => {
-    console.log('Doing SQL initialisation!');
+// server.init = function() {
+//   return new Promise((resolve, reject) => {
+//     // console.log('Doing SQL initialisation!');
+//
+//     console.log('INSITE is initialising...');
+//
+//     statements.forEach(statement => {
+//
+//       pool
+//       .query(statement, [])
+//       .then(res => {
+//         console.log("SQL SUCCESS!");
+//         resolve();
+//       })
+//       .catch(e => {
+//         console.error("SQL FAILED: " + e);
+//         console.error(e.stack);
+//         reject(e);
+//       });
+//     });
+//   });
+// }
 
-    console.log('INSITE is initialising...');
-
-    statements.forEach(statement => {
-
-      pool
-      .query(statement, [])
-      .then(res => {
-        console.log("SQL SUCCESS!");
-        resolve();
-      })
-      .catch(e => {
-        console.error("SQL FAILED: " + e);
-        console.error(e.stack);
-        reject(e);
-      });
-    });
-  });
-}
-
-server.init().then(
+// server.init().then(
   server.listen(port, () => {
     console.log('INSITE Server: running on', port);
   })
-).catch(err => {
-  console.error('INSITE Server: Failed to initialise Database!', err);
-});
+// ).catch(err => {
+  // console.error('INSITE Server: Failed to initialise Database!', err);
+// });
