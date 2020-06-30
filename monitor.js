@@ -58,6 +58,9 @@ app.get('*', (req, res) => {
 const port = 8181;
 app.set('port', port);
 
+const host = `${process.env.WEB}` || 'localhost';
+app.set('host', host);
+
 const server = http.createServer(app);
 const sioc = require('socket.io-client');
 const io = socketIO(server);

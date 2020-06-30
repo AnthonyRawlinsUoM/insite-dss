@@ -1,6 +1,6 @@
 {
   "name": "insite",
-  "version": "0.0.125",
+  "version": "0.0.126",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
@@ -44,7 +44,7 @@
   "devDependencies": {
     "@angular-devkit/build-angular": "^0.800.0",
     "@angular/cli": "^8.3.28",
-    "@angular/compiler-cli": "^8.0.0",
+    "@angular/compiler-cli": "^8.2.14",
     "@angular/language-service": "~8.2.5",
     "@types/jasmine": "~3.3.8",
     "@types/jasminewd2": "~2.0.3",
