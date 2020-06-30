@@ -61,16 +61,13 @@ services:
                 constraints:
                   - node.hostname == Charcoal
             labels:
-              - traefik.frontend.rule=Host:postgreserver.lightning.deepblack.cloud
-              - traefik.backend.loadbalancer.swarm=true
-              - traefik.docker.network=traefik-network
-              - traefik.enable=true
-              - traefik.frontend.passHostHeader=true
-              - traefik.port=5432
-              - traefik.redirectorservice.frontend.entryPoints=http
-              - traefik.redirectorservice.frontend.redirect.entryPoint=https
-              - traefik.tags=traefik-network
-              - traefik.webservice.frontend.entryPoints=https
+              - "traefik.enable=true"
+              - "traefik.http.routers.insite.rule=Host(`postgres.lightning.deepblack.cloud`)"
+              - "traefik.http.routers.insite.entrypoints=web-secured"
+              - "traefik.http.routers.insite.tls.certresolver=letsencryptresolver"
+              - "traefik.http.services.insite.loadbalancer.server.port=5432"
+              - "traefik.http.services.insite.loadbalancer.passhostheader=true"
+              - "traefik.docker.network=staging-network"
 networks:
     insite-network:
         driver: overlay
