@@ -11,7 +11,10 @@ COPY package.json .
 RUN npm install
 COPY wait-for-postgres.sh .
 COPY monitor.js .
-COPY ./dist .
+
+RUN mkdir -p /usr/src/app/dist
+
+COPY ./dist ./dist
 COPY config.js .
 COPY glaciatorParametersSchema.json .
 

@@ -3,14 +3,14 @@ import io from 'socket.io-client';
 import { Observable } from 'rxjs/Observable';
 import { GlaciatorParameters } from './GlaciatorParameters';
 
+const protocol = 'https';
+// const host = '127.0.0.1';
+const host = 'insite.dss.cloud.bushfirebehaviour.net.au';
+const port = '';
+
 // const protocol = 'http';
 // const host = '127.0.0.1';
-// const host = 'insite.dss.cloud.bushfirebehaviour.net.au';
-// const port = ':8181';
-
-const protocol = 'http';
-const host = '127.0.0.1';
-const port = '8181';
+// const port = ':8181'; // INCLUDE colon!
 
 
 @Injectable({
@@ -88,21 +88,4 @@ export class DataService {
         });
       });
   }
-
-  // public getInsertionErrors = () => {
-  //   return Observable.create((observer) => {
-  //     this.socket.on('insertion-error', (err) => {
-  //       observer.next(err);
-  //     });
-  //   });
-  // }
-  //
-  // public getValidationErrors = () => {
-  //   return Observable.create((observer) => {
-  //     this.socket.on('validation-error', (err) => {
-  //       observer.next(err);
-  //     });
-  //   });
-  // }
-
 }

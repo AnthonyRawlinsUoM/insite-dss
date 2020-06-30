@@ -18,21 +18,21 @@ const { validate } = require('jsonschema');
 
 const { Pool, Client } = require('pg');
 
-// const pool = new Pool({
-//   user: `${process.env.PG_USER}`,
-//   host: `${process.env.PG_HOST}`,
-//   database: `${process.env.PG_DATABASE}`,
-//   password: `${process.env.PG_PASSWORD}`,
-//   port: `${process.env.PG_PORT}`,
-// });
-
 const pool = new Pool({
-  user: 'postgres',
-  host: 'localhost',
-  database: 'postgres',
-  password: 'secret',
-  port: 5432,
+  user: `${process.env.PG_USER}`,
+  host: `${process.env.PG_HOST}`,
+  database: `${process.env.PG_DATABASE}`,
+  password: `${process.env.PG_PASSWORD}`,
+  port: `${process.env.PG_PORT}`,
 });
+
+// const pool = new Pool({
+//   user: 'postgres',
+//   host: 'localhost',
+//   database: 'postgres',
+//   password: 'secret',
+//   port: 5432,
+// });
 
 // app.use(express.static(path.join(__dirname, '/INSITE')));
 app.use(express.static(path.join(__dirname, '/dist/INSITE')));
@@ -67,7 +67,7 @@ app.get('*', (req, res) => {
 const port = 8181;
 app.set('port', port);
 
-const host = `${process.env.WEB}` || 'localhost';
+const host = `${process.env.WEB}` || '0.0.0.0';
 app.set('host', host);
 
 const server = http.createServer(app);
@@ -170,22 +170,42 @@ io.on('connection', (socket) => {
 
         socket.emit('submission-acknowledged', "ACK");
 
-        let statement = `INSERT INTO "job"('name', 'descr', 'uuid', 'submitter_name', 'submission_time', 'submitter_email', 'weather_machine_kind', 'fuel_machine_kind', 'planburn_target_perc', 'regsim_duration', 'num_replicates', 'harvesting_on') VALUES("${job.name}", "${job.descr}", "${job.uuid}", "${job.submitter_name}", "${job.submission_time}", "${job.submitter_email}", ${job.weather_machine_kind}, ${job.fuel_machine_kind}, ${job.planburn_target_perc.valueOf()}, ${job.regsim_duration.valueOf()}, ${job.num_replicates.valueOf()}, "${job.harvesting_on}");`;
+        console.log(job);
 
+        let text = `INSERT INTO job(name, descr, uuid, submitter_name, submission_time, submitter_email, weather_machine_kind, fuel_machine_kind, planburn_target_perc, regsim_duration, num_replicates, harvesting_on) VALUES($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12)`
+        let values = [
+          job.name,
+          job.descr,
+          job.uuid,
+          job.submitter_name,
+          job.submission_time,
+          job.submitter_email,
+          job.weather_machine_kind,
+          job.fuel_machine_kind,
+          job.planburn_target_perc.valueOf(),
+          job.regsim_duration.valueOf(),
+          job.num_replicates.valueOf(),
+          job.harvesting_on
+        ];
+
+        let query = {
+          // name: 'insert-submission',
+          text: text,
+          values: values
+        }
 
         pool
-        .query(statement, [])
+        .query(query)
         .then(res => {
-          console.log(res.rows[0]);
           console.log("SQL SUCCESS!")
-          socket.emit('insert-success', res);
+          socket.emit('insert-success', res.rows);
         })
         .catch(e => {
           console.error("SQL FAILED: " + e);
           console.error(e.stack);
           socket.emit('insertion-error', {
-            error: err,
-            sql: statement
+            error: e,
+            sql: query
           });
         });
       }
@@ -195,16 +215,18 @@ io.on('connection', (socket) => {
   socket.on('error-list', () => {
     // Status 4 = Errored
 
-    let advanced_sql = `SELECT DISTINCT * FROM job, job_state
+    let advanced_sql ={
+      text: `SELECT DISTINCT * FROM job, job_state
     WHERE status=4
 INNER JOIN job_to_jobstate ON job.id=job_to_jobstate.id AND job_to_jobstate.jobid = job_state.id
-ORDER BY job_failure_time, submission_time`;
+ORDER BY job_failure_time, submission_time`
+    };
 
     pool
       .query(basic_sql, [])
       .then(res => {
         console.log("SQL SUCCESS!")
-        socket.emit('error-list', res);
+        socket.emit('error-list', res.rows);
       })
       .catch(e => {
         console.error("SQL FAILED: " + e);
@@ -221,14 +243,14 @@ ORDER BY job_failure_time, submission_time`;
     console.log('Listing all jobs!');
 
     // Read the Jobs table from the SQLite DB
-    let basic_sql = `SELECT DISTINCT * FROM 'job' WHERE id NOT IN (SELECT DISTINCT jobid FROM 'job_to_jobstate') ORDER BY submission_time;`;
+    let basic_sql = `SELECT DISTINCT * FROM job WHERE id NOT IN (SELECT DISTINCT jobid FROM job_to_jobstate) ORDER BY submission_time;`;
 
 
     pool
       .query(basic_sql, [])
       .then(res => {
         console.log("SQL SUCCESS!")
-        socket.emit('jobs-queue', res);
+        socket.emit('jobs-queue', res.rows);
       })
       .catch(e => {
         console.error("SQL FAILED: " + e);
@@ -245,16 +267,16 @@ ORDER BY job_failure_time, submission_time`;
   socket.on('list-jobs', () => {
     console.log('Listing all jobs!');
 
-    let advanced_sql = `SELECT * FROM 'job'
-INNER JOIN 'job_to_jobstate' ON job.id=job_to_jobstate.id
-INNER JOIN 'job_state' ON job_to_jobstate.jobid = job_state.id
+    let advanced_sql = `SELECT * FROM job
+INNER JOIN job_to_jobstate ON job.id=job_to_jobstate.id
+INNER JOIN job_state ON job_to_jobstate.jobid = job_state.id
 ORDER BY submission_time, submitter_name`;
 
     pool
       .query(advanced_sql, [])
       .then(res => {
         console.log("SQL SUCCESS!")
-        socket.emit('jobs-list', res);
+        socket.emit('jobs-list', res.rows);
       })
       .catch(e => {
         console.error("SQL FAILED: " + e);
@@ -282,8 +304,12 @@ ORDER BY submission_time, submitter_name`;
 
 
 let statements = [
-'CREATE TABLE IF NOT EXISTS "job"("id" integer PRIMARY KEY, "name" text NOT NULL, "descr" text NOT NULL, "uuid" text NOT NULL, "submitter_name" text NOT NULL, "submission_time" TIMESTAMP NOT NULL, "submitter_email" text NOT NULL, "weather_machine_kind" integer NOT NULL, "fuel_machine_kind" integer NOT NULL, "planburn_target_perc" integer NOT NULL, "regsim_duration" integer NOT NULL, "num_replicates" integer NOT NULL, "harvesting_on" boolean NOT NULL)',
-'CREATE TABLE IF NOT EXISTS "job_state"("id" integer, "status" text NOT NULL, "simulation_start_time" TIMESTAMP, "post_proc_start_time" TIMESTAMP, "simulation_results_dir_path" text,  "post_proc_results_dir_path" text,  "job_failure_time" TIMESTAMP, "job_completion_time" TIMESTAMP, "job_failure_error_message" varchar)',
+  'DROP TABLE IF EXISTS job;',
+  'DROP TABLE IF EXISTS job_state;',
+  'DROP TABLE IF EXISTS job_to_jobstate;',
+
+'CREATE TABLE IF NOT EXISTS "job"("id" SERIAL PRIMARY KEY, "name" text NOT NULL, "descr" text NOT NULL, "uuid" text NOT NULL, "submitter_name" text NOT NULL, "submission_time" TIMESTAMP NOT NULL, "submitter_email" text NOT NULL, "weather_machine_kind" integer NOT NULL, "fuel_machine_kind" integer NOT NULL, "planburn_target_perc" integer NOT NULL, "regsim_duration" integer NOT NULL, "num_replicates" integer NOT NULL, "harvesting_on" boolean NOT NULL)',
+'CREATE TABLE IF NOT EXISTS "job_state"("id" SERIAL PRIMARY KEY, "status" text NOT NULL, "simulation_start_time" TIMESTAMP, "post_proc_start_time" TIMESTAMP, "simulation_results_dir_path" text,  "post_proc_results_dir_path" text,  "job_failure_time" TIMESTAMP, "job_completion_time" TIMESTAMP, "job_failure_error_message" varchar)',
 'CREATE TABLE IF NOT EXISTS "job_to_jobstate"("id" integer NOT NULL, "jobid" integer NOT NULL)'];
 
 server.init = function() {

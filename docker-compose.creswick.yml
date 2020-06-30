@@ -12,6 +12,14 @@ services:
 
     insite:
         image: anthonyrawlinsuom/insite-dss
+        environment:
+          - PGUSER=postgres
+          - PGHOST=10.101.95.197
+          - PGPASSWORD=sultanofflame
+          - PGDATABASE=WebFrostJobQueue_test1
+          - PGPORT=3211
+          - PROTOCOL=https
+          - WEB=insite.dss.cloud.bushfirebehaviour.net.au
         ports:
           - 8181:8181
         volumes:

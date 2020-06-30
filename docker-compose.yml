@@ -9,12 +9,6 @@ services:
         ports:
           - 8181:8181
         environment:
-          # - PGUSER=postgres
-          # - PGHOST=10.101.95.197
-          # - PGPASSWORD=sultanofflame
-          # - PGDATABASE=WebFrostJobQueue_test1
-          # - PGPORT=3211
-
           - PG_USER=postgres
           - PG_HOST=192.168.1.181
           - PG_PASSWORD=secret

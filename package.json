@@ -20,7 +20,6 @@
     "@angular/platform-browser": "~8.2.5",
     "@angular/platform-browser-dynamic": "~8.2.5",
     "@angular/router": "~8.2.5",
-    "@swimlane/ngx-datatable": "^17.0.0",
     "child_process": "^1.0.2",
     "express-validator": "^6.5.0",
     "jquery": "^3.5.1",
@@ -34,7 +33,6 @@
     "socket.io": "^2.3.0",
     "socket.io-client": "^2.3.0",
     "socket.io-redis": "^5.2.0",
-    "sqlite3": "^4.2.0",
     "tslib": "^1.10.0",
     "uuid": "^3.4.0",
     "xml2json": "^0.12.0",
@@ -42,7 +40,7 @@
     "zone.js": "~0.9.1"
   },
   "devDependencies": {
-    "@angular-devkit/build-angular": "^0.800.0",
+    "@angular-devkit/build-angular": "^0.803.28",
     "@angular/cli": "^8.3.28",
     "@angular/compiler-cli": "^8.2.14",
     "@angular/language-service": "~8.2.5",

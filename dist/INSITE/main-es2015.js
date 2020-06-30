@@ -23,91 +23,336 @@ webpackEmptyAsyncContext.id = "./$$_lazy_route_resource lazy recursive";
 
 /***/ }),
 
-/***/ "./node_modules/raw-loader/index.js!./src/app/app.component.html":
-/*!**************************************************************!*\
-  !*** ./node_modules/raw-loader!./src/app/app.component.html ***!
-  \**************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
+/***/ "./node_modules/raw-loader/dist/cjs.js!./src/app/app.component.html":
+/*!**************************************************************************!*\
+  !*** ./node_modules/raw-loader/dist/cjs.js!./src/app/app.component.html ***!
+  \**************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
-module.exports = "<app-header></app-header>\n<router-outlet></router-outlet>\n<app-footer></app-footer>"
-
-/***/ }),
-
-/***/ "./node_modules/raw-loader/index.js!./src/app/footer/footer.component.html":
-/*!************************************************************************!*\
-  !*** ./node_modules/raw-loader!./src/app/footer/footer.component.html ***!
-  \************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = "<footer class=\"footer\">\n  <div class=\"ui container\">\n    <p class=\"small text \">© Copyright 2020 - University of Melbourne. All rights reserved.</p>\n  </div>\n</footer>"
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony default export */ __webpack_exports__["default"] = ("<app-header></app-header>\n<router-outlet></router-outlet>\n<app-footer></app-footer>");
 
 /***/ }),
 
-/***/ "./node_modules/raw-loader/index.js!./src/app/header/header.component.html":
-/*!************************************************************************!*\
-  !*** ./node_modules/raw-loader!./src/app/header/header.component.html ***!
-  \************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
+/***/ "./node_modules/raw-loader/dist/cjs.js!./src/app/footer/footer.component.html":
+/*!************************************************************************************!*\
+  !*** ./node_modules/raw-loader/dist/cjs.js!./src/app/footer/footer.component.html ***!
+  \************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
-module.exports = "<div class=\"ui main text container\">\n  <h1 class=\"ui header\">INSITE - The FROST Job Manager</h1>\n</div>\n\n<div\n    class=\"ui borderless main menu fixed\"\n    style=\"position: fixed; top: 0px; left: auto; z-index: 10;\"\n>\n  <div class=\"ui text container\">\n    <div class=\"header item\">\n      <img\n          class=\"logo\"\n          src=\"assets/insite.png\"\n          width=\"32\"\n          alt=\"\"\n      />\n      INSITE\n    </div>\n    <a\n        class=\"item\"\n        routerLink=\"/home\"\n        routerLinkActive=\"active\"\n    >Home</a>\n    <a\n        class=\"item\"\n        routerLink=\"/jobs\"\n        routerLinkActive=\"active\"\n    >Jobs</a>\n    <a\n        class=\"item\"\n        routerLinkActive=\"active\"\n        routerLink=\"/job-submission\"\n    >New</a>\n\n  </div>\n</div>"
-
-/***/ }),
-
-/***/ "./node_modules/raw-loader/index.js!./src/app/home/home.component.html":
-/*!********************************************************************!*\
-  !*** ./node_modules/raw-loader!./src/app/home/home.component.html ***!
-  \********************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = "<div class=\"ui container top_spaced \">\n  <div class=\"ui segment\">\n    <h1>InSite</h1>\n    <h3>FROST for DELWP</h3>\n    <p class=\"lead\">\n      This site alllows for basic CRUD operations to FROST.\n    </p>\n    <div class=\"ui button\">View tutorial</div>\n  </div>\n</div>"
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony default export */ __webpack_exports__["default"] = ("<footer class=\"footer\">\n  <div class=\"ui container\">\n    <p class=\"small text \">© Copyright 2020 - University of Melbourne. All rights reserved.</p>\n  </div>\n</footer>");
 
 /***/ }),
 
-/***/ "./node_modules/raw-loader/index.js!./src/app/job-submission/job-submission.component.html":
+/***/ "./node_modules/raw-loader/dist/cjs.js!./src/app/header/header.component.html":
+/*!************************************************************************************!*\
+  !*** ./node_modules/raw-loader/dist/cjs.js!./src/app/header/header.component.html ***!
+  \************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony default export */ __webpack_exports__["default"] = ("<div class=\"ui main text container\">\n  <h1 class=\"ui header\">INSITE - The FROST Job Manager</h1>\n</div>\n\n<div\n    class=\"ui borderless main menu fixed\"\n    style=\"position: fixed; top: 0px; left: auto; z-index: 10;\"\n>\n  <div class=\"ui text container\">\n    <div class=\"header item\">\n      <img\n          class=\"logo\"\n          src=\"assets/insite.png\"\n          width=\"32\"\n          alt=\"\"\n      />\n      INSITE\n    </div>\n    <a\n        class=\"item\"\n        routerLink=\"/home\"\n        routerLinkActive=\"active\"\n    >Home</a>\n    <a\n        class=\"item\"\n        routerLink=\"/jobs\"\n        routerLinkActive=\"active\"\n    >Jobs</a>\n    <a\n        class=\"item\"\n        routerLinkActive=\"active\"\n        routerLink=\"/job-submission\"\n    >New</a>\n\n  </div>\n</div>");
+
+/***/ }),
+
+/***/ "./node_modules/raw-loader/dist/cjs.js!./src/app/home/home.component.html":
+/*!********************************************************************************!*\
+  !*** ./node_modules/raw-loader/dist/cjs.js!./src/app/home/home.component.html ***!
+  \********************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony default export */ __webpack_exports__["default"] = ("<div class=\"ui container top_spaced \">\n  <div class=\"ui segment\">\n    <h1>InSite</h1>\n    <h3>FROST for DELWP</h3>\n    <p class=\"lead\">\n      This site alllows for basic CRUD operations to FROST.\n    </p>\n    <div class=\"ui button\">View tutorial</div>\n  </div>\n</div>");
+
+/***/ }),
+
+/***/ "./node_modules/raw-loader/dist/cjs.js!./src/app/job-submission/job-submission.component.html":
+/*!****************************************************************************************************!*\
+  !*** ./node_modules/raw-loader/dist/cjs.js!./src/app/job-submission/job-submission.component.html ***!
+  \****************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony default export */ __webpack_exports__["default"] = ("<div class=\"ui container\">\n  <div\n      class=\"ui raised segment\"\n      style=\"margin-top: 70px;\"\n  >\n    <h2>GLACIATOR/FROST Job Submission Form</h2>\n    <sui-message class=\"warning icon\">\n      <i class=\"exclamation triangle icon\"></i>\n      <h3 class=\"ui header\">Costs warning!</h3>\n      <div class=\"ui content\">\n        <p>Submitting a job here comes with significant operational costs and computational overheads.</p>\n        <p>Be sure you know what you are doing.</p>\n      </div>\n    </sui-message>\n\n    <div class=\"ui divider\"></div>\n\n    <form class=\"ui form\" [formGroup]=\"submissionForm\" (ngSubmit)=\"onSubmit()\">\n      <div class=\"ui two column stackable grid\">\n\n        <div class=\"column\">\n          <h3 class=\"ui header\">Job metadata</h3>\n\n          <div class=\"grouped fields\">\n            <div class=\"required field\" [ngClass]=\"{ 'error': submitted && f.submitter_name.errors }\">\n              <label>Your Name</label>\n              <input\n                  formControlName=\"submitter_name\"\n                  type=\"text\"\n\n              >\n            </div>\n\n            <div class=\"required field\" [ngClass]=\"{ 'error': submitted && f.submitter_email.errors }\">\n              <label>Email</label>\n              <input formControlName=\"submitter_email\"\n                  type=\"email\"\n              >\n            </div>\n          </div>\n\n          <div class=\"required field\" [ngClass]=\"{ 'error': submitted && f.descr.errors }\">\n            <label for=\"descr\">Description</label>\n            <textarea\n                formControlName=\"descr\"\n            ></textarea>\n          </div>\n\n\n        </div>\n        <div class=\"column\">\n<h3 class=\"ui header\">Parameters</h3>\n\n<div class=\"required field\" [ngClass]=\"{ 'error': submitted && f.name.errors }\">\n  <label>Job Name</label>\n  <input\n      formControlName=\"name\"\n      type=\"text\"\n\n  >\n</div>\n\n            <div class=\"required field\">\n              <label><input type=\"checkbox\"\n                  class=\"toggle\"\n                  formControlName=\"harvesting_on\"\n              /> Harvesting</label>\n            </div>\n\n          <div class=\"grouped required fields\" [ngClass]=\"{ 'errors': submitted && f.regsim_duration.errors }\">\n            <label for=\"regsim_duration\">Simulation time (Years):</label>\n\n            <div class=\"field\">\n              <input type=\"radio\"\n                  class=\"toggle\"\n                  value=\"20\"\n                  formControlName=\"regsim_duration\"\n              /> 25\n            </div>\n            <div class=\"field\">\n              <input type=\"radio\"\n                  class=\"toggle\"\n                  value=\"50\"\n                  formControlName=\"regsim_duration\"\n              /> 50\n            </div>\n          </div>\n\n          <div class=\"grouped required fields\" [ngClass]=\"{ 'errors': submitted && f.num_replicates.errors }\">\n            <label for=\"num_replicates\">Replicates:</label>\n\n            <div class=\"field\">\n              <input type=\"radio\"\n                  class=\"toggle\"\n                  value=\"10\"\n                  formControlName=\"num_replicates\"\n              /> 10\n            </div>\n            <div class=\"field\">\n              <input type=\"radio\"\n                  class=\"toggle\"\n                  value=\"25\"\n                  formControlName=\"num_replicates\"\n              /> 25\n            </div>\n            <div class=\"field\">\n              <input type=\"radio\"\n                  class=\"toggle\"\n                  value=\"50\"\n                  formControlName=\"num_replicates\"\n              /> 50\n            </div>\n          </div>\n\n          <div class=\"required field\" [ngClass]=\"{ 'error': submitted && f.fuel_machine_kind.errors }\">\n            <label for=\"fuel_machine_kind_select\">Fuel Machine: </label>\n            <sui-select\n                class=\"selection\"\n                formControlName=\"fuel_machine_kind\"\n                [options]=\"fuel_options\"\n                labelField=\"label\"\n                [isSearchable]=\"searchable\"\n                [isDisabled]=\"disabled\"\n                #fuel_select\n            >\n              <sui-select-option\n                  *ngFor=\"let option of fuel_select.filteredOptions\"\n                  [value]=\"option\"\n              >\n              </sui-select-option>\n            </sui-select>\n          </div>\n\n          <div class=\"required field\" [ngClass]=\"{ 'error': submitted && f.weather_machine_kind.errors }\">\n            <label for=\"weather_machine_kind_select\">Weather Machine: </label>\n            <sui-select\n              class=\"selection\"\n              formControlName=\"weather_machine_kind\"\n              [options]=\"weather_options\"\n              labelField=\"label\"\n              [isSearchable]=\"searchable\"\n              [isDisabled]=\"disabled\"\n              #weather_select\n          >\n            <sui-select-option\n                *ngFor=\"let option of weather_select.filteredOptions\"\n                [value]=\"option\"\n            >\n            </sui-select-option>\n          </sui-select>\n          </div>\n\n          <div class=\"required field\" [ngClass]=\"{ 'error': submitted && f.planburn_target_perc.errors }\">\n            <label>Burn Target (Percentage per Year)</label>\n            <input\n                type=\"text\"\n                formControlName=\"planburn_target_perc\"\n                placeholder=\"%\"\n            >\n          </div>\n        </div>\n      </div>\n\n      <div class=\"required field\" [ngClass]=\"{ 'error': submitted && f.acceptTerms.errors }\">\n        <div class=\"ui checkbox\">\n          <input\n              formControlName=\"acceptTerms\"\n              type=\"checkbox\"\n              tabindex=\"0\"\n              #acceptTerms\n          >\n          <label>I agree to the Terms and Conditions</label>\n        </div>\n      </div>\n\n      <div\n          class=\"ui primary submit button\"\n          (click)=\"onSubmit($event)\"\n      >Submit</div>\n      <div class=\"ui reset button\" (click)=\"onReset()\">Reset</div>\n      <div class=\"ui clear button\">Clear</div>\n    </form>\n\n  </div>\n</div>\n");
+
+/***/ }),
+
+/***/ "./node_modules/raw-loader/dist/cjs.js!./src/app/job/job.component.html":
+/*!******************************************************************************!*\
+  !*** ./node_modules/raw-loader/dist/cjs.js!./src/app/job/job.component.html ***!
+  \******************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony default export */ __webpack_exports__["default"] = ("<p>job works!</p>\n");
+
+/***/ }),
+
+/***/ "./node_modules/raw-loader/dist/cjs.js!./src/app/jobs/jobs.component.html":
+/*!********************************************************************************!*\
+  !*** ./node_modules/raw-loader/dist/cjs.js!./src/app/jobs/jobs.component.html ***!
+  \********************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony default export */ __webpack_exports__["default"] = ("<div class=\"ui top_spaced container\">\n\n  <div\n      class=\"ui top attached segment\"\n      style=\"margin-top: 70px;\"\n  >\n    <table class=\"ui very basic table\">\n      <thead>\n        <tr>\n          <th class=\"collapsing\"></th>\n          <th>Date</th>\n          <th>Job Name</th>\n          <th>Contact</th>\n          <th>Status</th>\n        </tr>\n      </thead>\n      <tbody>\n\n        <tr\n            *ngFor=\"let qjob of queue\"\n            (click)=\"selectJob(qjob)\"\n            class=\"selectable_row\"\n        >\n\n          <td class=\"collapsing\"><i class=\"ui blue info circle icon\"></i> </td>\n          <td>{{ qjob.submission_time | date }}</td>\n          <td>{{ qjob.name }}</td>\n          <td><a href=\"mailto:{{qjob.submitter_email}}\">{{ qjob.submitter_name }}</a></td>\n          <td>\n            <div class=\"\">Queued</div>\n          </td>\n        </tr>\n\n\n        <tr\n            *ngFor=\"let job of jobs\"\n            (click)=\"selectJob(job)\"\n            class=\"selectable_row\"\n        >\n\n          <td class=\"collapsing\"><i class=\"ui blue info circle icon\"></i> </td>\n          <td>{{ job.submission_time | date }}</td>\n          <td>{{ job.name }}</td>\n          <td><a href=\"mailto:{{job.submitter_email}}\">{{ job.submitter_name }}</a></td>\n          <td>\n            <div class=\"\" *ngIf=\"job.status == 20\">Running Simulations</div>\n            <div class=\"\" *ngIf=\"job.status == 30\">Running Post-Processing</div>\n            <div class=\"\" *ngIf=\"job.status == 40\">Simulations Failed</div>\n            <div class=\"\" *ngIf=\"job.status == 50\">Post-processing Failed</div>\n            <div class=\"\" *ngIf=\"job.status == 100\">Complete</div>\n          </td>\n        </tr>\n      </tbody>\n    </table>\n\n    <div class=\"ui raised attached segment\"><p>Found {{ jobs.length }} jobs ({{ queue.length}} in queue).</p></div>\n\n    <div\n        class=\"ui bottom attached segment\"\n        *ngIf=\"selectedJob\"\n    >\n    <div class=\"ui raised segment\">\n\n\n      <h3 class=\"ui header\">\n        {{selectedJob.name}}\n      </h3>\n      <h5 class=\"ui header\">{{selectedJob.uuid}}</h5>\n        <h4 class=\"ui header\">User: {{selectedJob.submitter_name}}</h4>\n\n        <p class=\"card-text\">\n          {{selectedJob.descr}}\n        </p>\n\n        <div class=\"ui attached segment\">\n          <h3 class=\"header\">Job Parameters</h3>\n          <table>\n            <tbody>\n              <tr>\n                <td>Fuel Machine</td>\n                <td>\n                  <div class=\"\" *ngIf=\"selectedJob.fuel_machine_kind == 1\">InvexpWithLandis</div>\n                  <div class=\"\" *ngIf=\"selectedJob.fuel_machine_kind == 2\">NarclimObservedWithLandis</div>\n                  <div class=\"\" *ngIf=\"selectedJob.fuel_machine_kind == 3\">NarclimFutureWithLandis</div>\n                </td>\n              </tr>\n              <tr>\n                <td>Weather Machine</td>\n                <td>\n                  <div class=\"\" *ngIf=\"selectedJob.weather_machine_kind == 1\">Interpol</div>\n                  <div class=\"\" *ngIf=\"selectedJob.weather_machine_kind == 2\">NarclimObserved</div>\n                  <div class=\"\" *ngIf=\"selectedJob.weather_machine_kind == 3\">NarclimFuture</div>\n                </td>\n              </tr>\n              <tr>\n                <td>Harvesting</td>\n                <td>{{selectedJob.harvesting_on}}</td>\n              </tr>\n              <tr>\n                <td>Replicates</td>\n                <td>{{selectedJob.num_replicates}}</td>\n              </tr>\n              <tr>\n                <td>Simulation Duration</td>\n                <td>{{selectedJob.regsim_duration}}</td>\n              </tr>\n            </tbody>\n          </table>\n        </div>\n        <div class=\"ui attached stackable compact steps\">\n\n          <div class=\"step\"  [ngClass]=\"selectedJob.status == 1 ? 'active' : ''\">\n            <i class=\"cloud upload icon\"></i>\n            <div class=\"content\">\n              <div class=\"title\">Submission</div>\n              <div class=\"description\">\n                <p>Submitted at: {{ selectedJob.submission_time | date}}</p>\n                <p>Submitted by: {{ selectedJob.submitter_name }}</p>\n              </div>\n            </div>\n          </div>\n\n          <!-- /* Active if running simulations */ //-->\n          <div class=\"step\" *ngIf=\"selectedJob.simulation_start_time\" [ngClass]=\"selectedJob.status == 2 ? 'active' : ''\">\n            <i class=\"microchip icon\"></i>\n            <div class=\"content\">\n              <div class=\"title\">Simulation / Compute</div>\n              <div class=\"description\">\n                <p>Started: {{ selectedJob.simulation_start_time }}</p>\n                <p *ngIf=\"selectedJob.status > 2\"><a href=\"\\\\{{ selectedJob.simulation_results_dir_path }}\">Simulation results</a></p>\n              </div>\n            </div>\n          </div>\n\n          <div class=\"disabled step\" *ngIf=\"!selectedJob.simulation_start_time\">\n            <i class=\"microchip icon\"></i>\n            <div class=\"content\">\n              <div class=\"title\">Simulation / Compute</div>\n            </div>\n          </div>\n\n          <!-- /* Active if running post-processing */ //-->\n          <div class=\"step\" *ngIf=\"selectedJob.post_proc_start_time\"  [ngClass]=\"selectedJob.status == 3 ? 'active' : ''\">\n            <i class=\"chart bar icon\"></i>\n            <div class=\"content\">\n              <div class=\"title\">Post-Processing</div>\n            <div class=\"description\">\n              <p>Started: {{ selectedJob.post_proc_start_time }}</p>\n              <p *ngIf=\"selectedJob.status > 3\"><a href=\"\\\\{{ selectedJob.post_proc_results_dir_path }}\">PP results</a></p>\n            </div>\n          </div>\n          </div>\n\n          <div class=\"disabled step\" *ngIf=\"!selectedJob.post_proc_start_time\">\n            <i class=\"chart bar icon\"></i>\n            <div class=\"content\">\n              <div class=\"title\">Post-Processing</div>\n          </div>\n      </div>\n\n\n          <div class=\"step\" *ngIf=\"selectedJob.job_failure_time\" [ngClass]=\"selectedJob.status == 5 ? 'active' : ''\">\n            <i class=\"red bug icon\"></i>\n            <div class=\"content\">\n              <div class=\"title\">Error</div>\n            <div class=\"description\">\n              <p>Error occured: {{ selectedJob.job_failure_time }}</p>\n              <p *ngIf=\"selectedJob.status == 5\">{{ selectedJob.job_failure_error_message }}</p>\n            </div>\n          </div>\n          </div>\n\n          <div class=\"disabled step\" *ngIf=\"!selectedJob.job_failure_time\">\n            <i class=\"bug icon\"></i>\n            <div class=\"content\">\n              <div class=\"title\">No Errors</div>\n          </div>\n          </div>\n\n\n        </div>\n\n\n\n\n      </div>\n\n\n\n    </div>\n  </div>\n</div>\n\n\n<!-- {{ jobs | json }} -->\n");
+
+/***/ }),
+
+/***/ "./node_modules/raw-loader/dist/cjs.js!./src/app/jobstate/jobstate.component.html":
 /*!****************************************************************************************!*\
-  !*** ./node_modules/raw-loader!./src/app/job-submission/job-submission.component.html ***!
+  !*** ./node_modules/raw-loader/dist/cjs.js!./src/app/jobstate/jobstate.component.html ***!
   \****************************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
-module.exports = "<div class=\"ui container\">\n  <div\n      class=\"ui raised segment\"\n      style=\"margin-top: 70px;\"\n  >\n    <h2>GLACIATOR/FROST Job Submission Form</h2>\n    <sui-message class=\"warning icon\">\n      <i class=\"exclamation triangle icon\"></i>\n      <h3 class=\"ui header\">Costs warning!</h3>\n      <div class=\"ui content\">\n        <p>Submitting a job here comes with significant operational costs and computational overheads.</p>\n        <p>Be sure you know what you are doing.</p>\n      </div>\n    </sui-message>\n\n    <div class=\"ui divider\"></div>\n\n    <form class=\"ui form\" [formGroup]=\"submissionForm\" (ngSubmit)=\"onSubmit()\">\n      <div class=\"ui two column stackable grid\">\n\n        <div class=\"column\">\n          <h3 class=\"ui header\">Job metadata</h3>\n\n          <div class=\"grouped fields\">\n            <div class=\"required field\" [ngClass]=\"{ 'error': submitted && f.submitter_name.errors }\">\n              <label>Your Name</label>\n              <input\n                  formControlName=\"submitter_name\"\n                  type=\"text\"\n\n              >\n            </div>\n\n            <div class=\"required field\" [ngClass]=\"{ 'error': submitted && f.submitter_email.errors }\">\n              <label>Email</label>\n              <input formControlName=\"submitter_email\"\n                  type=\"email\"\n              >\n            </div>\n          </div>\n\n          <div class=\"required field\" [ngClass]=\"{ 'error': submitted && f.descr.errors }\">\n            <label for=\"descr\">Description</label>\n            <textarea\n                formControlName=\"descr\"\n            ></textarea>\n          </div>\n\n\n        </div>\n        <div class=\"column\">\n<h3 class=\"ui header\">Parameters</h3>\n\n<div class=\"required field\" [ngClass]=\"{ 'error': submitted && f.name.errors }\">\n  <label>Job Name</label>\n  <input\n      formControlName=\"name\"\n      type=\"text\"\n\n  >\n</div>\n\n            <div class=\"required field\">\n              <label><input type=\"checkbox\"\n                  class=\"toggle\"\n                  formControlName=\"harvesting_on\"\n              /> Harvesting</label>\n            </div>\n\n          <div class=\"grouped required fields\" [ngClass]=\"{ 'errors': submitted && f.regsim_duration.errors }\">\n            <label for=\"regsim_duration\">Simulation time (Years):</label>\n\n            <div class=\"field\">\n              <input type=\"radio\"\n                  class=\"toggle\"\n                  value=\"20\"\n                  formControlName=\"regsim_duration\"\n              /> 25\n            </div>\n            <div class=\"field\">\n              <input type=\"radio\"\n                  class=\"toggle\"\n                  value=\"50\"\n                  formControlName=\"regsim_duration\"\n              /> 50\n            </div>\n          </div>\n\n          <div class=\"grouped required fields\" [ngClass]=\"{ 'errors': submitted && f.num_replicates.errors }\">\n            <label for=\"num_replicates\">Replicates:</label>\n\n            <div class=\"field\">\n              <input type=\"radio\"\n                  class=\"toggle\"\n                  value=\"10\"\n                  formControlName=\"num_replicates\"\n              /> 10\n            </div>\n            <div class=\"field\">\n              <input type=\"radio\"\n                  class=\"toggle\"\n                  value=\"25\"\n                  formControlName=\"num_replicates\"\n              /> 25\n            </div>\n            <div class=\"field\">\n              <input type=\"radio\"\n                  class=\"toggle\"\n                  value=\"50\"\n                  formControlName=\"num_replicates\"\n              /> 50\n            </div>\n          </div>\n\n          <div class=\"required field\" [ngClass]=\"{ 'error': submitted && f.fuel_machine_kind.errors }\">\n            <label for=\"fuel_machine_kind_select\">Fuel Machine: </label>\n            <sui-select\n                class=\"selection\"\n                formControlName=\"fuel_machine_kind\"\n                [options]=\"fuel_options\"\n                labelField=\"label\"\n                [isSearchable]=\"searchable\"\n                [isDisabled]=\"disabled\"\n                #fuel_select\n            >\n              <sui-select-option\n                  *ngFor=\"let option of fuel_select.filteredOptions\"\n                  [value]=\"option\"\n              >\n              </sui-select-option>\n            </sui-select>\n          </div>\n\n          <div class=\"required field\" [ngClass]=\"{ 'error': submitted && f.weather_machine_kind.errors }\">\n            <label for=\"weather_machine_kind_select\">Weather Machine: </label>\n            <sui-select\n              class=\"selection\"\n              formControlName=\"weather_machine_kind\"\n              [options]=\"weather_options\"\n              labelField=\"label\"\n              [isSearchable]=\"searchable\"\n              [isDisabled]=\"disabled\"\n              #weather_select\n          >\n            <sui-select-option\n                *ngFor=\"let option of weather_select.filteredOptions\"\n                [value]=\"option\"\n            >\n            </sui-select-option>\n          </sui-select>\n          </div>\n\n          <div class=\"required field\" [ngClass]=\"{ 'error': submitted && f.planburn_target_perc.errors }\">\n            <label>Burn Target (Percentage per Year)</label>\n            <input\n                type=\"text\"\n                formControlName=\"planburn_target_perc\"\n                placeholder=\"%\"\n            >\n          </div>\n        </div>\n      </div>\n\n      <div class=\"required field\" [ngClass]=\"{ 'error': submitted && f.acceptTerms.errors }\">\n        <div class=\"ui checkbox\">\n          <input\n              formControlName=\"acceptTerms\"\n              type=\"checkbox\"\n              tabindex=\"0\"\n              #acceptTerms\n          >\n          <label>I agree to the Terms and Conditions</label>\n        </div>\n      </div>\n\n      <div\n          class=\"ui primary submit button\"\n          (click)=\"onSubmit($event)\"\n      >Submit</div>\n      <div class=\"ui reset button\" (click)=\"onReset()\">Reset</div>\n      <div class=\"ui clear button\">Clear</div>\n    </form>\n\n  </div>\n</div>\n"
-
-/***/ }),
-
-/***/ "./node_modules/raw-loader/index.js!./src/app/job/job.component.html":
-/*!******************************************************************!*\
-  !*** ./node_modules/raw-loader!./src/app/job/job.component.html ***!
-  \******************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = "<p>job works!</p>\n"
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony default export */ __webpack_exports__["default"] = ("<p>jobstate works!</p>\n");
 
 /***/ }),
 
-/***/ "./node_modules/raw-loader/index.js!./src/app/jobs/jobs.component.html":
-/*!********************************************************************!*\
-  !*** ./node_modules/raw-loader!./src/app/jobs/jobs.component.html ***!
-  \********************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
+/***/ "./node_modules/tslib/tslib.es6.js":
+/*!*****************************************!*\
+  !*** ./node_modules/tslib/tslib.es6.js ***!
+  \*****************************************/
+/*! exports provided: __extends, __assign, __rest, __decorate, __param, __metadata, __awaiter, __generator, __exportStar, __values, __read, __spread, __spreadArrays, __await, __asyncGenerator, __asyncDelegator, __asyncValues, __makeTemplateObject, __importStar, __importDefault */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
-module.exports = "<div class=\"ui top_spaced container\">\n\n  <div\n      class=\"ui top attached segment\"\n      style=\"margin-top: 70px;\"\n  >\n    <table class=\"ui very basic table\">\n      <thead>\n        <tr>\n          <th class=\"collapsing\"></th>\n          <th>Date</th>\n          <th>Job Name</th>\n          <th>Contact</th>\n          <th>Status</th>\n        </tr>\n      </thead>\n      <tbody>\n\n        <tr\n            *ngFor=\"let qjob of queue\"\n            (click)=\"selectJob(qjob)\"\n            class=\"selectable_row\"\n        >\n\n          <td class=\"collapsing\"><i class=\"ui blue info circle icon\"></i> </td>\n          <td>{{ qjob.submission_time | date }}</td>\n          <td>{{ qjob.name }}</td>\n          <td><a href=\"mailto:{{qjob.submitter_email}}\">{{ qjob.submitter_name }}</a></td>\n          <td>\n            <div class=\"\">Queued</div>\n          </td>\n        </tr>\n\n\n        <tr\n            *ngFor=\"let job of jobs\"\n            (click)=\"selectJob(job)\"\n            class=\"selectable_row\"\n        >\n\n          <td class=\"collapsing\"><i class=\"ui blue info circle icon\"></i> </td>\n          <td>{{ job.submission_time | date }}</td>\n          <td>{{ job.name }}</td>\n          <td><a href=\"mailto:{{job.submitter_email}}\">{{ job.submitter_name }}</a></td>\n          <td>\n            <div class=\"\" *ngIf=\"job.status == 20\">Running Simulations</div>\n            <div class=\"\" *ngIf=\"job.status == 30\">Running Post-Processing</div>\n            <div class=\"\" *ngIf=\"job.status == 40\">Simulations Failed</div>\n            <div class=\"\" *ngIf=\"job.status == 50\">Post-processing Failed</div>\n            <div class=\"\" *ngIf=\"job.status == 100\">Complete</div>\n          </td>\n        </tr>\n      </tbody>\n    </table>\n\n    <div class=\"ui raised attached segment\"><p>Found {{ jobs.length }} jobs ({{ queue.length}} in queue).</p></div>\n\n    <div\n        class=\"ui bottom attached segment\"\n        *ngIf=\"selectedJob\"\n    >\n    <div class=\"ui raised segment\">\n\n\n      <h3 class=\"ui header\">\n        {{selectedJob.name}}\n      </h3>\n      <h5 class=\"ui header\">{{selectedJob.uuid}}</h5>\n        <h4 class=\"ui header\">User: {{selectedJob.submitter_name}}</h4>\n\n        <p class=\"card-text\">\n          {{selectedJob.descr}}\n        </p>\n\n        <div class=\"ui attached segment\">\n          <h3 class=\"header\">Job Parameters</h3>\n          <table>\n            <tbody>\n              <tr>\n                <td>Fuel Machine</td>\n                <td>\n                  <div class=\"\" *ngIf=\"selectedJob.fuel_machine_kind == 1\">InvexpWithLandis</div>\n                  <div class=\"\" *ngIf=\"selectedJob.fuel_machine_kind == 2\">NarclimObservedWithLandis</div>\n                  <div class=\"\" *ngIf=\"selectedJob.fuel_machine_kind == 3\">NarclimFutureWithLandis</div>\n                </td>\n              </tr>\n              <tr>\n                <td>Weather Machine</td>\n                <td>\n                  <div class=\"\" *ngIf=\"selectedJob.weather_machine_kind == 1\">Interpol</div>\n                  <div class=\"\" *ngIf=\"selectedJob.weather_machine_kind == 2\">NarclimObserved</div>\n                  <div class=\"\" *ngIf=\"selectedJob.weather_machine_kind == 3\">NarclimFuture</div>\n                </td>\n              </tr>\n              <tr>\n                <td>Harvesting</td>\n                <td>{{selectedJob.harvesting_on}}</td>\n              </tr>\n              <tr>\n                <td>Replicates</td>\n                <td>{{selectedJob.num_replicates}}</td>\n              </tr>\n              <tr>\n                <td>Simulation Duration</td>\n                <td>{{selectedJob.regsim_duration}}</td>\n              </tr>\n            </tbody>\n          </table>\n        </div>\n        <div class=\"ui attached stackable compact steps\">\n\n          <div class=\"step\"  [ngClass]=\"selectedJob.status == 1 ? 'active' : ''\">\n            <i class=\"cloud upload icon\"></i>\n            <div class=\"content\">\n              <div class=\"title\">Submission</div>\n              <div class=\"description\">\n                <p>Submitted at: {{ selectedJob.submission_time | date}}</p>\n                <p>Submitted by: {{ selectedJob.submitter_name }}</p>\n              </div>\n            </div>\n          </div>\n\n          <!-- /* Active if running simulations */ //-->\n          <div class=\"step\" *ngIf=\"selectedJob.simulation_start_time\" [ngClass]=\"selectedJob.status == 2 ? 'active' : ''\">\n            <i class=\"microchip icon\"></i>\n            <div class=\"content\">\n              <div class=\"title\">Simulation / Compute</div>\n              <div class=\"description\">\n                <p>Started: {{ selectedJob.simulation_start_time }}</p>\n                <p *ngIf=\"selectedJob.status > 2\"><a href=\"\\\\{{ selectedJob.simulation_results_dir_path }}\">Simulation results</a></p>\n              </div>\n            </div>\n          </div>\n\n          <div class=\"disabled step\" *ngIf=\"!selectedJob.simulation_start_time\">\n            <i class=\"microchip icon\"></i>\n            <div class=\"content\">\n              <div class=\"title\">Simulation / Compute</div>\n            </div>\n          </div>\n\n          <!-- /* Active if running post-processing */ //-->\n          <div class=\"step\" *ngIf=\"selectedJob.post_proc_start_time\"  [ngClass]=\"selectedJob.status == 3 ? 'active' : ''\">\n            <i class=\"chart bar icon\"></i>\n            <div class=\"content\">\n              <div class=\"title\">Post-Processing</div>\n            <div class=\"description\">\n              <p>Started: {{ selectedJob.post_proc_start_time }}</p>\n              <p *ngIf=\"selectedJob.status > 3\"><a href=\"\\\\{{ selectedJob.post_proc_results_dir_path }}\">PP results</a></p>\n            </div>\n          </div>\n          </div>\n\n          <div class=\"disabled step\" *ngIf=\"!selectedJob.post_proc_start_time\">\n            <i class=\"chart bar icon\"></i>\n            <div class=\"content\">\n              <div class=\"title\">Post-Processing</div>\n          </div>\n      </div>\n\n\n          <div class=\"step\" *ngIf=\"selectedJob.job_failure_time\" [ngClass]=\"selectedJob.status == 5 ? 'active' : ''\">\n            <i class=\"red bug icon\"></i>\n            <div class=\"content\">\n              <div class=\"title\">Error</div>\n            <div class=\"description\">\n              <p>Error occured: {{ selectedJob.job_failure_time }}</p>\n              <p *ngIf=\"selectedJob.status == 5\">{{ selectedJob.job_failure_error_message }}</p>\n            </div>\n          </div>\n          </div>\n\n          <div class=\"disabled step\" *ngIf=\"!selectedJob.job_failure_time\">\n            <i class=\"bug icon\"></i>\n            <div class=\"content\">\n              <div class=\"title\">No Errors</div>\n          </div>\n          </div>\n\n\n        </div>\n\n\n\n\n      </div>\n\n\n\n    </div>\n  </div>\n</div>\n\n\n<!-- {{ jobs | json }} -->\n"
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "__extends", function() { return __extends; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "__assign", function() { return __assign; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "__rest", function() { return __rest; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "__decorate", function() { return __decorate; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "__param", function() { return __param; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "__metadata", function() { return __metadata; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "__awaiter", function() { return __awaiter; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "__generator", function() { return __generator; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "__exportStar", function() { return __exportStar; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "__values", function() { return __values; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "__read", function() { return __read; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "__spread", function() { return __spread; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "__spreadArrays", function() { return __spreadArrays; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "__await", function() { return __await; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "__asyncGenerator", function() { return __asyncGenerator; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "__asyncDelegator", function() { return __asyncDelegator; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "__asyncValues", function() { return __asyncValues; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "__makeTemplateObject", function() { return __makeTemplateObject; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "__importStar", function() { return __importStar; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "__importDefault", function() { return __importDefault; });
+/*! *****************************************************************************
+Copyright (c) Microsoft Corporation. All rights reserved.
+Licensed under the Apache License, Version 2.0 (the "License"); you may not use
+this file except in compliance with the License. You may obtain a copy of the
+License at http://www.apache.org/licenses/LICENSE-2.0
 
-/***/ }),
+THIS CODE IS PROVIDED ON AN *AS IS* BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+KIND, EITHER EXPRESS OR IMPLIED, INCLUDING WITHOUT LIMITATION ANY IMPLIED
+WARRANTIES OR CONDITIONS OF TITLE, FITNESS FOR A PARTICULAR PURPOSE,
+MERCHANTABLITY OR NON-INFRINGEMENT.
 
-/***/ "./node_modules/raw-loader/index.js!./src/app/jobstate/jobstate.component.html":
-/*!****************************************************************************!*\
-  !*** ./node_modules/raw-loader!./src/app/jobstate/jobstate.component.html ***!
-  \****************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
+See the Apache Version 2.0 License for specific language governing permissions
+and limitations under the License.
+***************************************************************************** */
+/* global Reflect, Promise */
 
-module.exports = "<p>jobstate works!</p>\n"
+var extendStatics = function(d, b) {
+    extendStatics = Object.setPrototypeOf ||
+        ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+        function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
+    return extendStatics(d, b);
+};
+
+function __extends(d, b) {
+    extendStatics(d, b);
+    function __() { this.constructor = d; }
+    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+}
+
+var __assign = function() {
+    __assign = Object.assign || function __assign(t) {
+        for (var s, i = 1, n = arguments.length; i < n; i++) {
+            s = arguments[i];
+            for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p)) t[p] = s[p];
+        }
+        return t;
+    }
+    return __assign.apply(this, arguments);
+}
+
+function __rest(s, e) {
+    var t = {};
+    for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p) && e.indexOf(p) < 0)
+        t[p] = s[p];
+    if (s != null && typeof Object.getOwnPropertySymbols === "function")
+        for (var i = 0, p = Object.getOwnPropertySymbols(s); i < p.length; i++) {
+            if (e.indexOf(p[i]) < 0 && Object.prototype.propertyIsEnumerable.call(s, p[i]))
+                t[p[i]] = s[p[i]];
+        }
+    return t;
+}
+
+function __decorate(decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+}
+
+function __param(paramIndex, decorator) {
+    return function (target, key) { decorator(target, key, paramIndex); }
+}
+
+function __metadata(metadataKey, metadataValue) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(metadataKey, metadataValue);
+}
+
+function __awaiter(thisArg, _arguments, P, generator) {
+    return new (P || (P = Promise))(function (resolve, reject) {
+        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
+        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
+        function step(result) { result.done ? resolve(result.value) : new P(function (resolve) { resolve(result.value); }).then(fulfilled, rejected); }
+        step((generator = generator.apply(thisArg, _arguments || [])).next());
+    });
+}
+
+function __generator(thisArg, body) {
+    var _ = { label: 0, sent: function() { if (t[0] & 1) throw t[1]; return t[1]; }, trys: [], ops: [] }, f, y, t, g;
+    return g = { next: verb(0), "throw": verb(1), "return": verb(2) }, typeof Symbol === "function" && (g[Symbol.iterator] = function() { return this; }), g;
+    function verb(n) { return function (v) { return step([n, v]); }; }
+    function step(op) {
+        if (f) throw new TypeError("Generator is already executing.");
+        while (_) try {
+            if (f = 1, y && (t = op[0] & 2 ? y["return"] : op[0] ? y["throw"] || ((t = y["return"]) && t.call(y), 0) : y.next) && !(t = t.call(y, op[1])).done) return t;
+            if (y = 0, t) op = [op[0] & 2, t.value];
+            switch (op[0]) {
+                case 0: case 1: t = op; break;
+                case 4: _.label++; return { value: op[1], done: false };
+                case 5: _.label++; y = op[1]; op = [0]; continue;
+                case 7: op = _.ops.pop(); _.trys.pop(); continue;
+                default:
+                    if (!(t = _.trys, t = t.length > 0 && t[t.length - 1]) && (op[0] === 6 || op[0] === 2)) { _ = 0; continue; }
+                    if (op[0] === 3 && (!t || (op[1] > t[0] && op[1] < t[3]))) { _.label = op[1]; break; }
+                    if (op[0] === 6 && _.label < t[1]) { _.label = t[1]; t = op; break; }
+                    if (t && _.label < t[2]) { _.label = t[2]; _.ops.push(op); break; }
+                    if (t[2]) _.ops.pop();
+                    _.trys.pop(); continue;
+            }
+            op = body.call(thisArg, _);
+        } catch (e) { op = [6, e]; y = 0; } finally { f = t = 0; }
+        if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
+    }
+}
+
+function __exportStar(m, exports) {
+    for (var p in m) if (!exports.hasOwnProperty(p)) exports[p] = m[p];
+}
+
+function __values(o) {
+    var m = typeof Symbol === "function" && o[Symbol.iterator], i = 0;
+    if (m) return m.call(o);
+    return {
+        next: function () {
+            if (o && i >= o.length) o = void 0;
+            return { value: o && o[i++], done: !o };
+        }
+    };
+}
+
+function __read(o, n) {
+    var m = typeof Symbol === "function" && o[Symbol.iterator];
+    if (!m) return o;
+    var i = m.call(o), r, ar = [], e;
+    try {
+        while ((n === void 0 || n-- > 0) && !(r = i.next()).done) ar.push(r.value);
+    }
+    catch (error) { e = { error: error }; }
+    finally {
+        try {
+            if (r && !r.done && (m = i["return"])) m.call(i);
+        }
+        finally { if (e) throw e.error; }
+    }
+    return ar;
+}
+
+function __spread() {
+    for (var ar = [], i = 0; i < arguments.length; i++)
+        ar = ar.concat(__read(arguments[i]));
+    return ar;
+}
+
+function __spreadArrays() {
+    for (var s = 0, i = 0, il = arguments.length; i < il; i++) s += arguments[i].length;
+    for (var r = Array(s), k = 0, i = 0; i < il; i++)
+        for (var a = arguments[i], j = 0, jl = a.length; j < jl; j++, k++)
+            r[k] = a[j];
+    return r;
+};
+
+function __await(v) {
+    return this instanceof __await ? (this.v = v, this) : new __await(v);
+}
+
+function __asyncGenerator(thisArg, _arguments, generator) {
+    if (!Symbol.asyncIterator) throw new TypeError("Symbol.asyncIterator is not defined.");
+    var g = generator.apply(thisArg, _arguments || []), i, q = [];
+    return i = {}, verb("next"), verb("throw"), verb("return"), i[Symbol.asyncIterator] = function () { return this; }, i;
+    function verb(n) { if (g[n]) i[n] = function (v) { return new Promise(function (a, b) { q.push([n, v, a, b]) > 1 || resume(n, v); }); }; }
+    function resume(n, v) { try { step(g[n](v)); } catch (e) { settle(q[0][3], e); } }
+    function step(r) { r.value instanceof __await ? Promise.resolve(r.value.v).then(fulfill, reject) : settle(q[0][2], r); }
+    function fulfill(value) { resume("next", value); }
+    function reject(value) { resume("throw", value); }
+    function settle(f, v) { if (f(v), q.shift(), q.length) resume(q[0][0], q[0][1]); }
+}
+
+function __asyncDelegator(o) {
+    var i, p;
+    return i = {}, verb("next"), verb("throw", function (e) { throw e; }), verb("return"), i[Symbol.iterator] = function () { return this; }, i;
+    function verb(n, f) { i[n] = o[n] ? function (v) { return (p = !p) ? { value: __await(o[n](v)), done: n === "return" } : f ? f(v) : v; } : f; }
+}
+
+function __asyncValues(o) {
+    if (!Symbol.asyncIterator) throw new TypeError("Symbol.asyncIterator is not defined.");
+    var m = o[Symbol.asyncIterator], i;
+    return m ? m.call(o) : (o = typeof __values === "function" ? __values(o) : o[Symbol.iterator](), i = {}, verb("next"), verb("throw"), verb("return"), i[Symbol.asyncIterator] = function () { return this; }, i);
+    function verb(n) { i[n] = o[n] && function (v) { return new Promise(function (resolve, reject) { v = o[n](v), settle(resolve, reject, v.done, v.value); }); }; }
+    function settle(resolve, reject, d, v) { Promise.resolve(v).then(function(v) { resolve({ value: v, done: d }); }, reject); }
+}
+
+function __makeTemplateObject(cooked, raw) {
+    if (Object.defineProperty) { Object.defineProperty(cooked, "raw", { value: raw }); } else { cooked.raw = raw; }
+    return cooked;
+};
+
+function __importStar(mod) {
+    if (mod && mod.__esModule) return mod;
+    var result = {};
+    if (mod != null) for (var k in mod) if (Object.hasOwnProperty.call(mod, k)) result[k] = mod[k];
+    result.default = mod;
+    return result;
+}
+
+function __importDefault(mod) {
+    return (mod && mod.__esModule) ? mod : { default: mod };
+}
+
 
 /***/ }),
 
@@ -127,6 +372,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "FuelMachineKind", function() { return FuelMachineKind; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "WebJobStatus", function() { return WebJobStatus; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "glaciator_parameters_example", function() { return glaciator_parameters_example; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+
 class GlaciatorParameters {
     constructor(fd) {
         console.log(fd);
@@ -228,10 +475,12 @@ AppRoutingModule = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
 /*!***********************************!*\
   !*** ./src/app/app.component.css ***!
   \***********************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
-module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL2FwcC5jb21wb25lbnQuY3NzIn0= */"
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony default export */ __webpack_exports__["default"] = ("\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL2FwcC5jb21wb25lbnQuY3NzIn0= */");
 
 /***/ }),
 
@@ -257,8 +506,8 @@ let AppComponent = class AppComponent {
 AppComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
     Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
         selector: 'app-root',
-        template: __webpack_require__(/*! raw-loader!./app.component.html */ "./node_modules/raw-loader/index.js!./src/app/app.component.html"),
-        styles: [__webpack_require__(/*! ./app.component.css */ "./src/app/app.component.css")]
+        template: tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"](__webpack_require__(/*! raw-loader!./app.component.html */ "./node_modules/raw-loader/dist/cjs.js!./src/app/app.component.html")).default,
+        styles: [tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"](__webpack_require__(/*! ./app.component.css */ "./src/app/app.component.css")).default]
     })
 ], AppComponent);
 
@@ -340,6 +589,96 @@ AppModule = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
 
 /***/ }),
 
+/***/ "./src/app/data.service.ts":
+/*!*********************************!*\
+  !*** ./src/app/data.service.ts ***!
+  \*********************************/
+/*! exports provided: DataService */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "DataService", function() { return DataService; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
+/* harmony import */ var socket_io_client__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! socket.io-client */ "./node_modules/socket.io-client/lib/index.js");
+/* harmony import */ var socket_io_client__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(socket_io_client__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var rxjs_Observable__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! rxjs/Observable */ "./node_modules/rxjs-compat/_esm2015/Observable.js");
+
+
+
+
+const protocol = 'https';
+// const host = '127.0.0.1';
+const host = 'insite.dss.cloud.bushfirebehaviour.net.au';
+const port = '';
+// const protocol = 'http';
+// const host = '127.0.0.1';
+// const port = ':8181'; // INCLUDE colon!
+let DataService = class DataService {
+    constructor() {
+        this.getJobs = () => {
+            return rxjs_Observable__WEBPACK_IMPORTED_MODULE_3__["Observable"].create((observer) => {
+                this.socket.emit('list-jobs', (ack) => {
+                    console.log(ack);
+                });
+                this.socket.on('jobs-list', (jobdata) => {
+                    console.log(jobdata);
+                    observer.next(jobdata);
+                });
+            });
+        };
+        this.createJob = (formdata) => {
+            return rxjs_Observable__WEBPACK_IMPORTED_MODULE_3__["Observable"].create((observer) => {
+                this.socket.emit('submission', formdata, (ack) => {
+                    console.log(ack);
+                    this.temp = null;
+                    observer.next(ack);
+                });
+                this.socket.on('validation-error', (ve) => {
+                    console.log(ve);
+                    observer.next(ve);
+                });
+                this.socket.on('insertion-error', (ie) => {
+                    console.log(ie);
+                    observer.next(ie);
+                });
+                this.socket.on('insert-success', (ise) => {
+                    console.log(ise);
+                    observer.next(ise);
+                });
+            });
+        };
+        this.getData = () => {
+            return rxjs_Observable__WEBPACK_IMPORTED_MODULE_3__["Observable"].create((observer) => {
+                this.socket.on('job', (job) => {
+                    observer.next(job);
+                });
+            });
+        };
+        this.getQueue = () => {
+            return rxjs_Observable__WEBPACK_IMPORTED_MODULE_3__["Observable"].create((observer) => {
+                this.socket.emit('queued-jobs', (ack) => {
+                    console.log(ack);
+                });
+                this.socket.on('jobs-queue', (jobs) => {
+                    observer.next(jobs);
+                });
+            });
+        };
+        this.socket = socket_io_client__WEBPACK_IMPORTED_MODULE_2___default.a.connect(`${protocol}://${host}${port}`);
+    }
+};
+DataService = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Injectable"])({
+        providedIn: 'root'
+    })
+], DataService);
+
+
+
+/***/ }),
+
 /***/ "./src/app/e-num-as-string.pipe.ts":
 /*!*****************************************!*\
   !*** ./src/app/e-num-as-string.pipe.ts ***!
@@ -374,10 +713,12 @@ ENumAsStringPipe = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
 /*!*********************************************!*\
   !*** ./src/app/footer/footer.component.css ***!
   \*********************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
-module.exports = "\nfooter {\n    margin-top: 1rem;\n}\n\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvZm9vdGVyL2Zvb3Rlci5jb21wb25lbnQuY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiI7QUFDQTtJQUNJLGdCQUFnQjtBQUNwQiIsImZpbGUiOiJzcmMvYXBwL2Zvb3Rlci9mb290ZXIuY29tcG9uZW50LmNzcyIsInNvdXJjZXNDb250ZW50IjpbIlxuZm9vdGVyIHtcbiAgICBtYXJnaW4tdG9wOiAxcmVtO1xufVxuIl19 */"
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony default export */ __webpack_exports__["default"] = ("\nfooter {\n    margin-top: 1rem;\n}\n\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvZm9vdGVyL2Zvb3Rlci5jb21wb25lbnQuY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiI7QUFDQTtJQUNJLGdCQUFnQjtBQUNwQiIsImZpbGUiOiJzcmMvYXBwL2Zvb3Rlci9mb290ZXIuY29tcG9uZW50LmNzcyIsInNvdXJjZXNDb250ZW50IjpbIlxuZm9vdGVyIHtcbiAgICBtYXJnaW4tdG9wOiAxcmVtO1xufVxuIl19 */");
 
 /***/ }),
 
@@ -403,8 +744,8 @@ let FooterComponent = class FooterComponent {
 FooterComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
     Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
         selector: 'app-footer',
-        template: __webpack_require__(/*! raw-loader!./footer.component.html */ "./node_modules/raw-loader/index.js!./src/app/footer/footer.component.html"),
-        styles: [__webpack_require__(/*! ./footer.component.css */ "./src/app/footer/footer.component.css")]
+        template: tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"](__webpack_require__(/*! raw-loader!./footer.component.html */ "./node_modules/raw-loader/dist/cjs.js!./src/app/footer/footer.component.html")).default,
+        styles: [tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"](__webpack_require__(/*! ./footer.component.css */ "./src/app/footer/footer.component.css")).default]
     })
 ], FooterComponent);
 
@@ -416,10 +757,12 @@ FooterComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
 /*!*********************************************!*\
   !*** ./src/app/header/header.component.css ***!
   \*********************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
-module.exports = "\n.nav-item{\n    padding:2px;\n    margin-left: 7px;\n}\n\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvaGVhZGVyL2hlYWRlci5jb21wb25lbnQuY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiI7QUFDQTtJQUNJLFdBQVc7SUFDWCxnQkFBZ0I7QUFDcEIiLCJmaWxlIjoic3JjL2FwcC9oZWFkZXIvaGVhZGVyLmNvbXBvbmVudC5jc3MiLCJzb3VyY2VzQ29udGVudCI6WyJcbi5uYXYtaXRlbXtcbiAgICBwYWRkaW5nOjJweDtcbiAgICBtYXJnaW4tbGVmdDogN3B4O1xufVxuIl19 */"
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony default export */ __webpack_exports__["default"] = ("\n.nav-item{\n    padding:2px;\n    margin-left: 7px;\n}\n\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvaGVhZGVyL2hlYWRlci5jb21wb25lbnQuY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiI7QUFDQTtJQUNJLFdBQVc7SUFDWCxnQkFBZ0I7QUFDcEIiLCJmaWxlIjoic3JjL2FwcC9oZWFkZXIvaGVhZGVyLmNvbXBvbmVudC5jc3MiLCJzb3VyY2VzQ29udGVudCI6WyJcbi5uYXYtaXRlbXtcbiAgICBwYWRkaW5nOjJweDtcbiAgICBtYXJnaW4tbGVmdDogN3B4O1xufVxuIl19 */");
 
 /***/ }),
 
@@ -445,8 +788,8 @@ let HeaderComponent = class HeaderComponent {
 HeaderComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
     Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
         selector: 'app-header',
-        template: __webpack_require__(/*! raw-loader!./header.component.html */ "./node_modules/raw-loader/index.js!./src/app/header/header.component.html"),
-        styles: [__webpack_require__(/*! ./header.component.css */ "./src/app/header/header.component.css")]
+        template: tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"](__webpack_require__(/*! raw-loader!./header.component.html */ "./node_modules/raw-loader/dist/cjs.js!./src/app/header/header.component.html")).default,
+        styles: [tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"](__webpack_require__(/*! ./header.component.css */ "./src/app/header/header.component.css")).default]
     })
 ], HeaderComponent);
 
@@ -458,10 +801,12 @@ HeaderComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
 /*!*****************************************!*\
   !*** ./src/app/home/home.component.css ***!
   \*****************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
-module.exports = ".top_spaced {\n    margin-top: 70px;\n}\n\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvaG9tZS9ob21lLmNvbXBvbmVudC5jc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7SUFDSSxnQkFBZ0I7QUFDcEIiLCJmaWxlIjoic3JjL2FwcC9ob21lL2hvbWUuY29tcG9uZW50LmNzcyIsInNvdXJjZXNDb250ZW50IjpbIi50b3Bfc3BhY2VkIHtcbiAgICBtYXJnaW4tdG9wOiA3MHB4O1xufVxuIl19 */"
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony default export */ __webpack_exports__["default"] = (".top_spaced {\n    margin-top: 70px;\n}\n\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvaG9tZS9ob21lLmNvbXBvbmVudC5jc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7SUFDSSxnQkFBZ0I7QUFDcEIiLCJmaWxlIjoic3JjL2FwcC9ob21lL2hvbWUuY29tcG9uZW50LmNzcyIsInNvdXJjZXNDb250ZW50IjpbIi50b3Bfc3BhY2VkIHtcbiAgICBtYXJnaW4tdG9wOiA3MHB4O1xufVxuIl19 */");
 
 /***/ }),
 
@@ -487,8 +832,8 @@ let HomeComponent = class HomeComponent {
 HomeComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
     Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
         selector: 'app-home',
-        template: __webpack_require__(/*! raw-loader!./home.component.html */ "./node_modules/raw-loader/index.js!./src/app/home/home.component.html"),
-        styles: [__webpack_require__(/*! ./home.component.css */ "./src/app/home/home.component.css")]
+        template: tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"](__webpack_require__(/*! raw-loader!./home.component.html */ "./node_modules/raw-loader/dist/cjs.js!./src/app/home/home.component.html")).default,
+        styles: [tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"](__webpack_require__(/*! ./home.component.css */ "./src/app/home/home.component.css")).default]
     })
 ], HomeComponent);
 
@@ -500,10 +845,12 @@ HomeComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
 /*!*************************************************************!*\
   !*** ./src/app/job-submission/job-submission.component.css ***!
   \*************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
-module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL2pvYi1zdWJtaXNzaW9uL2pvYi1zdWJtaXNzaW9uLmNvbXBvbmVudC5jc3MifQ== */"
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony default export */ __webpack_exports__["default"] = ("\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL2pvYi1zdWJtaXNzaW9uL2pvYi1zdWJtaXNzaW9uLmNvbXBvbmVudC5jc3MifQ== */");
 
 /***/ }),
 
@@ -520,9 +867,13 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
 /* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/forms */ "./node_modules/@angular/forms/fesm2015/forms.js");
-/* harmony import */ var uuid__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! uuid */ "./node_modules/uuid/index.js");
-/* harmony import */ var uuid__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(uuid__WEBPACK_IMPORTED_MODULE_3__);
-/* harmony import */ var _GlaciatorParameters__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../GlaciatorParameters */ "./src/app/GlaciatorParameters.ts");
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm2015/router.js");
+/* harmony import */ var _data_service__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../data.service */ "./src/app/data.service.ts");
+/* harmony import */ var uuid__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! uuid */ "./node_modules/uuid/index.js");
+/* harmony import */ var uuid__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(uuid__WEBPACK_IMPORTED_MODULE_5__);
+/* harmony import */ var _GlaciatorParameters__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../GlaciatorParameters */ "./src/app/GlaciatorParameters.ts");
+
+
 
 
 
@@ -535,18 +886,18 @@ let JobSubmissionComponent = class JobSubmissionComponent {
         this.dataService = dataService;
         this.formBuilder = formBuilder;
         this.weather_options = [
-            { option: _GlaciatorParameters__WEBPACK_IMPORTED_MODULE_4__["WeatherMachineKind"].Interpol, label: "Interpolated" },
-            { option: _GlaciatorParameters__WEBPACK_IMPORTED_MODULE_4__["WeatherMachineKind"].NarclimFuture, label: "NARCLIM Future" },
-            { option: _GlaciatorParameters__WEBPACK_IMPORTED_MODULE_4__["WeatherMachineKind"].NarclimObserved, label: "NARCLIM Observed" }
+            { option: _GlaciatorParameters__WEBPACK_IMPORTED_MODULE_6__["WeatherMachineKind"].Interpol, label: "Interpolated" },
+            { option: _GlaciatorParameters__WEBPACK_IMPORTED_MODULE_6__["WeatherMachineKind"].NarclimFuture, label: "NARCLIM Future" },
+            { option: _GlaciatorParameters__WEBPACK_IMPORTED_MODULE_6__["WeatherMachineKind"].NarclimObserved, label: "NARCLIM Observed" }
         ];
         this.fuel_options = [
-            { option: _GlaciatorParameters__WEBPACK_IMPORTED_MODULE_4__["FuelMachineKind"].InvexpWithLandis.valueOf(), label: "Inverse Exponential with LANDIS" },
-            { option: _GlaciatorParameters__WEBPACK_IMPORTED_MODULE_4__["FuelMachineKind"].NarclimFutureWithLandis.valueOf(), label: "NARCLIM Future with LANDIS" },
-            { option: _GlaciatorParameters__WEBPACK_IMPORTED_MODULE_4__["FuelMachineKind"].NarclimObservedWithLandis.valueOf(), label: "NARCLIM Observed with LANDIS" },
+            { option: _GlaciatorParameters__WEBPACK_IMPORTED_MODULE_6__["FuelMachineKind"].InvexpWithLandis.valueOf(), label: "Inverse Exponential with LANDIS" },
+            { option: _GlaciatorParameters__WEBPACK_IMPORTED_MODULE_6__["FuelMachineKind"].NarclimFutureWithLandis.valueOf(), label: "NARCLIM Future with LANDIS" },
+            { option: _GlaciatorParameters__WEBPACK_IMPORTED_MODULE_6__["FuelMachineKind"].NarclimObservedWithLandis.valueOf(), label: "NARCLIM Observed with LANDIS" },
         ];
         this.timeframe_options = [
-            { option: _GlaciatorParameters__WEBPACK_IMPORTED_MODULE_4__["TimeframeOptions"].TWENTY, value: _GlaciatorParameters__WEBPACK_IMPORTED_MODULE_4__["TimeframeOptions"].TWENTY.valueOf() },
-            { option: _GlaciatorParameters__WEBPACK_IMPORTED_MODULE_4__["TimeframeOptions"].FIFTY, value: _GlaciatorParameters__WEBPACK_IMPORTED_MODULE_4__["TimeframeOptions"].FIFTY.valueOf() },
+            { option: _GlaciatorParameters__WEBPACK_IMPORTED_MODULE_6__["TimeframeOptions"].TWENTY, value: _GlaciatorParameters__WEBPACK_IMPORTED_MODULE_6__["TimeframeOptions"].TWENTY.valueOf() },
+            { option: _GlaciatorParameters__WEBPACK_IMPORTED_MODULE_6__["TimeframeOptions"].FIFTY, value: _GlaciatorParameters__WEBPACK_IMPORTED_MODULE_6__["TimeframeOptions"].FIFTY.valueOf() },
         ];
         this.submitted = false;
         this.acceptTerms = false;
@@ -580,8 +931,8 @@ let JobSubmissionComponent = class JobSubmissionComponent {
             harvesting_on: [false, [_angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].required]],
             acceptTerms: [false, _angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].requiredTrue]
         });
-        this.job = _GlaciatorParameters__WEBPACK_IMPORTED_MODULE_4__["glaciator_parameters_example"]; // Default Form values
-        this.job.uuid = Object(uuid__WEBPACK_IMPORTED_MODULE_3__["v4"])();
+        this.job = _GlaciatorParameters__WEBPACK_IMPORTED_MODULE_6__["glaciator_parameters_example"]; // Default Form values
+        this.job.uuid = Object(uuid__WEBPACK_IMPORTED_MODULE_5__["v4"])();
     }
     get f() { return this.submissionForm.controls; }
     onSubmit(event) {
@@ -605,7 +956,7 @@ let JobSubmissionComponent = class JobSubmissionComponent {
         });
     }
     createJob(data) {
-        this.job.uuid = Object(uuid__WEBPACK_IMPORTED_MODULE_3__["v4"])();
+        this.job.uuid = Object(uuid__WEBPACK_IMPORTED_MODULE_5__["v4"])();
         this.job.name = data.name;
         this.job.submission_time = new Date().toISOString();
         this.job.num_replicates = Number.parseInt(data.num_replicates);
@@ -619,19 +970,22 @@ let JobSubmissionComponent = class JobSubmissionComponent {
         this.job.submitter_email = data.submitter_email;
         this.job.descr = data.descr;
         console.log(this.job);
-        // Resets the databindings
-        // this.job = {id: null, name: "", description: "", email: ""}; // Better way?
     }
     onReset() {
         this.submitted = false;
         this.submissionForm.reset();
     }
 };
+JobSubmissionComponent.ctorParameters = () => [
+    { type: _angular_router__WEBPACK_IMPORTED_MODULE_3__["Router"] },
+    { type: _data_service__WEBPACK_IMPORTED_MODULE_4__["DataService"] },
+    { type: _angular_forms__WEBPACK_IMPORTED_MODULE_2__["FormBuilder"] }
+];
 JobSubmissionComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
     Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
         selector: 'app-job-submission',
-        template: __webpack_require__(/*! raw-loader!./job-submission.component.html */ "./node_modules/raw-loader/index.js!./src/app/job-submission/job-submission.component.html"),
-        styles: [__webpack_require__(/*! ./job-submission.component.css */ "./src/app/job-submission/job-submission.component.css")]
+        template: tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"](__webpack_require__(/*! raw-loader!./job-submission.component.html */ "./node_modules/raw-loader/dist/cjs.js!./src/app/job-submission/job-submission.component.html")).default,
+        styles: [tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"](__webpack_require__(/*! ./job-submission.component.css */ "./src/app/job-submission/job-submission.component.css")).default]
     })
 ], JobSubmissionComponent);
 
@@ -643,10 +997,12 @@ JobSubmissionComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
 /*!***************************************!*\
   !*** ./src/app/job/job.component.css ***!
   \***************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
-module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL2pvYi9qb2IuY29tcG9uZW50LmNzcyJ9 */"
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony default export */ __webpack_exports__["default"] = ("\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL2pvYi9qb2IuY29tcG9uZW50LmNzcyJ9 */");
 
 /***/ }),
 
@@ -672,8 +1028,8 @@ let JobComponent = class JobComponent {
 JobComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
     Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
         selector: 'app-job',
-        template: __webpack_require__(/*! raw-loader!./job.component.html */ "./node_modules/raw-loader/index.js!./src/app/job/job.component.html"),
-        styles: [__webpack_require__(/*! ./job.component.css */ "./src/app/job/job.component.css")]
+        template: tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"](__webpack_require__(/*! raw-loader!./job.component.html */ "./node_modules/raw-loader/dist/cjs.js!./src/app/job/job.component.html")).default,
+        styles: [tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"](__webpack_require__(/*! ./job.component.css */ "./src/app/job/job.component.css")).default]
     })
 ], JobComponent);
 
@@ -685,10 +1041,12 @@ JobComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
 /*!*****************************************!*\
   !*** ./src/app/jobs/jobs.component.css ***!
   \*****************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
-module.exports = ".selectable_row {\n    cursor: pointer;\n    background-color: rgba(255,255,255, 1.0);\n}\n.selectable_row:hover {\n    background-color: rgba(0,24,1250,0.2) !important;\n}\n.ui.steps .step.disabled {\n  background-color: rgba(234,234,234,1.0) !important;\n}\n.ui.steps .step,\n.ui.steps .step.active {\n  background-color: rgba(255,255,255,1.0) !important;\n}\n.ui.steps .step.active .icon {\n  color: rgba(73, 128, 182, 1) !important;\n}\n\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvam9icy9qb2JzLmNvbXBvbmVudC5jc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7SUFDSSxlQUFlO0lBQ2Ysd0NBQXdDO0FBQzVDO0FBQ0E7SUFDSSxnREFBZ0Q7QUFDcEQ7QUFDQTtFQUNFLGtEQUFrRDtBQUNwRDtBQUNBOztFQUVFLGtEQUFrRDtBQUNwRDtBQUNBO0VBQ0UsdUNBQXVDO0FBQ3pDIiwiZmlsZSI6InNyYy9hcHAvam9icy9qb2JzLmNvbXBvbmVudC5jc3MiLCJzb3VyY2VzQ29udGVudCI6WyIuc2VsZWN0YWJsZV9yb3cge1xuICAgIGN1cnNvcjogcG9pbnRlcjtcbiAgICBiYWNrZ3JvdW5kLWNvbG9yOiByZ2JhKDI1NSwyNTUsMjU1LCAxLjApO1xufVxuLnNlbGVjdGFibGVfcm93OmhvdmVyIHtcbiAgICBiYWNrZ3JvdW5kLWNvbG9yOiByZ2JhKDAsMjQsMTI1MCwwLjIpICFpbXBvcnRhbnQ7XG59XG4udWkuc3RlcHMgLnN0ZXAuZGlzYWJsZWQge1xuICBiYWNrZ3JvdW5kLWNvbG9yOiByZ2JhKDIzNCwyMzQsMjM0LDEuMCkgIWltcG9ydGFudDtcbn1cbi51aS5zdGVwcyAuc3RlcCxcbi51aS5zdGVwcyAuc3RlcC5hY3RpdmUge1xuICBiYWNrZ3JvdW5kLWNvbG9yOiByZ2JhKDI1NSwyNTUsMjU1LDEuMCkgIWltcG9ydGFudDtcbn1cbi51aS5zdGVwcyAuc3RlcC5hY3RpdmUgLmljb24ge1xuICBjb2xvcjogcmdiYSg3MywgMTI4LCAxODIsIDEpICFpbXBvcnRhbnQ7XG59XG4iXX0= */"
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony default export */ __webpack_exports__["default"] = (".selectable_row {\n    cursor: pointer;\n    background-color: rgba(255,255,255, 1.0);\n}\n.selectable_row:hover {\n    background-color: rgba(0,24,1250,0.2) !important;\n}\n.ui.steps .step.disabled {\n  background-color: rgba(234,234,234,1.0) !important;\n}\n.ui.steps .step,\n.ui.steps .step.active {\n  background-color: rgba(255,255,255,1.0) !important;\n}\n.ui.steps .step.active .icon {\n  color: rgba(73, 128, 182, 1) !important;\n}\n\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvam9icy9qb2JzLmNvbXBvbmVudC5jc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7SUFDSSxlQUFlO0lBQ2Ysd0NBQXdDO0FBQzVDO0FBQ0E7SUFDSSxnREFBZ0Q7QUFDcEQ7QUFDQTtFQUNFLGtEQUFrRDtBQUNwRDtBQUNBOztFQUVFLGtEQUFrRDtBQUNwRDtBQUNBO0VBQ0UsdUNBQXVDO0FBQ3pDIiwiZmlsZSI6InNyYy9hcHAvam9icy9qb2JzLmNvbXBvbmVudC5jc3MiLCJzb3VyY2VzQ29udGVudCI6WyIuc2VsZWN0YWJsZV9yb3cge1xuICAgIGN1cnNvcjogcG9pbnRlcjtcbiAgICBiYWNrZ3JvdW5kLWNvbG9yOiByZ2JhKDI1NSwyNTUsMjU1LCAxLjApO1xufVxuLnNlbGVjdGFibGVfcm93OmhvdmVyIHtcbiAgICBiYWNrZ3JvdW5kLWNvbG9yOiByZ2JhKDAsMjQsMTI1MCwwLjIpICFpbXBvcnRhbnQ7XG59XG4udWkuc3RlcHMgLnN0ZXAuZGlzYWJsZWQge1xuICBiYWNrZ3JvdW5kLWNvbG9yOiByZ2JhKDIzNCwyMzQsMjM0LDEuMCkgIWltcG9ydGFudDtcbn1cbi51aS5zdGVwcyAuc3RlcCxcbi51aS5zdGVwcyAuc3RlcC5hY3RpdmUge1xuICBiYWNrZ3JvdW5kLWNvbG9yOiByZ2JhKDI1NSwyNTUsMjU1LDEuMCkgIWltcG9ydGFudDtcbn1cbi51aS5zdGVwcyAuc3RlcC5hY3RpdmUgLmljb24ge1xuICBjb2xvcjogcmdiYSg3MywgMTI4LCAxODIsIDEpICFpbXBvcnRhbnQ7XG59XG4iXX0= */");
 
 /***/ }),
 
@@ -704,6 +1062,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "JobsComponent", function() { return JobsComponent; });
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
+/* harmony import */ var _data_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../data.service */ "./src/app/data.service.ts");
+
 
 
 let JobsComponent = class JobsComponent {
@@ -726,11 +1086,14 @@ let JobsComponent = class JobsComponent {
         this.selectedJob = job;
     }
 };
+JobsComponent.ctorParameters = () => [
+    { type: _data_service__WEBPACK_IMPORTED_MODULE_2__["DataService"] }
+];
 JobsComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
     Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
         selector: 'app-jobs',
-        template: __webpack_require__(/*! raw-loader!./jobs.component.html */ "./node_modules/raw-loader/index.js!./src/app/jobs/jobs.component.html"),
-        styles: [__webpack_require__(/*! ./jobs.component.css */ "./src/app/jobs/jobs.component.css")]
+        template: tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"](__webpack_require__(/*! raw-loader!./jobs.component.html */ "./node_modules/raw-loader/dist/cjs.js!./src/app/jobs/jobs.component.html")).default,
+        styles: [tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"](__webpack_require__(/*! ./jobs.component.css */ "./src/app/jobs/jobs.component.css")).default]
     })
 ], JobsComponent);
 
@@ -742,10 +1105,12 @@ JobsComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
 /*!*************************************************!*\
   !*** ./src/app/jobstate/jobstate.component.css ***!
   \*************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
-module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL2pvYnN0YXRlL2pvYnN0YXRlLmNvbXBvbmVudC5jc3MifQ== */"
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony default export */ __webpack_exports__["default"] = ("\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL2pvYnN0YXRlL2pvYnN0YXRlLmNvbXBvbmVudC5jc3MifQ== */");
 
 /***/ }),
 
@@ -771,8 +1136,8 @@ let JobstateComponent = class JobstateComponent {
 JobstateComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
     Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
         selector: 'app-jobstate',
-        template: __webpack_require__(/*! raw-loader!./jobstate.component.html */ "./node_modules/raw-loader/index.js!./src/app/jobstate/jobstate.component.html"),
-        styles: [__webpack_require__(/*! ./jobstate.component.css */ "./src/app/jobstate/jobstate.component.css")]
+        template: tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"](__webpack_require__(/*! raw-loader!./jobstate.component.html */ "./node_modules/raw-loader/dist/cjs.js!./src/app/jobstate/jobstate.component.html")).default,
+        styles: [tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"](__webpack_require__(/*! ./jobstate.component.css */ "./src/app/jobstate/jobstate.component.css")).default]
     })
 ], JobstateComponent);
 
@@ -790,9 +1155,11 @@ JobstateComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "environment", function() { return environment; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
 // This file can be replaced during build by using the `fileReplacements` array.
 // `ng build --prod` replaces `environment.ts` with `environment.prod.ts`.
 // The list of file replacements can be found in `angular.json`.
+
 const environment = {
     production: false
 };
@@ -817,18 +1184,20 @@ const environment = {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
-/* harmony import */ var _angular_platform_browser_dynamic__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/platform-browser-dynamic */ "./node_modules/@angular/platform-browser-dynamic/fesm2015/platform-browser-dynamic.js");
-/* harmony import */ var _app_app_module__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./app/app.module */ "./src/app/app.module.ts");
-/* harmony import */ var _environments_environment__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./environments/environment */ "./src/environments/environment.ts");
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
+/* harmony import */ var _angular_platform_browser_dynamic__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/platform-browser-dynamic */ "./node_modules/@angular/platform-browser-dynamic/fesm2015/platform-browser-dynamic.js");
+/* harmony import */ var _app_app_module__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./app/app.module */ "./src/app/app.module.ts");
+/* harmony import */ var _environments_environment__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./environments/environment */ "./src/environments/environment.ts");
 
 
 
 
-if (_environments_environment__WEBPACK_IMPORTED_MODULE_3__["environment"].production) {
-    Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["enableProdMode"])();
+
+if (_environments_environment__WEBPACK_IMPORTED_MODULE_4__["environment"].production) {
+    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["enableProdMode"])();
 }
-Object(_angular_platform_browser_dynamic__WEBPACK_IMPORTED_MODULE_1__["platformBrowserDynamic"])().bootstrapModule(_app_app_module__WEBPACK_IMPORTED_MODULE_2__["AppModule"])
+Object(_angular_platform_browser_dynamic__WEBPACK_IMPORTED_MODULE_2__["platformBrowserDynamic"])().bootstrapModule(_app_app_module__WEBPACK_IMPORTED_MODULE_3__["AppModule"])
     .catch(err => console.error(err));
 
 
@@ -843,6 +1212,17 @@ Object(_angular_platform_browser_dynamic__WEBPACK_IMPORTED_MODULE_1__["platformB
 
 module.exports = __webpack_require__(/*! /black/cloud/UOM/INSITE/src/main.ts */"./src/main.ts");
 
+
+/***/ }),
+
+/***/ 1:
+/*!********************!*\
+  !*** ws (ignored) ***!
+  \********************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+/* (ignored) */
 
 /***/ })
 
