@@ -218,7 +218,7 @@ io.on('connection', (socket) => {
     let query ={
       text: `SELECT DISTINCT * FROM "Job", "JobState"
     WHERE status=4
-INNER JOIN "JobToJobState" ON "Job".id="JobToJobState".id AND "JobToJobState".jobid = "JobState".id
+INNER JOIN "JobToJobState" ON "Job".id="JobToJobState".job_id AND "JobToJobState".job_state_id = "JobState".id
 ORDER BY job_failure_time, submission_time`
     };
 
@@ -244,7 +244,7 @@ ORDER BY job_failure_time, submission_time`
 
     // Read the Jobs table from the SQLite DB
     let query = {
-      text: `SELECT DISTINCT * FROM "Job" WHERE id NOT IN (SELECT DISTINCT jobid FROM "JobToJobState") ORDER BY submission_time;`
+      text: `SELECT DISTINCT * FROM "Job" WHERE id NOT IN (SELECT DISTINCT job_id FROM "JobToJobState") ORDER BY submission_time;`
     };
 
 
@@ -271,8 +271,8 @@ ORDER BY job_failure_time, submission_time`
 
     let query = {
       text: `SELECT * FROM "Job"
-INNER JOIN "JobToJobState" ON "Job".id="JobToJobState".id
-INNER JOIN "JobState" ON "JobToJobState".jobid = "JobState".id
+INNER JOIN "JobToJobState" ON "Job".id="JobToJobState".job_id
+INNER JOIN "JobState" ON "JobToJobState".job_state_id = "JobState".id
 ORDER BY submission_time, submitter_name`
     };
 
