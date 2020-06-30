@@ -56,7 +56,7 @@ app.get('*', (req, res) => {
 });
 
 const port = 8181;
-app.set('port', 8181);
+app.set('port', port);
 
 const server = http.createServer(app);
 const sioc = require('socket.io-client');
