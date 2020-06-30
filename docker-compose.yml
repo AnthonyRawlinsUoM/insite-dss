@@ -1,14 +1,6 @@
 version: '3.7'
 
 services:
-    # redis:
-    #     image: redis
-    #     ports:
-    #       - 6380:6379
-    #     volumes:
-    #       - /nfs/pyromancer/Personal/Tony/CLOUD/redis/data:/data
-    #     networks:
-    #         - insite-network
 
     app:
         image: anthonyrawlinsuom/insite-dss
@@ -23,17 +15,15 @@ services:
           # - PGDATABASE=WebFrostJobQueue_test1
           # - PGPORT=3211
 
-          - PGUSER=postgres
-          - PGHOST=192.168.1.181
-          - PGPASSWORD=secret
-          - PGDATABASE=postgres
-          - PGPORT=5432
+          - PG_USER=postgres
+          - PG_HOST=192.168.1.181
+          - PG_PASSWORD=secret
+          - PG_DATABASE=postgres
+          - PG_PORT=5432
 
           - PROTOCOL=https
           - WEB=insite.lightning.deepblack.cloud
         volumes:
-          # - /nfs/pyromancer/Projects/DSS/data/insite/queue:/usr/src/app/queue
-          # - /nfs/pyromancer/Projects/DSS/data/insite/executable:/usr/src/app/executable
           - ./data/insite/queue:/usr/src/app/queue
           - ./data/insite/executable:/usr/src/app/executable
           - ./data/insite/database:/usr/src/app/database
@@ -43,7 +33,7 @@ services:
         deploy:
             placement:
                 constraints:
-                  - node.role == manager
+                  # - node.role == manager
                   - node.hostname == Charcoal
                   # - node.labels.NFS == attached
             labels:
