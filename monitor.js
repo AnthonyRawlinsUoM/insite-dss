@@ -172,7 +172,7 @@ io.on('connection', (socket) => {
 
         console.log(job);
 
-        let text = `INSERT INTO Job(name, descr, uuid, submitter_name, submission_time, submitter_email, weather_machine_kind, fuel_machine_kind, planburn_target_perc, regsim_duration, num_replicates, harvesting_on) VALUES($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12)`
+        let text = `INSERT INTO "Job"(name, descr, uuid, submitter_name, submission_time, submitter_email, weather_machine_kind, fuel_machine_kind, planburn_target_perc, regsim_duration, num_replicates, harvesting_on) VALUES($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12)`
         let values = [
           job.name,
           job.descr,
@@ -216,9 +216,9 @@ io.on('connection', (socket) => {
     // Status 4 = Errored
 
     let query ={
-      text: `SELECT DISTINCT * FROM Job, JobState
+      text: `SELECT DISTINCT * FROM "Job", "JobState"
     WHERE status=4
-INNER JOIN JobToJobState ON Job.id=JobToJobState.id AND JobToJobState.jobid = JobState.id
+INNER JOIN "JobToJobState" ON "Job".id="JobToJobState".id AND "JobToJobState".jobid = "JobState".id
 ORDER BY job_failure_time, submission_time`
     };
 
@@ -244,7 +244,7 @@ ORDER BY job_failure_time, submission_time`
 
     // Read the Jobs table from the SQLite DB
     let query = {
-      text: `SELECT DISTINCT * FROM Job WHERE id NOT IN (SELECT DISTINCT jobid FROM JobToJobState) ORDER BY submission_time;`
+      text: `SELECT DISTINCT * FROM "Job" WHERE id NOT IN (SELECT DISTINCT jobid FROM "JobToJobState") ORDER BY submission_time;`
     };
 
 
@@ -270,9 +270,9 @@ ORDER BY job_failure_time, submission_time`
     console.log('Listing all jobs!');
 
     let query = {
-      text: `SELECT * FROM Job
-INNER JOIN JobToJobState ON Job.id=JobToJobState.id
-INNER JOIN JobState ON JobToJobState.jobid = JobState.id
+      text: `SELECT * FROM "Job"
+INNER JOIN "JobToJobState" ON "Job".id="JobToJobState".id
+INNER JOIN "JobState" ON "JobToJobState".jobid = "JobState".id
 ORDER BY submission_time, submitter_name`
     };
 
@@ -303,42 +303,6 @@ ORDER BY submission_time, submitter_name`
 
 });
 
-
-
-
-
-// let statements = [
-// 'CREATE TABLE IF NOT EXISTS "Job"("id" SERIAL PRIMARY KEY, "name" text NOT NULL, "descr" text NOT NULL, "uuid" text NOT NULL, "submitter_name" text NOT NULL, "submission_time" TIMESTAMP NOT NULL, "submitter_email" text NOT NULL, "weather_machine_kind" integer NOT NULL, "fuel_machine_kind" integer NOT NULL, "planburn_target_perc" integer NOT NULL, "regsim_duration" integer NOT NULL, "num_replicates" integer NOT NULL, "harvesting_on" boolean NOT NULL)',
-// 'CREATE TABLE IF NOT EXISTS "JobState"("id" SERIAL PRIMARY KEY, "status" text NOT NULL, "simulation_start_time" TIMESTAMP, "post_proc_start_time" TIMESTAMP, "simulation_results_dir_path" text,  "post_proc_results_dir_path" text,  "job_failure_time" TIMESTAMP, "job_completion_time" TIMESTAMP, "job_failure_error_message" varchar)',
-// 'CREATE TABLE IF NOT EXISTS "JobToJobState"("id" integer NOT NULL, "jobid" integer NOT NULL)'];
-
-// server.init = function() {
-//   return new Promise((resolve, reject) => {
-//     // console.log('Doing SQL initialisation!');
-//
-//     console.log('INSITE is initialising...');
-//
-//     statements.forEach(statement => {
-//
-//       pool
-//       .query(statement, [])
-//       .then(res => {
-//         console.log("SQL SUCCESS!");
-//         resolve();
-//       })
-//       .catch(e => {
-//         console.error("SQL FAILED: " + e);
-//         console.error(e.stack);
-//         reject(e);
-//       });
-//     });
-//   });
-// }
-
-// server.init().then(
-  server.listen(port, () => {
-    console.log('INSITE Server: running on', port);
-  })
-// ).catch(err => {
-  // console.error('INSITE Server: Failed to initialise Database!', err);
-// });
+server.listen(port, () => {
+  console.log('INSITE Server: running on', port);
+})
