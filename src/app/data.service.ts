@@ -8,9 +8,9 @@ import { GlaciatorParameters } from './GlaciatorParameters';
 // const host = 'insite.dss.cloud.bushfirebehaviour.net.au';
 // const port = ':8181';
 
-const protocol = process.env.PROTOCOL || 'https';
-const host = process.env.WEB || 'insite.lightning.deepblack.cloud';
-const port = process.env.PORT || '';
+const protocol = 'https';
+const host = 'insite.lightning.deepblack.cloud';
+const port = '';
 
 
 @Injectable({

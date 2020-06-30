@@ -18,13 +18,6 @@ const { validate } = require('jsonschema');
 
 const { Pool, Client } = require('pg');
 
-const PG_USER = process.env.PG_USER || 'postgres';
-const PG_HOST = process.env.PG_HOST || '192.168.1.181';
-const PG_DATABASE = process.env.PG_DATABASE || 'postgres';
-const PG_PASSWORD = process.env.PG_PASSWORD || 'secret';
-const PG_PORT = process.env.PG_PORT || '5432';
-
-
 const pool = new Pool({
   user: `${PG_USER}`,
   host: `${PG_HOST}`,
@@ -62,11 +55,7 @@ app.get('*', (req, res) => {
   // res.sendFile(path.join(__dirname, 'dist/INSITE/index.html'))
 });
 
-const port = process.env.PORT || '8181';
-app.set('port', port);
-
-const host = process.env.HOST || 'localhost';
-app.set('host', host);
+app.set('port', 8181);
 
 const server = http.createServer(app);
 const sioc = require('socket.io-client');
