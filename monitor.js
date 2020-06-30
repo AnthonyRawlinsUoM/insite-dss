@@ -304,10 +304,6 @@ ORDER BY submission_time, submitter_name`;
 
 
 let statements = [
-  'DROP TABLE IF EXISTS job;',
-  'DROP TABLE IF EXISTS job_state;',
-  'DROP TABLE IF EXISTS job_to_jobstate;',
-
 'CREATE TABLE IF NOT EXISTS "job"("id" SERIAL PRIMARY KEY, "name" text NOT NULL, "descr" text NOT NULL, "uuid" text NOT NULL, "submitter_name" text NOT NULL, "submission_time" TIMESTAMP NOT NULL, "submitter_email" text NOT NULL, "weather_machine_kind" integer NOT NULL, "fuel_machine_kind" integer NOT NULL, "planburn_target_perc" integer NOT NULL, "regsim_duration" integer NOT NULL, "num_replicates" integer NOT NULL, "harvesting_on" boolean NOT NULL)',
 'CREATE TABLE IF NOT EXISTS "job_state"("id" SERIAL PRIMARY KEY, "status" text NOT NULL, "simulation_start_time" TIMESTAMP, "post_proc_start_time" TIMESTAMP, "simulation_results_dir_path" text,  "post_proc_results_dir_path" text,  "job_failure_time" TIMESTAMP, "job_completion_time" TIMESTAMP, "job_failure_error_message" varchar)',
 'CREATE TABLE IF NOT EXISTS "job_to_jobstate"("id" integer NOT NULL, "jobid" integer NOT NULL)'];
