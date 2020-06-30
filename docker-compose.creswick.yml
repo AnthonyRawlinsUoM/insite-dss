@@ -1,14 +1,6 @@
 version: '3.7'
 
 services:
-    # redis:
-    #     image: redis
-    #     ports:
-    #       - 6380:6379
-    #     volumes:
-    #       - /nfs/pyromancer/Personal/Tony/CLOUD/redis/data:/data
-    #     networks:
-    #         - insite-network
 
     insite:
         image: anthonyrawlinsuom/insite-dss
@@ -17,16 +9,11 @@ services:
           - PGHOST=10.101.95.197
           - PGPASSWORD=sultanofflame
           - PGDATABASE=WebFrostJobQueue_test1
-          - PGPORT=3211
+          - PGPORT=5432
           - PROTOCOL=https
           - WEB=insite.dss.cloud.bushfirebehaviour.net.au
         ports:
           - 8181:8181
-        volumes:
-          - /nfs/pyromancer/Projects/DSS/data/insite/queue:/usr/src/app/queue
-          - /nfs/pyromancer/Projects/DSS/data/insite/executable:/usr/src/app/executable
-          # THIS IS THE MAGIC...
-          - /nfs/pyromancer/Projects/WEB_FROST_TEST1/job_queue/:/usr/src/app/database
 
         networks:
             - traefik-network
