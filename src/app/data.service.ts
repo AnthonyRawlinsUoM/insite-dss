@@ -9,7 +9,7 @@ import { GlaciatorParameters } from './GlaciatorParameters';
 // const port = ':8181';
 
 const protocol = 'http';
-const host = 'insite.lightning.deepblack.cloud';
+const host = '127.0.0.1';
 const port = '8181';
 
 

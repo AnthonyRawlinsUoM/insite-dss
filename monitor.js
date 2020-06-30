@@ -18,15 +18,24 @@ const { validate } = require('jsonschema');
 
 const { Pool, Client } = require('pg');
 
+// const pool = new Pool({
+//   user: `${process.env.PG_USER}`,
+//   host: `${process.env.PG_HOST}`,
+//   database: `${process.env.PG_DATABASE}`,
+//   password: `${process.env.PG_PASSWORD}`,
+//   port: `${process.env.PG_PORT}`,
+// });
+
 const pool = new Pool({
-  user: `${process.env.PG_USER}`,
-  host: `${process.env.PG_HOST}`,
-  database: `${process.env.PG_DATABASE}`,
-  password: `${process.env.PG_PASSWORD}`,
-  port: `${process.env.PG_PORT}`,
+  user: 'postgres',
+  host: 'localhost',
+  database: 'postgres',
+  password: 'secret',
+  port: 5432,
 });
 
-app.use(express.static(path.join(__dirname, '/INSITE')));
+// app.use(express.static(path.join(__dirname, '/INSITE')));
+app.use(express.static(path.join(__dirname, '/dist/INSITE')));
 
 app.use(function(req, res, next) {
   app.use(function(req, res, next) {
@@ -51,8 +60,8 @@ app.use(function(req, res, next) {
 });
 
 app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname, '/INSITE/index.html'))
-  // res.sendFile(path.join(__dirname, 'dist/INSITE/index.html'))
+  // res.sendFile(path.join(__dirname, '/INSITE/index.html'))
+  res.sendFile(path.join(__dirname, 'dist/INSITE/index.html'))
 });
 
 const port = 8181;

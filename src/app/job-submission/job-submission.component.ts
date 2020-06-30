@@ -148,29 +148,10 @@ export class JobSubmissionComponent implements OnInit {
     this.job.descr = data.descr;
 
     console.log(this.job);
-
-
-    // Resets the databindings
-    // this.job = {id: null, name: "", description: "", email: ""}; // Better way?
   }
 
   onReset() {
     this.submitted = false;
     this.submissionForm.reset();
   }
-
-  // observed_change(ev) {
-  //   console.log('Observed', ev, this.observed_weather, this.NARCLIM_current_weather, this.NARCLIM_future_weather);
-  //   if (ev && this.NARCLIM_current_weather && this.NARCLIM_future_weather) this.NARCLIM_future_weather = false;
-  // }
-  //
-  // NARCLIM_current_weather_change(ev) {
-  //   console.log('Current', ev, this.observed_weather, this.NARCLIM_current_weather, this.NARCLIM_future_weather);
-  //
-  // }
-  // NARCLIM_future_weather_change(ev) {
-  //   console.log('Future', ev, this.observed_weather, this.NARCLIM_current_weather, this.NARCLIM_future_weather);
-  //   if (ev && this.observed_weather && this.NARCLIM_future_weather) this.NARCLIM_future_weather = false;
-  // }
-
 }
