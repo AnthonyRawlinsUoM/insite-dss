@@ -215,7 +215,7 @@ io.on('connection', (socket) => {
   socket.on('error-list', () => {
     // Status 4 = Errored
 
-    let advanced_sql ={
+    let query ={
       text: `SELECT DISTINCT * FROM Job, JobState
     WHERE status=4
 INNER JOIN JobToJobState ON Job.id=JobToJobState.id AND JobToJobState.jobid = JobState.id
@@ -223,7 +223,7 @@ ORDER BY job_failure_time, submission_time`
     };
 
     pool
-      .query(basic_sql, [])
+      .query(query)
       .then(res => {
         console.log("SQL SUCCESS!")
         socket.emit('error-list', res.rows);
@@ -232,7 +232,7 @@ ORDER BY job_failure_time, submission_time`
         console.error("SQL FAILED: " + e);
         console.error(e.stack);
         socket.emit('list-error', {
-          error: err,
+          error: e,
           sql: advanced_sql
         });
       });
@@ -243,11 +243,13 @@ ORDER BY job_failure_time, submission_time`
     console.log('Listing all jobs!');
 
     // Read the Jobs table from the SQLite DB
-    let basic_sql = `SELECT DISTINCT * FROM Job WHERE id NOT IN (SELECT DISTINCT jobid FROM JobToJobState) ORDER BY submission_time;`;
+    let query = {
+      text: `SELECT DISTINCT * FROM Job WHERE id NOT IN (SELECT DISTINCT jobid FROM JobToJobState) ORDER BY submission_time;`
+    };
 
 
     pool
-      .query(basic_sql, [])
+      .query(query)
       .then(res => {
         console.log("SQL SUCCESS!")
         socket.emit('jobs-queue', res.rows);
@@ -256,8 +258,8 @@ ORDER BY job_failure_time, submission_time`
         console.error("SQL FAILED: " + e);
         console.error(e.stack);
         socket.emit('jobs-error', {
-          error: err,
-          sql: basic_sql
+          error: e,
+          sql: query
         });
       });
     });
@@ -267,13 +269,15 @@ ORDER BY job_failure_time, submission_time`
   socket.on('list-jobs', () => {
     console.log('Listing all jobs!');
 
-    let advanced_sql = `SELECT * FROM Job
+    let query = {
+      text: `SELECT * FROM Job
 INNER JOIN JobToJobState ON Job.id=JobToJobState.id
 INNER JOIN JobState ON JobToJobState.jobid = JobState.id
-ORDER BY submission_time, submitter_name`;
+ORDER BY submission_time, submitter_name`
+    };
 
     pool
-      .query(advanced_sql, [])
+      .query(query, [])
       .then(res => {
         console.log("SQL SUCCESS!")
         socket.emit('jobs-list', res.rows);
@@ -282,8 +286,8 @@ ORDER BY submission_time, submitter_name`;
         console.error("SQL FAILED: " + e);
         console.error(e.stack);
         socket.emit('jobs-error', {
-          error: err,
-          sql: advanced_sql
+          error: e,
+          sql: query
         });
       });
     });
