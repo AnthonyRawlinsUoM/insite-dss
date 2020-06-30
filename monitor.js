@@ -19,11 +19,11 @@ const { validate } = require('jsonschema');
 const { Pool, Client } = require('pg');
 
 const pool = new Pool({
-  user: `${PG_USER}`,
-  host: `${PG_HOST}`,
-  database: `${PG_DATABASE}`,
-  password: `${PG_PASSWORD}`,
-  port: `${PG_PORT}`,
+  user: `${process.env.PG_USER}`,
+  host: `${process.env.PG_HOST}`,
+  database: `${process.env.PG_DATABASE}`,
+  password: `${process.env.PG_PASSWORD}`,
+  port: `${process.env.PG_PORT}`,
 });
 
 app.use(express.static(path.join(__dirname, '/INSITE')));
