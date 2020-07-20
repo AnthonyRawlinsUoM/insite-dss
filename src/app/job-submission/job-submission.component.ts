@@ -40,10 +40,10 @@ export class JobSubmissionComponent implements OnInit {
   ];
 
   target_options = [
-    {option: '0%', value: 0},
-    {option: '1%', value: 1},
-    {option: '3%', value: 3},
-    {option: '5%', value: 5},
+    {label: '0%', option: 0},
+    {label: '1%', option: 1},
+    {label: '3%', option: 3},
+    {label: '5%', option: 5},
   ];
 
   num_replicates: number;
