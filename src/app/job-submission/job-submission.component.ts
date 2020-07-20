@@ -148,7 +148,8 @@ export class JobSubmissionComponent implements OnInit {
     this.job.fuel_machine_kind = data.fuel_machine_kind.option;
     this.job.weather_machine_kind = data.weather_machine_kind.option;
     // this.job.parameters.weather = this.weather.option;
-    this.job.planburn_target_perc = Number.parseInt(data.planburn_target_perc);
+    
+    this.job.planburn_target_perc = data.planburn_target_perc;
     this.job.harvesting_on = data.harvesting_on;
     this.job.submitter_name = data.submitter_name;
     this.job.submitter_email = data.submitter_email;
