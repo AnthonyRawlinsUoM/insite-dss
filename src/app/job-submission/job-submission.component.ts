@@ -50,7 +50,7 @@ export class JobSubmissionComponent implements OnInit {
   regsim_duration: number;
   fuel_machine_kind: number;
   weather_machine_kind: number;
-  planburn_target_perc: number;
+  planburn_target_perc: number = 0;
   harvesting_on: boolean;
   submitter_name: string;
   submission_time: string;
@@ -148,7 +148,7 @@ export class JobSubmissionComponent implements OnInit {
     this.job.fuel_machine_kind = data.fuel_machine_kind.option;
     this.job.weather_machine_kind = data.weather_machine_kind.option;
     // this.job.parameters.weather = this.weather.option;
-    
+
     this.job.planburn_target_perc = data.planburn_target_perc;
     this.job.harvesting_on = data.harvesting_on;
     this.job.submitter_name = data.submitter_name;
