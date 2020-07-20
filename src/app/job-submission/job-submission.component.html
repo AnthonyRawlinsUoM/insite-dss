@@ -152,11 +152,25 @@
 
           <div class="required field" [ngClass]="{ 'error': submitted && f.planburn_target_perc.errors }">
             <label>Burn Target (Percentage per Year)</label>
-            <input
-                type="text"
-                formControlName="planburn_target_perc"
-                placeholder="%"
+
+            <sui-select
+              class="selection"
+              formControlName="planburn_target_perc"
+              [options]="target_options"
+              labelField="label"
+              [isSearchable]="searchable"
+              [isDisabled]="disabled"
+              #target_select
+          >
+            <sui-select-option
+                *ngFor="let option of target_select.filteredOptions"
+                [value]="option"
             >
+            </sui-select-option>
+          </sui-select>
+
+
+
           </div>
         </div>
       </div>

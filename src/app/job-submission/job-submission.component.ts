@@ -39,6 +39,13 @@ export class JobSubmissionComponent implements OnInit {
     { option: gp.TimeframeOptions.FIFTY, value: gp.TimeframeOptions.FIFTY.valueOf() },
   ];
 
+  target_options = [
+    {option: '0%', value: 0},
+    {option: '1%', value: 1},
+    {option: '3%', value: 3},
+    {option: '5%', value: 5},
+  ];
+
   num_replicates: number;
   regsim_duration: number;
   fuel_machine_kind: number;
