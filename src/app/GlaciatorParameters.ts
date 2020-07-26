@@ -12,7 +12,7 @@ export class GlaciatorParameters {
   regsim_duration: number;
   num_replicates: number;
   harvesting_on: boolean;
-  fire_history: number;
+  fire_history_kind: number;
 
   constructor(fd) {
     console.log(fd);
@@ -73,5 +73,5 @@ export const glaciator_parameters_example = {
   regsim_duration: TimeframeOptions.FIFTY.valueOf(),
   num_replicates: ReplicateOptions.FIFTY.valueOf(),
   harvesting_on: false,
-  fire_history: FireHistoryOtions.NONE.valueOf()
+  fire_history_kind: FireHistoryOtions.NONE.valueOf()
 }

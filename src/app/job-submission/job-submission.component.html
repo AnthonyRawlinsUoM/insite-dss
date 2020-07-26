@@ -210,13 +210,13 @@
 
           <div
               class="required field"
-              [ngClass]="{ 'error': submitted && f.fire_history.errors }"
+              [ngClass]="{ 'error': submitted && f.fire_history_kind.errors }"
           >
             <label>Fire History</label>
 
             <sui-select
                 class="selection"
-                formControlName="fire_history"
+                formControlName="fire_history_kind"
                 [options]="fire_history_options"
                 labelField="label"
                 [isSearchable]="searchable"
