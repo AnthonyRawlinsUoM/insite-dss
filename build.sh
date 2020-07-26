@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
-npm version patch
+# npm version --no-git-tag-version patch
 # ng build --watch
-ng build
+ng build --prod
 docker build -t anthonyrawlinsuom/insite-dss:latest .
 docker push anthonyrawlinsuom/insite-dss
