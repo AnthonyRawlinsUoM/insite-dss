@@ -15,7 +15,7 @@ const js2xmlparser = require("js2xmlparser");
 const directoryPath = path.join(__dirname, '/queue');
 
 const { validate } = require('jsonschema');
-const { version } = require('package.json').version;
+const package = require('./package.json');
 
 const { Pool, Client } = require('pg');
 
@@ -306,5 +306,5 @@ ORDER BY submission_time, submitter_name`
 });
 
 server.listen(port, () => {
-  console.log('INSITE Server' + version + ': running on', port);
+  console.log('INSITE Server (v' + package.version + '): running on', port);
 })
