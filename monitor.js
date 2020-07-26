@@ -109,7 +109,7 @@ function validateSchema(job) {
     check(job.planburn_target_perc)
     .isNumeric()
     .min(0)
-    .max(100),
+    .max(5),
 
     check(job.regsim_duration)
     .isNumeric(),
@@ -172,7 +172,7 @@ io.on('connection', (socket) => {
 
         console.log(job);
 
-        let text = `INSERT INTO "Job"(name, descr, uuid, submitter_name, submission_time, submitter_email, weather_machine_kind, fuel_machine_kind, planburn_target_perc, regsim_duration, num_replicates, harvesting_on) VALUES($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12)`
+        let text = `INSERT INTO "Job"(name, descr, uuid, submitter_name, submission_time, submitter_email, weather_machine_kind, fuel_machine_kind, planburn_target_perc, regsim_duration, num_replicates, harvesting_on) VALUES($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12,$13)`
         let values = [
           job.name,
           job.descr,
@@ -182,10 +182,11 @@ io.on('connection', (socket) => {
           job.submitter_email,
           job.weather_machine_kind,
           job.fuel_machine_kind,
-          job.planburn_target_perc.valueOf(),
+          job.planburn_target_perc,
           job.regsim_duration.valueOf(),
           job.num_replicates.valueOf(),
-          job.harvesting_on
+          job.harvesting_on,
+          job.fire_history_kind
         ];
 
         let query = {

@@ -156,6 +156,16 @@
             "examples": [
                 false
             ]
+        },
+        "fire_history_kind": {
+            "$id": "#/properties/fire_history_kind",
+            "type": "integer",
+            "title": "The fire_history_kind schema",
+            "description": "An explanation about the purpose of this instance.",
+            "default": 0,
+            "examples": [
+                1
+            ]
         }
     }
 }
