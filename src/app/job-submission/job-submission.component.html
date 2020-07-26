@@ -15,70 +15,89 @@
 
     <div class="ui divider"></div>
 
-    <form class="ui form" [formGroup]="submissionForm" (ngSubmit)="onSubmit()">
+    <form
+        class="ui form"
+        [formGroup]="submissionForm"
+        (ngSubmit)="onSubmit()"
+    >
       <div class="ui two column stackable grid">
 
         <div class="column">
           <h3 class="ui header">Job metadata</h3>
 
           <div class="grouped fields">
-            <div class="required field" [ngClass]="{ 'error': submitted && f.submitter_name.errors }">
+            <div
+                class="required field"
+                [ngClass]="{ 'error': submitted && f.submitter_name.errors }"
+            >
               <label>Your Name</label>
               <input
                   formControlName="submitter_name"
                   type="text"
-
               >
             </div>
 
-            <div class="required field" [ngClass]="{ 'error': submitted && f.submitter_email.errors }">
+            <div
+                class="required field"
+                [ngClass]="{ 'error': submitted && f.submitter_email.errors }"
+            >
               <label>Email</label>
-              <input formControlName="submitter_email"
+              <input
+                  formControlName="submitter_email"
                   type="email"
               >
             </div>
           </div>
 
-          <div class="required field" [ngClass]="{ 'error': submitted && f.descr.errors }">
+          <div
+              class="required field"
+              [ngClass]="{ 'error': submitted && f.descr.errors }"
+          >
             <label for="descr">Description</label>
-            <textarea
-                formControlName="descr"
-            ></textarea>
+            <textarea formControlName="descr"></textarea>
           </div>
 
 
         </div>
         <div class="column">
-<h3 class="ui header">Parameters</h3>
+          <h3 class="ui header">Parameters</h3>
 
-<div class="required field" [ngClass]="{ 'error': submitted && f.name.errors }">
-  <label>Job Name</label>
-  <input
-      formControlName="name"
-      type="text"
+          <div
+              class="required field"
+              [ngClass]="{ 'error': submitted && f.name.errors }"
+          >
+            <label>Job Name</label>
+            <input
+                formControlName="name"
+                type="text"
+            >
+          </div>
 
-  >
-</div>
-
-            <div class="required field">
-              <label><input type="checkbox"
+          <div class="required field">
+            <label><input
+                  type="checkbox"
                   class="toggle"
                   formControlName="harvesting_on"
               /> Harvesting</label>
-            </div>
+          </div>
 
-          <div class="grouped required fields" [ngClass]="{ 'errors': submitted && f.regsim_duration.errors }">
+          <div
+              class="grouped required fields"
+              [ngClass]="{ 'errors': submitted && f.regsim_duration.errors }"
+          >
             <label for="regsim_duration">Simulation time (Years):</label>
 
             <div class="field">
-              <input type="radio"
+              <input
+                  type="radio"
                   class="toggle"
                   value="20"
                   formControlName="regsim_duration"
               /> 25
             </div>
             <div class="field">
-              <input type="radio"
+              <input
+                  type="radio"
                   class="toggle"
                   value="50"
                   formControlName="regsim_duration"
@@ -86,25 +105,31 @@
             </div>
           </div>
 
-          <div class="grouped required fields" [ngClass]="{ 'errors': submitted && f.num_replicates.errors }">
+          <div
+              class="grouped required fields"
+              [ngClass]="{ 'errors': submitted && f.num_replicates.errors }"
+          >
             <label for="num_replicates">Replicates:</label>
 
             <div class="field">
-              <input type="radio"
+              <input
+                  type="radio"
                   class="toggle"
                   value="10"
                   formControlName="num_replicates"
               /> 10
             </div>
             <div class="field">
-              <input type="radio"
+              <input
+                  type="radio"
                   class="toggle"
                   value="25"
                   formControlName="num_replicates"
               /> 25
             </div>
             <div class="field">
-              <input type="radio"
+              <input
+                  type="radio"
                   class="toggle"
                   value="50"
                   formControlName="num_replicates"
@@ -112,7 +137,10 @@
             </div>
           </div>
 
-          <div class="required field" [ngClass]="{ 'error': submitted && f.fuel_machine_kind.errors }">
+          <div
+              class="required field"
+              [ngClass]="{ 'error': submitted && f.fuel_machine_kind.errors }"
+          >
             <label for="fuel_machine_kind_select">Fuel Machine: </label>
             <sui-select
                 class="selection"
@@ -131,51 +159,89 @@
             </sui-select>
           </div>
 
-          <div class="required field" [ngClass]="{ 'error': submitted && f.weather_machine_kind.errors }">
+          <div
+              class="required field"
+              [ngClass]="{ 'error': submitted && f.weather_machine_kind.errors }"
+          >
             <label for="weather_machine_kind_select">Weather Machine: </label>
             <sui-select
-              class="selection"
-              formControlName="weather_machine_kind"
-              [options]="weather_options"
-              labelField="label"
-              [isSearchable]="searchable"
-              [isDisabled]="disabled"
-              #weather_select
-          >
-            <sui-select-option
-                *ngFor="let option of weather_select.filteredOptions"
-                [value]="option"
+                class="selection"
+                formControlName="weather_machine_kind"
+                [options]="weather_options"
+                labelField="label"
+                [isSearchable]="searchable"
+                [isDisabled]="disabled"
+                #weather_select
             >
-            </sui-select-option>
-          </sui-select>
+              <sui-select-option
+                  *ngFor="let option of weather_select.filteredOptions"
+                  [value]="option"
+              >
+              </sui-select-option>
+            </sui-select>
           </div>
 
-          <div class="required field" [ngClass]="{ 'error': submitted && f.planburn_target_perc.errors }">
+          <div
+              class="required field"
+              [ngClass]="{ 'error': submitted && f.planburn_target_perc.errors }"
+          >
             <label>Burn Target (Percentage per Year)</label>
 
             <sui-select
-              class="selection"
-              formControlName="planburn_target_perc"
-              [options]="target_options"
-              labelField="label"
-              [isSearchable]="searchable"
-              [isDisabled]="disabled"
-              #target_select
-          >
-            <sui-select-option
-                *ngFor="let option of target_select.filteredOptions"
-                [value]="option"
+                class="selection"
+                formControlName="planburn_target_perc"
+                [options]="target_options"
+                labelField="label"
+                [isSearchable]="searchable"
+                [isDisabled]="disabled"
+                #target_select
             >
-            </sui-select-option>
-          </sui-select>
+              <sui-select-option
+                  *ngFor="let option of target_select.filteredOptions"
+                  [value]="option"
+              >
+              </sui-select-option>
+            </sui-select>
 
 
 
           </div>
+
+
+          <div
+              class="required field"
+              [ngClass]="{ 'error': submitted && f.fire_history.errors }"
+          >
+            <label>Fire History</label>
+
+            <sui-select
+                class="selection"
+                formControlName="fire_history"
+                [options]="fire_history_options"
+                labelField="label"
+                [isSearchable]="searchable"
+                [isDisabled]="disabled"
+                #fire_history_select
+            >
+              <sui-select-option
+                  *ngFor="let option of fire_history_select.filteredOptions"
+                  [value]="option"
+              >
+              </sui-select-option>
+            </sui-select>
+
+
+
+          </div>
+
+
         </div>
       </div>
 
-      <div class="required field" [ngClass]="{ 'error': submitted && f.acceptTerms.errors }">
+      <div
+          class="required field"
+          [ngClass]="{ 'error': submitted && f.acceptTerms.errors }"
+      >
         <div class="ui checkbox">
           <input
               formControlName="acceptTerms"
@@ -191,7 +257,10 @@
           class="ui primary submit button"
           (click)="onSubmit($event)"
       >Submit</div>
-      <div class="ui reset button" (click)="onReset()">Reset</div>
+      <div
+          class="ui reset button"
+          (click)="onReset()"
+      >Reset</div>
       <div class="ui clear button">Clear</div>
     </form>
 

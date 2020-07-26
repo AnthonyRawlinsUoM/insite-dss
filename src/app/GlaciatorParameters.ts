@@ -12,6 +12,7 @@ export class GlaciatorParameters {
   regsim_duration: number;
   num_replicates: number;
   harvesting_on: boolean;
+  fire_history: number;
 
   constructor(fd) {
     console.log(fd);
@@ -41,6 +42,12 @@ export enum FuelMachineKind {
   NarclimFutureWithLandis = 3
 }
 
+export enum FireHistoryOtions {
+  NONE = 0,
+  TwentyNineteen = 1,
+  TwentyTwenty = 2
+}
+
 export enum WebJobStatus {
   New = 10,
   RunningSimulations = 20,
@@ -65,5 +72,6 @@ export const glaciator_parameters_example = {
   planburn_target_perc: 0,
   regsim_duration: TimeframeOptions.FIFTY.valueOf(),
   num_replicates: ReplicateOptions.FIFTY.valueOf(),
-  harvesting_on: false
+  harvesting_on: false,
+  fire_history: FireHistoryOtions.NONE.valueOf()
 }

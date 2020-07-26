@@ -39,6 +39,12 @@ export class JobSubmissionComponent implements OnInit {
     { option: gp.TimeframeOptions.FIFTY, value: gp.TimeframeOptions.FIFTY.valueOf() },
   ];
 
+  fire_history_options = [
+    { option: gp.FireHistoryOtions.NONE, value: gp.FireHistoryOtions.NONE.valueOf() },
+    { option: gp.FireHistoryOtions.TwentyNineteen, value: gp.FireHistoryOtions.TwentyNineteen.valueOf() },
+    { option: gp.FireHistoryOtions.TwentyTwenty, value: gp.FireHistoryOtions.TwentyTwenty.valueOf() },
+  ];
+
   target_options = [
     {label: '0%', option: 0},
     {label: '1%', option: 1},
@@ -97,7 +103,10 @@ export class JobSubmissionComponent implements OnInit {
 
       harvesting_on: [false, [Validators.required]],
 
-      acceptTerms: [false, Validators.requiredTrue]
+      acceptTerms: [false, Validators.requiredTrue],
+
+      fire_history: ['', [Validators.required]]
+
     });
 
 
@@ -154,6 +163,7 @@ export class JobSubmissionComponent implements OnInit {
     this.job.submitter_name = data.submitter_name;
     this.job.submitter_email = data.submitter_email;
     this.job.descr = data.descr;
+    this.job.fire_history = data.fire_history;
 
     console.log(this.job);
   }
