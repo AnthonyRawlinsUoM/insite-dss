@@ -62,7 +62,7 @@ export class JobSubmissionComponent implements OnInit {
   submission_time: string;
   submitter_email: string;
   descr: string;
-
+  fire_history_kind: number;
   submitted = false;
   acceptTerms = false;
 
@@ -163,7 +163,7 @@ export class JobSubmissionComponent implements OnInit {
     this.job.submitter_name = data.submitter_name;
     this.job.submitter_email = data.submitter_email;
     this.job.descr = data.descr;
-    this.job.fire_history_kind = data.fire_history_kind;
+    this.job.fire_history_kind = data.fire_history_kind.option;
 
     console.log(this.job);
   }
