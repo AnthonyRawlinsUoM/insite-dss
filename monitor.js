@@ -15,7 +15,7 @@ const js2xmlparser = require("js2xmlparser");
 const directoryPath = path.join(__dirname, '/queue');
 
 const { validate } = require('jsonschema');
-const package = require('./package.json');
+
 
 const { Pool, Client } = require('pg');
 
@@ -134,6 +134,8 @@ function validateSchema(job) {
 let jobqueue = [];
 
 const glaciatorParametersSchema = require('./glaciatorParametersSchema.json');
+
+const package = require('./package.json');
 
 io.on('connection', (socket) => {
 
