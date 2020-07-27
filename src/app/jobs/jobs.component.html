@@ -43,29 +43,46 @@
           <td>{{ job.name }}</td>
           <td><a href="mailto:{{job.submitter_email}}">{{ job.submitter_name }}</a></td>
           <td>
-            <div class="" *ngIf="job.status == 20">Running Simulations</div>
-            <div class="" *ngIf="job.status == 30">Running Post-Processing</div>
-            <div class="" *ngIf="job.status == 40">Simulations Failed</div>
-            <div class="" *ngIf="job.status == 50">Post-processing Failed</div>
-            <div class="" *ngIf="job.status == 100">Complete</div>
+            <div
+                class=""
+                *ngIf="job.status == 20"
+            >Running Simulations</div>
+            <div
+                class=""
+                *ngIf="job.status == 30"
+            >Running Post-Processing</div>
+            <div
+                class=""
+                *ngIf="job.status == 40"
+            >Simulations Failed</div>
+            <div
+                class=""
+                *ngIf="job.status == 50"
+            >Post-processing Failed</div>
+            <div
+                class=""
+                *ngIf="job.status == 100"
+            >Complete</div>
           </td>
         </tr>
       </tbody>
     </table>
 
-    <div class="ui raised attached segment"><p>Found {{ jobs.length }} jobs ({{ queue.length}} in queue).</p></div>
+    <div class="ui raised attached segment">
+      <p>Found {{ jobs.length }} jobs ({{ queue.length}} in queue).</p>
+    </div>
 
     <div
         class="ui bottom attached segment"
         *ngIf="selectedJob"
     >
-    <div class="ui raised segment">
+      <div class="ui raised segment">
 
 
-      <h3 class="ui header">
-        {{selectedJob.name}}
-      </h3>
-      <h5 class="ui header">{{selectedJob.uuid}}</h5>
+        <h3 class="ui header">
+          {{selectedJob.name}}
+        </h3>
+        <h5 class="ui header">{{selectedJob.uuid}}</h5>
         <h4 class="ui header">User: {{selectedJob.submitter_name}}</h4>
 
         <p class="card-text">
@@ -79,17 +96,52 @@
               <tr>
                 <td>Fuel Machine</td>
                 <td>
-                  <div class="" *ngIf="selectedJob.fuel_machine_kind == 1">InvexpWithLandis</div>
-                  <div class="" *ngIf="selectedJob.fuel_machine_kind == 2">NarclimObservedWithLandis</div>
-                  <div class="" *ngIf="selectedJob.fuel_machine_kind == 3">NarclimFutureWithLandis</div>
+                  <div
+                      class=""
+                      *ngIf="selectedJob.fuel_machine_kind == 1"
+                  >InvexpWithLandis</div>
+                  <div
+                      class=""
+                      *ngIf="selectedJob.fuel_machine_kind == 2"
+                  >NarclimObservedWithLandis</div>
+                  <div
+                      class=""
+                      *ngIf="selectedJob.fuel_machine_kind == 3"
+                  >NarclimFutureWithLandis</div>
                 </td>
               </tr>
               <tr>
                 <td>Weather Machine</td>
                 <td>
-                  <div class="" *ngIf="selectedJob.weather_machine_kind == 1">Interpol</div>
-                  <div class="" *ngIf="selectedJob.weather_machine_kind == 2">NarclimObserved</div>
-                  <div class="" *ngIf="selectedJob.weather_machine_kind == 3">NarclimFuture</div>
+                  <div
+                      class=""
+                      *ngIf="selectedJob.weather_machine_kind == 1"
+                  >Interpol</div>
+                  <div
+                      class=""
+                      *ngIf="selectedJob.weather_machine_kind == 2"
+                  >NarclimObserved</div>
+                  <div
+                      class=""
+                      *ngIf="selectedJob.weather_machine_kind == 3"
+                  >NarclimFuture</div>
+                </td>
+              </tr>
+              <tr>
+                <td>Fire History</td>
+                <td>
+                  <div
+                      class=""
+                      *ngIf="selectedJob.fire_history_kind == 0"
+                  >None</div>
+                  <div
+                      class=""
+                      *ngIf="selectedJob.fire_history_kind == 1"
+                  >...2019</div>
+                  <div
+                      class=""
+                      *ngIf="selectedJob.fire_history_kind == 2"
+                  >...2020</div>
                 </td>
               </tr>
               <tr>
@@ -109,7 +161,10 @@
         </div>
         <div class="ui attached stackable compact steps">
 
-          <div class="step"  [ngClass]="selectedJob.status == 1 ? 'active' : ''">
+          <div
+              class="step"
+              [ngClass]="selectedJob.status == 1 ? 'active' : ''"
+          >
             <i class="cloud upload icon"></i>
             <div class="content">
               <div class="title">Submission</div>
@@ -121,7 +176,11 @@
           </div>
 
           <!-- /* Active if running simulations */ //-->
-          <div class="step" *ngIf="selectedJob.simulation_start_time" [ngClass]="selectedJob.status == 2 ? 'active' : ''">
+          <div
+              class="step"
+              *ngIf="selectedJob.simulation_start_time"
+              [ngClass]="selectedJob.status == 2 ? 'active' : ''"
+          >
             <i class="microchip icon"></i>
             <div class="content">
               <div class="title">Simulation / Compute</div>
@@ -132,7 +191,10 @@
             </div>
           </div>
 
-          <div class="disabled step" *ngIf="!selectedJob.simulation_start_time">
+          <div
+              class="disabled step"
+              *ngIf="!selectedJob.simulation_start_time"
+          >
             <i class="microchip icon"></i>
             <div class="content">
               <div class="title">Simulation / Compute</div>
@@ -140,41 +202,55 @@
           </div>
 
           <!-- /* Active if running post-processing */ //-->
-          <div class="step" *ngIf="selectedJob.post_proc_start_time"  [ngClass]="selectedJob.status == 3 ? 'active' : ''">
+          <div
+              class="step"
+              *ngIf="selectedJob.post_proc_start_time"
+              [ngClass]="selectedJob.status == 3 ? 'active' : ''"
+          >
             <i class="chart bar icon"></i>
             <div class="content">
               <div class="title">Post-Processing</div>
-            <div class="description">
-              <p>Started: {{ selectedJob.post_proc_start_time }}</p>
-              <p *ngIf="selectedJob.status > 3"><a href="\\{{ selectedJob.post_proc_results_dir_path }}">PP results</a></p>
+              <div class="description">
+                <p>Started: {{ selectedJob.post_proc_start_time }}</p>
+                <p *ngIf="selectedJob.status > 3"><a href="\\{{ selectedJob.post_proc_results_dir_path }}">PP results</a></p>
+              </div>
             </div>
           </div>
-          </div>
 
-          <div class="disabled step" *ngIf="!selectedJob.post_proc_start_time">
+          <div
+              class="disabled step"
+              *ngIf="!selectedJob.post_proc_start_time"
+          >
             <i class="chart bar icon"></i>
             <div class="content">
               <div class="title">Post-Processing</div>
+            </div>
           </div>
-      </div>
 
 
-          <div class="step" *ngIf="selectedJob.job_failure_time" [ngClass]="selectedJob.status == 5 ? 'active' : ''">
+          <div
+              class="step"
+              *ngIf="selectedJob.job_failure_time"
+              [ngClass]="selectedJob.status == 5 ? 'active' : ''"
+          >
             <i class="red bug icon"></i>
             <div class="content">
               <div class="title">Error</div>
-            <div class="description">
-              <p>Error occured: {{ selectedJob.job_failure_time }}</p>
-              <p *ngIf="selectedJob.status == 5">{{ selectedJob.job_failure_error_message }}</p>
+              <div class="description">
+                <p>Error occured: {{ selectedJob.job_failure_time }}</p>
+                <p *ngIf="selectedJob.status == 5">{{ selectedJob.job_failure_error_message }}</p>
+              </div>
             </div>
           </div>
-          </div>
 
-          <div class="disabled step" *ngIf="!selectedJob.job_failure_time">
+          <div
+              class="disabled step"
+              *ngIf="!selectedJob.job_failure_time"
+          >
             <i class="bug icon"></i>
             <div class="content">
               <div class="title">No Errors</div>
-          </div>
+            </div>
           </div>
 
 
