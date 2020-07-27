@@ -221,10 +221,10 @@
                 labelField="label"
                 [isSearchable]="searchable"
                 [isDisabled]="disabled"
-                #fire_history_select
+                #fire_history_kind
             >
               <sui-select-option
-                  *ngFor="let option of fire_history_select.filteredOptions"
+                  *ngFor="let option of fire_history_kind.filteredOptions"
                   [value]="option"
               >
               </sui-select-option>

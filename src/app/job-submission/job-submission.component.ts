@@ -40,9 +40,9 @@ export class JobSubmissionComponent implements OnInit {
   ];
 
   fire_history_options = [
-    { option: gp.FireHistoryOtions.NONE, value: gp.FireHistoryOtions.NONE.valueOf() },
-    { option: gp.FireHistoryOtions.TwentyNineteen, value: gp.FireHistoryOtions.TwentyNineteen.valueOf() },
-    { option: gp.FireHistoryOtions.TwentyTwenty, value: gp.FireHistoryOtions.TwentyTwenty.valueOf() },
+    { option: gp.FireHistoryOtions.NONE, label: 'None', value: gp.FireHistoryOtions.NONE.valueOf() },
+    { option: gp.FireHistoryOtions.TwentyNineteen, label: '...2019', value: gp.FireHistoryOtions.TwentyNineteen.valueOf() },
+    { option: gp.FireHistoryOtions.TwentyTwenty, label: '...2020', value: gp.FireHistoryOtions.TwentyTwenty.valueOf() },
   ];
 
   target_options = [
@@ -105,7 +105,7 @@ export class JobSubmissionComponent implements OnInit {
 
       acceptTerms: [false, Validators.requiredTrue],
 
-      fire_history: ['', [Validators.required]]
+      fire_history_kind: ['', [Validators.required]]
 
     });
 
