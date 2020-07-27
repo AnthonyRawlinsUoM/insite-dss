@@ -175,7 +175,7 @@ io.on('connection', (socket) => {
 
         console.log(job);
 
-        let text = `INSERT INTO "Job"(name, descr, uuid, submitter_name, submission_time, submitter_email, weather_machine_kind, fuel_machine_kind, planburn_target_perc, regsim_duration, num_replicates, harvesting_on) VALUES($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12,$13)`
+        let text = `INSERT INTO "Job"(name, descr, uuid, submitter_name, submission_time, submitter_email, weather_machine_kind, fuel_machine_kind, planburn_target_perc, regsim_duration, num_replicates, harvesting_on, fire_history_kind) VALUES($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12,$13)`
         let values = [
           job.name,
           job.descr,
